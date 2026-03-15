@@ -295,7 +295,7 @@
             text-decoration: none;
         }
 
-        /* ========== Responsive ========== */
+        /* ========== Responsive - Tablet ========== */
         @media (max-width: 768px) {
             .hero {
                 padding: 56px 20px 44px;
@@ -334,6 +334,142 @@
 
             .container {
                 padding: 32px 16px 60px;
+            }
+
+            .about-section {
+                padding: 28px 20px;
+            }
+        }
+
+        /* ========== Responsive - Mobile ========== */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 16px 32px;
+            }
+
+            .hero h1 {
+                font-size: 1.6em;
+                letter-spacing: -0.5px;
+            }
+
+            .hero .tagline {
+                font-size: 0.9em;
+                line-height: 1.5;
+            }
+
+            .hero .tagline br {
+                display: none;
+            }
+
+            .hero .stats {
+                gap: 16px;
+            }
+
+            .hero .stat-num {
+                font-size: 1.5em;
+            }
+
+            .hero .stat-label {
+                font-size: 0.75em;
+            }
+
+            .container {
+                padding: 20px 12px 48px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+                margin-bottom: 20px;
+            }
+
+            .section-header h2 {
+                font-size: 1.3em;
+            }
+
+            .issue-list {
+                gap: 16px;
+            }
+
+            .issue-card {
+                border-radius: 12px;
+            }
+
+            .issue-date-block {
+                padding: 12px 16px;
+                gap: 8px;
+            }
+
+            .issue-date-block .day {
+                font-size: 1.5em;
+            }
+
+            .issue-date-block .month-year {
+                font-size: 0.8em;
+            }
+
+            .issue-date-block .weekday {
+                font-size: 0.72em;
+            }
+
+            .issue-body {
+                padding: 16px;
+            }
+
+            .issue-body h3 {
+                font-size: 1.05em;
+                line-height: 1.5;
+                margin-bottom: 8px;
+            }
+
+            .issue-body .issue-subtitle {
+                font-size: 0.82em;
+                margin-bottom: 10px;
+            }
+
+            .issue-highlights {
+                gap: 6px;
+                margin-bottom: 10px;
+            }
+
+            .issue-highlights .hl-tag {
+                padding: 2px 8px;
+                font-size: 0.7em;
+            }
+
+            .issue-meta {
+                gap: 12px;
+                font-size: 0.75em;
+            }
+
+            .about-section {
+                margin-top: 40px;
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+
+            .about-section h3 {
+                font-size: 1.05em;
+            }
+
+            .about-section p {
+                font-size: 0.88em;
+                line-height: 1.7;
+            }
+
+            .about-tags {
+                gap: 8px;
+            }
+
+            .about-tags span {
+                padding: 4px 12px;
+                font-size: 0.75em;
+            }
+
+            .footer {
+                padding: 28px 16px;
+                font-size: 0.8em;
             }
         }
     </style>

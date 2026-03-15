@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 — 全球 AI 领域重要动态一网打尽</title>
+    <meta name="description" content="每日追踪全球 AI 领域重要动态，覆盖 X/Twitter、Reddit、Hacker News、LinkedIn 等主流平台，关注 AI 大牛观点、模型发布、行业趋势。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f0f2f5;
+            color: #1a202c;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* ========== Hero ========== */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 24px 64px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .hero .tagline {
+            font-size: 1.2em;
+            opacity: 0.92;
+            font-weight: 400;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero .stat {
+            text-align: center;
+        }
+
+        .hero .stat-num {
+            font-size: 2em;
+            font-weight: 700;
+            display: block;
+        }
+
+        .hero .stat-label {
+            font-size: 0.88em;
+            opacity: 0.78;
+        }
+
+        /* ========== Container ========== */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+        }
+
+        .section-header h2 {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .section-header .count {
+            font-size: 0.9em;
+            color: #718096;
+            background: #e2e8f0;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* ========== Issue Cards ========== */
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .issue-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 2px solid transparent;
+        }
+
+        .issue-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+
+        .issue-card-inner {
+            display: flex;
+            align-items: stretch;
+        }
+
+        .issue-date-block {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 28px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 130px;
+            flex-shrink: 0;
+        }
+
+        .issue-date-block .day {
+            font-size: 2.8em;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .issue-date-block .month-year {
+            font-size: 0.88em;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+
+        .issue-date-block .weekday {
+            font-size: 0.8em;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        .issue-body {
+            padding: 24px 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .issue-body h3 {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .issue-body .issue-subtitle {
+            font-size: 0.92em;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .issue-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .issue-highlights .hl-tag {
+            background: #f0f4ff;
+            color: #667eea;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.78em;
+            font-weight: 600;
+            border: 1px solid #e0e7ff;
+        }
+
+        .issue-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.82em;
+            color: #718096;
+        }
+
+        .issue-meta span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .read-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 24px;
+            color: #cbd5e0;
+            font-size: 1.4em;
+            flex-shrink: 0;
+            transition: color 0.2s;
+        }
+
+        .issue-card:hover .read-arrow {
+            color: #667eea;
+        }
+
+        /* ========== About ========== */
+        .about-section {
+            margin-top: 64px;
+            background: white;
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .about-section h3 {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 16px;
+        }
+
+        .about-section p {
+            color: #4a5568;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .about-tags span {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 500;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: #a0aec0;
+            font-size: 0.85em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 56px 20px 44px;
+            }
+
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .tagline {
+                font-size: 1em;
+            }
+
+            .hero .stats {
+                gap: 24px;
+            }
+
+            .issue-card-inner {
+                flex-direction: column;
+            }
+
+            .issue-date-block {
+                flex-direction: row;
+                gap: 12px;
+                padding: 16px 24px;
+                min-width: unset;
+            }
+
+            .issue-date-block .day {
+                font-size: 1.8em;
+            }
+
+            .read-arrow {
+                display: none;
+            }
+
+            .container {
+                padding: 32px 16px 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>AI 日报</h1>
+            <div class="tagline">
+                每日追踪全球 AI 领域重要动态<br>
+                覆盖 X/Twitter、Reddit、Hacker News、LinkedIn 等主流平台
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-num">3</span>
+                    <span class="stat-label">已发布期数</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">8+</span>
+                    <span class="stat-label">覆盖平台</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">45</span>
+                    <span class="stat-label">累计资讯</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>往期日报</h2>
+            <span class="count">共 3 期</span>
+        </div>
+
+        <div class="issue-list">
+
+            <!-- 2026-03-15 -->
+            <a href="issues/2026-03-15.html" class="issue-card">
+                <div class="issue-card-inner">
+                    <div class="issue-date-block">
+                        <span class="day">15</span>
+                        <span class="month-year">2026年3月</span>
+                        <span class="weekday">星期六</span>
+                    </div>
+                    <div class="issue-body">
+                        <div class="issue-subtitle">GTC 2026 开幕前夜特别版</div>
+                        <h3>GTC 2026 明日开幕 / Terafab 启动 / 芯片出口管制撤回</h3>
+                        <div class="issue-highlights">
+                            <span class="hl-tag">GTC 2026</span>
+                            <span class="hl-tag">Tesla Terafab</span>
+                            <span class="hl-tag">芯片出口管制</span>
+                            <span class="hl-tag">Cortical Labs</span>
+                            <span class="hl-tag">Llama 4 推迟</span>
+                        </div>
+                        <div class="issue-meta">
+                            <span>15 条资讯</span>
+                            <span>8+ 平台</span>
+                            <span>2 位新面孔</span>
+                        </div>
+                    </div>
+                    <div class="read-arrow">&rarr;</div>
+                </div>
+            </a>
+
+            <!-- 2026-03-13 -->
+            <a href="issues/2026-03-13.html" class="issue-card">
+                <div class="issue-card-inner">
+                    <div class="issue-date-block">
+                        <span class="day">13</span>
+                        <span class="month-year">2026年3月</span>
+                        <span class="weekday">星期四</span>
+                    </div>
+                    <div class="issue-body">
+                        <h3>xAI 离职潮 / Nemotron 3 发布 / 神秘万亿参数模型上线</h3>
+                        <div class="issue-highlights">
+                            <span class="hl-tag">xAI 人事动荡</span>
+                            <span class="hl-tag">NVIDIA Nemotron 3</span>
+                            <span class="hl-tag">DeepSeek V4 疑似</span>
+                            <span class="hl-tag">OpenClaw 安全</span>
+                            <span class="hl-tag">Claude 日活破千万</span>
+                        </div>
+                        <div class="issue-meta">
+                            <span>15 条资讯</span>
+                            <span>6+ 平台</span>
+                            <span>1 位新面孔</span>
+                        </div>
+                    </div>
+                    <div class="read-arrow">&rarr;</div>
+                </div>
+            </a>
+
+            <!-- 2026-03-12 -->
+            <a href="issues/2026-03-12.html" class="issue-card">
+                <div class="issue-card-inner">
+                    <div class="issue-date-block">
+                        <span class="day">12</span>
+                        <span class="month-year">2026年3月</span>
+                        <span class="weekday">星期三</span>
+                    </div>
+                    <div class="issue-body">
+                        <h3>Anthropic 起诉国防部 / OpenAI 1100亿融资 / GPT-5.4 全面铺开</h3>
+                        <div class="issue-highlights">
+                            <span class="hl-tag">Anthropic 诉讼</span>
+                            <span class="hl-tag">OpenAI 融资</span>
+                            <span class="hl-tag">GPT-5.4</span>
+                            <span class="hl-tag">xAI-SpaceX 合并</span>
+                            <span class="hl-tag">Karpathy MicroGPT</span>
+                        </div>
+                        <div class="issue-meta">
+                            <span>15 条资讯</span>
+                            <span>6 平台</span>
+                            <span>2 位新面孔</span>
+                        </div>
+                    </div>
+                    <div class="read-arrow">&rarr;</div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- 关于 -->
+        <div class="about-section">
+            <h3>关于 AI 日报</h3>
+            <p>
+                AI 日报是一份面向 AI 从业者和关注者的每日资讯简报。我们从全球顶级社交媒体平台和科技媒体中筛选、整理过去 24 小时内 AI 领域最重要的动态，以结构化、可视化的方式呈现给读者。
+            </p>
+            <p>
+                我们关注的不仅是 AI 大牛和顶级实验室的官方发布，也特别留意那些获得异常高互动量的"新面孔"帖子——往往最具突破性的信号来自意想不到的地方。
+            </p>
+            <div class="about-tags">
+                <span>Sam Altman</span>
+                <span>Elon Musk</span>
+                <span>Jensen Huang</span>
+                <span>Yann LeCun</span>
+                <span>Andrej Karpathy</span>
+                <span>Jim Fan</span>
+                <span>Demis Hassabis</span>
+                <span>OpenAI</span>
+                <span>Anthropic</span>
+                <span>DeepMind</span>
+                <span>xAI</span>
+                <span>Meta AI</span>
+                <span>NVIDIA</span>
+                <span>DeepSeek</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 &mdash; 全球 AI 领域重要动态一网打尽</p>
+        <p style="margin-top: 6px;">数据来源：X/Twitter、Reddit、Hacker News、LinkedIn、TechCrunch、The Register、SiliconANGLE、新浪财经、IT之家 等</p>
+    </div>
+</body>
+
+</html>

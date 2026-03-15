@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯日报 - 2026年3月13日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="white" opacity="0.05"/></svg>');
+            background-size: 100px 100px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin-bottom: 8px;
+        }
+
+        .header .date {
+            font-size: 1em;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .stats-bar {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            color: #718096;
+            margin-top: 4px;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.6em;
+            color: #2d3748;
+            margin-bottom: 24px;
+            margin-top: 36px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .news-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .news-card.highlight-card::before {
+            width: 5px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+            border-color: #667eea;
+        }
+
+        .news-card h2 {
+            color: #1a202c;
+            font-size: 1.25em;
+            margin-bottom: 12px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.85em;
+            color: #718096;
+            flex-wrap: wrap;
+        }
+
+        .news-source {
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .news-platform {
+            background: #edf2f7;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.85em;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .news-time {
+            opacity: 0.8;
+        }
+
+        .badge-new-face {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .badge-hot {
+            background: linear-gradient(135deg, #f5576c, #ff6348);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .badge-breaking {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .tag {
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78em;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            border: 1px solid #c7d2fe;
+        }
+
+        .news-card .summary {
+            color: #4a5568;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .news-card .highlights {
+            background: #f7fafc;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            border-left: 3px solid #667eea;
+        }
+
+        .news-card .highlights h4 {
+            font-size: 0.82em;
+            color: #718096;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-card .highlights p {
+            color: #2d3748;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .interaction-data {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 14px;
+            font-size: 0.82em;
+            color: #718096;
+        }
+
+        .interaction-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .source-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 18px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.88em;
+        }
+
+        .source-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+            border-top: 1px solid #e2e8f0;
+            background: #f8f9fa;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+        }
+
+        .toc {
+            background: #f7fafc;
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 32px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .toc h3 {
+            font-size: 1.1em;
+            color: #2d3748;
+            margin-bottom: 14px;
+            font-weight: 600;
+        }
+
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 8px;
+        }
+
+        .toc-list li {
+            font-size: 0.92em;
+            color: #4a5568;
+            padding: 4px 0;
+        }
+
+        .toc-list li a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc-list li a:hover {
+            text-decoration: underline;
+        }
+
+        .toc-num {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.75em;
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 24px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>AI 资讯日报</h1>
+                <div class="subtitle">全球 AI 领域重要动态 &middot; 精选资讯概览</div>
+                <div class="date">2026年3月13日 星期五</div>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">15</span>
+                <span class="stat-label">精选资讯</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">12+</span>
+                <span class="stat-label">信息来源</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24h</span>
+                <span class="stat-label">时效范围</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">6</span>
+                <span class="stat-label">覆盖平台</span>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- 目录 -->
+            <div class="toc">
+                <h3>今日要点速览</h3>
+                <ul class="toc-list">
+                    <li><span class="toc-num">1</span><a href="#n1">xAI 联合创始人离职潮持续，半数创始团队已出走</a></li>
+                    <li><span class="toc-num">2</span><a href="#n2">NVIDIA 发布 Nemotron 3 Super 开源大模型，GTC 大会下周开幕</a></li>
+                    <li><span class="toc-num">3</span><a href="#n3">OpenRouter 上线神秘万亿参数模型，疑似 DeepSeek V4</a></li>
+                    <li><span class="toc-num">4</span><a href="#n4">中国人工智能产业联盟发布 OpenClaw 安全风险管理指南</a></li>
+                    <li><span class="toc-num">5</span><a href="#n5">微软提交法庭之友意见书支持 Anthropic 对抗国防部</a></li>
+                    <li><span class="toc-num">6</span><a href="#n6">OpenAI GPT-5.4 系列全面铺开，GPT-5.1 即将下线</a></li>
+                    <li><span class="toc-num">7</span><a href="#n7">Claude 日活突破 1130 万，五角大楼事件后用户激增</a></li>
+                    <li><span class="toc-num">8</span><a href="#n8">NVIDIA 斥资 20 亿美元投资 AI 云服务商 Nebius</a></li>
+                    <li><span class="toc-num">9</span><a href="#n9">Tesla Energy 获批英国全境供电许可</a></li>
+                    <li><span class="toc-num">10</span><a href="#n10">国家工信安全中心发布工业领域 OpenClaw 应用风险预警</a></li>
+                    <li><span class="toc-num">11</span><a href="#n11">GTC 2026 前瞻：Feynman 芯片与 A16 制程首秀</a></li>
+                    <li><span class="toc-num">12</span><a href="#n12">Google Gemini 3.1 Flash-Lite 正式上线</a></li>
+                    <li><span class="toc-num">13</span><a href="#n13">Andrej Karpathy 发布 MicroGPT：200 行纯 Python 训练 GPT</a></li>
+                    <li><span class="toc-num">14</span><a href="#n14">Google DeepMind 预测：2026 年为持续学习元年</a></li>
+                    <li><span class="toc-num">15</span><a href="#n15">斯坦福 AI 小镇创业公司 Simile 获 1 亿美元融资</a></li>
+                </ul>
+            </div>
+
+            <!-- === 第一部分：行业重大事件 === -->
+            <h2 class="section-title" id="sec1">行业重大事件</h2>
+            <div class="news-grid">
+
+                <!-- 1 -->
+                <div class="news-card highlight-card" id="n1">
+                    <h2>xAI 联合创始人离职潮持续，半数创始团队已出走</h2>
+                    <div class="news-meta">
+                        <span class="news-source">TechCrunch / The Information</span>
+                        <span class="news-platform">X/Twitter</span>
+                        <span class="badge-hot">热点</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">xAI</span>
+                        <span class="tag">Elon Musk</span>
+                        <span class="tag">人事变动</span>
+                        <span class="tag">Grok</span>
+                    </div>
+                    <div class="summary">
+                        马斯克旗下 xAI 的联合创始人离职潮仍在加剧。继此前多位核心成员出走后，联合创始人 Igor Babuschkin 宣布离开 xAI 并将创办风投公司 Babuschkin Ventures。此前联合创始人 Yuhuai (Tony) Wu 已于2月宣布离职。至此，xAI 12位创始团队成员已有一半离开。马斯克在 X 上回复称"如果没有你，我们也不会走到今天"，但外界对 xAI 的内部管理和 Grok 4/5 的研发前景产生担忧。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>创始团队 12 人已有 6 人离职 &middot; Babuschkin 此前以 6000 万英镑购入伦敦豪宅 &middot; Grok 5 发布已推迟至2026年</p>
+                    </div>
+                    <a href="https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 2 -->
+                <div class="news-card highlight-card" id="n2">
+                    <h2>NVIDIA 发布最强开源模型 Nemotron 3 Super，GTC 大会下周开幕</h2>
+                    <div class="news-meta">
+                        <span class="news-source">NVIDIA 官方博客</span>
+                        <span class="news-platform">多平台</span>
+                        <span class="badge-breaking">重磅</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">NVIDIA</span>
+                        <span class="tag">Nemotron</span>
+                        <span class="tag">开源模型</span>
+                        <span class="tag">GTC 2026</span>
+                    </div>
+                    <div class="summary">
+                        英伟达于3月11日正式发布 Nemotron 3 Super 开源大模型，总参数量 1200 亿，推理时仅激活 120 亿参数，原生支持 100 万 token 上下文窗口。该模型专为 AI 智能体任务优化，吞吐量较前代提升 5 倍，准确率提升 2 倍，已登顶 Artificial Analysis 榜首。同时，GTC 2026 大会（3/16-19）即将在圣何塞开幕，黄仁勋预计将首次公开展示下一代 Feynman 芯片。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>1200 亿参数/120 亿激活 &middot; 吞吐量提升 5x &middot; 支持 100 万 token 上下文 &middot; 登顶 Artificial Analysis 开源榜</p>
+                    </div>
+                    <a href="http://finance.sina.com.cn/tech/digi/2026-03-12/doc-inhqsnwz5045987.shtml" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 3 -->
+                <div class="news-card highlight-card" id="n3">
+                    <h2>OpenRouter 上线神秘万亿参数模型 Hunter Alpha / Healer Alpha，疑似 DeepSeek V4</h2>
+                    <div class="news-meta">
+                        <span class="news-source">OpenRouter / 新浪财经</span>
+                        <span class="news-platform">X/Twitter &middot; Reddit</span>
+                        <span class="badge-hot">热点</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">DeepSeek</span>
+                        <span class="tag">Hunter Alpha</span>
+                        <span class="tag">万亿参数</span>
+                        <span class="tag">匿名测试</span>
+                    </div>
+                    <div class="summary">
+                        3月11日，全球大模型聚合平台 OpenRouter 突然上线两款隐身模型：Hunter Alpha（1 万亿参数，100 万 token 上下文，专为 Agent 工作流设计）和 Healer Alpha（全模态模型，26 万 token 上下文，原生支持视觉与音频输入）。两款模型均免费开放。OpenClaw 创始人 Nick Steinberg 亲自点赞，社区普遍推测 Healer Alpha 极可能是 DeepSeek V4 或其变体。梁文锋或将携 V4 正面对决姚顺雨。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>Hunter Alpha: 1T+ 参数/100 万 token &middot; Healer Alpha: 全模态/26 万 token &middot; 输出速度分别约 48 和 93 tokens/s &middot; 暂时免费</p>
+                    </div>
+                    <a href="https://finance.sina.com.cn/tech/roll/2026-03-12/doc-inhqtqkh4789220.shtml" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 4 -->
+                <div class="news-card" id="n4">
+                    <h2>中国人工智能产业联盟发布 OpenClaw 安全风险管理指南</h2>
+                    <div class="news-meta">
+                        <span class="news-source">财联社 / 每日经济新闻</span>
+                        <span class="news-platform">官方通告</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">OpenClaw</span>
+                        <span class="tag">安全风险</span>
+                        <span class="tag">AI 治理</span>
+                        <span class="tag">政策监管</span>
+                    </div>
+                    <div class="summary">
+                        3月12日，中国人工智能产业发展联盟正式发布关于防范 OpenClaw 开源 AI 智能体安全风险的提示，列明四大风险类别：提示词注入与指令劫持、自主决策偏差与不可逆操作、第三方生态恶意投毒、配置缺陷与漏洞利用。联盟宣布将编制企业级 OpenClaw 部署风险管理指南，形成自查自测清单，协调行业安全资源。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心亮点</h4>
+                        <p>四大安全风险正式定义 &middot; 编制企业级部署风险管理指南 &middot; 形成自查自测清单 &middot; OpenClaw GitHub 星标已超 25 万</p>
+                    </div>
+                    <a href="https://finance.sina.com.cn/roll/2026-03-12/doc-inhqtusi8450984.shtml" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 5 -->
+                <div class="news-card" id="n5">
+                    <h2>微软提交法庭之友意见书，支持 Anthropic 对抗国防部"供应链风险"认定</h2>
+                    <div class="news-meta">
+                        <span class="news-source">富途牛牛 / ChatGPT Is Eating the World</span>
+                        <span class="news-platform">LinkedIn &middot; 法律文件</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Anthropic</span>
+                        <span class="tag">微软</span>
+                        <span class="tag">国防部</span>
+                        <span class="tag">法律诉讼</span>
+                    </div>
+                    <div class="summary">
+                        微软正式向法院提交法庭之友意见书（amicus brief），支持 Anthropic 请求的临时限制令，反对美国国防部将 Anthropic 列为"供应链风险"实体的认定。微软在文件中警告称，若该认定不被撤销，将导致"昂贵的中断"。法官 Lin 已安排针对 Anthropic 初步禁令动议的听证。这一事件持续引发 AI 行业对政府监管边界的广泛讨论。
+                    </div>
+                    <a href="https://news.futunn.com/post/69900888/microsoft-warns-of-costly-disruptions-as-it-backs-anthropic-bid" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 6 -->
+                <div class="news-card" id="n6">
+                    <h2>OpenAI GPT-5.4 系列全面铺开，GPT-5.1 即将下线</h2>
+                    <div class="news-meta">
+                        <span class="news-source">OpenAI / IT之家 / 36氪</span>
+                        <span class="news-platform">多平台</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">OpenAI</span>
+                        <span class="tag">GPT-5.4</span>
+                        <span class="tag">模型更新</span>
+                        <span class="tag">计算机操控</span>
+                    </div>
+                    <div class="summary">
+                        OpenAI 于3月6日发布的 GPT-5.4 系列正在全面向用户铺开。该模型整合了推理能力（GPT-5.2）、顶级编程能力（GPT-5.3-Codex）及原生计算机使用能力，支持 100 万 token 上下文，包含 Thinking 和 Pro 两个版本。免费用户已获基础访问权限。GPT-5.1 将于 3 月 11 日后作为旧版模型下线。Android 和网页版已上线，iOS 版即将推出。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>100 万 token 上下文 &middot; 原生计算机操控能力 &middot; GPT-5.1 于 3/11 后下线 &middot; 免费/Plus/Pro 用户均已开放</p>
+                    </div>
+                    <a href="https://www.ithome.com/0/926/344.htm" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- === 第二部分：AI 大厂动态 === -->
+            <h2 class="section-title" id="sec2">AI 大厂动态</h2>
+            <div class="news-grid">
+
+                <!-- 7 -->
+                <div class="news-card" id="n7">
+                    <h2>Claude 日活突破 1130 万，五角大楼事件后消费端增长持续飙升</h2>
+                    <div class="news-meta">
+                        <span class="news-source">TechCrunch / 199IT</span>
+                        <span class="news-platform">多平台</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Anthropic</span>
+                        <span class="tag">Claude</span>
+                        <span class="tag">用户增长</span>
+                        <span class="tag">市场份额</span>
+                    </div>
+                    <div class="summary">
+                        根据 Similarweb 数据，截至 3 月 2 日，Claude 在 iOS 和 Android 端的日活跃用户已达 1130 万，较年初的 400 万增长 183%。同期 Claude 的日下载量（14.9 万次）已超过 ChatGPT（12.4 万次）。分析认为，Anthropic 与五角大楼的对峙事件反而为其赢得了大量公众好感和消费者信任，推动了消费端爆发式增长。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>日活 1130 万（年初 400 万，增长 183%）&middot; 日下载量 14.9 万次 &gt; ChatGPT 12.4 万次</p>
+                    </div>
+                    <a href="https://techcrunch.com/2026/03/06/claudes-consumer-growth-surge-continues-after-pentagon-deal-debacle/" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 8 -->
+                <div class="news-card" id="n8">
+                    <h2>NVIDIA 斥资 20 亿美元投资 AI 云服务商 Nebius</h2>
+                    <div class="news-meta">
+                        <span class="news-source">新浪财经 / 界面新闻</span>
+                        <span class="news-platform">X/Twitter &middot; 财经媒体</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">NVIDIA</span>
+                        <span class="tag">Nebius</span>
+                        <span class="tag">投资</span>
+                        <span class="tag">AI基础设施</span>
+                    </div>
+                    <div class="summary">
+                        3月11日，英伟达宣布向荷兰 AI 云服务商 Nebius 投资 20 亿美元，双方将共同开发面向 AI 市场的新一代超大规模云平台。计划到 2030 年底部署超过 5 吉瓦（GW）的英伟达算力系统。Nebius 将部署包括 Rubin 平台、Vera CPU 及 BlueField 存储在内的多代英伟达基础设施。值得注意的是，英伟达于 2026 年初刚向 CoreWeave 追加 20 亿美元投资，"循环投资"争议再起。
+                    </div>
+                    <a href="http://finance.sina.com.cn/wm/2026-03-11/doc-inhqrvza5333622.shtml" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 9 -->
+                <div class="news-card" id="n9">
+                    <h2>Tesla Energy 获批英国全境供电许可</h2>
+                    <div class="news-meta">
+                        <span class="news-source">NewsnReleases / 新浪财经</span>
+                        <span class="news-platform">财经媒体</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Tesla</span>
+                        <span class="tag">能源</span>
+                        <span class="tag">供电许可</span>
+                        <span class="tag">英国</span>
+                    </div>
+                    <div class="summary">
+                        Tesla Energy Ventures Limited 已获得英国全境（Great Britain）的电力供应许可证。这标志着特斯拉在从汽车公司向综合能源公司转型道路上迈出关键一步，也为其虚拟电厂（VPP）和 Megapack 储能系统在英国的大规模部署铺平道路。该消息在美股盘后引发关注，特斯拉当日成交额达 240.93 亿美元。
+                    </div>
+                    <a href="https://newsnreleases.com/" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- === 第三部分：安全与监管 === -->
+            <h2 class="section-title" id="sec3">安全与监管</h2>
+            <div class="news-grid">
+
+                <!-- 10 -->
+                <div class="news-card" id="n10">
+                    <h2>国家工信安全中心发布工业领域 OpenClaw 应用风险预警</h2>
+                    <div class="news-meta">
+                        <span class="news-source">中国新闻网</span>
+                        <span class="news-platform">官方通报</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">OpenClaw</span>
+                        <span class="tag">工业安全</span>
+                        <span class="tag">风险预警</span>
+                        <span class="tag">国家级</span>
+                    </div>
+                    <div class="summary">
+                        国家工业信息安全发展研究中心发布工业领域 OpenClaw 应用风险预警通报。通报指出，OpenClaw（俗称"龙虾"）正加速在工业领域研发设计、生产制造、运维管理等环节部署，但存在权限管控机制固有缺陷，极易出现越权执行操作，可能直接干扰生产流程、破坏设备运行逻辑，导致参数紊乱、产线中断、设备损毁等严重后果，甚至引发安全生产事故。同时已发现多个恶意插件可窃取工业图纸和 API 密钥。
+                    </div>
+                    <a href="http://www.chinanews.com.cn/cj/2026/03-12/10585813.shtml" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- === 第四部分：技术前沿与产品 === -->
+            <h2 class="section-title" id="sec4">技术前沿与产品</h2>
+            <div class="news-grid">
+
+                <!-- 11 -->
+                <div class="news-card" id="n11">
+                    <h2>GTC 2026 前瞻：黄仁勋将发布 Feynman 芯片，全球首款 1.6nm 制程</h2>
+                    <div class="news-meta">
+                        <span class="news-source">企鹅号 / 新浪新闻 / 今日头条</span>
+                        <span class="news-platform">多平台</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">NVIDIA</span>
+                        <span class="tag">Feynman</span>
+                        <span class="tag">台积电 A16</span>
+                        <span class="tag">GTC 2026</span>
+                    </div>
+                    <div class="summary">
+                        据韩国媒体 Chosun Biz 及多家外媒报道，黄仁勋将在 GTC 2026（3/16-19）主题演讲中首次公开展示代号"Feynman"的下一代核心芯片。该芯片全球首发搭载台积电 A16（1.6nm）制程工艺，引入超级电轨（SPR）技术，并计划首次集成 Groq 公司 LPU 硬件堆栈以解决延迟痛点。大会还将围绕光互联、液冷基建、推理生态等四大方向展开。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>台积电 A16（1.6nm）&middot; 首次集成 Groq LPU &middot; 预计 2028 量产/2029 出货 &middot; Quantum-X 3450 CPO 交换机量产</p>
+                    </div>
+                    <a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_010699fa72c05252" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 12 -->
+                <div class="news-card" id="n12">
+                    <h2>Google Gemini 3.1 Flash-Lite 正式上线：性价比之王</h2>
+                    <div class="news-meta">
+                        <span class="news-source">Google DeepMind / 财联社</span>
+                        <span class="news-platform">多平台</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Google</span>
+                        <span class="tag">Gemini 3.1</span>
+                        <span class="tag">Flash-Lite</span>
+                        <span class="tag">性价比</span>
+                    </div>
+                    <div class="summary">
+                        Google 正式发布 Gemini 3.1 Flash-Lite，是 Gemini 3 系列中速度最快、性价比最高的模型。输出速度达 363 tokens/s，输出定价仅 1.50 美元/百万 Token。在跑分中直接碾压 GPT-5 mini 和 Claude 4.5 Haiku，同一任务下相较 2.5 Flash（33分钟），3.1 Flash-Lite 仅用 4 分钟，token 消耗最少且正确率最高。已通过 Google AI Studio 和 Vertex AI 向开发者开放。
+                    </div>
+                    <div class="highlights">
+                        <h4>核心数据</h4>
+                        <p>363 tokens/s &middot; $0.25/M 输入 + $1.50/M 输出 &middot; 同任务比 2.5 Flash 快 8x &middot; 支持可调思考层级</p>
+                    </div>
+                    <a href="https://www.marktechpost.com/2026/03/03/google-drops-gemini-3-1-flash-lite-a-cost-efficient-powerhouse-with-adjustable-thinking-levels-designed-for-high-scale-production-ai/" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 13 -->
+                <div class="news-card" id="n13">
+                    <h2>Andrej Karpathy 发布 MicroGPT：200 行纯 Python 即可训练和推理 GPT</h2>
+                    <div class="news-meta">
+                        <span class="news-source">Andrej Karpathy 个人博客</span>
+                        <span class="news-platform">GitHub &middot; X/Twitter</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Karpathy</span>
+                        <span class="tag">MicroGPT</span>
+                        <span class="tag">教育</span>
+                        <span class="tag">开源</span>
+                    </div>
+                    <div class="summary">
+                        AI 教育家、前 OpenAI/Tesla AI 负责人 Andrej Karpathy 近日发布了 MicroGPT 项目，仅用 200 行纯 Python 代码（无任何依赖）即可完成 GPT 模型的训练和推理。Karpathy 在博客中写道"I cannot make this any shorter"，延续了其从 minGPT、nanoGPT 到 MicroGPT 的极简主义教学路线。该项目在社区引发广泛关注和学习热潮。
+                    </div>
+                    <a href="http://karpathy.github.io/" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- === 第五部分：行业趋势与观点 === -->
+            <h2 class="section-title" id="sec5">行业趋势与观点</h2>
+            <div class="news-grid">
+
+                <!-- 14 -->
+                <div class="news-card" id="n14">
+                    <h2>Google DeepMind 研究员预测：2026 年为"持续学习"元年</h2>
+                    <div class="news-meta">
+                        <span class="news-source">IT之家</span>
+                        <span class="news-platform">X/Twitter &middot; 学术</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">DeepMind</span>
+                        <span class="tag">持续学习</span>
+                        <span class="tag">AI趋势</span>
+                        <span class="tag">Jeff Dean</span>
+                    </div>
+                    <div class="summary">
+                        Google DeepMind 研究员近日发布重磅预测，指出 2026 年将成为 AI "持续学习"（Continual Learning）元年，预计 2030 年实现全自动编程，2050 年垄断诺奖级研究。此前 Jeff Dean 在 NeurIPS 2025 炉边谈话中指出当前 LLM 的核心痛点在于"缺乏持续学习"能力。该预测被广泛解读为 Google 内部可能已在持续学习领域取得突破性进展。
+                    </div>
+                    <a href="https://www.ithome.com/0/909/939.htm" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+
+                <!-- 15 -->
+                <div class="news-card" id="n15">
+                    <h2>斯坦福 AI 小镇创业公司 Simile 获 1 亿美元融资，李飞飞/Karpathy 参投</h2>
+                    <div class="news-meta">
+                        <span class="news-source">新浪新闻</span>
+                        <span class="news-platform">X/Twitter &middot; 媒体</span>
+                    </div>
+                    <div class="tags">
+                        <span class="tag">Simile</span>
+                        <span class="tag">世界模型</span>
+                        <span class="tag">AI模拟</span>
+                        <span class="tag">融资</span>
+                    </div>
+                    <div class="summary">
+                        孵化自爆火"斯坦福 AI 小镇"项目的创业公司 Simile 宣布完成 1 亿美元融资，投资人包括李飞飞、Andrej Karpathy 等 AI 大佬。斯坦福大学副教授 Percy Liang（Simile 联合创始人）旗帜鲜明表示"模拟将是人工智能的下一个前沿"，呼应了此前 NVIDIA Jim Fan 提出的"世界建模是新一代预训练范式"的论断。公司致力于构建真正理解并模拟人类社会的 AI 系统。
+                    </div>
+                    <a href="https://k.sina.com.cn/article_5953189932_162d6782c06703wudi.html" class="source-link" target="_blank">阅读原文 &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p>由 WorkBuddy 自动整理生成</p>
+            <p>数据来源：TechCrunch、The Information、新浪财经、IT之家、36氪、财联社、中国新闻网、Google DeepMind Blog、OpenAI Blog、NVIDIA Blog 等</p>
+            <p style="margin-top: 12px; font-size: 0.85em; color: #a0aec0;">覆盖平台：X/Twitter &middot; LinkedIn &middot; Reddit &middot; Hacker News &middot; GitHub &middot; 中文媒体</p>
+        </div>
+    </div>
+</body>
+
+</html>

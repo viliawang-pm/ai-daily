@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯日报 - 2026年3月16日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 4s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .header .date {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            color: #c4b5fd;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            opacity: 0.7;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+            color: #a5b4fc;
+        }
+
+        .summary-bar {
+            background: linear-gradient(90deg, #eef2ff, #e0e7ff, #eef2ff);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 2px solid #e0e7ff;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-item .number {
+            font-size: 2em;
+            font-weight: 800;
+            color: #4338ca;
+        }
+
+        .summary-item .label {
+            font-size: 0.85em;
+            color: #6366f1;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin: 35px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #6366f1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .news-card {
+            background: #fafbff;
+            border: 1px solid #e0e7ff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.12);
+            border-color: #a5b4fc;
+        }
+
+        .news-card .rank {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9em;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .news-card .rank.top3 {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .news-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .news-card .author {
+            font-weight: 700;
+            color: #1e1b4b;
+            font-size: 1.05em;
+        }
+
+        .news-card .platform {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .news-card .platform.twitter { background: #dbeafe; color: #1d4ed8; }
+        .news-card .platform.reddit { background: #fee2e2; color: #dc2626; }
+        .news-card .platform.hackernews { background: #fef3c7; color: #d97706; }
+        .news-card .platform.linkedin { background: #dbeafe; color: #1e40af; }
+        .news-card .platform.techcrunch { background: #d1fae5; color: #059669; }
+        .news-card .platform.media { background: #f3e8ff; color: #7c3aed; }
+        .news-card .platform.official { background: #ecfccb; color: #4d7c0f; }
+
+        .news-card .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .badge.breaking {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .badge.hot {
+            background: #fff7ed;
+            color: #ea580c;
+            border: 1px solid #fed7aa;
+        }
+
+        .badge.new-face {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .badge.insight {
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        .news-card .title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .news-card .description {
+            color: #374151;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .news-card .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .news-card .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6b7280;
+            font-size: 0.85em;
+        }
+
+        .news-card .link {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+
+        .news-card .link:hover {
+            color: #4338ca;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #1e1b4b;
+            color: #a5b4fc;
+            padding: 30px 40px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #818cf8;
+            text-decoration: none;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            border-left: 5px solid #6366f1;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+
+        .highlight-box .hl-title {
+            font-weight: 700;
+            color: #3730a3;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box .hl-content {
+            color: #4338ca;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 20px; }
+            .summary-bar { padding: 15px 20px; }
+            .news-card { padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>AI 资讯日报</h1>
+            <div class="date">2026 年 3 月 16 日 星期一</div>
+            <div class="subtitle">覆盖 X/Twitter &middot; Reddit &middot; Hacker News &middot; LinkedIn &middot; TechCrunch &middot; 新浪财经 &middot; 华尔街见闻 &middot; IT之家 &middot; 搜狐 &middot; NVIDIA Blog 等</div>
+        </div>
+
+        <!-- Summary Bar -->
+        <div class="summary-bar">
+            <div class="summary-item">
+                <div class="number">15</div>
+                <div class="label">重要资讯</div>
+            </div>
+            <div class="summary-item">
+                <div class="number">6</div>
+                <div class="label">覆盖平台</div>
+            </div>
+            <div class="summary-item">
+                <div class="number">2</div>
+                <div class="label">新面孔</div>
+            </div>
+            <div class="summary-item">
+                <div class="number">1</div>
+                <div class="label">重磅事件</div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Today's Focus -->
+            <div class="highlight-box">
+                <div class="hl-title">今日焦点：NVIDIA GTC 2026 正式开幕</div>
+                <div class="hl-content">
+                    全球 AI 行业翘首以盼的 GTC 2026 大会今日在圣何塞 SAP 中心开幕（3/16-3/19）。黄仁勋主题演讲定于太平洋时间上午 11:00（北京时间 3/17 凌晨 2:00），预计将揭晓 Vera Rubin 平台完整细节、Rubin Ultra 芯片架构、Feynman 下一代路线图、LPU 推理芯片，以及硅光子/CPO 数据互联革命。此外，园区还将举办 Build-a-Claw 活动，参会者可携带 DGX Spark 或 RTX 笔记本现场搭建 AI 助手。本期日报重点覆盖 GTC 前夕的分析师预期和行业反应。
+                </div>
+            </div>
+
+            <!-- Section: 模型与芯片 -->
+            <div class="section-title">&#x1F4A1; 模型、芯片与基础设施</div>
+
+            <!-- News 1 -->
+            <div class="news-card">
+                <div class="rank top3">1</div>
+                <div class="meta">
+                    <span class="author">NVIDIA / Jensen Huang</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge breaking">BREAKING</span>
+                </div>
+                <div class="title">GTC 2026 今日开幕：黄仁勋主题演讲聚焦 AI 工厂、Vera Rubin 与硅光子革命</div>
+                <div class="description">
+                    NVIDIA GTC 2026 于今日在圣何塞正式拉开帷幕，这是全球最具影响力的 AI 技术大会。黄仁勋的主题演讲被安排在开幕首日，核心看点包括：<br><br>
+                    <b>1) Vera Rubin AI 平台全套六款芯片完整披露</b>——搭载自研 Olympus Armv9 CPU 核心与 HBM4 内存，微软和 Meta 已拿到样本，推理性能较 Blackwell 提升 5 倍，预计下半年量产；<br>
+                    <b>2) Rubin Ultra NVL576 更多细节</b>——预计 2027 年下半年推出，性能为 GB300 NVL72 的 14 倍；<br>
+                    <b>3) Feynman 架构首次公开展示</b>——采用台积电 A16（1.6nm）工艺，定于 2028 年推出，被视为推理优先的革命性架构；<br>
+                    <b>4) 硅光子与 CPO（Co-Packaged Optics）正式登场</b>——用光信号替代铜缆传输数据，解决 AI 数据中心带宽瓶颈；<br>
+                    <b>5) LPU 推理专用芯片可能发布</b>——与 CPX 芯片共同扩充推理版图。<br><br>
+                    中信证券发布前瞻报告称"看好 GTC 2026 大会，正交背板、CPO 等新产品落地能见度有望进一步提升"。黄仁勋在博客中写道："AI 不再只是一个应用或单一模型，而正在像电力和互联网一样，成为新的基础设施。"
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4AC; 905 场会议</span>
+                    <span class="stat">&#x1F30D; 线下+线上同步</span>
+                    <span class="stat">&#x1F4C5; 3/16-3/19 圣何塞</span>
+                    <a class="link" href="https://blogs.nvidia.com/blog/gtc-2026-news/" target="_blank">NVIDIA Blog Live &rarr;</a>&nbsp;
+                    <a class="link" href="https://www.nvidia.cn/gtc/keynote/" target="_blank">主题演讲回放 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 2 -->
+            <div class="news-card">
+                <div class="rank top3">2</div>
+                <div class="meta">
+                    <span class="author">Elon Musk / Tesla</span>
+                    <span class="platform twitter">X/Twitter</span>
+                    <span class="badge breaking">BREAKING</span>
+                </div>
+                <div class="title">特斯拉 Terafab AI 芯片超级工厂 5 天后启动，年产能目标超越台积电</div>
+                <div class="description">
+                    马斯克于 3 月 14 日（周六）在 X 平台官宣：特斯拉旨在制造 AI 芯片的"Terafab"项目将在 7 天后（3/21）正式启动，标志着特斯拉从"芯片设计"正式跨入"自研自产"阶段。<br><br>
+                    根据路透社及多方报道，Terafab 的产能目标极具野心——<b>年产 1000 亿至 2000 亿颗 AI 芯片</b>，远超台积电目前约 1.42 亿片/月的产能。特斯拉正在设计第五代 AI 芯片（AI5），性能为现有 AI4 的 50 倍，内存容量 9 倍，原始算力 10 倍，目标 2027 年量产。<br><br>
+                    马斯克曾扬言要建一座能"抽雪茄、吃汉堡"的 2nm 芯片厂，直接挑战半导体行业严苛的洁净室标准。该项目将应用于特斯拉从电动汽车到人形机器人再到 AI 训练及数据中心的广泛场景。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x2764; 预计数十万互动</span>
+                    <span class="stat">&#x1F4C5; 3/21 启动</span>
+                    <a class="link" href="https://www.toutiao.com/article/7617317085680534057/" target="_blank">今日头条详情 &rarr;</a>&nbsp;
+                    <a class="link" href="http://auto.china.com.cn/news/20260316/732279.shtml" target="_blank">中国网报道 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 3 -->
+            <div class="news-card">
+                <div class="rank top3">3</div>
+                <div class="meta">
+                    <span class="author">DeepSeek / 梁文锋</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">DeepSeek V4 旗舰版确认 4 月上线，Lite 版已灰度内测，百万 Token 上下文</div>
+                <div class="description">
+                    多方消息确认，DeepSeek V4 模型已于 2 月 11 日开启灰度内测，网页端与 APP 已上线百万上下文体验版。V4 Lite（代号"Sealion-lite"）为轻量版，原生支持多模态推理，拥有 100 万 Token 超长上下文窗口（V3 仅 128K），参数规模约 2000 亿。<br><br>
+                    据搜狐报道，知情人士透露 <b>DeepSeek V4 旗舰版拟于 2026 年 4 月正式上线</b>，不仅编程（Coding）能力将实现质的飞跃（内部测试已超越 Claude 和 GPT 系列），更在<b>长期记忆（LTM）技术</b>领域取得关键突破。完整版参数或突破 1 万亿，并针对国产算力完成深度优化，降低对海外芯片依赖。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F9E0; 万亿参数规模</span>
+                    <span class="stat">&#x1F4DD; 100 万 Token 上下文</span>
+                    <a class="link" href="https://www.sohu.com/a/996551445_362225" target="_blank">搜狐报道 &rarr;</a>&nbsp;
+                    <a class="link" href="https://www.ithome.com/0/923/893.htm" target="_blank">IT之家详情 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 4 -->
+            <div class="news-card">
+                <div class="rank">4</div>
+                <div class="meta">
+                    <span class="author">Meta / Mark Zuckerberg</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">Meta "牛油果" Avocado 模型横空出世，号称史上最强基础模型；Llama 4 推迟至 5 月</div>
+                <div class="description">
+                    Meta 在 Llama 4 测试造假口碑崩盘后，押上全部口碑推出代号 <b>Avocado（牛油果）</b>的全新重磅 AI 模型。官方称其为 Meta 史上最强基础模型——<b>未经微调即超越所有顶尖开源基础模型</b>，在知识、视觉、多语言能力上可对标已全面微调的头部模型。算力效率较前代提升数十倍到上百倍，依靠确定性训练大幅降低成本。<br><br>
+                    与此同时，Meta 正式确认 Llama 4 发布推迟至 5 月，原因是研发团队在基础模型性能微调与逻辑推理优化方面遇到技术瓶颈。Yann LeCun 此前在采访中承认团队为优化基准测试确实对数据进行了"美化"。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F34E; 代号 Avocado</span>
+                    <span class="stat">&#x1F4C5; Llama 4 推迟至 5 月</span>
+                    <a class="link" href="https://www.sohu.com/a/996516946_524624" target="_blank">搜狐详情 &rarr;</a>&nbsp;
+                    <a class="link" href="https://www.sohu.com/a/996140697_122396381" target="_blank">Llama 4 推迟 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 5 -->
+            <div class="news-card">
+                <div class="rank">5</div>
+                <div class="meta">
+                    <span class="author">OpenAI</span>
+                    <span class="platform official">OpenAI 官方</span>
+                    <span class="badge insight">近期发布</span>
+                </div>
+                <div class="title">GPT-5.4 全面铺开：100 万 Token 上下文、原生计算机操作、Thinking 模式</div>
+                <div class="description">
+                    OpenAI 于 3 月 6 日正式发布 GPT-5.4 系列模型，同步上线 ChatGPT、API、Codex 三大平台。关键技术亮点：<br><br>
+                    <b>1) 百万 Token 上下文</b>——API 版本支持最高 100 万 Token 的上下文窗口，远超此前任何 OpenAI 模型；<br>
+                    <b>2) Thinking 模式</b>——支持响应中实时打断与指令调整的深度推理；<br>
+                    <b>3) 原生计算机操作能力</b>——在 OSWorld-Verified 和 WebArena Verified 测试中刷新纪录；<br>
+                    <b>4) GPT-5.4 Pro</b>——专为复杂任务优化，面向高性能应用场景。<br><br>
+                    新华社报道称其为"目前面向专业工作推出的能力最强、效率最高的前沿模型之一"。GPT-5.1 于 3/11 后已下线。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4DD; 100 万 Token</span>
+                    <span class="stat">&#x1F9E0; GDPval 83% 最高分</span>
+                    <a class="link" href="https://www.donews.com/news/detail/8/6454375.html" target="_blank">DoNews 报道 &rarr;</a>&nbsp;
+                    <a class="link" href="https://new.qq.com/rain/a/20260306A058EZ00" target="_blank">腾讯新闻 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 6 -->
+            <div class="news-card">
+                <div class="rank">6</div>
+                <div class="meta">
+                    <span class="author">Google DeepMind</span>
+                    <span class="platform official">Google 官方</span>
+                    <span class="badge insight">近期发布</span>
+                </div>
+                <div class="title">Google 连发三弹：Gemini 3.1 Flash-Lite、Gemini 3.1 Pro、Nano Banana 2 图像模型</div>
+                <div class="description">
+                    Google DeepMind 近期密集发布了多款模型更新：<br><br>
+                    <b>Gemini 3.1 Flash-Lite（3 月）</b>——专为大规模智能部署优化，GPQA Diamond 达 86.9%，MMMU Pro 得分 76.8%，性能超越体量更大的 Gemini 2.5 Flash，定价仅为 Pro 的 1/8（每百万输入 Token $0.25），成为边缘计算与高并发场景的性价比标杆。<br><br>
+                    <b>Gemini 3.1 Pro（2 月）</b>——面向最复杂任务的旗舰推理模型。<br><br>
+                    <b>Nano Banana 2 / Gemini 3.1 Flash Image（2/26）</b>——融合 Pro 级画质与 Flash 级速度的 4K 图像生成模型，价格较前代腰斩，全面接入 Gemini App、Google Search 及 AI Studio，被 VentureBeat 称为"从炫技回到实用的战略转移"。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4B0; 成本仅 Pro 的 1/8</span>
+                    <span class="stat">&#x1F3A8; 4K 图像生成</span>
+                    <a class="link" href="https://venturebeat.com/technology/google-releases-gemini-3-1-flash-lite-at-1-8th-the-cost-of-pro" target="_blank">VentureBeat &rarr;</a>&nbsp;
+                    <a class="link" href="https://www.leiphone.com/category/industrynews/lkmfiwGdp5l4QFVx.html" target="_blank">雷锋网详情 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Section: 行业与战略 -->
+            <div class="section-title">&#x1F3E2; 行业战略与融资</div>
+
+            <!-- News 7 -->
+            <div class="news-card">
+                <div class="rank">7</div>
+                <div class="meta">
+                    <span class="author">OpenAI</span>
+                    <span class="platform techcrunch">TechCrunch</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">OpenAI 完成 1100 亿美元史上最大私募融资，估值 8400 亿美元，IPO 瞄准 Q4 2026</div>
+                <div class="description">
+                    OpenAI 于 2 月 27 日宣布完成 <b>1100 亿美元融资</b>，创下史上最大单笔私募融资纪录。其中亚马逊承诺 500 亿美元并成为独家第三方云合作伙伴，投后估值达 8400 亿美元。据 AI Funding Tracker 数据，OpenAI 目前月活超 8.1 亿、企业客户超 100 万，年化收入已超 200 亿美元。<br><br>
+                    全球 AI 融资总额已突破 4900 亿美元，2 月单月创下 1890 亿美元的历史纪录。OpenAI 计划于 2026 年 Q4 进行 IPO。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4B0; $1100 亿</span>
+                    <span class="stat">&#x1F4C8; 估值 $8400 亿</span>
+                    <a class="link" href="https://techcrunch.com/2026/02/27/openai-raises-110b-in-one-of-the-largest-private-funding-rounds-in-history/" target="_blank">TechCrunch &rarr;</a>&nbsp;
+                    <a class="link" href="https://aifundingtracker.com/top-50-ai-startups/" target="_blank">AI Funding Tracker &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 8 -->
+            <div class="news-card">
+                <div class="rank">8</div>
+                <div class="meta">
+                    <span class="author">Anthropic</span>
+                    <span class="platform techcrunch">TechCrunch</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">Anthropic 与五角大楼"供应链风险"对峙升级：Claude 登顶 App Store，ChatGPT 卸载激增 295%</div>
+                <div class="description">
+                    Anthropic 与美国国防部的对抗持续发酵。五角大楼在双方未就 AI 模型控制权（包括自主武器和大规模国内监控使用）达成协议后，正式将 Anthropic 认定为"供应链风险"，随后转向 OpenAI。<br><br>
+                    戏剧性的是，这场争议反而助推了 Claude 的人气——Claude 在 App Store 一度登顶第一名，超越 ChatGPT。据 Sensor Tower 数据，Claude 日活已突破 1130 万，日下载量超越 ChatGPT。同时，OpenAI 接受五角大楼合同后，ChatGPT 卸载量激增 295%。<br><br>
+                    TechCrunch 评论称此事件是"初创公司争夺联邦合同的警示案例"。Anthropic CEO 表示对话"建设性"但诉讼不撤回。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4F1; Claude #1 App Store</span>
+                    <span class="stat">&#x1F4C9; ChatGPT 卸载 +295%</span>
+                    <a class="link" href="https://techcrunch.com/2026/02/28/anthropics-claude-rises-to-no-2-in-the-app-store-following-pentagon-dispute/" target="_blank">TechCrunch &rarr;</a>&nbsp;
+                    <a class="link" href="https://techcrunch.com/video/anthropics-pentagon-deal-is-a-cautionary-tale-for-startups-chasing-federal-contracts/" target="_blank">TechCrunch 视频 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 9 -->
+            <div class="news-card">
+                <div class="rank">9</div>
+                <div class="meta">
+                    <span class="author">MiniMax / 闫俊杰</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge insight">行业</span>
+                </div>
+                <div class="title">MiniMax 发布全球首份大模型年报：ARR 1.5 亿美元，上市后首次参展 AWE 2026</div>
+                <div class="description">
+                    MiniMax 于 3 月初发布 2025 全年业绩，这也是全球首份大模型公司年报。核心数据：<b>总收入 7900 万美元（同比 +158.9%）</b>，毛利 2010 万美元（同比 +437.2%），<b>2026 年 2 月 ARR 突破 1.5 亿美元</b>，用户超 2.36 亿，企业客户超 21.4 万，超 70% 收入来自国际市场。<br><br>
+                    创始人闫俊杰在业绩电话会上发布 2026 年三大预判：<b>1) 编程领域实现 L4-L5 级智能；2) 办公领域将复刻编程领域进步速度；3) 动态创作将直出可交付中长内容</b>。MiniMax 正从大模型公司全面进化为"AI 平台型公司"，研发 M3、海鸥 3 系列模型。<br><br>
+                    3/12-3/15 AWE 期间，MiniMax 携数十款 AI 智能硬件生态产品首次参展，并现场演示基于 OpenClaw 的云端 AI 助手 MaxClaw。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4B0; ARR $1.5 亿</span>
+                    <span class="stat">&#x1F4C8; 收入同比 +158.9%</span>
+                    <a class="link" href="https://minimaxi.com/news/minimax%E5%8F%91%E5%B8%83-2025-%E5%B9%B4%E5%85%A8%E5%B9%B4%E4%B8%9A%E7%BB%A9" target="_blank">MiniMax 官方 &rarr;</a>&nbsp;
+                    <a class="link" href="https://wallstreetcn.com/articles/3766594" target="_blank">华尔街见闻 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 10 -->
+            <div class="news-card">
+                <div class="rank">10</div>
+                <div class="meta">
+                    <span class="author">xAI / Elon Musk</span>
+                    <span class="platform twitter">X/Twitter</span>
+                    <span class="badge insight">行业</span>
+                </div>
+                <div class="title">xAI 创始团队持续出走：12 人团队已走 6 人，马斯克连夜调整战略</div>
+                <div class="description">
+                    xAI 联合创始人离职潮持续恶化。继 Igor Babuschkin、Christian Szegedy 等人之后，<b>Tony Wu（推理团队负责人）和 Jimmy Ba（研究、安全及企业业务负责人）</b>分别于 2 月 10 日和 11 日在 X 平台宣布离职。至此，xAI 最初 12 人创始团队已有 <b>6 人出走</b>。<br><br>
+                    Tony Wu 此前直接向马斯克汇报，Jimmy Ba 在离职声明中表示"2026 年将是 AI 进步的关键一年"，需要"重新聚焦大局"。此前 xAI 已于 2 月发布 Grok 4.2 公开测试版，支持多智能体协作及每周迭代更新。马斯克在创始人出走后连夜调整战略，计划用百万 GPU 追平推理能力短板。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F465; 12 人走 6 人</span>
+                    <span class="stat">&#x1F916; Grok 4.2 已测试</span>
+                    <a class="link" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_549698d31f109952" target="_blank">企鹅号详情 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Section: 研究与Agent -->
+            <div class="section-title">&#x1F52C; 研究、Agent 与新面孔</div>
+
+            <!-- News 11 -->
+            <div class="news-card">
+                <div class="rank">11</div>
+                <div class="meta">
+                    <span class="author">Appier Research</span>
+                    <span class="platform media">PRNewswire</span>
+                    <span class="badge new-face">新面孔</span>
+                </div>
+                <div class="title">Appier 发布 Agentic AI 突破性研究：面向企业 AI 的风险感知决策框架</div>
+                <div class="description">
+                    新加坡 AI 公司 Appier 于 3 月 10 日通过 PRNewswire 发布最新研究成果——<b>面向可信企业 AI 的风险感知决策框架</b>，致力于量化 LLM 在不同风险场景下的可靠性。该框架为 Agentic AI（自主决策 AI Agent）在企业落地提供了系统化的风险评估方法论，填补了 AI Agent 从实验室走向生产环境过程中"可控性"和"可信度"的关键空白。<br><br>
+                    这项研究在 AI Agent 领域引发广泛关注，被视为 2026 年 Agent 元年中为数不多聚焦"安全与可控"的严肃研究成果。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4CB; 风险量化框架</span>
+                    <span class="stat">&#x1F4C5; 3/10 发布</span>
+                    <a class="link" href="https://www.prnewswire.com/news-releases/appier-research-unveils-agentic-ai-breakthrough-a-risk-aware-decision-framework-302709320.html" target="_blank">PRNewswire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 12 -->
+            <div class="news-card">
+                <div class="rank">12</div>
+                <div class="meta">
+                    <span class="author">Cortical Labs</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge new-face">新面孔</span>
+                </div>
+                <div class="title">Cortical Labs 生物计算 CL1 + Cortical Cloud 正式商用：活体神经元运行 DOOM</div>
+                <div class="description">
+                    澳大利亚初创公司 Cortical Labs 的 <b>Cortical Cloud（皮质云）</b>已正式上线，标志着生物计算从实验室走向云服务阶段。其 CL1 生物计算机将人类活体神经元与硅基芯片融合，已成功运行经典游戏《毁灭战士》（DOOM），开源代码上传至 GitHub。<br><br>
+                    CL1 于 2025 年 MWC 首次发布，实验室级设备售价 35,000 美元。Cortical Labs 称其提供了比传统 AI 更动态、更节能的计算智能。凤凰网科技称这是"碳基革命开启人工智能新纪元"，该公司的生物计算数据中心此前被 The Register 详细曝光——用脑脊液维护的有机计算机进入云服务阶段。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F9EC; 活体神经元计算</span>
+                    <span class="stat">&#x1F4B0; $35,000/台</span>
+                    <a class="link" href="https://www.corticallabs.com/" target="_blank">Cortical Labs 官网 &rarr;</a>&nbsp;
+                    <a class="link" href="https://tech.ifeng.com/c/8r8JZqId0Hy" target="_blank">凤凰网报道 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 13 -->
+            <div class="news-card">
+                <div class="rank">13</div>
+                <div class="meta">
+                    <span class="author">Anthropic / Claude Code</span>
+                    <span class="platform official">Releasebot</span>
+                    <span class="badge insight">产品</span>
+                </div>
+                <div class="title">Claude Code 3 月密集更新：/loop 命令、Bash 集成、Agent 体验全面升级</div>
+                <div class="description">
+                    据 Releasebot 追踪，Anthropic 在 3 月对 Claude Code 进行了多轮密集更新：<br><br>
+                    <b>3 月 7 日</b>——推出 <code>/loop</code> 循环命令，支持递归式 Agent 工作流；<br>
+                    <b>3 月 10 日</b>——大幅改进工具搜索可靠性、计划流、会话处理、Bash 集成和 UI 交互，收紧安全策略，精简包体积，并增强 Claude Code 和 Agent 体验。<br><br>
+                    这些更新使 Claude Code 进一步巩固了其在 AI 编程助手领域的领先地位，尤其是 Agent 工作流的完善标志着 Anthropic 在"编程 Agent"赛道上的持续加码。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F527; 多轮密集更新</span>
+                    <span class="stat">&#x1F916; Agent 体验提升</span>
+                    <a class="link" href="https://releasebot.io/updates/anthropic" target="_blank">Releasebot 更新记录 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 14 -->
+            <div class="news-card">
+                <div class="rank">14</div>
+                <div class="meta">
+                    <span class="author">Andrej Karpathy</span>
+                    <span class="platform twitter">GitHub / Blog</span>
+                    <span class="badge insight">观点</span>
+                </div>
+                <div class="title">Karpathy 发布 microgpt：200 行纯 Python 实现 GPT 训练与推理，无任何依赖</div>
+                <div class="description">
+                    前 OpenAI 联合创始人、特斯拉前 AI 总监 Andrej Karpathy 于 2 月 12 日在其 GitHub 发布了 <b>microgpt</b> 项目——仅用 200 行纯 Python 代码（无任何外部依赖）实现 GPT 的完整训练与推理，并声称"不可能再短了"。<br><br>
+                    这一极简主义作品延续了 Karpathy 一贯的教育理念——让 AI 核心技术对所有人透明可理解。该项目在 GitHub 上迅速获得大量关注，被 AI 社区视为理解 Transformer 架构的最佳入门代码。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4BB; 200 行 Python</span>
+                    <span class="stat">&#x1F6AB; 零依赖</span>
+                    <a class="link" href="http://karpathy.github.io/" target="_blank">Karpathy 博客 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 15 -->
+            <div class="news-card">
+                <div class="rank">15</div>
+                <div class="meta">
+                    <span class="author">GTC 2026 / NVIDIA</span>
+                    <span class="platform official">NVIDIA Blog</span>
+                    <span class="badge insight">活动</span>
+                </div>
+                <div class="title">GTC 2026 预热活动启动：Build-a-Claw 现场 AI 搭建、Sarah Guo 主持投资人圆桌</div>
+                <div class="description">
+                    GTC 2026 在黄仁勋主题演讲之前已启动预热活动。据 NVIDIA 官方博客报道：<br><br>
+                    <b>GTC Live 预热节目</b>——由 AI 原生投资机构创始人 Sarah Guo 主持，邀请分析师、创始人和行业领袖共同讨论"塑造 AI 下一阶段的力量"，于太平洋时间 8:00 AM 开始。<br><br>
+                    <b>Build-a-Claw 活动</b>——英伟达邀请参会者带上 DGX Spark 或 RTX 笔记本前来，在英伟达专家帮助下现场搭建一个 AI 助手（龙虾 / OpenClaw 相关）。这与当前席卷全球的"养虾热"相呼应，NVIDIA 将 OpenClaw 生态深度融入 GTC 体验。<br><br>
+                    大会共设 905 场会议，涵盖 Agentic AI、物理 AI、AR/VR、机器人、模拟建模等 12 大主题。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F3AE; Build-a-Claw</span>
+                    <span class="stat">&#x1F399; Sarah Guo 主持</span>
+                    <a class="link" href="https://blogs.nvidia.com/blog/gtc-2026-news/" target="_blank">NVIDIA Blog &rarr;</a>&nbsp;
+                    <a class="link" href="https://finance.sina.com.cn/tech/roll/2026-03-16/doc-inhrctqy2854133.shtml" target="_blank">新浪财经前瞻 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="highlight-box">
+                <div class="hl-title">编辑点评：本期关键信号</div>
+                <div class="hl-content">
+                    <b>1. 算力竞赛白热化：</b>GTC 2026 开幕 + Terafab 启动倒计时，AI 基础设施建设进入前所未有的加速期。NVIDIA 从单芯片性能转向系统级协同效率（Vera Rubin NVL72 全液冷设计），马斯克则试图绕过台积电自建晶圆厂。<br><br>
+                    <b>2. 模型竞争格局裂变：</b>DeepSeek V4 旗舰版（万亿参数）确认 4 月上线，Meta 推出 Avocado 翻盘，Google 以 Flash-Lite 打性价比战，OpenAI GPT-5.4 铺开百万 Token——四大阵营同时发力，2026 Q2 将迎来"模型大战"高峰。<br><br>
+                    <b>3. AI 政治化趋势加深：</b>Anthropic-Pentagon 对峙已演变为"科技伦理 vs 国家安全"的全球性辩论，ChatGPT 卸载潮反映用户对 AI 军事化的敏感度在上升。<br><br>
+                    <b>4. 明日重点跟踪：</b>黄仁勋主题演讲实际内容（北京时间 3/17 凌晨 2:00）；Terafab 3/21 启动详情；DeepSeek V4 正式发布时间确认。
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>AI 资讯日报 &middot; 自动化生成于 2026-03-16 &middot; 数据来源：X/Twitter, Reddit, Hacker News, LinkedIn, TechCrunch, NVIDIA Blog, 新浪财经, 华尔街见闻, IT之家, 搜狐, DoNews, 雷锋网, PRNewswire, AI Funding Tracker 等</p>
+            <p style="margin-top: 8px; opacity: 0.7;">免责声明：本日报由 AI 自动整理生成，内容仅供参考，不构成投资建议。原始信息以各平台原文为准。</p>
+        </div>
+    </div>
+</body>
+
+</html>

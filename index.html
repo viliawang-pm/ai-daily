@@ -290,6 +290,179 @@
             border: 1px solid #e2e8f0;
         }
 
+        /* ========== Feedback Section ========== */
+        .feedback-section {
+            margin-top: 48px;
+            background: white;
+            border-radius: 16px;
+            padding: 36px 32px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .feedback-section:hover {
+            border-color: #e0e7ff;
+        }
+
+        .feedback-section h3 {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 6px;
+        }
+
+        .feedback-section .feedback-desc {
+            color: #718096;
+            font-size: 0.9em;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: #4a5568;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 10px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 0.92em;
+            font-family: inherit;
+            color: #2d3748;
+            background: #f7fafc;
+            transition: all 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .feedback-type-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .feedback-type-tags input[type="radio"] {
+            display: none;
+        }
+
+        .feedback-type-tags label {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.82em;
+            font-weight: 600;
+            border: 1.5px solid #e2e8f0;
+            color: #718096;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #f7fafc;
+        }
+
+        .feedback-type-tags input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .feedback-type-tags label:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .submit-btn {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            align-self: flex-start;
+            letter-spacing: 0.3px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .feedback-success {
+            display: none;
+            padding: 16px 20px;
+            background: #f0fff4;
+            border: 1.5px solid #c6f6d5;
+            border-radius: 10px;
+            color: #276749;
+            font-size: 0.92em;
+            line-height: 1.6;
+        }
+
+        .feedback-success.show {
+            display: block;
+        }
+
+        .feedback-error {
+            display: none;
+            padding: 16px 20px;
+            background: #fff5f5;
+            border: 1.5px solid #fed7d7;
+            border-radius: 10px;
+            color: #9b2c2c;
+            font-size: 0.92em;
+            line-height: 1.6;
+        }
+
+        .feedback-error.show {
+            display: block;
+        }
+
         /* ========== Footer ========== */
         .footer {
             text-align: center;
@@ -346,6 +519,14 @@
 
             .about-section {
                 padding: 28px 20px;
+            }
+
+            .feedback-section {
+                padding: 28px 20px;
+            }
+
+            .form-row {
+                flex-direction: column;
             }
         }
 
@@ -473,6 +654,25 @@
             .about-tags span {
                 padding: 4px 12px;
                 font-size: 0.75em;
+            }
+
+            .feedback-section {
+                margin-top: 32px;
+                padding: 20px 16px;
+                border-radius: 12px;
+            }
+
+            .feedback-section h3 {
+                font-size: 1.05em;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .submit-btn {
+                width: 100%;
+                text-align: center;
             }
 
             .footer {
@@ -654,12 +854,137 @@
                 <span>DeepSeek</span>
             </div>
         </div>
+
+        <!-- 反馈与建议 -->
+        <div class="feedback-section" id="feedback">
+            <h3>反馈与建议</h3>
+            <p class="feedback-desc">
+                你的声音对我们很重要。无论是内容偏好、排版建议、功能需求还是 Bug 反馈，都欢迎告诉我们。每一条反馈都会被认真阅读和分析。
+            </p>
+
+            <form class="feedback-form" id="feedbackForm">
+                <div class="form-group">
+                    <label>反馈类型</label>
+                    <div class="feedback-type-tags">
+                        <input type="radio" name="type" id="type-content" value="内容建议" checked>
+                        <label for="type-content">内容建议</label>
+                        <input type="radio" name="type" id="type-feature" value="功能需求">
+                        <label for="type-feature">功能需求</label>
+                        <input type="radio" name="type" id="type-bug" value="Bug 反馈">
+                        <label for="type-bug">Bug 反馈</label>
+                        <input type="radio" name="type" id="type-other" value="其他">
+                        <label for="type-other">其他</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback-content">详细描述 *</label>
+                    <textarea id="feedback-content" name="message" placeholder="请描述你的反馈或建议..." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="feedback-name">昵称（选填）</label>
+                        <input type="text" id="feedback-name" name="name" placeholder="你的昵称">
+                    </div>
+                    <div class="form-group">
+                        <label for="feedback-email">邮箱（选填，用于回复）</label>
+                        <input type="email" id="feedback-email" name="_replyto" placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <input type="hidden" name="_subject" value="AI日报 - 用户反馈">
+                <input type="text" name="_gotcha" style="display:none">
+
+                <button type="submit" class="submit-btn" id="submitBtn">提交反馈</button>
+            </form>
+
+            <div class="feedback-success" id="feedbackSuccess">
+                感谢你的反馈！我们会认真阅读每一条建议，并持续改进 AI 日报的内容和体验。
+            </div>
+            <div class="feedback-error" id="feedbackError">
+                提交失败，请稍后重试。你也可以直接通过 <a href="https://github.com/ViliaWang-PM/ai-daily/issues" target="_blank" style="color: #667eea;">GitHub Issues</a> 提交反馈。
+            </div>
+        </div>
     </div>
 
     <div class="footer">
         <p>AI 日报 &mdash; 全球 AI 领域重要动态一网打尽</p>
         <p style="margin-top: 6px;">数据来源：X/Twitter、Reddit、Hacker News、LinkedIn、TechCrunch、The Register、SiliconANGLE、新浪财经、IT之家 等</p>
+        <p style="margin-top: 8px;"><a href="#feedback">提交反馈</a></p>
     </div>
+
+    <script>
+    (function() {
+        const form = document.getElementById('feedbackForm');
+        const successMsg = document.getElementById('feedbackSuccess');
+        const errorMsg = document.getElementById('feedbackError');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Store feedback to localStorage for local tracking
+        function storeFeedbackLocally(data) {
+            try {
+                const feedbacks = JSON.parse(localStorage.getItem('ai_daily_feedbacks') || '[]');
+                feedbacks.push(data);
+                localStorage.setItem('ai_daily_feedbacks', JSON.stringify(feedbacks));
+            } catch (e) { /* ignore */ }
+        }
+
+        // Build pre-filled GitHub Issue URL
+        function buildIssueUrl(data) {
+            const title = encodeURIComponent('[' + data.type + '] ' + data.message.substring(0, 60) + (data.message.length > 60 ? '...' : ''));
+            const body = encodeURIComponent(
+                '**反馈类型：**' + data.type + '\n\n' +
+                '**详细描述：**\n' + data.message + '\n\n' +
+                '---\n' +
+                '> 昵称：' + data.name + '\n' +
+                '> 邮箱：' + data.email + '\n' +
+                '> 时间：' + data.timestamp + '\n' +
+                '> 来源：网站反馈表单\n'
+            );
+            return 'https://github.com/ViliaWang-PM/ai-daily/issues/new?title=' + title + '&body=' + body + '&labels=feedback';
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const type = document.querySelector('input[name="type"]:checked').value;
+            const message = document.getElementById('feedback-content').value.trim();
+            const name = document.getElementById('feedback-name').value.trim();
+            const email = document.getElementById('feedback-email').value.trim();
+
+            if (!message) return;
+
+            const feedbackData = {
+                type: type,
+                message: message,
+                name: name || '匿名',
+                email: email || '未提供',
+                timestamp: new Date().toISOString(),
+                date: new Date().toLocaleDateString('zh-CN')
+            };
+
+            // Save locally
+            storeFeedbackLocally(feedbackData);
+
+            // Open GitHub Issue (primary feedback channel)
+            var issueUrl = buildIssueUrl(feedbackData);
+            window.open(issueUrl, '_blank');
+
+            // Show success
+            successMsg.classList.add('show');
+            form.reset();
+
+            // Reset radio to default
+            document.getElementById('type-content').checked = true;
+
+            // Auto-hide success after 8s
+            setTimeout(function() {
+                successMsg.classList.remove('show');
+            }, 8000);
+        });
+    })();
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯日报 - 2026年3月17日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 4s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .header .date {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            color: #c4b5fd;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            opacity: 0.7;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+            color: #a5b4fc;
+        }
+
+        .summary-bar {
+            background: linear-gradient(90deg, #eef2ff, #e0e7ff, #eef2ff);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-bottom: 2px solid #e0e7ff;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-item .number {
+            font-size: 2em;
+            font-weight: 800;
+            color: #4338ca;
+        }
+
+        .summary-item .label {
+            font-size: 0.85em;
+            color: #6366f1;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin: 35px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #6366f1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .news-card {
+            background: #fafbff;
+            border: 1px solid #e0e7ff;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.12);
+            border-color: #a5b4fc;
+        }
+
+        .news-card .rank {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9em;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+
+        .news-card .rank.top3 {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+        }
+
+        .news-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .news-card .author {
+            font-weight: 700;
+            color: #1e1b4b;
+            font-size: 1.05em;
+        }
+
+        .news-card .platform {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+        }
+
+        .news-card .platform.twitter { background: #dbeafe; color: #1d4ed8; }
+        .news-card .platform.reddit { background: #fee2e2; color: #dc2626; }
+        .news-card .platform.hackernews { background: #fef3c7; color: #d97706; }
+        .news-card .platform.linkedin { background: #dbeafe; color: #1e40af; }
+        .news-card .platform.techcrunch { background: #d1fae5; color: #059669; }
+        .news-card .platform.media { background: #f3e8ff; color: #7c3aed; }
+        .news-card .platform.official { background: #ecfccb; color: #4d7c0f; }
+
+        .news-card .badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+        }
+
+        .badge.breaking {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .badge.hot {
+            background: #fff7ed;
+            color: #ea580c;
+            border: 1px solid #fed7aa;
+        }
+
+        .badge.new-face {
+            background: #f0fdf4;
+            color: #16a34a;
+            border: 1px solid #bbf7d0;
+        }
+
+        .badge.insight {
+            background: #eef2ff;
+            color: #4338ca;
+            border: 1px solid #c7d2fe;
+        }
+
+        .news-card .title {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .news-card .description {
+            color: #374151;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .news-card .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .news-card .stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #6b7280;
+            font-size: 0.85em;
+        }
+
+        .news-card .link {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.2s;
+        }
+
+        .news-card .link:hover {
+            color: #4338ca;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #1e1b4b;
+            color: #a5b4fc;
+            padding: 30px 40px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #818cf8;
+            text-decoration: none;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+            border-left: 5px solid #6366f1;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+
+        .highlight-box .hl-title {
+            font-weight: 700;
+            color: #3730a3;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box .hl-content {
+            color: #4338ca;
+            font-size: 0.95em;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 20px; }
+            .summary-bar { padding: 15px 20px; }
+            .news-card { padding: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>AI 资讯日报</h1>
+            <div class="date">2026 年 3 月 17 日 星期二</div>
+            <div class="subtitle">覆盖 X/Twitter &middot; Reddit &middot; Hacker News &middot; TechCrunch &middot; 新浪财经 &middot; 东方财富 &middot; 36氪 &middot; 凤凰网 &middot; IT之家 &middot; DoNews &middot; CSDN 等</div>
+        </div>
+
+        <!-- Summary Bar -->
+        <div class="summary-bar">
+            <div class="summary-item">
+                <div class="number">15</div>
+                <div class="label">重要资讯</div>
+            </div>
+            <div class="summary-item">
+                <div class="number">8</div>
+                <div class="label">覆盖平台</div>
+            </div>
+            <div class="summary-item">
+                <div class="number">2</div>
+                <div class="label">新面孔</div>
+            </div>
+            <div class="summary-item">
+                <div class="number">1</div>
+                <div class="label">重磅事件</div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+
+            <!-- Today's Focus -->
+            <div class="highlight-box">
+                <div class="hl-title">今日焦点：GTC 2026 黄仁勋主题演讲全面揭晓——万亿美元营收、Vera Rubin 全栈平台、LPU 推理革命</div>
+                <div class="hl-content">
+                    北京时间 3 月 17 日凌晨 2:00，黄仁勋在圣何塞 SAP 中心发表了长达两个半小时的 GTC 2026 主题演讲。这是 CUDA 诞生二十周年的里程碑时刻。黄仁勋宣告 AI 已从感知与生成迈入"推理与智能体时代"，并给出惊人预测：到 2027 年底，Blackwell 与 Vera Rubin 芯片将创造至少 <b>1 万亿美元营收</b>，较去年 5000 亿美元预期翻倍。英伟达一口气发布了 Vera Rubin 全栈 AI 平台（7 种芯片 + 5 种机架）、Groq 3 LPU 推理机架、NemoClaw 智能体基础设施、DLSS 5 神经渲染技术、BlueField-4 STX 存储架构，以及太空计算模块。今日日报以 GTC 发布为核心主线，全面覆盖演讲重点和行业反响。
+                </div>
+            </div>
+
+            <!-- Section: GTC 2026 核心发布 -->
+            <div class="section-title">&#x1F680; GTC 2026 核心发布</div>
+
+            <!-- News 1 -->
+            <div class="news-card">
+                <div class="rank top3">1</div>
+                <div class="meta">
+                    <span class="author">NVIDIA / Jensen Huang</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge breaking">BREAKING</span>
+                </div>
+                <div class="title">Vera Rubin 全栈 AI 平台正式发布：7 芯协同、88 核 Vera CPU、3360 亿晶体管，单 Token 成本降至 1/10</div>
+                <div class="description">
+                    黄仁勋在 GTC 2026 主题演讲中正式揭晓 <b>Vera Rubin</b> 全栈 AI 平台——这不是一颗芯片，而是由 <b>7 种芯片 + 5 种机架系统</b> 组成的完整 AI 超级计算机平台。核心组件包括：<br><br>
+                    <b>1) Rubin GPU</b>——采用台积电 3nm 工艺，集成 3360 亿晶体管，搭配 HBM4 内存，推理性能较 Blackwell 提升 5 倍以上；<br>
+                    <b>2) Vera CPU</b>——88 核 Armv9 自研 CPU，单机架集成 256 颗，计算效率较传统 CPU 提升 2 倍，运行速度提升 50%；<br>
+                    <b>3) Vera Rubin NVL72 GPU 机架</b>——全液冷设计，GPU+CPU 深度协同，是面向大规模 AI 训练的旗舰方案；<br>
+                    <b>4) Spectrum-6 CPO 交换机</b>——硅光子技术（Co-Packaged Optics）正式落地，用光信号替代铜缆传输，解决数据中心带宽瓶颈。<br><br>
+                    黄仁勋宣布，通过"GPU 预填充 + LPU 解码"的解耦推理架构，<b>单 Token 推理成本将降至此前的十分之一</b>。他预计到 2027 年底，Blackwell 与 Vera Rubin 芯片将合计创造至少 <b>1 万亿美元营收</b>，较去年 5000 亿预期翻倍。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4A0; 7 芯 + 5 机架</span>
+                    <span class="stat">&#x1F4B0; 万亿美元营收预期</span>
+                    <span class="stat">&#x1F4C9; Token 成本降至 1/10</span>
+                    <a class="link" href="http://finance.eastmoney.com/a/202603173674228737.html" target="_blank">东方财富网 &rarr;</a>&nbsp;
+                    <a class="link" href="https://tech.ifeng.com/c/8rYiJ5KFqka" target="_blank">凤凰网 5 分钟速览 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 2 -->
+            <div class="news-card">
+                <div class="rank top3">2</div>
+                <div class="meta">
+                    <span class="author">NVIDIA / Groq</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge breaking">BREAKING</span>
+                </div>
+                <div class="title">Groq 3 LPU 推理机架发布：256 个 LPU、128GB 片上 SRAM，推理吞吐量/功耗比提升 35 倍</div>
+                <div class="description">
+                    英伟达通过整合此前收购的 Groq 技术，正式推出 <b>Groq 3 LPX 推理机架</b>，搭载 <b>256 个 LPU（Language Processing Unit）处理器</b>，提供 128GB 片上 SRAM 和 640TB/s 扩展带宽。<br><br>
+                    LPU 采用 SRAM + 确定性数据流架构，专为大语言模型推理加速设计，能够提供近乎即时的文本生成响应，弥补了 GPU 在实时推理场景下延迟较高的短板。与 Vera Rubin 平台结合后，<b>推理吞吐量/功耗比将提升 35 倍</b>。<br><br>
+                    黄仁勋介绍，LPU 芯片将由三星代工，机架预计 <b>今年下半年开始出货</b>。这标志着英伟达首次在 GPU 之外建立了一条独立的推理芯片产品线，并宣告 AI 产业正式从"训练时代"迈入"推理时代"。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x26A1; 近乎即时响应</span>
+                    <span class="stat">&#x1F4C8; 35x 效率提升</span>
+                    <span class="stat">&#x1F3ED; 三星代工</span>
+                    <a class="link" href="https://news.sina.cn/bignews/2026-03-17/detail-inhrhavx8200590.d.html" target="_blank">新浪新闻 &rarr;</a>&nbsp;
+                    <a class="link" href="https://c.m.163.com/news/a/KO77J22N05118O92.html" target="_blank">网易新闻 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 3 -->
+            <div class="news-card">
+                <div class="rank top3">3</div>
+                <div class="meta">
+                    <span class="author">NVIDIA</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge breaking">BREAKING</span>
+                </div>
+                <div class="title">NemoClaw 智能体基础设施发布：一键部署 OpenClaw 智能体，AI 从算力迈向应用</div>
+                <div class="description">
+                    英伟达在 GTC 2026 上正式发布 <b>NemoClaw</b>——面向企业级 AI 智能体（Agentic AI）的开源工具集与基础设施平台。NemoClaw 由两大核心组件构成：<br><br>
+                    <b>1) NemoClaw Agent Toolkit</b>——重点优化开源 AI 智能体 OpenClaw 的安全性与输出质量，支持企业"一键部署"可信赖的 AI Agent；<br>
+                    <b>2) Nemotron 模型套件</b>——由 OpenShell 提供技术支持，包含 6 款以上经过优化的 AI 模型，可高效处理文本生成、图表分析等各类任务，用户可配置指令路由至 Nemotron 算法执行。<br><br>
+                    黄仁勋将 OpenClaw 定位为"<b>个人 AI 操作系统</b>"，强调 NemoClaw 是让 AI 从算力基建迈向应用生态全面落地的关键桥梁。这与本次大会的"养虾"（Build-a-Claw）活动形成联动——参会者现场搭建 AI 助手的底层基础设施正是 NemoClaw。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F916; 一键部署 Agent</span>
+                    <span class="stat">&#x1F310; 开源工具集</span>
+                    <a class="link" href="https://finance.sina.com.cn/tech/roll/2026-03-17/doc-inhrhavy9531560.shtml" target="_blank">新浪财经 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 4 -->
+            <div class="news-card">
+                <div class="rank">4</div>
+                <div class="meta">
+                    <span class="author">NVIDIA</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">DLSS 5 神经渲染技术：3D 图形与 AI 深度融合，黄仁勋称之为"图形学的 GPT 时刻"</div>
+                <div class="description">
+                    英伟达在 GTC 2026 上推出下一代图形技术 <b>DLSS 5</b>，实现 3D 图形与人工智能的深度融合。DLSS 5 采用结构化数据与生成式 AI 的结合方式，让内容生成兼具精准可控与高度逼真。<br><br>
+                    黄仁勋将 DLSS 5 称为"<b>图形学的 GPT 时刻</b>"——传统光栅化渲染正在被 AI 驱动的神经渲染全面取代。这意味着未来游戏和虚拟世界中的每一帧画面都可以由 AI 实时生成，而不是依赖传统图形管线逐像素计算。<br><br>
+                    对于游戏行业和 Omniverse 生态而言，DLSS 5 将大幅降低高品质实时渲染的算力需求，同时为工业数字孪生、建筑可视化等非游戏场景提供前所未有的沉浸体验。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F3AE; 神经渲染</span>
+                    <span class="stat">&#x1F9E0; AI 驱动图形</span>
+                    <a class="link" href="https://finance.sina.com.cn/tech/roll/2026-03-17/doc-inhrhicu2170120.shtml" target="_blank">新浪财经全文 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 5 -->
+            <div class="news-card">
+                <div class="rank">5</div>
+                <div class="meta">
+                    <span class="author">NVIDIA</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">英伟达太空计算服务：Vera Rubin 太空模块发布，将数据中心级 AI 推理送入轨道</div>
+                <div class="description">
+                    英伟达在 GTC 2026 上宣布进军太空计算领域，发布三款面向极端环境的计算平台：<br><br>
+                    <b>1) NVIDIA Space-1 Vera Rubin 模块</b>——专为在轨运行大语言模型及高级基础模型设计，采用紧密集成的 CPU-GPU 架构与高带宽互连，在轨道推理工作负载下 AI 算力达 H100 的 25 倍，支持实时处理来自太空仪器的海量数据流；<br>
+                    <b>2) NVIDIA IGX Thor</b>——面向任务关键型边缘环境，支持实时 AI 处理、功能安全、安全启动与自主运行；<br>
+                    <b>3) NVIDIA Jetson Orin（太空版）</b>——面向卫星平台，以最小尺寸满足严苛的尺寸、重量和功耗（SWaP）限制。<br><br>
+                    英伟达正在将 AI 从地面数据中心延伸至轨道空间，为地理空间智能、自主空间操作和轨道数据中心提供基础算力。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F680; 太空 AI 计算</span>
+                    <span class="stat">&#x1F4AA; 25x H100 算力</span>
+                    <a class="link" href="https://www.donews.com/news/detail/4/6469506.html" target="_blank">DoNews &rarr;</a>&nbsp;
+                    <a class="link" href="http://finance.sina.com.cn/stock/usstock/c/2026-03-17/doc-inhrfshe9605560.shtml" target="_blank">新浪财经 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 6 -->
+            <div class="news-card">
+                <div class="rank">6</div>
+                <div class="meta">
+                    <span class="author">NVIDIA</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge insight">基础设施</span>
+                </div>
+                <div class="title">BlueField-4 STX 存储架构发布：为智能体 AI 长上下文推理打造"最强大脑"</div>
+                <div class="description">
+                    英伟达在 GTC 2026 上针对智能体 AI（Agentic AI）的长上下文推理需求，发布 <b>BlueField-4 STX 模块化存储参考架构</b>。<br><br>
+                    随着 AI Agent 需要处理越来越长的上下文窗口（从 10 万 Token 到百万 Token），传统存储架构已成为推理效率的瓶颈。BlueField-4 STX 通过模块化设计，提供超高带宽、超低延迟的数据存取能力，使 AI 智能体能够在执行复杂多步推理任务时快速调用海量上下文数据。<br><br>
+                    这一发布与 NemoClaw 智能体平台形成互补：NemoClaw 提供模型和部署框架，BlueField-4 STX 提供底层存储支撑，共同构建面向"推理时代"的完整基础设施栈。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4BE; 模块化存储</span>
+                    <span class="stat">&#x1F9E0; 长上下文优化</span>
+                    <a class="link" href="https://k.sina.com.cn/article_1826017320_6cd6d02804001k0kc.html" target="_blank">新浪新闻 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Section: GTC 生态与合作 -->
+            <div class="section-title">&#x1F91D; GTC 生态与全球合作</div>
+
+            <!-- News 7 -->
+            <div class="news-card">
+                <div class="rank">7</div>
+                <div class="meta">
+                    <span class="author">NVIDIA / 比亚迪 / 吉利</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">英伟达与比亚迪、吉利达成深度合作：Drive Hyperion 自动驾驶出租车平台进军中国</div>
+                <div class="description">
+                    在 GTC 2026 大会上，英伟达宣布与中国头部车企 <b>比亚迪和吉利</b> 达成深度合作，推广其 <b>Drive Hyperion 自动驾驶出租车平台</b>。吉利汽车首席技术官李传海在大会上围绕"AI + 智能汽车"作了主题分享。<br><br>
+                    Drive Hyperion 是英伟达面向 L4 级自动驾驶的完整硬件+软件平台，集成 NVIDIA DRIVE Thor 芯片、端到端 AI 训练框架和 Omniverse 数字孪生仿真环境。此次合作意味着英伟达正将自动驾驶生态从北美和欧洲扩展至全球最大的新能源汽车市场。<br><br>
+                    与此同时，中科创达、元戎启行、至简动力、深智透医、光轮智能等中国 AI 企业也在 GTC 上集体亮相，被 CSDN 称为"中国 AI 军团闪耀 GTC 2026"。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F697; Drive Hyperion</span>
+                    <span class="stat">&#x1F1E8;&#x1F1F3; 中国车企合作</span>
+                    <a class="link" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_36569b8bb6033452" target="_blank">企鹅号 &rarr;</a>&nbsp;
+                    <a class="link" href="https://blog.csdn.net/www3300300/article/details/159158045" target="_blank">CSDN &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 8 -->
+            <div class="news-card">
+                <div class="rank">8</div>
+                <div class="meta">
+                    <span class="author">宇树科技 / 王兴兴</span>
+                    <span class="platform media">CSDN / 综合媒体</span>
+                    <span class="badge new-face">GTC 亮相</span>
+                </div>
+                <div class="title">中国 AI 军团闪耀 GTC 2026：宇树科技发表主题演讲，月之暗面明日发布 Muon 优化器</div>
+                <div class="description">
+                    GTC 2026 的一个突出亮点是中国 AI 力量的全面亮相。<b>宇树科技创始人王兴兴</b>于北京时间 3 月 17 日 14:00 在 GTC 发表主题演讲，系统展示了机器人在运动控制、环境感知、人机交互等方面的最新突破，分享具身智能从实验室走向产业化的实践路径。<br><br>
+                    <b>月之暗面创始人杨植麟</b>将于 3 月 18 日发表开发者工具与技术专场演讲，正式发布 <b>Muon 优化器</b>——可让大模型训练效率翻倍，显著降低算力成本。<br><br>
+                    中国 AI 参展阵容还包括：自动驾驶公司元戎启行、具身智能企业至简动力、AI 医学影像企业深智透医、合成数据提供商光轮智能等。CSDN 称此为"中国 AI 产业从'追随者'到'并跑者'身份转变的标志性事件"。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F916; 具身智能演讲</span>
+                    <span class="stat">&#x1F9EE; Muon 优化器</span>
+                    <a class="link" href="https://blog.csdn.net/www3300300/article/details/159158045" target="_blank">CSDN 详情 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 9 -->
+            <div class="news-card">
+                <div class="rank">9</div>
+                <div class="meta">
+                    <span class="author">NVIDIA / cuDF / cuVS</span>
+                    <span class="platform official">NVIDIA 官方</span>
+                    <span class="badge insight">生态</span>
+                </div>
+                <div class="title">CUDA 20 周年：cuDF 与 cuVS 两大基础库发布，IBM、Dell、Google Cloud 深度合作</div>
+                <div class="description">
+                    2026 年恰逢 CUDA 诞生二十周年，黄仁勋在演讲中特别回顾了 CUDA 的革命性架构——凭借 SIMT 技术大幅降低 GPU 编程难度，如今拥有数千种工具、编译器、框架和库，全球累计数亿块运行 CUDA 的 GPU，形成了"装机量-开发者-新市场-生态"的强劲飞轮。<br><br>
+                    针对 AI 时代的数据处理需求，英伟达发布两大基础库：<br>
+                    <b>cuDF</b>——GPU 加速的结构化数据处理库，较传统 CPU Pandas 提速数十倍；<br>
+                    <b>cuVS</b>——GPU 加速的向量搜索库，面向非结构化数据（文本、图像嵌入）的极致加速。<br><br>
+                    同时，英伟达宣布与 IBM、Dell、Google Cloud 等企业达成深度合作，推动 AI 数据处理标准化。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F382; CUDA 20 周年</span>
+                    <span class="stat">&#x1F4CA; cuDF + cuVS</span>
+                    <a class="link" href="http://finance.eastmoney.com/a/202603173674228737.html" target="_blank">东方财富网 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Section: 行业与市场 -->
+            <div class="section-title">&#x1F4C8; 行业动态与市场反应</div>
+
+            <!-- News 10 -->
+            <div class="news-card">
+                <div class="rank">10</div>
+                <div class="meta">
+                    <span class="author">36氪 / 分析师</span>
+                    <span class="platform media">36氪</span>
+                    <span class="badge insight">行业</span>
+                </div>
+                <div class="title">36氪深度：黄仁勋这次讲的不是芯片，是 AI 的钱往哪流——Token 工厂时代来临</div>
+                <div class="description">
+                    36氪发表深度分析文章，指出黄仁勋 GTC 2026 演讲的核心信号不是某一颗芯片，而是整个 AI 产业商业逻辑的根本转变：<b>未来的数据中心将演变为生产 Token 的工厂</b>，其商业逻辑由计算效率与产出价值直接驱动。<br><br>
+                    文章指出三个关键趋势：<br>
+                    <b>1) 推理需求爆发式增长</b>——Token 经济将取代传统 SaaS 订阅模式，成为 AI 时代的核心商业模型；<br>
+                    <b>2) 全栈封锁策略</b>——英伟达正通过软硬件的"地毯式轰炸"（从芯片到存储到交换机到框架到Agent平台），在分布式 AI 和自主系统生态中筑起更高的护城河；<br>
+                    <b>3) 算力从成本中心到利润中心</b>——数据中心将从企业 IT 支出变成创收资产。<br><br>
+                    美股方面，英伟达股价在 GTC 后一度上涨 4.8%，收盘涨 1.6% 报 183.19 美元。纳斯达克指数涨 1.22%。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4B0; Token 工厂</span>
+                    <span class="stat">&#x1F4C8; NVDA +1.6%</span>
+                    <a class="link" href="https://www.36kr.com/p/3726315458048516" target="_blank">36氪 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 11 -->
+            <div class="news-card">
+                <div class="rank">11</div>
+                <div class="meta">
+                    <span class="author">OpenRouter / 券研社</span>
+                    <span class="platform media">新浪财经</span>
+                    <span class="badge hot">HOT</span>
+                </div>
+                <div class="title">中国 AI 模型横扫 OpenRouter：全球 Token 调用量占比 61%，三周暴涨 127%</div>
+                <div class="description">
+                    据券研社援引 OpenRouter 2026 年 2 月权威数据：<b>中国大模型全球 Token 调用量占比已达 61%</b>，单周峰值 5.16 万亿 Token，三周暴涨 127%；美国模型份额被压至 39%，增速仅为中国模型的三分之一。<br><br>
+                    值得注意的是，OpenRouter 平台 47.17% 用户为美国本土开发者，中国用户仅 6.01%——这意味着<b>大量美国开发者正在主动选用中国模型</b>，而非出于地域惯性。DeepSeek 系列模型是主要贡献者。<br><br>
+                    这一数据与 GTC 2026 上中国 AI 企业的集体亮相形成呼应，标志着中国 AI 在模型层面的国际竞争力已从"价格优势"进化为"性能优势"。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F30D; 61% Token 占比</span>
+                    <span class="stat">&#x1F4C8; 三周暴涨 127%</span>
+                    <a class="link" href="https://k.sina.com.cn/article_5953189932_162d6782c06703xejg.html" target="_blank">新浪新闻 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 12 -->
+            <div class="news-card">
+                <div class="rank">12</div>
+                <div class="meta">
+                    <span class="author">Elon Musk / Tesla</span>
+                    <span class="platform twitter">X/Twitter</span>
+                    <span class="badge insight">进展</span>
+                </div>
+                <div class="title">特斯拉 Terafab 进入最后 4 天倒计时：3/21 启动，与 NVIDIA 展开芯片基建竞赛</div>
+                <div class="description">
+                    随着 GTC 2026 的召开，英伟达与特斯拉在 AI 芯片基础设施领域的竞赛愈发白热化。马斯克 3 月 14 日宣布 Terafab 将在 3/21 启动，目前进入最后 4 天倒计时。<br><br>
+                    Terafab 的定位与英伟达截然不同：英伟达走"设计+代工"路线（GPU 由台积电、LPU 由三星代工），而特斯拉试图走"设计+自产"路线，年产能目标 1000-2000 亿颗 AI 芯片。特斯拉正在设计第五代 AI 芯片 AI5，性能为 AI4 的 50 倍。<br><br>
+                    两条路线的碰撞将深刻重塑全球 AI 芯片供应链格局。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x23F3; 倒计时 4 天</span>
+                    <span class="stat">&#x1F3ED; 自研自产</span>
+                    <a class="link" href="https://k.sina.com.cn/article_1826017320_6cd6d02804001jzga.html" target="_blank">新浪汽车 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 13 -->
+            <div class="news-card">
+                <div class="rank">13</div>
+                <div class="meta">
+                    <span class="author">砺算科技</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge new-face">新面孔</span>
+                </div>
+                <div class="title">砺算科技发布 LX 系列 3 款专业卡及 7G100 消费卡，3/17 起接受企业订单</div>
+                <div class="description">
+                    国产 GPU 新势力 <b>砺算科技</b> 于 3 月 17 日正式发布 LX 系列 3 款专业卡及 7G100 消费卡，同步开始接受企业用户订单。这是中国 GPU 创业公司在英伟达 GTC 同日发布竞品的罕见举动。<br><br>
+                    砺算科技选择在 GTC 开幕同日发布产品，被业界视为"向 NVIDIA 发起正面挑战"的信号。虽然在绝对性能上仍有差距，但在特定垂直场景（如 AI 推理、图形渲染）的性价比上具有竞争力。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F1E8;&#x1F1F3; 国产 GPU</span>
+                    <span class="stat">&#x1F4C5; 3/17 开售</span>
+                    <a class="link" href="https://www.163.com/dy/article/KO7863NB0550WHYR.html" target="_blank">网易财经 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 14 -->
+            <div class="news-card">
+                <div class="rank">14</div>
+                <div class="meta">
+                    <span class="author">AMD / 苏姿丰</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge new-face">新面孔</span>
+                </div>
+                <div class="title">AMD 苏姿丰将访问韩国会见三星高管，AI 芯片代工竞争升温</div>
+                <div class="description">
+                    在英伟达 GTC 宣布 LPU 由三星代工的同日，AMD CEO <b>苏姿丰</b> 计划访问韩国会见三星高管。虽然具体议题未披露，但市场普遍猜测双方将就下一代 AI 芯片的先进封装和 HBM 内存合作展开讨论。<br><br>
+                    英伟达和 AMD 同时向三星抛出橄榄枝，反映出 AI 芯片代工市场正在从"台积电一家独大"向"三星崛起"的格局演变。三星在 HBM4 和 GAA 3nm 工艺上的进展使其成为 AI 芯片代工的有力竞争者。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F1F0;&#x1F1F7; 韩国访问</span>
+                    <span class="stat">&#x1F3ED; 代工竞争</span>
+                    <a class="link" href="https://www.163.com/dy/article/KO7863NB0550WHYR.html" target="_blank">网易财经 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- News 15 -->
+            <div class="news-card">
+                <div class="rank">15</div>
+                <div class="meta">
+                    <span class="author">A 股 / 资本市场</span>
+                    <span class="platform media">综合媒体</span>
+                    <span class="badge insight">市场</span>
+                </div>
+                <div class="title">GTC 效应传导：A 股人工智能赛道震荡回升，美股纳指涨 1.22%</div>
+                <div class="description">
+                    GTC 2026 的发布效应迅速传导至全球资本市场。<br><br>
+                    <b>美股方面：</b>三大股指全线收涨，道指涨 0.83% 报 46946 点，标普 500 涨 1.01% 报 6699 点，纳指涨 1.22% 报 22374 点。英伟达涨逾 1%，脸书涨超 2%。纳斯达克中国金龙指数涨 0.95%，理想汽车涨逾 5%。<br><br>
+                    <b>A 股方面：</b>3 月 17 日早盘，人工智能板块震荡触底后快速回升。人工智能 AIETF（515070）跌 0.40%，持仓股芯原股份涨超 2%，科沃斯、三七互娱、深桑达 A 等涨幅居前。市场对英伟达万亿营收预期和中国车企合作消息反应积极。
+                </div>
+                <div class="stats">
+                    <span class="stat">&#x1F4C8; 纳指 +1.22%</span>
+                    <span class="stat">&#x1F1E8;&#x1F1F3; A 股回升</span>
+                    <a class="link" href="https://www.163.com/dy/article/KO7863NB0550WHYR.html" target="_blank">网易财经 &rarr;</a>&nbsp;
+                    <a class="link" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_36569b8bb6033452" target="_blank">企鹅号 &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Key Takeaways -->
+            <div class="highlight-box">
+                <div class="hl-title">编辑点评：本期关键信号</div>
+                <div class="hl-content">
+                    <b>1. GTC 2026 史诗级发布：</b>英伟达一口气推出 Vera Rubin 全栈平台（7 芯 + 5 机架）、Groq 3 LPU 推理机架、NemoClaw 智能体平台、DLSS 5 神经渲染、太空计算模块、BlueField-4 STX 存储架构。这不是一次产品发布，而是一次工业级基础设施的全面升级——从芯片到存储到网络到框架到应用，端到端封锁。<br><br>
+                    <b>2. AI 产业进入"推理时代"：</b>黄仁勋明确宣告 AI 从训练迈入推理，Token 工厂将取代传统数据中心。LPU 的推出标志着英伟达首次在 GPU 之外建立独立推理芯片产品线，单 Token 成本降至 1/10 将加速 AI 应用的大规模商业化。<br><br>
+                    <b>3. 中国 AI 集体出海：</b>宇树科技主题演讲、月之暗面发布 Muon 优化器、比亚迪/吉利与英伟达合作、OpenRouter 上中国模型占比 61%——中国 AI 正从"追随者"向"并跑者"加速转变。<br><br>
+                    <b>4. 芯片竞争多极化：</b>英伟达 Vera Rubin（台积电 3nm）+ LPU（三星代工）、特斯拉 Terafab 自建晶圆厂（3/21 启动）、砺算科技国产 GPU 发布、AMD 苏姿丰访韩——AI 芯片供应链从"台积电垄断"走向多极格局。<br><br>
+                    <b>5. 明日重点跟踪：</b>月之暗面杨植麟 GTC 演讲（3/18）；Terafab 3/21 启动细节；DeepSeek V4 旗舰版 4 月上线时间确认；GTC 后续会议中 Agentic AI 与物理 AI 最新进展。
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>AI 资讯日报 &middot; 自动化生成于 2026-03-17 &middot; 数据来源：X/Twitter, Reddit, Hacker News, TechCrunch, 新浪财经, 东方财富, 36氪, 凤凰网, IT之家, DoNews, CSDN, 网易, 企鹅号 等</p>
+            <p style="margin-top: 8px; opacity: 0.7;">免责声明：本日报由 AI 自动整理生成，内容仅供参考，不构成投资建议。原始信息以各平台原文为准。</p>
+        </div>
+    </div>
+</body>
+
+</html>

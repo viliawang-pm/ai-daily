@@ -134,13 +134,32 @@
             box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
         }
 
-        .news-card.new-face {
+        .news-card.breakthrough {
+            border-left-color: #dc2626;
+            background: linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%);
+        }
+
+        .news-card.breakthrough::after {
+            content: 'BREAKTHROUGH';
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.7em;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .news-card.signal {
             border-left-color: #f59e0b;
             background: linear-gradient(135deg, #fffbeb 0%, #fefce8 100%);
         }
 
-        .news-card.new-face::after {
-            content: 'NEW FACE';
+        .news-card.signal::after {
+            content: 'SIGNAL';
             position: absolute;
             top: 12px;
             right: 16px;
@@ -168,7 +187,11 @@
             flex-shrink: 0;
         }
 
-        .news-card.new-face .news-number {
+        .news-card.breakthrough .news-number {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+
+        .news-card.signal .news-number {
             background: linear-gradient(135deg, #f59e0b, #d97706);
         }
 
@@ -219,6 +242,11 @@
             color: #065f46;
         }
 
+        .tag-why {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
         .news-body {
             color: #374151;
             font-size: 0.95em;
@@ -228,6 +256,21 @@
 
         .news-body b {
             color: #4f46e5;
+        }
+
+        .why-matters {
+            background: #f5f3ff;
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+            color: #4338ca;
+            border-left: 3px solid #6366f1;
+        }
+
+        .why-matters strong {
+            color: #3730a3;
         }
 
         .news-link {
@@ -302,7 +345,7 @@
         <div class="header">
             <h1>AI 资讯日报</h1>
             <div class="date">2026 年 3 月 18 日 · 星期三</div>
-            <div class="subtitle">GTC 2026 Day 3 + 亚布力论坛 + 阿里ATH重磅发布</div>
+            <div class="subtitle">Kimi 重写残差连接 · 杨植麟 GTC 首秀 · 神秘万亿模型浮出水面 · 推理万亿美元时代开启</div>
         </div>
 
         <div class="summary-bar">
@@ -311,12 +354,12 @@
                 <div class="label">重要资讯</div>
             </div>
             <div class="summary-item">
-                <div class="num">10+</div>
-                <div class="label">覆盖平台</div>
+                <div class="num">3</div>
+                <div class="label">底层突破</div>
             </div>
             <div class="summary-item">
-                <div class="num">3</div>
-                <div class="label">新面孔</div>
+                <div class="num">4</div>
+                <div class="label">结构性变化</div>
             </div>
             <div class="summary-item">
                 <div class="num">24h</div>
@@ -326,140 +369,163 @@
 
         <div class="content">
 
-            <div class="section-divider"><span>GTC 2026 + 万亿蓝图</span></div>
+            <div class="section-divider"><span>底层技术突破</span></div>
 
             <!-- 1 -->
-            <div class="news-card">
+            <div class="news-card breakthrough">
                 <div class="news-header">
                     <span class="news-number">1</span>
-                    <span class="news-title">黄仁勋 GTC 万亿美元蓝图：2027 年 AI 芯片收入剑指 1 万亿，推理拐点已至</span>
+                    <span class="news-title">Kimi 发布 Attention Residuals：重写十年未变的残差连接，马斯克、Karpathy、推理之父同时点赞</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">Jensen Huang / NVIDIA</span>
-                    <span class="meta-tag tag-platform">GTC 2026 主题演讲</span>
-                    <span class="meta-tag tag-engagement">英伟达涨超 4.3%</span>
+                    <span class="meta-tag tag-person">杨植麟 · 吴育昕 · 周昕宇 / 月之暗面</span>
+                    <span class="meta-tag tag-platform">GitHub · X · 环球网 · 腾讯新闻</span>
+                    <span class="meta-tag tag-engagement">硅谷半个 AI 圈震动</span>
+                    <span class="meta-tag tag-topic">模型架构</span>
                 </div>
                 <div class="news-body">
-                    GTC 2026 大会上，黄仁勋发表长达 2.5 小时主题演讲后，其"万亿美元预期"持续发酵。黄仁勋明确表示，到 <b>2027 年 Blackwell + Vera Rubin 产品线的收入机会将至少达到 1 万亿美元</b>，远超此前预测的 5000 亿美元。36氪深度分析将其定义为<b>"Token 工厂经济学"</b>——推理时代的核心叙事。<br><br>
-                    黄仁勋补充道："实际的计算需求会比这高得多。"过去两年 AI 计算需求激增百万倍，推理任务对算力的消耗远超训练阶段，标志着<b> AI 从训练阶段正式进入推理应用阶段</b>。英伟达股价当日涨超 4.3%，随后两天持续走强。
+                    3 月 16 日，月之暗面 Kimi 团队发布技术报告《<b>Attention Residuals</b>》，用注意力机制彻底替换深度学习中沿用了十年的标准残差连接。传统残差连接是 2015 年 ResNet 论文提出的"每层输出直接加到下一层"的简单加法。十年来，Attention 机制被反复改造、MoE 架构被重新设计、位置编码换了一代又一代，但这根"脊梁骨"从未被动过。<br><br>
+                    Kimi 团队提出的 <b>AttnRes</b> 方案，将传统固定加法累加替换为对前序层输出的 Softmax 注意力——让模型在每一层都能根据输入内容<b>有选择地聚合</b>前面所有层的信息，而非无差别堆砌。在 Kimi Linear 架构（48B 总参数 / 3B 激活参数）上验证后，效果相当于<b>白赚 1.25 倍算力</b>，推理延迟几乎不增加。
                 </div>
-                <a href="https://www.36kr.com/p/3726679674139139" target="_blank" class="news-link">36氪深度 &rarr;</a>&nbsp;&nbsp;
-                <a href="https://finance.sina.com.cn/roll/2026-03-18/doc-inhrkfuw1673144.shtml" target="_blank" class="news-link">新浪财经 &rarr;</a>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>马斯克罕见地对具体技术论文公开评价"Impressive work from Kimi"。Andrej Karpathy 说："看来我们还没把'Attention is All You Need'按字面意思理解透。"OpenAI 推理方向负责人 Jerry Tworek 惊呼"深度学习 2.0"。三位分处不同位置的顶级人物同时发出信号——这不是普通论文，这是中国团队在 Transformer 底层架构上做出被全球认可的原创创新。上一次中国实验室引发这种级别反响，是 DeepSeek 让英伟达一天蒸发 6000 亿美元。
+                </div>
+                <a href="https://github.com/MoonshotAI/Attention-Residuals/blob/master/Attention_Residuals.pdf" target="_blank" class="news-link">论文原文 &rarr;</a>&nbsp;&nbsp;
+                <a href="https://new.qq.com/rain/a/20260317A03V9700" target="_blank" class="news-link">腾讯新闻深度 &rarr;</a>&nbsp;&nbsp;
+                <a href="https://www.sohu.com/a/997347918_122189055" target="_blank" class="news-link">搜狐技术解读 &rarr;</a>
             </div>
 
             <!-- 2 -->
-            <div class="news-card">
+            <div class="news-card breakthrough">
                 <div class="news-header">
                     <span class="news-number">2</span>
-                    <span class="news-title">GTC 2026 Day 3：200+ 深度技术分会场，Agentic AI / 物理 AI / 机器人基础模型成焦点</span>
+                    <span class="news-title">杨植麟 GTC 首秀：首次完整披露 Kimi 技术路线图，宣布对优化器、注意力、残差三大基石全面重构</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">NVIDIA</span>
-                    <span class="meta-tag tag-platform">GTC 2026 San Jose</span>
-                    <span class="meta-tag tag-topic">Agentic AI</span>
+                    <span class="meta-tag tag-person">杨植麟 / 月之暗面</span>
+                    <span class="meta-tag tag-platform">GTC 2026 · 新浪财经 · 东方财富 · 环球网</span>
+                    <span class="meta-tag tag-topic">技术路线</span>
                 </div>
                 <div class="news-body">
-                    GTC 大会进入第三天（3/18），200+ 深度技术分会场全面展开。<b>Agentic AI、物理 AI 和机器人基础模型</b>成为三大焦点主题。多位演讲者围绕 NemoClaw Agent 基础设施、OpenClaw 一键部署、LPU 推理架构等展开深入讨论。<br><br>
-                    招商证券研报指出，<b>OpenClaw 部署需求激增，GitHub 星标已超 26 万</b>，中国模型全球 Token 调用量占 61%（OpenRouter 数据）。Groq 3 LPU 推理机架（256 个 LPU、128GB 片上 SRAM）预计下半年出货，将推理效率提升 35 倍。
+                    3 月 18 日凌晨，杨植麟在 GTC 2026 发表主题演讲《<b>How We Scaled Kimi K2.5</b>》，将焦点对准大模型中沿用多年的底层架构，首次系统性披露 Kimi 技术路线图。他将 Kimi 的进化逻辑归纳为三个维度的共振：<b>Token 效率、长上下文、智能体集群（Agent Swarms）</b>。<br><br>
+                    三大技术重构方向：<b>第一</b>，Muon 优化器——用矩阵正交化思想改进 Adam，在相同算力下训练效率提升 3-5 倍；<b>第二</b>，KDA 混合线性注意力架构（Kimi Linear）——挑战"所有层必须使用全注意力"的惯例；<b>第三</b>，Attention Residuals——即上述论文中的残差重构。杨植麟判断：行业目前普遍使用的技术标准本质上是八九年前的产物，正逐渐成为 Scaling 的瓶颈。
                 </div>
-                <a href="https://www.nvidia.com/gtc/" target="_blank" class="news-link">GTC 2026 官网 &rarr;</a>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>杨植麟不是在做增量改进，而是在宣布对 Transformer 三大基石——优化器、注意力机制、残差连接——的全面重构。这是一个中国创始人在全球最大 AI 大会上宣布"底层规则需要重写"的信号。如果这三项技术增益可以相乘，模型智能水平的天花板将被显著抬高。
+                </div>
+                <a href="https://finance.sina.com.cn/tech/2026-03-18/doc-inhrknau1643980.shtml" target="_blank" class="news-link">新浪财经 &rarr;</a>&nbsp;&nbsp;
+                <a href="http://finance.eastmoney.com/a/202603183675832161.html" target="_blank" class="news-link">东方财富网 &rarr;</a>
             </div>
-
-            <div class="section-divider"><span>阿里 ATH 重磅发布</span></div>
 
             <!-- 3 -->
-            <div class="news-card">
+            <div class="news-card signal">
                 <div class="news-header">
                     <span class="news-number">3</span>
-                    <span class="news-title">阿里巴巴成立 ATH 事业群，"悟空"企业级 AI Agent 平台重磅上线</span>
+                    <span class="news-title">Hunter Alpha 神秘上线：万亿参数 + 百万 Token 上下文，疑似 DeepSeek V4 秘密测试</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">吴泳铭 / 阿里巴巴</span>
-                    <span class="meta-tag tag-platform">搜狐 / CGTN / 钉钉</span>
-                    <span class="meta-tag tag-engagement">刷屏级事件</span>
-                    <span class="meta-tag tag-topic">AI Agent</span>
+                    <span class="meta-tag tag-person">DeepSeek（疑似）</span>
+                    <span class="meta-tag tag-platform">OpenRouter · 路透社 · 腾讯新闻 · 中财网</span>
+                    <span class="meta-tag tag-engagement">1600 亿 Token 已处理</span>
+                    <span class="meta-tag tag-topic">模型发布</span>
                 </div>
                 <div class="news-body">
-                    阿里巴巴宣布成立 <b>Alibaba Token Hub (ATH) 事业群</b>，CEO 吴泳铭直接负责——这被视为阿里在 AI 时代最重要的一次组织架构调整。ATH 成立次日即重磅推出旗舰企业级产品<b>"悟空"(Wukong)</b>，由钉钉团队打造。<br><br>
-                    吴泳铭的核心逻辑是：未来大量数字化工作将由"数以百亿计的 AI Agent"支撑运行，而这些 Agent 由模型产生的 Token 驱动。悟空平台可<b>协调多个 AI Agent 处理复杂业务任务</b>，包括自动化流程、数据分析和跨系统协作。CGTN 报道称，这标志着中国企业级 AI Agent 市场正式进入"正规军"时代，与 OpenClaw 个人 Agent 热潮形成互补。
+                    据路透社 3 月 18 日报道，一款名为"<b>Hunter Alpha</b>"的 AI 模型近日在 OpenRouter 匿名上线。该模型未标注开发者身份，但核心参数令人瞩目：<b>万亿参数规模、100 万 Token 上下文窗口、免费访问</b>。测试中，该模型自称"主要以中文训练的中国 AI 模型"，知识截止时间 2025 年 5 月，与 DeepSeek 一致。<br><br>
+                    3 月 11 日以"隐身模型"形式上线后，截至 3 月 16 日已处理超过 <b>1600 亿个 Token</b>，周调用量排名 OpenRouter 第七。同时上线的 Healer Alpha 则定位全模态交互。白鲸实验室爆料称 <b>DeepSeek V4 将于 4 月正式发布</b>，适配华为昇腾、寒武纪等国产芯片。
                 </div>
-                <a href="https://news.cgtn.com/news/2026-03-17/Alibaba-launches-AI-agent-platform-for-firms-after-OpenClaw-craze-1LAt9ITKymA/p.html" target="_blank" class="news-link">CGTN 报道 &rarr;</a>&nbsp;&nbsp;
-                <a href="http://www.sohu.com/a/997713943_413980" target="_blank" class="news-link">搜狐深度 &rarr;</a>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>如果 Hunter Alpha 确为 DeepSeek V4 测试版，那么万亿参数+百万上下文+免费策略的组合，将重新定义大模型的能力边界和成本结构。更关键的信号是——中国模型全球 Token 调用量已占 OpenRouter 的 61%，格局正在发生根本性转变。
+                </div>
+                <a href="https://news.qq.com/rain/a/20260318A03YY800" target="_blank" class="news-link">腾讯新闻 &rarr;</a>&nbsp;&nbsp;
+                <a href="http://stock.10jqka.com.cn/20260316/c675313515.shtml" target="_blank" class="news-link">同花顺 &rarr;</a>
             </div>
 
-            <div class="section-divider"><span>亚布力论坛</span></div>
+            <div class="section-divider"><span>产业结构性变化</span></div>
 
             <!-- 4 -->
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">4</span>
-                    <span class="news-title">张亚勤亚布力预测：全球基础大模型不超 10 个，中美各占三四个，开源将占 80%</span>
+                    <span class="news-title">黄仁勋将营收预期翻倍至万亿美元：Vera Rubin 平台发布，推理吞吐功耗比提升 35 倍</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">张亚勤 / 清华大学</span>
-                    <span class="meta-tag tag-platform">亚布力论坛 / 新浪财经 / 腾讯新闻</span>
-                    <span class="meta-tag tag-topic">行业趋势</span>
+                    <span class="meta-tag tag-person">Jensen Huang / NVIDIA</span>
+                    <span class="meta-tag tag-platform">GTC 2026 · 证券时报 · 凤凰网</span>
+                    <span class="meta-tag tag-engagement">英伟达涨超 4.3%</span>
+                    <span class="meta-tag tag-topic">AI 基础设施</span>
                 </div>
                 <div class="news-body">
-                    清华大学智能产业研究院院长、中国工程院外籍院士张亚勤在亚布力论坛发表演讲，做出三大重磅预测。<br><br>
-                    <b>第一</b>，全球基础大模型数量将不超过 10 个，其中美国 3-4 个、中国 3-4 个、其他国家 1-2 个。<b>第二</b>，开源模型将在 5 年内占比约 80%，闭源约 20%，"类似手机市场比例"。DeepSeek 的出现给中国带来新路径——高效能、新架构、低价格、同时开源。<b>第三</b>，AI 有三大维度（数字智能、物理智能、生物智能），当前正从生成式 AI 走向智能体 AI，过去一年任务长度增加两倍，准确度超 50%。<br><br>
-                    张亚勤特别看好机器人产业："<b>2035 年机器人数量会超过人类</b>，是几十万亿美金的大市场。"无人驾驶将是第一个具身智能突破的应用。
+                    黄仁勋在 GTC 2026 两小时主题演讲中，将 2025-2027 年营收预期从 5000 亿美元<b>翻倍至 1 万亿美元</b>。核心论点：数据中心已成历史，未来是"<b>Token 工厂</b>"——推理需求爆发式增长是驱动力。<br><br>
+                    正式推出 <b>Vera Rubin 平台</b>：包含 7 款芯片、5 套机架级系统和一台面向代理式 AI 的超级计算机。其中 Vera CPU 效率是传统 CPU 的两倍，速度快 50%。集成去年 200 亿美元收购的 <b>Groq 3 LPU 推理协处理器</b>——Vera Rubin 负责预填充阶段，LPU 负责解码阶段，混合架构下<b>推理吞吐量/功耗比最高提升 35 倍</b>。NemoClaw 企业级智能体平台同步发布。
                 </div>
-                <a href="https://finance.sina.com.cn/tech/roll/2026-03-18/doc-inhrknas4861118.shtml" target="_blank" class="news-link">新浪财经 &rarr;</a>&nbsp;&nbsp;
-                <a href="https://new.qq.com/rain/a/20260318A02INT00" target="_blank" class="news-link">腾讯新闻 &rarr;</a>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>英伟达不再只是卖 GPU，而是在构建从芯片到软件栈的全栈推理基础设施。当推理成本下降 35 倍，大量此前不经济的 AI 应用场景将被打开。这是从"训练时代"向"推理时代"的正式宣言，改变的是整个 AI 产业的成本结构。
+                </div>
+                <a href="http://finance.sina.com.cn/wm/2026-03-18/doc-inhrkfva3443059.shtml" target="_blank" class="news-link">新浪财经 &rarr;</a>&nbsp;&nbsp;
+                <a href="https://finance.ifeng.com/c/8rYqUs3U4sC" target="_blank" class="news-link">凤凰网 &rarr;</a>
             </div>
 
             <!-- 5 -->
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">5</span>
-                    <span class="news-title">王兴兴亚布力开幕演讲：具身智能 ChatGPT 时刻还需 2-3 年，年中机器人将跑赢博尔特</span>
+                    <span class="news-title">阿里成立 ATH 事业群，"悟空"企业级 AI Agent 平台上线——Token 经济的组织形态来了</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">王兴兴 / 宇树科技</span>
-                    <span class="meta-tag tag-platform">亚布力论坛 / 微博 / 新浪</span>
-                    <span class="meta-tag tag-engagement">微博科技专访</span>
+                    <span class="meta-tag tag-person">吴泳铭 / 阿里巴巴</span>
+                    <span class="meta-tag tag-platform">CGTN · 搜狐</span>
+                    <span class="meta-tag tag-engagement">刷屏级事件</span>
+                    <span class="meta-tag tag-topic">AI Agent</span>
                 </div>
                 <div class="news-body">
-                    宇树科技创始人兼 CEO 王兴兴在亚布力论坛发表开幕演讲，对具身智能发展给出明确时间线：<b>具身智能的"ChatGPT 时刻"还需 2-3 年</b>，但机器人技术进步飞快，大规模应用或 3-10 年内实现。<br><br>
-                    王兴兴透露，<b>年中宇树机器人将跑赢博尔特</b>——这一预测引发全场轰动。在微博科技《科技漫谈》专访中，他分享了宇树机器人三度登上春晚舞台的幕后故事。紧接其后，俞敏洪发表演讲称"所有技术的最终目的是为人服务"。
+                    阿里巴巴宣布成立 <b>Alibaba Token Hub (ATH) 事业群</b>，CEO 吴泳铭直接负责——阿里在 AI 时代最重要的一次组织架构调整。ATH 成立次日推出旗舰产品"<b>悟空</b>"，由钉钉团队打造，可协调多个 AI Agent 处理复杂业务任务。<br><br>
+                    吴泳铭的核心判断：未来数字化工作由"数以百亿计的 AI Agent"支撑运行，而这些 Agent 由 Token 驱动。CGTN 报道称，这标志着中国企业级 AI Agent 市场正式进入"正规军"时代。
                 </div>
-                <a href="https://k.sina.com.cn/article_7857201856_1d45362c001903bkvc.html" target="_blank" class="news-link">新浪 AI 热点 &rarr;</a>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>当阿里以"Token Hub"命名最高级别事业群、CEO 亲自挂帅时，信号再清晰不过——Token 不是技术概念，而是新的生产要素。黄仁勋说"Token 工厂"，阿里就建了一个。企业级 Agent 平台的出现意味着 AI 正在从"工具"变成"组织成员"。
+                </div>
+                <a href="https://news.cgtn.com/news/2026-03-17/Alibaba-launches-AI-agent-platform-for-firms-after-OpenClaw-craze-1LAt9ITKymA/p.html" target="_blank" class="news-link">CGTN &rarr;</a>&nbsp;&nbsp;
+                <a href="http://www.sohu.com/a/997713943_413980" target="_blank" class="news-link">搜狐 &rarr;</a>
             </div>
 
             <!-- 6 -->
-            <div class="news-card new-face">
+            <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">6</span>
-                    <span class="news-title">亚布力新面孔：Viralt.ai 姜仕鸿 & Aha 冯如初分享 OPC 单人+AI 创业新范式</span>
+                    <span class="news-title">张亚勤亚布力判断：全球基础大模型不超 10 个，开源占 80%，2035 年机器人超过人类</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">姜仕鸿 / 冯如初</span>
-                    <span class="meta-tag tag-platform">亚布力论坛</span>
-                    <span class="meta-tag tag-topic">AI 创业</span>
+                    <span class="meta-tag tag-person">张亚勤 / 清华大学</span>
+                    <span class="meta-tag tag-platform">亚布力论坛 · 腾讯新闻</span>
+                    <span class="meta-tag tag-topic">格局预判</span>
                 </div>
                 <div class="news-body">
-                    亚布力论坛首次出现 AI 创业"新面孔"专题环节。<b>Viralt.ai 创始人姜仕鸿</b>和 <b>Aha 创始人冯如初</b>分享了 OPC（One-Person Company + AI）创业新范式——一个人加 AI Agent 构成完整公司运营体系。<br><br>
-                    两位创始人展示了如何利用 AI Agent 完成产品开发、用户运营、财务管理和内容生产，引发与会企业家对"AI 是否会消灭中小企业组织形态"的激烈讨论。这是亚布力论坛 25 年历史上首次邀请纯 AI 原生创业者登台。
+                    清华大学智能产业研究院院长张亚勤在亚布力论坛做出三大判断：<b>第一</b>，全球基础大模型不超 10 个——美国 3-4 个、中国 3-4 个、其他 1-2 个。<b>第二</b>，开源 5 年内占比 80%，DeepSeek 代表的路径是"高效能、新架构、低价格、同时开源"。<b>第三</b>，AI 三大维度（数字智能、物理智能、生物智能）正在融合，2035 年机器人数量超过人类。
                 </div>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>"不超过 10 个"意味着绝大多数玩家将退出基础模型竞赛，行业将从百家齐放走向寡头格局。对中国而言，3-4 个位置意味着当前的几十家大模型公司中只有极少数能活到终局。这是对整个行业淘汰赛的时间表预告。
+                </div>
+                <a href="https://new.qq.com/rain/a/20260318A02INT00" target="_blank" class="news-link">腾讯新闻 &rarr;</a>
             </div>
 
-            <div class="section-divider"><span>产品发布与融资</span></div>
+            <div class="section-divider"><span>关键人物判断与产品动态</span></div>
 
             <!-- 7 -->
-            <div class="news-card new-face">
+            <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">7</span>
-                    <span class="news-title">Axiom AI（00 后中国女学霸创办）获 2 亿美元 A 轮，估值 16 亿美元跻身独角兽</span>
+                    <span class="news-title">OpenAI 估值 8400 亿美元，1100 亿美元史上最大私募融资完成，IPO 锁定 Q4</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">Axiom AI</span>
-                    <span class="meta-tag tag-platform">AI Funding Tracker / 36氪</span>
-                    <span class="meta-tag tag-engagement">估值 $16 亿</span>
+                    <span class="meta-tag tag-person">Sam Altman / OpenAI</span>
+                    <span class="meta-tag tag-platform">TechCrunch · 华尔街见闻</span>
+                    <span class="meta-tag tag-engagement">估值 $8400 亿</span>
                 </div>
                 <div class="news-body">
-                    AI 自动化测试平台 <b>Axiom AI</b> 完成 2 亿美元 A 轮融资，估值达 <b>16 亿美元</b>，正式跻身独角兽行列。创始人为一位 00 后中国女学霸，曾就读于 MIT 并在读期间创办该公司。<br><br>
-                    Axiom AI 专注于利用大模型自动化软件测试流程，可以用自然语言描述测试场景并自动执行，目前已覆盖全球 500+ 企业客户。投资方阵容豪华，包括 Sequoia Capital、a16z 和 Lightspeed。
+                    OpenAI 完成 <b>1100 亿美元</b>融资，估值 <b>8400 亿美元</b>，IPO 窗口锁定 2026 年 Q4。投资方包括 SoftBank、Microsoft、Tiger Global 和中东主权基金。GPT-5.4 全面铺开后日活已突破 3 亿。
+                </div>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>8400 亿估值已超 Meta 上市前峰值。但更值得关注的是——当 DeepSeek 免费模型在 OpenRouter 调用量碾压付费模型时，OpenAI 的定价权正在受到根本性挑战。这轮融资可能是"用钱买时间"的最后窗口。
                 </div>
             </div>
 
@@ -467,70 +533,70 @@
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">8</span>
-                    <span class="news-title">华为发布 AI 数据平台 + FusionCube A1000，加速推理场景部署</span>
+                    <span class="news-title">上海 AI Lab 金融 AI 论文：8B 小模型九项任务胜过大模型，数据质量 > 模型规模</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">华为</span>
-                    <span class="meta-tag tag-platform">华为官网 / IT之家</span>
-                    <span class="meta-tag tag-topic">AI 基础设施</span>
+                    <span class="meta-tag tag-person">上海人工智能实验室 · 港科大</span>
+                    <span class="meta-tag tag-platform">arXiv (2603.07223)</span>
+                    <span class="meta-tag tag-topic">研究发现</span>
                 </div>
                 <div class="news-body">
-                    华为正式发布 <b>AI 数据平台</b>和 <b>FusionCube A1000</b> 超融合推理一体机，定位于企业级 AI 推理场景快速部署。此前在 MWC 2026 上，华为已预告了首个 AI-Native 智能运维框架。<br><br>
-                    FusionCube A1000 集成昇腾 AI 芯片，支持主流大模型的本地化推理部署，单柜即可承载千亿参数模型推理任务。这是华为在 NVIDIA GTC 期间推出的差异化竞品，瞄准中国企业对国产 AI 推理基础设施的强烈需求。
+                    上海 AI Lab、OpenDataLab 和香港科技大学联合研究（arXiv: 2603.07223v1）发现：精心筛选数据训练的 <b>8B 参数模型</b>，在九项金融任务中<b>超越了参数规模大得多的竞争对手</b>。结论：在特定垂直领域，数据质量远比模型规模更重要。
                 </div>
-                <a href="https://www.huawei.com/en/news/2026/3/mwc-ai-native-framework-solution" target="_blank" class="news-link">华为官网 &rarr;</a>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>这与 Kimi 的 Attention Residuals 指向同一个方向——AI 的下一阶段不是"更大"，而是"更聪明"。当 8B 模型可以在垂直领域击败百亿参数模型时，算力竞赛的逻辑正在被改写。
+                </div>
             </div>
 
             <!-- 9 -->
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">9</span>
-                    <span class="news-title">OpenAI 估值 8400 亿美元，1100 亿美元史上最大私募融资完成，IPO 锁定 Q4 2026</span>
+                    <span class="news-title">王兴兴亚布力：具身智能 ChatGPT 时刻还需 2-3 年，年中机器人将跑赢博尔特</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">Sam Altman / OpenAI</span>
-                    <span class="meta-tag tag-platform">TechCrunch / 华尔街见闻</span>
-                    <span class="meta-tag tag-engagement">估值 $8400 亿</span>
+                    <span class="meta-tag tag-person">王兴兴 / 宇树科技</span>
+                    <span class="meta-tag tag-platform">亚布力论坛</span>
+                    <span class="meta-tag tag-topic">具身智能</span>
                 </div>
                 <div class="news-body">
-                    OpenAI 完成 <b>1100 亿美元</b>史上最大私募融资，估值达 <b>8400 亿美元</b>，IPO 时间窗口锁定 2026 年第四季度。这笔融资创下科技行业历史纪录，投资方包括 SoftBank Vision Fund、Microsoft、Tiger Global 和中东主权基金。<br><br>
-                    分析师指出，此轮估值已超越 Meta 上市前的峰值，意味着 OpenAI 的 IPO 将成为继 Alibaba 之后最大的科技 IPO。GPT-5.4 全面铺开后用户增长加速，日活已突破 3 亿。
+                    宇树科技 CEO 王兴兴在亚布力论坛给出明确时间线：<b>具身智能"ChatGPT 时刻"还需 2-3 年</b>，大规模应用 3-10 年。但他透露一个惊人预测——<b>年中宇树机器人将跑赢博尔特</b>。这与黄仁勋在 GTC 上宣布与智元机器人等深度合作推动物理 AI 大规模部署形成呼应。
+                </div>
+                <div class="why-matters">
+                    <strong>为什么这件事重要：</strong>"跑赢博尔特"不是噱头——它意味着硬件执行层的速度和稳定性已经达到人类运动极限。当软件（大模型）和硬件（机器人）同时逼近临界点时，具身智能的爆发可能比预期更快。
                 </div>
             </div>
-
-            <div class="section-divider"><span>模型与研究</span></div>
 
             <!-- 10 -->
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">10</span>
-                    <span class="news-title">DeepSeek V4 & 月之暗面 Muon 优化器：双引擎持续升温，GTC 发布窗口临近</span>
+                    <span class="news-title">华为发布 FusionCube A1000 推理一体机：单柜承载千亿参数模型，GTC 期间的差异化竞品</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">DeepSeek / 月之暗面</span>
-                    <span class="meta-tag tag-platform">OpenRouter / Reddit / X</span>
-                    <span class="meta-tag tag-topic">模型发布</span>
+                    <span class="meta-tag tag-person">华为</span>
+                    <span class="meta-tag tag-platform">华为官网 · IT之家</span>
+                    <span class="meta-tag tag-topic">国产 AI 基础设施</span>
                 </div>
                 <div class="news-body">
-                    <b>DeepSeek V4</b> 旗舰版确认 4 月上线，Lite 版已灰度内测。OpenRouter 上匿名测试版本（Hunter/Healer Alpha）持续引发社区狂热——万亿参数 + 百万 Token 上下文 + 长期记忆突破的技术规格令人瞩目。<br><br>
-                    与此同时，<b>月之暗面（Moonshot AI）杨植麟</b>的 GTC 演讲万众期待，Muon 优化器有望在闭幕日正式亮相。Muon 优化器据称可在相同算力下将模型训练效率提升 3-5 倍，是训练范式的潜在颠覆者。
+                    华为正式发布 <b>FusionCube A1000</b> 超融合推理一体机，集成昇腾 AI 芯片，单柜即可承载千亿参数模型推理任务。选在 GTC 期间发布——时间点本身就是一种竞争宣言。配合 DeepSeek V4 适配国产芯片的消息，国产 AI 推理基础设施正在形成自主闭环。
                 </div>
             </div>
+
+            <div class="section-divider"><span>行业动态速览</span></div>
 
             <!-- 11 -->
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">11</span>
-                    <span class="news-title">前沿 AI 竞争力排名：Anthropic / Google / OpenAI 并列第一，中国落后约 9 个月</span>
+                    <span class="news-title">Axiom AI 获 2 亿美元 A 轮：00 后中国女学霸创办，估值 16 亿美元跻身独角兽</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">Anthropic / Google / OpenAI</span>
-                    <span class="meta-tag tag-platform">AI Benchmark / X</span>
-                    <span class="meta-tag tag-topic">AI Benchmark</span>
+                    <span class="meta-tag tag-person">Axiom AI</span>
+                    <span class="meta-tag tag-engagement">Sequoia · a16z · Lightspeed</span>
                 </div>
                 <div class="news-body">
-                    最新前沿 AI 竞争力评估报告出炉，<b>Anthropic、Google DeepMind 和 OpenAI 三家并列第一</b>，在推理能力、代码生成、多模态理解等核心维度上难分伯仲。<br><br>
-                    值得注意的是，包括月之暗面（Moonshot AI）、DeepSeek 和阿里巴巴在内的中国 AI 企业被评估为落后约 <b>9 个月</b>，法国的 Mistral 则落后约一年半。报告指出，中国企业在推理效率和成本控制上已形成独特优势，但在基础能力天花板上仍有差距。
+                    AI 自动化测试平台 Axiom AI 完成 <b>2 亿美元 A 轮</b>，估值 16 亿美元。创始人为 MIT 在读期间创办公司的 00 后中国女学霸。用自然语言描述测试场景并自动执行，已覆盖 500+ 企业客户。AI 应用层的独角兽正在加速涌现。
                 </div>
             </div>
 
@@ -538,35 +604,29 @@
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">12</span>
-                    <span class="news-title">OpenClaw 三阶段演化分析：从"养虾"到 Agent 跃迁，安全风险管理指南发布</span>
+                    <span class="news-title">亚布力新面孔：OPC（一人公司 + AI）创业范式登上主流舞台</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">新浪财经 / 中国 AI 产业联盟</span>
-                    <span class="meta-tag tag-platform">新浪财经 / 搜狐</span>
-                    <span class="meta-tag tag-topic">AI Agent</span>
+                    <span class="meta-tag tag-person">姜仕鸿 (Viralt.ai) · 冯如初 (Aha)</span>
+                    <span class="meta-tag tag-platform">亚布力论坛</span>
                 </div>
                 <div class="news-body">
-                    新浪财经发布深度分析文章《"养虾"之后 AI Agent 如何跃迁》，系统梳理了 <b>OpenClaw 的三阶段演化路径</b>：第一阶段是"养虾"式娱乐化引流，第二阶段是个人助理功能扩展，第三阶段是企业级 Agent 生态。<br><br>
-                    中国人工智能产业联盟同步发布 <b>OpenClaw 安全风险管理指南</b>，覆盖数据泄露、Agent 越权、供应链攻击和对抗样本四大风险类别。全球 OpenClaw 实例已超 22.4 万，安全治理成为行业共识。
+                    亚布力论坛 25 年来首次邀请纯 AI 原生创业者登台。Viralt.ai 创始人姜仕鸿和 Aha 创始人冯如初展示 <b>OPC 范式</b>——一个人加 AI Agent 构成完整公司运营体系，用 Agent 完成产品开发、运营、财务和内容生产。引发"AI 是否消灭中小企业组织形态"的讨论。
                 </div>
             </div>
-
-            <div class="section-divider"><span>行业动态</span></div>
 
             <!-- 13 -->
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">13</span>
-                    <span class="news-title">Terafab 倒计时 T-3：距特斯拉 AI 芯片超级工厂 3/21 启动仅 3 天</span>
+                    <span class="news-title">Terafab 倒计时 T-3：特斯拉 AI 芯片超级工厂 3/21 启动，年产能目标超台积电</span>
                 </div>
                 <div class="news-meta">
                     <span class="meta-tag tag-person">Elon Musk / Tesla</span>
-                    <span class="meta-tag tag-platform">X / 华尔街见闻</span>
-                    <span class="meta-tag tag-engagement">全球关注</span>
+                    <span class="meta-tag tag-platform">X · 华尔街见闻</span>
                 </div>
                 <div class="news-body">
-                    距离 <b>特斯拉 Terafab AI 芯片超级工厂 3 月 21 日正式启动</b>仅剩 3 天。Terafab 年产能目标 1000-2000 亿颗，如达成将超越台积电。马斯克在 xAI-SpaceX 合并后推动了这一 AI 基础设施的实质建设。<br><br>
-                    业内预计启动仪式将由马斯克亲自主持，届时将公布 Terafab 的第一批客户名单和首阶段产能规划。这是本周全球 AI 基础设施领域最大看点之一。
+                    距 Terafab 3 月 21 日启动仅剩 3 天。年产能目标 1000-2000 亿颗，如达成将超越台积电。马斯克预计亲自主持启动仪式，届时公布首批客户和产能规划。值得注意的是——马斯克在为 Terafab 造势的同一周点赞了 Kimi 论文，这位"又造芯片又点赞中国论文"的人物本身就是最大的信号源。
                 </div>
             </div>
 
@@ -574,43 +634,38 @@
             <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">14</span>
-                    <span class="news-title">GTC 效应传导资本市场：英伟达涨超 4.3%，A 股 AI 算力板块全线走强</span>
+                    <span class="news-title">GTC + 亚布力效应传导资本市场：英伟达两日涨超 6%，A 股 AI 板块全线走强</span>
                 </div>
                 <div class="news-meta">
                     <span class="meta-tag tag-person">资本市场</span>
-                    <span class="meta-tag tag-platform">同花顺 / 东方财富 / 金融界</span>
-                    <span class="meta-tag tag-engagement">A 股 AI 板块回升</span>
+                    <span class="meta-tag tag-platform">同花顺 · 东方财富</span>
                 </div>
                 <div class="news-body">
-                    GTC 2026 万亿美元叙事持续传导全球资本市场。<b>英伟达股价两日累计涨超 6%</b>，市值向 6 万亿美元冲击。美股纳指涨 1.22%，科技股全线上扬。<br><br>
-                    A 股方面，AI 算力板块全线走强，光模块、服务器、IDC 等相关个股集体上涨。券商研报密集发布，招商证券、中信建投等纷纷上调 AI 算力产业链目标价。GTC 效应叠加亚布力论坛提振，市场对 AI 投资热情再度升温。
+                    英伟达两日累计涨超 6%，市值向 6 万亿美元冲击。A 股科创人工智能 ETF 近 60 日吸金 1.26 亿元。优刻得涨超 13%，安路科技涨近 10%。券商密集上调 AI 算力产业链目标价。
                 </div>
-                <a href="http://stock.10jqka.com.cn/usstock/20260318/c675363204.shtml" target="_blank" class="news-link">同花顺 &rarr;</a>
             </div>
 
             <!-- 15 -->
-            <div class="news-card new-face">
+            <div class="news-card">
                 <div class="news-header">
                     <span class="news-number">15</span>
-                    <span class="news-title">《智能经济：中国发展新形态》报告发布 + AI 工程师薪酬报告出炉</span>
+                    <span class="news-title">AI 云计算供应链吃紧：核心硬件供货紧张，不排除云厂商再次涨价</span>
                 </div>
                 <div class="news-meta">
-                    <span class="meta-tag tag-person">多机构联合</span>
-                    <span class="meta-tag tag-platform">今日头条 / Levels.fyi</span>
-                    <span class="meta-tag tag-topic">行业趋势</span>
+                    <span class="meta-tag tag-person">科创板日报</span>
+                    <span class="meta-tag tag-topic">供应链</span>
                 </div>
                 <div class="news-body">
-                    《<b>智能经济：中国发展新形态</b>》报告正式发布，从宏观经济视角系统分析了 AI 对中国产业结构的重塑效应。报告指出，2025-2026 年中国 AI 产业规模已突破万亿人民币，AI+ 制造、AI+ 医疗、AI+ 教育成为三大增长引擎。<br><br>
-                    同期，<b>Levels.fyi 发布 2025 Q3 AI 工程师薪酬调查</b>：美国 AI 工程师平均年薪 <b>24.5 万美元</b>，顶级实验室（OpenAI、Anthropic、DeepMind）高级研究员总包超 100 万美元。AI 专业技能已成为全球科技行业最高溢价的能力标签。
+                    科创板日报报道，AI 需求爆发导致国际和国内核心硬件相关供应链供货紧张。业内人士表示，如果成本继续上升，不排除云计算厂商再次涨价。这是推理需求爆发的直接经济传导——当黄仁勋说"万亿美元"、阿里成立 ATH 事业群时，供应链已经开始承压。
                 </div>
             </div>
 
         </div>
 
         <div class="footer">
-            <p><b>AI 资讯日报</b> · 2026 年 3 月 18 日 · 第 7 期</p>
-            <p>数据来源：X/Twitter、Reddit、Hacker News、GTC 2026、CGTN、新浪财经、腾讯新闻、搜狐、同花顺、金融界、36氪、IT之家、今日头条、华尔街见闻、Levels.fyi 等</p>
-            <p style="margin-top: 8px;">覆盖人物：Jensen Huang · Sam Altman · Elon Musk · 张亚勤 · 王兴兴 · 吴泳铭 · 杨植麟</p>
+            <p><b>AI 资讯日报</b> · 2026 年 3 月 18 日 · 第 7 期（修订版）</p>
+            <p>数据来源：GitHub、X/Twitter、arXiv、GTC 2026、路透社、CGTN、新浪财经、腾讯新闻、东方财富、搜狐、环球网、凤凰网、同花顺、证券时报、科创板日报、中财网、IT之家、华尔街见闻等</p>
+            <p style="margin-top: 8px;">覆盖人物：杨植麟 · Elon Musk · Andrej Karpathy · Jensen Huang · Sam Altman · 张亚勤 · 王兴兴 · 吴泳铭</p>
             <p style="margin-top: 12px;"><a href="https://viliawang-pm.github.io/ai-daily/">返回日报首页</a></p>
         </div>
     </div>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯日报 - 2026年3月22日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); padding: 20px; line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: white; padding: 50px 40px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%); animation: pulse 6s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+        .header h1 { font-size: 2.8em; font-weight: 800; margin-bottom: 10px; position: relative; z-index: 1; background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient 4s linear infinite; }
+        @keyframes gradient { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        .header .date { font-size: 1.3em; opacity: 0.9; position: relative; z-index: 1; color: #c4b5fd; }
+        .header .subtitle { font-size: 1em; opacity: 0.7; margin-top: 8px; position: relative; z-index: 1; color: #a5b4fc; }
+        .stats-bar { display: flex; justify-content: center; gap: 40px; padding: 24px 40px; background: linear-gradient(90deg, #f5f3ff, #ede9fe, #f5f3ff); border-bottom: 1px solid #e5e7eb; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-item .stat-num { font-size: 1.8em; font-weight: 800; color: #4f46e5; }
+        .stat-item .stat-label { font-size: 0.8em; color: #6b7280; font-weight: 500; }
+        .content { padding: 40px; }
+        .news-card { background: #fafafa; border-radius: 16px; padding: 28px; margin-bottom: 24px; border: 1px solid #e5e7eb; transition: all 0.3s ease; position: relative; }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1); border-color: #818cf8; }
+        .news-card .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+        .news-card .rank { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85em; flex-shrink: 0; }
+        .news-card .rank.top3 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .news-card .tag { padding: 3px 10px; border-radius: 6px; font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-breakthrough { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .tag-signal { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+        .tag-product { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .tag-funding { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+        .tag-policy { background: #fce7f3; color: #9d174d; border: 1px solid #f9a8d4; }
+        .tag-safety { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .tag-research { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+        .tag-newface { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+        .tag-industry { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+        .news-card h3 { font-size: 1.2em; font-weight: 700; color: #1e1b4b; margin-bottom: 10px; line-height: 1.5; }
+        .news-card .summary { color: #374151; font-size: 0.95em; line-height: 1.8; margin-bottom: 14px; }
+        .news-card .why-important { background: linear-gradient(90deg, #f5f3ff, #ede9fe); border-left: 3px solid #7c3aed; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px; }
+        .news-card .why-important .why-title { font-size: 0.78em; font-weight: 700; color: #7c3aed; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .news-card .why-important p { font-size: 0.88em; color: #4c1d95; line-height: 1.6; }
+        .news-card .meta { display: flex; align-items: center; gap: 16px; font-size: 0.8em; color: #9ca3af; flex-wrap: wrap; }
+        .news-card .meta a { color: #6366f1; text-decoration: none; font-weight: 500; }
+        .news-card .meta a:hover { text-decoration: underline; }
+        .section-divider { text-align: center; padding: 32px 0; color: #9ca3af; font-size: 0.85em; position: relative; }
+        .section-divider::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, #e5e7eb, transparent); }
+        .section-divider span { background: white; padding: 0 20px; position: relative; z-index: 1; font-weight: 600; color: #6b7280; }
+        .footer { text-align: center; padding: 30px 40px; background: #f9fafb; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 0.85em; }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #a5b4fc; text-decoration: none; font-size: 0.9em; position: relative; z-index: 1; }
+        .back-link:hover { color: white; }
+        @media (max-width: 768px) { body { padding: 10px; } .header { padding: 30px 20px; } .header h1 { font-size: 1.8em; } .content { padding: 20px; } .news-card { padding: 20px; } .stats-bar { gap: 20px; padding: 16px 20px; } }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报首页</a>
+            <h1>AI 资讯日报</h1>
+            <div class="date">2026 年 3 月 22 日 · 星期日</div>
+            <div class="subtitle">Cursor 承认底座为 Kimi · Midjourney V8 Alpha · Google 全栈 Vibe Coding · Hugging Face 开源报告</div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">9</div>
+                <div class="stat-label">今日资讯</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">10+</div>
+                <div class="stat-label">覆盖平台</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">3</div>
+                <div class="stat-label">新面孔</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">第10期</div>
+                <div class="stat-label">连续发布</div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- ============ 头部区域 ============ -->
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">1</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>TechCrunch 独家：Cursor 承认 Composer 2 底座为月之暗面 Kimi K2.5——AI 模型供应链透明度成焦点</h3>
+                <div class="summary">
+                    3月22日，TechCrunch 独家报道引爆全球科技圈：AI编程独角兽 Cursor 正式承认，其本周发布的前沿级编码模型 Composer 2 的<strong>底层基座是中国月之暗面（Moonshot AI）的 Kimi K2.5 模型</strong>。事件起因是一名X用户发现 Composer 2 的API响应中包含Kimi模型的签名。Cursor随后确认：通过 Fireworks AI 获取 Kimi K2.5 的推理服务，在此基础上进行了持续预训练（continuous pre-training）和强化学习。月之暗面也确认了这一商业授权合作。AlphaMatch.ai 发布深度分析称"Kimi K2.5 是引擎盖下的真正引擎"。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>这是2026年最具象征意义的AI产业事件之一。当全球估值最高的AI编程公司（谈判估值500亿美元）选择中国模型做底座时，它同时验证了三件事：①中国基座模型在编程领域已达世界一流水平；②AI产品的"模型供应链"透明度将成为新的合规要求——用户和投资者都想知道"引擎是什么"；③地缘政治因素正在进入AI商业决策——Cursor选择Kimi而非OpenAI/Anthropic，既是技术选择也是成本选择，但在五角大楼拿中国员工做安全论据的同一周，这个选择格外敏感。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：TechCrunch / Cursor / Moonshot AI</span>
+                    <span>平台：TechCrunch、AlphaMatch.ai、Gigazine、Analytics India Mag、科技新报</span>
+                    <span><a href="https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">2</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>Midjourney V8 Alpha 发布：生成速度 5x 提升、原生 2K 分辨率、文本渲染大幅改善</h3>
+                <div class="summary">
+                    Midjourney 推出 V8 Alpha 版本，核心升级包括：<strong>生成速度约5倍提升</strong>、支持原生2K分辨率、文本渲染质量显著改善。但伴随而来的是<strong>定价调整</strong>：顶级功能（如 `--hd` 模式）价格上涨4倍，且Alpha期间不提供Relax模式。这是Midjourney自V6以来最大的一次版本跃迁，也是AI图像生成领域在2026年的首个重大更新。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>V8的5x速度提升不仅是技术指标——它改变了创作者的工作流。当生成一张图从30秒变为6秒，AI图像生成就从"等结果"变成了"实时迭代"，体验质变。但4倍涨价也传递了一个清晰信号：Midjourney正在从"用户增长"转向"收入变现"，AI工具的免费午餐时代正在结束。同时，Microsoft同日发布的MAI-Image-2在Arena.ai排名第三，图像生成领域的竞争正在白热化。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Midjourney</span>
+                    <span>平台：The Neuron、Reddit、X/Twitter</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">3</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>Google AI Studio 变身"全栈 Vibe Coding 平台"：Antigravity Agent + Firebase + 一键部署</h3>
+                <div class="summary">
+                    Google 将 AI Studio 升级为完整的全栈开发环境，核心是 <strong>Antigravity Agent</strong>——一个能自主完成前后端开发的AI代理。支持原生 Firebase Auth/Firestore、Secrets Manager、Next.js/Shadcn/Three.js，以及一键部署。同日，Google 还宣布推出 <strong>Stitch</strong>——一个AI原生的"Vibe设计"工具，用于创建、迭代和协作高保真UI。此外，Google开始在Mac上测试原生Gemini AI桌面应用，直接与ChatGPT和Claude竞争。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>Google在一周内同时推出Vibe Coding（AI Studio + Antigravity）和Vibe Design（Stitch），加上原生桌面Gemini应用——这是Google对OpenAI"超级应用"战略的全面回应。"Vibe Coding"这个概念的成立意味着：开发者不再需要手写每一行代码，而是用自然语言描述意图，AI Agent完成从设计到部署的全流程。这对整个软件开发行业的影响不亚于当年IDE取代文本编辑器。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Google</span>
+                    <span>平台：The Neuron、Google Blog、Hacker News</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>研究与开源生态</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">4</span>
+                    <span class="tag tag-research">研究</span>
+                </div>
+                <h3>Hugging Face 2026 春季开源报告：1300 万用户、200 万模型，中国模型占下载量 41%</h3>
+                <div class="summary">
+                    Hugging Face 发布《2026 春季开源 AI 状态报告》，核心数据：<strong>1300万注册用户、200万+模型、50万+数据集</strong>。其中最引人注目的趋势是——<strong>中国模型占所有模型下载量的41%</strong>，这意味着全球开发者每下载10个AI模型，就有4个来自中国。此外，机器人相关数据集激增23倍，反映了具身智能赛道的爆发式增长。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>41%的下载占比是一个里程碑式的数字——中国AI从"跟跑"到"并跑"的证据不再是某个模型的排名，而是开发者用脚投票的结果。Qwen、DeepSeek、Kimi、MiniMax等模型的集体崛起，正在改变全球AI开源生态的重心。机器人数据集23倍增长则预示着：2026年下半年，具身智能将成为与大语言模型同等重要的赛道。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Hugging Face</span>
+                    <span>平台：Hugging Face Blog、The Neuron</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">5</span>
+                    <span class="tag tag-research">研究</span>
+                    <span class="tag tag-newface">新面孔</span>
+                </div>
+                <h3>UC Berkeley M²RNN：矩阵值状态非线性 RNN，挑战 Transformer 在长上下文的统治地位</h3>
+                <div class="summary">
+                    UC Berkeley 发布 M²RNN（Matrix-valued state Nonlinear RNN），这是一种具有<strong>矩阵值状态的新型非线性循环神经网络</strong>。实验显示：在 WikiText 上困惑度下降10个点，在长上下文任务上提升高达8个点。这是继 Mamba/RWKV 之后，又一个试图用非 Transformer 架构解决长序列建模问题的重要尝试。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>Transformer 的二次复杂度问题在百万Token时代越来越突出。M²RNN 提出的矩阵值状态机制，为"后Transformer时代"的架构探索提供了一个新方向。虽然距离替代Transformer还很远，但学术界对替代架构的密集探索（Mamba → RWKV → Attention Residuals → M²RNN）说明：Transformer可能不是终局。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：UC Berkeley（新面孔研究团队）</span>
+                    <span>平台：The Neuron、arXiv</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>产品与工具</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">6</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>Microsoft MAI-Image-2 发布 · Adobe 接入 Kling AI 视频 · Perplexity 进军健康数据</h3>
+                <div class="summary">
+                    <strong>Microsoft MAI-Image-2</strong>：微软内部文本生成图像模型，在 Arena.ai 排名第三，正集成到Copilot和Bing Image Creator中，直接与Midjourney和DALL·E竞争。<strong>Adobe × Kling</strong>：Adobe Firefly平台正式接入快手旗下Kling AI视频功能，同时推出可定制Firefly图像生成器。<strong>Perplexity Health</strong>：成立健康咨询委员会（含Dr. Eric Topol），Computer产品新增健康数据集成，连接可穿戴设备、实验室结果和医疗记录。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>三个看似独立的产品动态背后是同一趋势：AI正在从"通用聊天"向"垂直场景深度集成"演进。微软在图像生成、Adobe在视频创作、Perplexity在医疗健康——每家公司都在找自己的"AI+X"垂直锚点。Adobe接入中国Kling AI则再次证明：中国AI能力正在通过商业合作渗透到全球头部创意工具链中。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Microsoft / Adobe / Perplexity</span>
+                    <span>平台：The Neuron、多家科技媒体</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">7</span>
+                    <span class="tag tag-product">产品动态</span>
+                    <span class="tag tag-newface">新面孔</span>
+                </div>
+                <h3>JetBrains Air 发布 · Claude Code 支持 Channel 推送 · Skild AI 工厂机器人落地</h3>
+                <div class="summary">
+                    <strong>JetBrains Air</strong>（新面孔）：全新的Agent开发环境，让 Codex、Claude Agent、Gemini CLI 和 Junie 在独立任务循环中并行运行、互不干扰。<strong>Claude Code Channels</strong>：现在支持从MCP服务器向运行中的会话推送事件（如CI结果、聊天消息），可通过Telegram或Discord远程控制Claude会话。<strong>Skild AI</strong>（新面孔）：宣布与ABB Robotics和Universal Robots合作，在制造生产线上部署Skild Brain AI，标志着AI机器人从实验室走向工厂车间。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>开发工具领域正在发生根本性变革：JetBrains Air让多个AI Agent共存一个IDE——这不是"AI辅助编程"，而是"AI编程团队"。Claude Code Channels让AI可以在你不在场时自主响应外部事件——Agent的"自主性"又进了一步。Skild AI与ABB/Universal Robots的合作则说明：工厂机器人的AI化不再是概念，而是ABB这种工业巨头已经在做的事。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：JetBrains / Anthropic / Skild AI</span>
+                    <span>平台：The Neuron、JetBrains Blog</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>行业趋势与警示</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">8</span>
+                    <span class="tag tag-industry">行业趋势</span>
+                </div>
+                <h3>Andrew Yang 预警"办公室的终结"：20-50% 白领岗位将被削减 · 2026 年已裁员 28 万人</h3>
+                <div class="summary">
+                    前总统候选人 Andrew Yang 发表文章《办公室的终结》，预测 <strong>20-50% 的白领工作岗位将被削减</strong>（涉及美国7000万办公室职员），中层管理人员首当其冲。与此同时，2026年AI裁员追踪数据显示：<strong>160+家公司已裁员28万+人，平均每天3500人</strong>。Cloudflare CEO 预计到2027年网络上的机器人流量将超过人类流量。研究还发现AI使人类写作更平淡、个人声音减少50%。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>当每天3500人因AI相关原因失业时，AI不再只是技术话题——它是社会话题。Yang的"20-50%"预测虽然范围很宽，但方向已被实际裁员数据验证。同时，"AI让写作变平淡"的研究提出了一个更深层的问题：当AI能做大部分"知识工作"时，人类独特的创造性和个性是否也在同步被磨平？</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Andrew Yang / 多项研究</span>
+                    <span>平台：The Neuron、Cloudflare Blog</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">9</span>
+                    <span class="tag tag-funding">融资</span>
+                </div>
+                <h3>本周融资速览：Oasis Security 1.2 亿 · Deeptune 4300 万 · Parallel 2000 万</h3>
+                <div class="summary">
+                    <strong>Oasis Security</strong>（Sequoia + Accel领投，1.2亿美元）：管理非人类身份（NHI）访问控制，专注于AI Agent的身份验证和权限管理——这是Agentic AI时代的"安全基础设施"。<strong>Deeptune</strong>（a16z领投，4300万A轮）：为AI Agent构建"训练健身房"，让Agent在模拟环境中学习和改进。<strong>Parallel</strong>（2000万美元）：用AI Agent自动化医院行政管理，瞄准美国医疗体系中占比30%的行政成本。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>三笔融资都指向同一个方向："AI Agent的基础设施"。Oasis解决Agent的身份和权限问题，Deeptune解决Agent的训练问题，Parallel展示Agent的实际落地场景。当Sequoia和a16z同时重注Agent基础设施时，说明Smart Money认为：2026年的真正机会不在模型本身，而在让模型"安全、可靠地做事"的基础设施层。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Oasis Security / Deeptune / Parallel</span>
+                    <span>平台：The Neuron、Crunchbase</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>AI 日报</strong> — 每日追踪全球 AI 领域重要动态</p>
+            <p style="margin-top: 6px;">数据来源：TechCrunch、The Neuron、AlphaMatch.ai、Gigazine、Hugging Face、Arena.ai、Reddit、Hacker News 等</p>
+            <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报首页</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

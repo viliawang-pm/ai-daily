@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯日报 - 2026年3月21日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 4s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .header .date {
+            font-size: 1.3em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            color: #c4b5fd;
+        }
+
+        .header .subtitle {
+            font-size: 1em;
+            opacity: 0.7;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+            color: #a5b4fc;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 24px 40px;
+            background: linear-gradient(90deg, #f5f3ff, #ede9fe, #f5f3ff);
+            border-bottom: 1px solid #e5e7eb;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .stat-num {
+            font-size: 1.8em;
+            font-weight: 800;
+            color: #4f46e5;
+        }
+
+        .stat-item .stat-label {
+            font-size: 0.8em;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .news-card {
+            background: #fafafa;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1);
+            border-color: #818cf8;
+        }
+
+        .news-card .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .news-card .rank {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85em;
+            flex-shrink: 0;
+        }
+
+        .news-card .rank.top3 {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+        }
+
+        .news-card .tag {
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 0.72em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-breakthrough { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .tag-signal { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+        .tag-product { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .tag-funding { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+        .tag-policy { background: #fce7f3; color: #9d174d; border: 1px solid #f9a8d4; }
+        .tag-safety { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .tag-research { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+        .tag-newface { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+        .tag-industry { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+        .news-card h3 {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .news-card .summary {
+            color: #374151;
+            font-size: 0.95em;
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .news-card .why-important {
+            background: linear-gradient(90deg, #f5f3ff, #ede9fe);
+            border-left: 3px solid #7c3aed;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 14px;
+        }
+
+        .news-card .why-important .why-title {
+            font-size: 0.78em;
+            font-weight: 700;
+            color: #7c3aed;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-card .why-important p {
+            font-size: 0.88em;
+            color: #4c1d95;
+            line-height: 1.6;
+        }
+
+        .news-card .meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.8em;
+            color: #9ca3af;
+            flex-wrap: wrap;
+        }
+
+        .news-card .meta a {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .news-card .meta a:hover {
+            text-decoration: underline;
+        }
+
+        .section-divider {
+            text-align: center;
+            padding: 32px 0;
+            color: #9ca3af;
+            font-size: 0.85em;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+        }
+
+        .section-divider span {
+            background: white;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px 40px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            color: #9ca3af;
+            font-size: 0.85em;
+        }
+
+        .footer a {
+            color: #6366f1;
+            text-decoration: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #a5b4fc;
+            text-decoration: none;
+            font-size: 0.9em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 20px; }
+            .news-card { padding: 20px; }
+            .stats-bar { gap: 20px; padding: 16px 20px; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报首页</a>
+            <h1>AI 资讯日报</h1>
+            <div class="date">2026 年 3 月 21 日 · 星期六</div>
+            <div class="subtitle">Terafab 正式启动 · 贝索斯千亿美元"普罗米修斯计划" · 软银 5000 亿美元数据中心 · 阿里 Qwen3.5 登顶国产</div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">10</div>
+                <div class="stat-label">今日资讯</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">10+</div>
+                <div class="stat-label">覆盖平台</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">2</div>
+                <div class="stat-label">新面孔</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">第9期</div>
+                <div class="stat-label">连续发布</div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- ============ 头部区域：产业结构性变化 ============ -->
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">1</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-industry">算力格局</span>
+                </div>
+                <h3>Tesla Terafab 正式启动：马斯克联手 SpaceX、xAI 建造 250 亿美元全球最大 AI 芯片工厂</h3>
+                <div class="summary">
+                    3月21日，马斯克正式宣布 Terafab 项目启动——这不再是单纯的特斯拉项目，而是 <strong>Tesla、SpaceX、xAI 三方联合</strong>的芯片制造计划。总投资从此前的200亿美元提升至250亿美元，目标年产能"一太瓦级（Terawatt-scale）" AI算力。首批产品为2nm制程的AI5芯片，2026年内完成小批量试产，2027年进入量产。工厂位于Giga Texas园区，配套的能源基础设施已同步规划。Electrek 评价"这是 Battery Day 之后最大胆的承诺——也可能同样不切实际"。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>Terafab 从"特斯拉独立项目"升级为"马斯克帝国联合项目"，战略意图更加清晰：不仅为自家FSD和Optimus提供芯片，更要为xAI的Grok和SpaceX的Starshield提供军事级AI算力。如果成功，马斯克系将成为唯一同时拥有芯片设计、芯片制造和AI模型三位一体的非国家行为体。但250亿美元的投资规模和2nm量产的技术难度，让业界的怀疑声同样强烈。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Elon Musk / Tesla / SpaceX / xAI</span>
+                    <span>平台：Teslarati、Electrek、Interesting Engineering、CNBC、evxl.co</span>
+                    <span><a href="https://www.teslarati.com/elon-musk-lanuches-terafab-tesla-spacexai-chip-factory/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">2</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-funding">融资</span>
+                </div>
+                <h3>贝索斯"普罗米修斯计划"：筹集 1000 亿美元，用 AI 改造全球传统制造业</h3>
+                <div class="summary">
+                    据华尔街日报、TechCrunch等多家媒体报道，亚马逊创始人杰夫·贝索斯正为其创办的 <strong>Project Prometheus</strong> 筹集高达1000亿美元的超级基金，目标是<strong>收购芯片制造、国防、航空航天等传统工业领域的公司，并用AI彻底改造它们</strong>。贝索斯已前往中东和新加坡进行路演。该项目此前已启动62亿美元种子资金，由前Google高管Vik Bajaj担任联合CEO。CNBC称这可能是"人类历史上最大的产业重组基金"。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>如果说OpenAI在改变软件世界，那Prometheus要改变的是物理世界——芯片工厂、国防承包商、航空航天企业。1000亿美元的规模意味着这不是VC投资，而是产业并购+AI改造的"工业革命2.0"。贝索斯和马斯克现在在AI算力上形成了明确的对位竞争：一个造芯片工厂，一个买工厂用AI改造。这是2026年最值得持续跟踪的产业叙事之一。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Jeff Bezos / Project Prometheus</span>
+                    <span>平台：WSJ、TechCrunch、CNBC、Silicon Valley、Bloomberg</span>
+                    <span><a href="https://techcrunch.com/2026/03/19/jeff-bezos-reportedly-wants-100-billion-to-buy-and-transform-old-manufacturing-firms-with-ai/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">3</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-industry">算力格局</span>
+                </div>
+                <h3>软银宣布在俄亥俄州投资 5000 亿美元建设巨型 AI 数据中心</h3>
+                <div class="summary">
+                    软银CEO孙正义3月20日宣布：将在美国俄亥俄州打造全球规模最大的AI数据中心基础设施项目，<strong>总投资5000亿美元</strong>。项目选址为美国能源部一处前铀浓缩设施，第一阶段约800兆瓦电力，成本300-400亿美元，预计18个月内投入运营。美国商务部长卢特尼克称其为"全国最大的建设项目"。NHK报道称，该项目是日美关税谈判中日本对美投资的首个落地成果。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>5000亿美元——这是人类历史上单一项目最大的投资承诺之一，约等于越南全年GDP。即使打个对折，这也将重新定义全球AI基础设施的版图。更值得关注的是选址在前铀浓缩设施——说明AI算力的能源需求已经到了需要征用核设施级电力的地步。同日Terafab启动、Prometheus募资，全球AI算力竞赛正在进入"万亿美元级"的新阶段。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：软银集团 / 孙正义</span>
+                    <span>平台：华尔街见闻、36氪、新浪财经、NHK、经济观察网、第一财经</span>
+                    <span><a href="https://wallstreetcn.com/articles/3768036" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>重要产品与技术进展</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">4</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>阿里 Qwen3.5-Max-Preview 发布：LMArena 国产第一，五年千亿美元目标的技术底座</h3>
+                <div class="summary">
+                    阿里发布 Qwen 3.5 系列旗舰模型 Qwen3.5-Max-Preview，在 LMArena 排名第15位、<strong>国产模型第一</strong>。结合前一天财报中宣布的"五年千亿美元AI收入目标"和平头哥自研GPU首次写入财报，阿里正在构建从芯片到模型到云服务的全栈AI能力。蔡崇信同日表示："中国科技正迎来爆发期，电网投资和开源模型是两大驱动力。"
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>Qwen3.5全球排名15意味着中国模型的"第一梯队差距"正在缩小，但仍落后于Anthropic和Google。真正的看点是阿里的全栈布局：自研GPU（平头哥）+ 旗舰模型（Qwen3.5）+ 云服务（阿里云AI收入连续10季三位数增长）——这是中国唯一在芯片-模型-云三层同时发力的科技巨头。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：阿里巴巴 / 通义千问团队</span>
+                    <span>平台：Creati.ai、LMArena、Tech in Asia</span>
+                    <span><a href="https://creati.ai/ai-news/2026-03-21/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">5</span>
+                    <span class="tag tag-product">产品动态</span>
+                    <span class="tag tag-newface">新面孔</span>
+                </div>
+                <h3>Cursor 发布 Composer 2 编码模型：前沿级性能、极低成本——但底座是中国月之暗面的 Kimi</h3>
+                <div class="summary">
+                    AI编程独角兽 Cursor（估值谈判中约500亿美元）发布 Composer 2 模型，在 Terminal-Bench 2.0 得分 61.7%、SWE-bench Multilingual 73.7%，性能媲美 Claude Opus 4.6 和 GPT-5.4，但定价仅 $0.50/$2.50 per million tokens——不到竞品的1/5。然而，社区用户很快发现 Composer 2 的底座实际上是<strong>月之暗面的 Kimi K2.5 模型</strong>，Cursor 通过 Fireworks AI 访问并进行了持续预训练和强化学习。TechCrunch 独家报道了这一细节。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>这条新闻有三层信号：①中国基座模型已经强到可以支撑全球最热的AI编程工具——月之暗面的技术实力又一次被验证；②AI模型的供应链透明度成为新议题——用户有权知道"引擎盖下"是什么模型；③500亿美元估值的公司选择中国模型做底座而非OpenAI/Anthropic，说明成本和性能的天平正在向中国模型倾斜。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Cursor / Moonshot AI（月之暗面）</span>
+                    <span>平台：TechCrunch、The Verge、Analytics India Magazine、Gigazine</span>
+                    <span><a href="https://techcrunch.com/2026/03/22/cursor-admits-its-new-coding-model-was-built-on-top-of-moonshot-ais-kimi/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">6</span>
+                    <span class="tag tag-policy">政策信号</span>
+                </div>
+                <h3>白宫发布《国家 AI 政策框架》：联邦标准抢先州法律，五角大楼正式采用 Palantir Maven AI</h3>
+                <div class="summary">
+                    特朗普政府发布《国家人工智能政策框架》，敦促国会建立<strong>单一联邦AI标准</strong>以取代日益碎片化的州级法规。同日，参议员Blackburn提出"特朗普美国AI法案"，包含注意义务和儿童保护条款。与此同时，五角大楼内部备忘录确认将 <strong>Palantir 的 Maven AI 正式列为军方正式项目（program of record）</strong>，标志着AI军事化从实验走向制度化。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>联邦框架的核心诉求是"预防性监管优先权"——大科技公司最怕的不是联邦监管，而是50个州各搞一套。Maven AI成为正式项目更是里程碑：这意味着AI在美军中从"试点"变为"标配"，Anthropic被排除在外的代价将在军事采购市场上持续放大。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：白宫 / 美国国防部 / 参议员 Blackburn</span>
+                    <span>平台：Creati.ai、The Neuron、政府官方渠道</span>
+                    <span><a href="https://creati.ai/ai-news/2026-03-21/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>关键人物与安全事件</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">7</span>
+                    <span class="tag tag-safety">安全事件</span>
+                </div>
+                <h3>五角大楼法庭文件将 Anthropic 中国员工列为国家安全风险：对峙再升级</h3>
+                <div class="summary">
+                    美国国防部在与Anthropic诉讼的最新法庭文件中提出新论点：<strong>引用Anthropic雇佣的中国籍员工作为国家安全隐患</strong>，援引中国《国家情报法》中关于公民配合国家情报活动的条款。Anthropic随即发表声明，否认五角大楼关于其能在战争中破坏AI工具的指控，称"操纵已部署的模型在技术上是不可能的"。这一事态发展让Anthropic-Pentagon对峙从商业争端上升为涉及国籍和地缘政治的敏感议题。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>当五角大楼把"你的员工是中国人"作为法庭论据时，这已经不是Anthropic一家公司的问题——这将影响整个AI行业的招聘策略和人才流动。如果这种论证逻辑被法庭采信，硅谷每家雇佣了中国工程师的AI公司都将面临类似的安全审查压力。这是AI地缘政治化的又一个标志性事件。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：美国国防部 / Anthropic</span>
+                    <span>平台：Creati.ai、AP News、CNN、TechCrunch</span>
+                    <span><a href="https://creati.ai/ai-news/2026-03-21/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">8</span>
+                    <span class="tag tag-research">研究</span>
+                </div>
+                <h3>Anthropic 全球调查：159 国 80,000 用户画像——67% 看好 AI，最大担忧是"认知依赖"</h3>
+                <div class="summary">
+                    Anthropic发布了迄今最大规模的AI用户调查：覆盖<strong>159个国家、80,000名Claude用户</strong>。核心发现：67%的用户对AI持积极态度，生产力提升是最受重视的功能；但用户最看重的功能（如自动写作、自动分析）恰恰也是引发最大担忧的功能——<strong>认知依赖、就业替代和思维能力退化</strong>成为全球用户共同的焦虑。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>"最爱的功能也是最怕的功能"——这个矛盾揭示了AI时代的核心困境。159国8万人的样本量让这项研究成为AI领域最权威的用户态度基线数据。对产品设计者的启示是：AI能力越强，用户对"可控性"和"可解释性"的需求就越强烈。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Anthropic Research</span>
+                    <span>平台：Anthropic Blog、Creati.ai</span>
+                    <span><a href="https://creati.ai/ai-news/2026-03-21/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>行业动态速览</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">9</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>OpenAI 收购 Astral 强化 Codex：ChatGPT + Codex + Atlas 合并为"超级应用"</h3>
+                <div class="summary">
+                    OpenAI 宣布两项重大举措：①<strong>收购 Astral</strong>（拥有 Ruff、uv、ty 等月下载量数亿的 Python 工具），将其集成到 Codex 编码平台；②正在将 ChatGPT、Codex 和 Atlas 浏览器合并为<strong>单一桌面"超级应用"</strong>，由 Fidji Simo 和 Greg Brockman 领导，内含自主编码和分析的Agent功能。Codex 目前周活跃用户已超200万。此外，OpenAI计划2026年底前将员工扩至8000人，并正在开发"AI研究实习生"工具。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>OpenAI从"API公司"向"平台公司"的转型正在加速。收购Astral不是为了Python工具本身，而是为了让Codex掌控软件开发的"全生命周期"——从包管理到代码编写到测试部署。"超级应用"的逻辑则是：如果用户在一个应用里能完成搜索+编码+分析，为什么还要切换到其他产品？</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：OpenAI</span>
+                    <span>平台：The Neuron、TechCrunch、多家科技媒体</span>
+                    <span><a href="https://www.theneuron.ai/ai-news-digests/arouond-the-horn-digest-weekof-march-21-2026/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">10</span>
+                    <span class="tag tag-industry">行业动态</span>
+                </div>
+                <h3>NVIDIA 更新数据中心路线图至 2028 年 · MiniMax M2.7 首个"自我进化"模型 · 脑机接口写入两会</h3>
+                <div class="summary">
+                    <strong>NVIDIA路线图</strong>：GTC后更新计划，2028年前将推出三代GPU、LPU和CPU（包括Groq 3 LPX、Rubin Ultra、Feynman平台），确立年度发布节奏。<strong>MiniMax M2.7</strong>：3月18日发布的"首个深度参与自我迭代的国产大模型"持续发酵，爱范儿、知乎、CSDN等深度评测密集出炉，API已开放且兼容OpenAI协议，$30测试额度引发开发者抢注。<strong>脑机接口</strong>：2026年两会闭幕，脑机接口正式写入政府工作报告，列为"十五五"重点培育的未来产业。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>三件事看似独立，但共同指向同一个趋势：AI基础设施正在从"模型竞赛"扩展到"全栈竞赛"。NVIDIA在硬件层锁定三年路线图，MiniMax在模型层探索自我进化，脑机接口在政策层获得国家级背书——2026年的AI竞争是立体的、多维度的。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：NVIDIA / MiniMax / 全国两会</span>
+                    <span>平台：Creati.ai、CSDN、爱范儿、知乎、腾讯新闻</span>
+                    <span><a href="https://news.qq.com/rain/a/20260321A06E1100" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>AI 日报</strong> — 每日追踪全球 AI 领域重要动态</p>
+            <p style="margin-top: 6px;">数据来源：Teslarati、Electrek、WSJ、TechCrunch、CNBC、Bloomberg、华尔街见闻、36氪、新浪财经、NHK、The Neuron、Creati.ai、AP News 等</p>
+            <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报首页</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

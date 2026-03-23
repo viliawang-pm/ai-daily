@@ -6,629 +6,280 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI 资讯日报 - 2026年3月23日</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            padding: 20px;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            color: white;
-            padding: 50px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            animation: pulse 6s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 1; }
-        }
-
-        .header h1 {
-            font-size: 2.8em;
-            font-weight: 800;
-            margin-bottom: 10px;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient 4s linear infinite;
-        }
-
-        @keyframes gradient {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
-
-        .header .date {
-            font-size: 1.3em;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-            color: #c4b5fd;
-        }
-
-        .header .subtitle {
-            font-size: 1em;
-            opacity: 0.7;
-            margin-top: 8px;
-            position: relative;
-            z-index: 1;
-            color: #a5b4fc;
-        }
-
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 20px 40px;
-            background: #f8fafc;
-            border-bottom: 1px solid #e2e8f0;
-            flex-wrap: wrap;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-item .num {
-            font-size: 1.8em;
-            font-weight: 800;
-            color: #6366f1;
-        }
-
-        .stat-item .label {
-            font-size: 0.85em;
-            color: #64748b;
-            margin-top: 2px;
-        }
-
-        .content {
-            padding: 40px;
-        }
-
-        .news-card {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 28px;
-            margin-bottom: 24px;
-            border-left: 5px solid #6366f1;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .news-card:hover {
-            transform: translateX(4px);
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.1);
-        }
-
-        .news-card.breakthrough {
-            border-left-color: #ef4444;
-            background: linear-gradient(135deg, #fef2f2 0%, #f8fafc 100%);
-        }
-
-        .news-card.signal {
-            border-left-color: #f59e0b;
-            background: linear-gradient(135deg, #fffbeb 0%, #f8fafc 100%);
-        }
-
-        .news-card.new-face {
-            border-left-color: #10b981;
-            background: linear-gradient(135deg, #ecfdf5 0%, #f8fafc 100%);
-        }
-
-        .news-number {
-            position: absolute;
-            top: -12px;
-            left: -12px;
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.9em;
-            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-        }
-
-        .news-card.breakthrough .news-number {
-            background: linear-gradient(135deg, #ef4444, #f97316);
-        }
-
-        .news-card.signal .news-number {
-            background: linear-gradient(135deg, #f59e0b, #eab308);
-        }
-
-        .news-card.new-face .news-number {
-            background: linear-gradient(135deg, #10b981, #34d399);
-        }
-
-        .news-tag {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 0.75em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-        }
-
-        .tag-breakthrough {
-            background: #fef2f2;
-            color: #dc2626;
-            border: 1px solid #fecaca;
-        }
-
-        .tag-signal {
-            background: #fffbeb;
-            color: #d97706;
-            border: 1px solid #fde68a;
-        }
-
-        .tag-new-face {
-            background: #ecfdf5;
-            color: #059669;
-            border: 1px solid #a7f3d0;
-        }
-
-        .tag-industry {
-            background: #eff6ff;
-            color: #2563eb;
-            border: 1px solid #bfdbfe;
-        }
-
-        .news-title {
-            font-size: 1.25em;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .news-summary {
-            color: #475569;
-            font-size: 0.95em;
-            line-height: 1.8;
-            margin-bottom: 14px;
-        }
-
-        .news-why {
-            background: white;
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-bottom: 14px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .news-why .why-label {
-            font-size: 0.8em;
-            font-weight: 700;
-            color: #6366f1;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .news-why p {
-            font-size: 0.9em;
-            color: #64748b;
-            line-height: 1.7;
-        }
-
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .meta-left {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            font-size: 0.82em;
-            color: #94a3b8;
-        }
-
-        .meta-left span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .source-link {
-            font-size: 0.82em;
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-
-        .source-link:hover {
-            color: #4f46e5;
-            text-decoration: underline;
-        }
-
-        .section-divider {
-            text-align: center;
-            padding: 30px 0;
-            position: relative;
-        }
-
-        .section-divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-        }
-
-        .section-divider span {
-            background: white;
-            padding: 0 20px;
-            position: relative;
-            color: #94a3b8;
-            font-size: 0.9em;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 40px;
-            background: #f8fafc;
-            color: #94a3b8;
-            font-size: 0.85em;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .footer a {
-            color: #6366f1;
-            text-decoration: none;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #6366f1;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            .header {
-                padding: 30px 20px;
-            }
-
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .content {
-                padding: 20px;
-            }
-
-            .news-card {
-                padding: 20px;
-            }
-
-            .news-title {
-                font-size: 1.1em;
-            }
-
-            .stats-bar {
-                gap: 20px;
-                padding: 16px 20px;
-            }
-
-            .stat-item .num {
-                font-size: 1.4em;
-            }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); padding: 20px; line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: white; padding: 50px 40px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%); animation: pulse 6s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+        .header h1 { font-size: 2.8em; font-weight: 800; margin-bottom: 10px; position: relative; z-index: 1; background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient 4s linear infinite; }
+        @keyframes gradient { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        .header .date { font-size: 1.3em; opacity: 0.9; position: relative; z-index: 1; color: #c4b5fd; }
+        .header .subtitle { font-size: 1em; opacity: 0.7; margin-top: 8px; position: relative; z-index: 1; color: #a5b4fc; }
+        .stats-bar { display: flex; justify-content: center; gap: 40px; padding: 24px 40px; background: linear-gradient(90deg, #f5f3ff, #ede9fe, #f5f3ff); border-bottom: 1px solid #e5e7eb; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-item .stat-num { font-size: 1.8em; font-weight: 800; color: #4f46e5; }
+        .stat-item .stat-label { font-size: 0.8em; color: #6b7280; font-weight: 500; }
+        .content { padding: 40px; }
+        .news-card { background: #fafafa; border-radius: 16px; padding: 28px; margin-bottom: 24px; border: 1px solid #e5e7eb; transition: all 0.3s ease; position: relative; }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1); border-color: #818cf8; }
+        .news-card .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+        .news-card .rank { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85em; flex-shrink: 0; }
+        .news-card .rank.top3 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .news-card .tag { padding: 3px 10px; border-radius: 6px; font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-breakthrough { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .tag-signal { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+        .tag-product { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .tag-funding { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+        .tag-policy { background: #fce7f3; color: #9d174d; border: 1px solid #f9a8d4; }
+        .tag-safety { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .tag-research { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+        .tag-newface { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+        .tag-industry { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+        .news-card h3 { font-size: 1.2em; font-weight: 700; color: #1e1b4b; margin-bottom: 10px; line-height: 1.5; }
+        .news-card .summary { color: #374151; font-size: 0.95em; line-height: 1.8; margin-bottom: 14px; }
+        .news-card .why-important { background: linear-gradient(90deg, #f5f3ff, #ede9fe); border-left: 3px solid #7c3aed; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px; }
+        .news-card .why-important .why-title { font-size: 0.78em; font-weight: 700; color: #7c3aed; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .news-card .why-important p { font-size: 0.88em; color: #4c1d95; line-height: 1.6; }
+        .news-card .meta { display: flex; align-items: center; gap: 16px; font-size: 0.8em; color: #9ca3af; flex-wrap: wrap; }
+        .news-card .meta a { color: #6366f1; text-decoration: none; font-weight: 500; }
+        .news-card .meta a:hover { text-decoration: underline; }
+        .section-divider { text-align: center; padding: 32px 0; color: #9ca3af; font-size: 0.85em; position: relative; }
+        .section-divider::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, #e5e7eb, transparent); }
+        .section-divider span { background: white; padding: 0 20px; position: relative; z-index: 1; font-weight: 600; color: #6b7280; }
+        .footer { text-align: center; padding: 30px 40px; background: #f9fafb; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 0.85em; }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #a5b4fc; text-decoration: none; font-size: 0.9em; position: relative; z-index: 1; }
+        .back-link:hover { color: white; }
+        @media (max-width: 768px) { body { padding: 10px; } .header { padding: 30px 20px; } .header h1 { font-size: 1.8em; } .content { padding: 20px; } .news-card { padding: 20px; } .stats-bar { gap: 20px; padding: 16px 20px; } }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="header">
+            <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报首页</a>
             <h1>AI 资讯日报</h1>
-            <div class="date">2026年3月23日 · 星期一</div>
-            <div class="subtitle">Terafab 启动改写芯片格局 · OpenAI 两线作战：超级应用+自主研究员 · 中国发展高层论坛 AI 定调</div>
+            <div class="date">2026 年 3 月 23 日 · 星期一</div>
+            <div class="subtitle">Cursor-Kimi 事件全球发酵 · 蔡崇信谈中国 AI 爆发 · 中关村论坛 AI 主题日 · vLLM-Omni 多模态推理</div>
         </div>
 
         <div class="stats-bar">
             <div class="stat-item">
-                <div class="num">10</div>
-                <div class="label">重要资讯</div>
+                <div class="stat-num">9</div>
+                <div class="stat-label">今日资讯</div>
             </div>
             <div class="stat-item">
-                <div class="num">10+</div>
-                <div class="label">信息源平台</div>
+                <div class="stat-num">10+</div>
+                <div class="stat-label">覆盖平台</div>
             </div>
             <div class="stat-item">
-                <div class="num">2</div>
-                <div class="label">新面孔</div>
+                <div class="stat-num">2</div>
+                <div class="stat-label">新面孔</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">第11期</div>
+                <div class="stat-label">连续发布</div>
             </div>
         </div>
 
         <div class="content">
-            <a href="../index.html" class="back-link">← 返回日报首页</a>
 
-            <!-- ==================== 产业结构性变化 ==================== -->
+            <!-- ============ 头部区域 ============ -->
 
-            <!-- 1. Terafab 正式启动 -->
-            <div class="news-card signal">
-                <div class="news-number">1</div>
-                <span class="news-tag tag-signal">SIGNAL</span>
-                <div class="news-title">Terafab 正式启动：马斯克 250 亿美元芯片豪赌落地，Tesla-SpaceX-xAI 三合一"太瓦级"算力工厂亮相</div>
-                <div class="news-summary">
-                    3 月 21 日晚，马斯克在奥斯汀废弃的 Seaholm 发电厂举行戏剧性启动仪式，正式宣布 Terafab 项目——一座由 Tesla、SpaceX 和 xAI 三方联合投资 250 亿美元的芯片制造工厂，选址在 Giga Texas 北校区。Terafab 目标采用 2nm 制程，生产 AI5 和 D3 两款自研芯片，年目标算力达到 1 太瓦（Terawatt），服务于 FSD 自动驾驶、Optimus 机器人、Grok 推理和 SpaceX 轨道数据中心。Electrek 评论称其为"Battery Day on steroids"，暗示规模宏大但执行风险同样巨大——马斯克此前零半导体制造经验。
-                </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>这是全球科技史上首次由非半导体公司从零启动的 2nm 晶圆厂项目。如果成功，将打破台积电-三星双寡头格局，建立从芯片设计到自动驾驶到太空的完整垂直整合链。如果失败，250 亿美元的沉没成本将成为 AI 泡沫的标志性事件。两种结果都将改写产业格局。</p>
-                </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 马斯克 / Tesla / SpaceX / xAI</span>
-                        <span>📡 Teslarati · Electrek · BusinessWorld · HypeBeast</span>
-                    </div>
-                    <a href="https://www.teslarati.com/elon-musk-lanuches-terafab-tesla-spacexai-chip-factory/" class="source-link" target="_blank">查看原文 →</a>
-                </div>
-            </div>
-
-            <!-- 2. OpenAI 超级应用 -->
-            <div class="news-card signal">
-                <div class="news-number">2</div>
-                <span class="news-tag tag-signal">SIGNAL</span>
-                <div class="news-title">OpenAI 宣布打造桌面"超级应用"：ChatGPT + Codex + Atlas 浏览器三合一</div>
-                <div class="news-summary">
-                    3 月 19-20 日，WSJ 率先报道，OpenAI 应用 CEO Fidji Simo 在内部全员会上宣布，公司将把 ChatGPT 桌面应用、Codex 编程平台和 Atlas 浏览器合并为一个统一的桌面"超级应用"。此举承认此前多产品分散策略的失败，转向"一个入口统管一切"的 Agentic AI 中枢架构。CNBC、MacRumors、The Decoder、TechSpot 等多家媒体跟进报道。超级应用预计先登陆 Mac 平台。
-                </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>这是 OpenAI 从"模型公司"转型为"平台公司"的关键信号。将对话、编程和浏览整合为一个入口，本质上是在构建 AI 原生操作系统——直接对标微软 Copilot 和 Google 的 Gemini 集成。如果成功落地，"超级应用"将重新定义个人生产力工具的形态。</p>
-                </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 OpenAI / Fidji Simo</span>
-                        <span>📡 CNBC · WSJ · MacRumors · TechSpot · The Decoder</span>
-                    </div>
-                    <a href="https://www.cnbc.com/2026/03/19/openai-desktop-super-app-chatgpt-browser-codex.html" class="source-link" target="_blank">查看原文 →</a>
-                </div>
-            </div>
-
-            <!-- 3. OpenAI 全自动 AI 研究员 -->
-            <div class="news-card signal">
-                <div class="news-number">3</div>
-                <span class="news-tag tag-signal">SIGNAL</span>
-                <div class="news-title">OpenAI 全力押注"AI 研究员"：首席科学家 Pachocki 披露时间线——9 月推出 AI 研究实习生，2028 年实现全自主科研</div>
-                <div class="news-summary">
-                    MIT Technology Review 独家报道，OpenAI 首席科学家 Jakub Pachocki 首次给出公司最具体的 AGI 路线图：2026 年 9 月前推出"AI 研究实习生"——能独立处理少量特定研究问题的 Agent 系统；2028 年前实现完全自主的 AI 研究员，可以无人监督地持续运行整个研究实验室。Pachocki 称这是 OpenAI 未来几年的"北极星"目标，公司正在重新调配研究资源全力投入。
-                </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>这是 OpenAI 首次将"自动化科研"从愿景提升为官方最高优先级目标，并给出了明确时间线。如果 AI 真的能在 2028 年独立运行研究实验室，意味着科学发现的速度将从"人类节奏"跃升为"机器节奏"——这不是产品更新，而是文明层面的拐点判断。</p>
-                </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 Jakub Pachocki / OpenAI</span>
-                        <span>📡 MIT Technology Review · TechRadar · Via News</span>
-                    </div>
-                    <a href="https://www.technologyreview.com/2026/03/20/1134438/openai-is-throwing-everything-into-building-a-fully-automated-researcher/" class="source-link" target="_blank">查看原文 →</a>
-                </div>
-            </div>
-
-            <div class="section-divider"><span>关键人物判断 / 产业定调</span></div>
-
-            <!-- 4. 中国发展高层论坛：雷军+蔡崇信 -->
-            <div class="news-card signal">
-                <div class="news-number">4</div>
-                <span class="news-tag tag-signal">SIGNAL</span>
-                <div class="news-title">中国发展高层论坛 AI 定调：蔡崇信「四大因素论」+ 雷军「2000 亿研发宣言」，中国科技进入"百花齐放"爆发期</div>
-                <div class="news-summary">
-                    3 月 22 日，中国发展高层论坛 2026 年年会在北京开幕。阿里蔡崇信和小米雷军先后在"技术创新与未来产业发展"专题研讨会发言：<br><br>
-                    <b>蔡崇信</b>提出中国 AI 产业成功的四大因素，称"AI 终极目标不是研发前沿模型，而是推动 AI 普惠应用"，宣布中国科技已从"积累期"进入"百花齐放"爆发期。<br><br>
-                    <b>雷军</b>表示培养未来产业需要"拥抱不确定性"，中国是"最适合发展高度不确定性产业"的市场。重磅透露：小米过去五年研发投入超 1000 亿元，未来五年计划超 2000 亿元。
-                </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>中国发展高层论坛是中国最高级别的产业政策风向标。蔡崇信的"四大因素论"和雷军的"2000 亿研发宣言"释放了两个信号：一是中国 AI 产业正从"追赶期"进入"输出期"，不再只关注模型能力，而是聚焦落地和普惠；二是科技巨头对未来的真金白银投入正在加速——小米五年 2000 亿，加上阿里此前五年千亿美元的目标，中国 AI 基础设施投入规模已进入全球第一梯队。</p>
-                </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 蔡崇信 / 雷军 / 阿里 / 小米</span>
-                        <span>📡 腾讯新闻 · 中新网 · 21经济 · 观察者网 · 上证报 · 澎湃</span>
-                    </div>
-                    <a href="https://www.guancha.cn/politics/2026_03_23_810996.shtml" class="source-link" target="_blank">查看原文 →</a>
-                </div>
-            </div>
-
-            <!-- 5. Morgan Stanley AI 突破预警 -->
             <div class="news-card">
-                <div class="news-number">5</div>
-                <span class="news-tag tag-industry">产业</span>
-                <div class="news-title">摩根士丹利警告：2026 上半年将出现重大 AI 突破，"大多数人还没准备好"</div>
-                <div class="news-summary">
-                    Fortune 3 月 13 日报道（本周持续发酵），摩根士丹利发布研究报告，明确预测 2026 上半年将出现一次重大 AI 突破，并警告"全球大部分人还没准备好应对其冲击"。马斯克在 X 上转发了该报告并补充评论。报告被 Reddit 和 Hacker News 广泛讨论，成为本周高互动热帖。
+                <div class="card-header">
+                    <span class="rank top3">1</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-industry">产业结构</span>
                 </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>当华尔街最顶级的投行开始以确定语气预测"AI 突破即将到来"，这不仅是分析研判，更是资本市场的预期管理。结合 OpenAI 的自主研究员时间线、Terafab 启动、DeepSeek V4 即将发布，多条线索交叉印证——2026 年 Q2-Q3 可能确实是 AI 能力的下一个拐点窗口。</p>
+                <h3>Cursor-Kimi 事件全球发酵：从产品丑闻到中国 AI 技术实力的意外证明</h3>
+                <div class="summary">
+                    Cursor 承认 Composer 2 底座为月之暗面 Kimi K2.5 的消息持续在全球科技圈发酵。日本 Gigazine、台湾科技新报、印度 Analytics India Magazine 等多国媒体跟进报道。焦点从最初的"信息披露缺失"逐步转向更深层的讨论：<strong>①模型供应链透明度</strong>——CTOs和投资者开始审视自己用的AI产品"引擎盖下"是什么；<strong>②中国模型的全球影响力</strong>——月之暗面不仅发了Attention Residuals论文，还通过商业授权进入了全球最热的编程工具；<strong>③定价权重构</strong>——Cursor用Kimi做底座后把价格打到竞品的1/5，直接施压OpenAI和Anthropic的编码产品定价。
                 </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 Morgan Stanley / 马斯克</span>
-                        <span>📡 Fortune · Reddit · Hacker News</span>
-                    </div>
-                    <a href="https://fortune.com/2026/03/13/elon-musk-morgan-stanley-ai-leap-2026/" class="source-link" target="_blank">查看原文 →</a>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>一周之内，月之暗面创造了两个"第一次"：论文层面，Attention Residuals让Karpathy和马斯克同时点赞；商业层面，Kimi K2.5成为500亿美元估值AI公司的技术底座。这两件事叠加在一起，构成了中国AI在2026年最强的"技术+商业"双重验证。对整个行业的启示是：基座模型的竞争已经从"谁的排名高"变成了"谁被全球产品选用"。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：多家全球科技媒体</span>
+                    <span>平台：Gigazine、科技新报、AlphaMatch.ai、赢政天下、CSDN</span>
+                    <span><a href="https://gigazine.net/gsc_news/en/20260323-cursor-admits-composer-2-kimi/" target="_blank">查看来源 →</a></span>
                 </div>
             </div>
 
-            <div class="section-divider"><span>模型与技术前沿</span></div>
-
-            <!-- 6. 3月模型发布浪潮回顾 -->
             <div class="news-card">
-                <div class="news-number">6</div>
-                <span class="news-tag tag-industry">产业</span>
-                <div class="news-title">3 月模型大战白热化：GPT-5.4 + DeepSeek V4 + Claude Opus 4.6 + MiMo-V2-Pro 四巨头五天内同台竞技</div>
-                <div class="news-summary">
-                    Epium 和 BuildFastWithAI 发文回顾，2026 年 3 月成为 AI 模型发布史上最密集的月份——5 天内 4 个前沿旗舰模型同时更新：OpenAI GPT-5.4（3/5）、DeepSeek V4 万亿参数开源（3/3）、Anthropic Claude Opus 4.6（3/8）、小米 MiMo-V2-Pro（3/18）。编程能力评测中 DeepSeek V4 和 Claude Opus 4.6 在 SWE-bench 上分列前二，GPT-5.4 在通用推理上领先。开源-闭源差距进一步缩小。
+                <div class="card-header">
+                    <span class="rank top3">2</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-industry">产业结构</span>
                 </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>3 月的模型密集发布不是巧合，而是 AI 产业进入"军备竞赛加速期"的标志。更值得注意的是竞争格局的变化：开源（DeepSeek V4、MiMo-V2-Pro）和闭源（GPT-5.4、Claude 4.6）之间的性能差距已经缩小到"各有所长"的程度，这意味着"模型优势"将不再是护城河，商业竞争的焦点正在转移到平台、生态和应用层。</p>
+                <h3>蔡崇信重磅发声：中国科技迎爆发期，电网投资+开源模型是两大驱动力</h3>
+                <div class="summary">
+                    阿里巴巴主席蔡崇信在 Tech in Asia 专访中发表系统性判断：<strong>中国AI正在迎来爆发期</strong>，两大核心驱动力是——①大规模电网投资为AI算力提供了充足的能源保障；②开源模型的兴起显著降低了全球技术使用门槛。他特别指出：<strong>中国庞大的工业基础产生的海量数据是AI领域的重要竞争优势</strong>，"数据是新石油"在中国的工业语境下尤为成立。这番话紧随阿里财报中"五年千亿美元AI收入目标"和Qwen3.5登顶国产模型榜首之后。
                 </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 OpenAI / DeepSeek / Anthropic / 小米</span>
-                        <span>📡 Epium · BuildFastWithAI · NxCode · 知乎</span>
-                    </div>
-                    <a href="https://epium.com/news/march-2026-brings-a-wave-of-artificial-intelligence-model-launches/" class="source-link" target="_blank">查看原文 →</a>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>蔡崇信不是技术出身的CEO，他是投资人和战略家——当他说"爆发期"时，说的是商业回报而非技术进步。将他的判断与Hugging Face报告（中国模型占下载量41%）、Cursor选择Kimi做底座、阿里千亿美元目标放在一起看，一幅完整的图景浮现：中国AI正在从"技术追赶"进入"商业变现"阶段。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：蔡崇信 / 阿里巴巴</span>
+                    <span>平台：Tech in Asia、ITBEAR、AIToolly</span>
+                    <span><a href="https://www.itbear.com.cn/html/2026-03/1225941.html" target="_blank">查看来源 →</a></span>
                 </div>
             </div>
 
-            <!-- 7. Sam Altman 感谢黄仁勋 -->
             <div class="news-card">
-                <div class="news-number">7</div>
-                <span class="news-tag tag-industry">产业</span>
-                <div class="news-title">Altman 公开感谢黄仁勋：NVIDIA 为 OpenAI 在 AWS 上"疯狂扩张"AI 算力，确认 300 亿美元基建投入</div>
-                <div class="news-summary">
-                    Benzinga 报道，Sam Altman 在 X 上公开感谢 Jensen Huang，称 NVIDIA 正在为 OpenAI 在 Amazon Web Services 上"像疯了一样"扩充 AI 计算能力。Altman 同时确认了 300 亿美元的基础设施投入计划。这条互动帖在 X 上获得大量讨论，被视为 OpenAI 与 NVIDIA 深度绑定关系的最新证据。
+                <div class="card-header">
+                    <span class="rank top3">3</span>
+                    <span class="tag tag-policy">政策信号</span>
                 </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>在 Terafab 试图打破 NVIDIA 算力垄断的同一周，Altman 公开示好黄仁勋，暗示 OpenAI 和马斯克系在算力路线上的根本分歧：OpenAI 选择拥抱现有供应链加速扩张，马斯克则押注自建芯片实现垂直整合。这两条路线的成败将决定 2027-2028 年全球 AI 算力的真正格局。</p>
+                <h3>中关村论坛 AI 主题日将于 3/25-29 举办 · 朱松纯宣布"通通 3.0"本月发布</h3>
+                <div class="summary">
+                    第三届中关村论坛<strong>人工智能主题日</strong>系列活动将于3月25日至29日在中关村国际创新中心举办，这是中国规格最高的AI产业盛会之一。与此同时，北京通用人工智能研究院院长、哈佛博士<strong>朱松纯</strong>在鄂州"荆楚科普大讲堂"上宣布：<strong>"通通3.0"通用智能系统将于本月下旬发布</strong>，目标是为通用智能人装上"中国心"。此外，CSDN发布的数据显示：中国AI大模型周调用量达4.69万亿Token，连续两周领跑全球。
                 </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 Sam Altman / Jensen Huang / OpenAI / NVIDIA</span>
-                        <span>📡 Benzinga · X/Twitter</span>
-                    </div>
-                    <a href="https://www.benzinga.com/markets/tech/26/03/51119595/sam-altman-thanks-jensen-huang-as-nvidia-ramps-ai-capacity-like-mad-for-openai-on-amazon-web-services-very-grateful" class="source-link" target="_blank">查看原文 →</a>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>中关村论坛AI主题日的举办时机非常巧妙——紧接在GTC 2026之后，形成中美AI盛会的"接力"。朱松纯的"通通3.0"走的是与主流大语言模型不同的路径：基于认知架构的通用智能，如果有实质性突破，将为AI技术路线的多样性提供新的可能。4.69万亿Token的周调用量则是中国AI应用普及度的直接证据。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：中关村论坛 / 朱松纯 / CSDN</span>
+                    <span>平台：光明网、湖北日报、CSDN</span>
+                    <span><a href="https://digital.gmw.cn/2026-03/23/content_38662861.htm" target="_blank">查看来源 →</a></span>
                 </div>
             </div>
 
-            <div class="section-divider"><span>行业动态 / 新面孔</span></div>
+            <div class="section-divider"><span>技术进展与开源生态</span></div>
 
-            <!-- 8. AI 军事应用 -->
             <div class="news-card">
-                <div class="news-number">8</div>
-                <span class="news-tag tag-industry">产业</span>
-                <div class="news-title">Planet News 深度：2026 年 3 月成为 AI 军事应用"临界点"——技术突破、算力约束、监管升级三重力量汇聚</div>
-                <div class="news-summary">
-                    Planet News 发表深度分析文章，指出 2026 年 3 月标志着全球 AI 格局的关键拐点：快速技术进步、基础设施约束、监管加强和军事应用加速四条趋势同时达到临界。文章特别关注 AI 在国防领域的深度渗透，以及 Anthropic-五角大楼诉讼对整个行业军用化路径的影响。
+                <div class="card-header">
+                    <span class="rank">4</span>
+                    <span class="tag tag-product">产品动态</span>
+                    <span class="tag tag-newface">新面孔</span>
                 </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>AI 的军事化不再是遥远的讨论，而是正在发生的现实。Anthropic 与五角大楼的对峙、OpenAI 的军事合作争议、以及各国军方对 AI 的大规模采购，正在从根本上改变"AI 安全"议题的内涵——它已经从技术安全扩展到了地缘安全。</p>
+                <h3>vLLM-Omni 发布：高性能多模态推理框架，vLLM 生态从纯文本走向多模态</h3>
+                <div class="summary">
+                    vLLM 团队发布 <strong>vLLM-Omni</strong>——专为高效多模态模型推理设计的框架，迅速登上 GitHub Trending。vLLM 此前是纯文本大语言模型推理的事实标准，Omni 版本标志着其正式向<strong>多模态架构</strong>扩展。该框架优化了图像+文本+音频等复杂多模态模型的部署和推理速度，对于企业级多模态AI应用的落地具有重要意义。
                 </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 全球 AI 产业</span>
-                        <span>📡 Planet News</span>
-                    </div>
-                    <a href="https://planet.news/article/ai-technology-march-2026-developments" class="source-link" target="_blank">查看原文 →</a>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>vLLM 是AI推理基础设施的关键组件——几乎每家部署大模型的公司都在用它。当vLLM走向多模态时，意味着企业级多模态AI应用（图文理解、视频分析、语音交互）的部署门槛正在大幅降低。这是从"模型多模态"到"基础设施多模态"的关键一步。</p>
                 </div>
-            </div>
-
-            <!-- 9. 新面孔：Electrek 对 Terafab 的质疑 -->
-            <div class="news-card new-face">
-                <div class="news-number">9</div>
-                <span class="news-tag tag-new-face">新面孔</span>
-                <div class="news-title">Electrek 罕见唱反调："Battery Day on steroids, and even less realistic"——Terafab 遭遇最严厉的技术质疑</div>
-                <div class="news-summary">
-                    在几乎一边倒的 Terafab 报道中，清洁能源媒体 Electrek 发表了标题辛辣的反面分析。文章指出马斯克此前在电池、太阳能屋顶、Cybertruck 等项目上的时间线承诺长期失信，质疑零半导体经验的团队如何在 2nm 制程上与台积电竞争。文章在 Hacker News 上获得超高互动，评论区成为罕见的"看多 vs 看空"辩论场。
-                </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>技术乐观主义需要严肃的质疑来校准。Electrek 的批评揭示了 Terafab 面临的核心风险：半导体制造是人类工程能力的天花板之一，良率、人才、供应链每一项都需要十年以上的积累。这不是"是否应该做"的问题，而是"以马斯克团队当前的能力，能否在合理时间内做到"的问题。</p>
-                </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 Electrek（通常非 AI 垂直媒体）</span>
-                        <span>📡 Electrek · Hacker News</span>
-                    </div>
-                    <a href="https://electrek.co/2026/03/22/tesla-spacex-terafab-chip-factory-ai-desperation/" class="source-link" target="_blank">查看原文 →</a>
+                <div class="meta">
+                    <span>发布者：vLLM Project（新面孔）</span>
+                    <span>平台：GitHub Trending、AIToolly</span>
+                    <span><a href="https://aitoolly.com/ai-news/2026-03-23" target="_blank">查看来源 →</a></span>
                 </div>
             </div>
 
-            <!-- 10. 新面孔：OpenAI 桌面超级应用与自主研究员的社区热议 -->
-            <div class="news-card new-face">
-                <div class="news-number">10</div>
-                <span class="news-tag tag-new-face">新面孔</span>
-                <div class="news-title">Via News 深度：OpenAI 瞄准"无人实验室"——整个研究团队 24/7 无人运行的愿景引发社区激辩</div>
-                <div class="news-summary">
-                    Via News（此前较少出现在 AI 主流报道中）发表了 OpenAI 自主研究员计划的深度跟进报道，详细引用 Pachocki 的采访原文：OpenAI 的最终目标不仅是 AI 研究实习生，而是"整个研究实验室 24/7 无人运行"的完全自主科研系统。文章在 Reddit r/MachineLearning 和 r/singularity 引发大量讨论，部分研究者担忧这将取代学术界的基础研究岗位。
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">5</span>
+                    <span class="tag tag-product">产品动态</span>
+                    <span class="tag tag-newface">新面孔</span>
                 </div>
-                <div class="news-why">
-                    <div class="why-label">为什么这件事重要</div>
-                    <p>当 AI 公司的"北极星"目标是让 AI 替代 AI 研究者本身，我们正在进入一个自我指涉的循环——AI 研究 AI，AI 改进 AI。这不仅仅是就业议题，更是关于"谁控制科学发现方向"的根本性问题。社区的激烈讨论本身就是信号：AI 行业的从业者已经开始认真面对自己被自己的产品替代的可能性。</p>
+                <h3>Claude HUD 监控插件登上 GitHub Trending：AI 驱动开发的"可观测性"成新需求</h3>
+                <div class="summary">
+                    开发者 jarrodwatts 发布的 <strong>Claude HUD</strong> 插件登上 GitHub Trending，该工具提供实时监控 Claude Code 活动的仪表板：<strong>上下文窗口使用情况、活动工具状态、Agent行为追踪</strong>。这是第一个专门为AI编码Agent提供"可观测性（Observability）"的工具。同日，NousResearch 的 Hermes Agent 完成了一项里程碑：<strong>自主编写、排版、编辑并出版了一部完整的 7.9 万字小说</strong>。
                 </div>
-                <div class="news-meta">
-                    <div class="meta-left">
-                        <span>📌 Via News / Reddit 社区</span>
-                        <span>📡 Via News · Reddit · CreatiAI</span>
-                    </div>
-                    <a href="https://via.news/ai-research/openai-targets-fully-autonomous-ai-research-labs-that-run-without-human" class="source-link" target="_blank">查看原文 →</a>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>当AI Agent开始自主执行复杂任务时，"观察AI在做什么"变成了刚需。Claude HUD的流行说明：开发者对AI Agent的需求正在从"让它干活"进化到"让我看懂它在干什么"。而Hermes Agent自主写完一部7.9万字小说，则展示了AI Agent在创意领域的"端到端自主性"已达到令人惊讶的水平。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：jarrodwatts / NousResearch（新面孔）</span>
+                    <span>平台：GitHub Trending、The Neuron</span>
+                    <span><a href="https://aitoolly.com/ai-news/2026-03-23" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>产业动态与地缘政治</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">6</span>
+                    <span class="tag tag-industry">产业动态</span>
+                </div>
+                <h3>Terafab 后续：Tesla-SpaceX-xAI 250 亿美元联合芯片厂引发行业分歧</h3>
+                <div class="summary">
+                    Terafab 3月21日启动后，行业反馈两极分化。<strong>乐观派</strong>：Teslarati 称这是"AI算力自主权的里程碑"，Interesting Engineering 认为马斯克正在减少对外部供应链的依赖。<strong>怀疑派</strong>：Electrek 发表深度分析称"这是 Battery Day 的翻版——宏大承诺但交付时间表不现实"，指出2nm量产的技术难度远超马斯克的乐观预期。TechCrunch 同日报道了特斯拉与SpaceX合作芯片制造的更多细节，但行业观察人士对时间表可行性持谨慎态度。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>Electrek的"Battery Day翻版"类比非常精准——2020年Battery Day承诺的4680电池量产也拖了近3年。但即使Terafab的时间表打折，它的战略意义不变：马斯克系正在构建一个从芯片设计到制造的垂直闭环。值得注意的是：同一周，软银投5000亿美元建数据中心、贝索斯融1000亿美元做AI制造——全球顶级资本对AI算力基础设施的下注规模已经达到"国家级"。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Electrek / TechCrunch / Teslarati</span>
+                    <span>平台：Electrek、TechCrunch、东方财富</span>
+                    <span><a href="https://electrek.co/2026/03/22/tesla-spacex-terafab-chip-factory-ai-desperation/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">7</span>
+                    <span class="tag tag-industry">行业动态</span>
+                </div>
+                <h3>香港引进 102 家重点企业，40+ 家布局 AI · 博纳影业独立 AI 影视子公司</h3>
+                <div class="summary">
+                    "前瞻2035：科技如何影响未来——人工智能篇"峰会在香港举行。香港特区政府引进重点企业办公室披露：<strong>已引进102家重点企业，其中逾40家布局人工智能</strong>。同日，博纳影业宣布将原AIGMS制作中心<strong>升级为独立运营的全资子公司"博越星纪蓝图"</strong>，专注AI影视技术产业化。此外，Rust项目社区发起AI工具使用调查，显示开发者将AI视为"需要高工程技能才能产生高质量结果的工具"。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>香港40%的引进企业聚焦AI，说明AI已成为城市级招商引资的核心赛道。博纳影业成立独立AI影视公司则是一个有趣的信号：中国影视行业开始从"用AI做特效"走向"AI原生影视制作"。同时《红色沙漠》因AI资产道歉的事件也提醒：AI在创意产业的使用边界仍在激烈博弈中。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：香港引进重点企业办公室 / 博纳影业</span>
+                    <span>平台：新浪、搜狐、The Verge</span>
+                    <span><a href="https://k.sina.cn/article_7857201856_1d45362c001903geko.html" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">8</span>
+                    <span class="tag tag-research">研究</span>
+                </div>
+                <h3>MIT 新方法识别"过度自信"的大模型幻觉 · 德勤报告：印度 AI 采用率领先全球</h3>
+                <div class="summary">
+                    <strong>MIT 幻觉检测</strong>：麻省理工研究人员开发了一种新方法，专门用于<strong>识别大模型"过度自信"时产生的幻觉</strong>——不是模型说"我不知道"时的问题，而是模型非常确信地给出错误答案时的问题。这是幻觉检测领域的重要进展。<strong>德勤AI报告</strong>：印度在产品开发（62%）、战略运营（56%）和营销销售（55%）等领域的AI采用率均超全球平均，但同时面临显著的人才技能缺口。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>MIT的研究直击AI最棘手的问题——模型"自信地犯错"比"坦白不知道"更危险。在AI Agent时代，一个"过度自信"的Agent可能自主做出代价高昂的错误决策（参考本月Meta AI Agent失控事件）。印度的高采用率则提醒：AI的全球化竞争不只是中美之间，印度凭借庞大的IT人才基础和低成本优势正在快速崛起。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：MIT / 德勤</span>
+                    <span>平台：AIToolly、Tech in Asia</span>
+                    <span><a href="https://aitoolly.com/ai-news/2026-03-23" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">9</span>
+                    <span class="tag tag-industry">周末回顾</span>
+                </div>
+                <h3>本周末关键数字：5000 亿 · 1000 亿 · 250 亿 · 41% · 28 万</h3>
+                <div class="summary">
+                    回顾3月21-23日这个周末的关键数字：<strong>5000亿美元</strong>——软银在俄亥俄的AI数据中心投资；<strong>1000亿美元</strong>——贝索斯Prometheus基金募资目标；<strong>250亿美元</strong>——Tesla-SpaceX-xAI联合Terafab投资；<strong>41%</strong>——中国模型在Hugging Face上的下载占比；<strong>28万人</strong>——2026年截至目前AI相关裁员总数。这个周末的信息密度即使在AI高速发展的2026年也属异常——五条新闻中的任何一条放在普通月份都是头条级别。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>当一个周末同时出现三笔万亿美元级别的AI基础设施投资时，它传递的信息非常清楚：全球最顶层的资本（马斯克、贝索斯、孙正义）都在赌同一件事——AI算力将成为比石油更重要的战略资源。而41%的中国模型下载占比和28万人的裁员数字，则分别代表了这场变革的供给侧胜利者和需求侧代价。</p>
+                </div>
+                <div class="meta">
+                    <span>综合来源</span>
+                    <span>平台：Teslarati、WSJ、华尔街见闻、Hugging Face、The Neuron</span>
                 </div>
             </div>
 
         </div>
 
         <div class="footer">
-            <p>AI 资讯日报 — 全球 AI 领域重要动态一网打尽</p>
-            <p style="margin-top: 6px;">
-                数据来源：X/Twitter、Reddit、Hacker News、Teslarati、Electrek、CNBC、WSJ、MIT Technology Review、Fortune、Benzinga、Planet News、腾讯新闻、观察者网、中新网、21 经济、上证报、澎湃新闻、Epium、BuildFastWithAI 等
-            </p>
-            <p style="margin-top: 8px;"><a href="../index.html">← 返回首页</a></p>
+            <p><strong>AI 日报</strong> — 每日追踪全球 AI 领域重要动态</p>
+            <p style="margin-top: 6px;">数据来源：TechCrunch、Gigazine、科技新报、Electrek、Tech in Asia、GitHub、光明网、CSDN、新浪、东方财富 等</p>
+            <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报首页</a></p>
         </div>
     </div>
 </body>

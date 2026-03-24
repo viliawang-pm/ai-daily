@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 资讯日报 - 2026年3月24日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); padding: 20px; line-height: 1.6; min-height: 100vh; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); color: white; padding: 50px 40px; text-align: center; position: relative; overflow: hidden; }
+        .header::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at center, rgba(99, 102, 241, 0.15) 0%, transparent 70%); animation: pulse 6s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.1); opacity: 1; } }
+        .header h1 { font-size: 2.8em; font-weight: 800; margin-bottom: 10px; position: relative; z-index: 1; background: linear-gradient(90deg, #a78bfa, #818cf8, #6366f1, #818cf8, #a78bfa); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradient 4s linear infinite; }
+        @keyframes gradient { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
+        .header .date { font-size: 1.3em; opacity: 0.9; position: relative; z-index: 1; color: #c4b5fd; }
+        .header .subtitle { font-size: 1em; opacity: 0.7; margin-top: 8px; position: relative; z-index: 1; color: #a5b4fc; }
+        .stats-bar { display: flex; justify-content: center; gap: 40px; padding: 24px 40px; background: linear-gradient(90deg, #f5f3ff, #ede9fe, #f5f3ff); border-bottom: 1px solid #e5e7eb; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-item .stat-num { font-size: 1.8em; font-weight: 800; color: #4f46e5; }
+        .stat-item .stat-label { font-size: 0.8em; color: #6b7280; font-weight: 500; }
+        .content { padding: 40px; }
+        .news-card { background: #fafafa; border-radius: 16px; padding: 28px; margin-bottom: 24px; border: 1px solid #e5e7eb; transition: all 0.3s ease; position: relative; }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(99, 102, 241, 0.1); border-color: #818cf8; }
+        .news-card .card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+        .news-card .rank { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85em; flex-shrink: 0; }
+        .news-card .rank.top3 { background: linear-gradient(135deg, #f59e0b, #ef4444); }
+        .news-card .tag { padding: 3px 10px; border-radius: 6px; font-size: 0.72em; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-breakthrough { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .tag-signal { background: #ede9fe; color: #5b21b6; border: 1px solid #c4b5fd; }
+        .tag-product { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .tag-funding { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+        .tag-policy { background: #fce7f3; color: #9d174d; border: 1px solid #f9a8d4; }
+        .tag-safety { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .tag-research { background: #f0fdf4; color: #166534; border: 1px solid #86efac; }
+        .tag-newface { background: #fff7ed; color: #c2410c; border: 1px solid #fdba74; }
+        .tag-industry { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+        .news-card h3 { font-size: 1.2em; font-weight: 700; color: #1e1b4b; margin-bottom: 10px; line-height: 1.5; }
+        .news-card .summary { color: #374151; font-size: 0.95em; line-height: 1.8; margin-bottom: 14px; }
+        .news-card .why-important { background: linear-gradient(90deg, #f5f3ff, #ede9fe); border-left: 3px solid #7c3aed; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 14px; }
+        .news-card .why-important .why-title { font-size: 0.78em; font-weight: 700; color: #7c3aed; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .news-card .why-important p { font-size: 0.88em; color: #4c1d95; line-height: 1.6; }
+        .news-card .meta { display: flex; align-items: center; gap: 16px; font-size: 0.8em; color: #9ca3af; flex-wrap: wrap; }
+        .news-card .meta a { color: #6366f1; text-decoration: none; font-weight: 500; }
+        .news-card .meta a:hover { text-decoration: underline; }
+        .section-divider { text-align: center; padding: 32px 0; color: #9ca3af; font-size: 0.85em; position: relative; }
+        .section-divider::before { content: ''; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: linear-gradient(90deg, transparent, #e5e7eb, transparent); }
+        .section-divider span { background: white; padding: 0 20px; position: relative; z-index: 1; font-weight: 600; color: #6b7280; }
+        .footer { text-align: center; padding: 30px 40px; background: #f9fafb; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 0.85em; }
+        .footer a { color: #6366f1; text-decoration: none; }
+        .back-link { display: inline-block; margin-bottom: 20px; color: #a5b4fc; text-decoration: none; font-size: 0.9em; position: relative; z-index: 1; }
+        .back-link:hover { color: white; }
+        @media (max-width: 768px) { body { padding: 10px; } .header { padding: 30px 20px; } .header h1 { font-size: 1.8em; } .content { padding: 20px; } .news-card { padding: 20px; } .stats-bar { gap: 20px; padding: 16px 20px; } }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报首页</a>
+            <h1>AI 资讯日报</h1>
+            <div class="date">2026 年 3 月 24 日 · 星期二</div>
+            <div class="subtitle">中国大模型调用量连续超美 · OpenAI 年底扩军至 8000 人 · HyperAgents 递归自改进 · 软银 300 亿加注 OpenAI</div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-num">9</div>
+                <div class="stat-label">今日资讯</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">10+</div>
+                <div class="stat-label">覆盖平台</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">2</div>
+                <div class="stat-label">新面孔</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">第12期</div>
+                <div class="stat-label">连续发布</div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- ============ 头部区域 ============ -->
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">1</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-industry">产业结构</span>
+                </div>
+                <h3>中国大模型周调用量 4.69 万亿 Token 连续两周超美：从"技术追赶"到"商业碾压"</h3>
+                <div class="summary">
+                    央视网深度报道：OpenRouter 最新数据显示，截至 3 月 15 日，中国 AI 大模型周调用量达 <strong>4.69 万亿 Token</strong>，连续第二周超越美国，全球前三名均为中国模型。核心驱动力不是技术领先，而是<strong>极致性价比</strong>——中国模型与同能力海外模型的价格差距达十几倍。摩根大通预测，中国 AI 推理 Token 消耗量将从 2025 年约 10 千万亿增至 2030 年约 3900 千万亿，<strong>五年增长 370 倍</strong>。更值得关注的是供给侧的连锁反应：算力租赁价格自 2025 Q3 以来一路走高，阿里云、百度智能云近期上调 AI 算力产品价格，涨幅最高达 34%。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>这不只是一个排名变化——它验证了中国 AI 产业走出的独特路径："技术迭代→成本下降→应用爆发"的飞轮正在高速运转。当中国模型价格是 GPT-5 级别的 1/10 时，全球开发者用脚投票。更深层的信号是：算力从"过剩"变成"紧缺"，价格从"下降"变成"上涨"——这是 AI 从"烧钱期"进入"变现期"的经典标志。把蔡崇信上周的"中国 AI 爆发期"判断和这个数据放在一起看，你会发现：中国 AI 的商业化速度已经在超越美国。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：央视网 / OpenRouter</span>
+                    <span>平台：央视网、MSN、第一财经</span>
+                    <span><a href="https://news.cctv.com/2026/03/23/ARTIY9NK61T7g6W0jjQighKR260323.shtml" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">2</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-funding">资本动态</span>
+                </div>
+                <h3>OpenAI 年底扩军至 8000 人 + 软银 300 亿美元追加：AI 军备竞赛进入"人海+资本"双重加码阶段</h3>
+                <div class="summary">
+                    两条新闻必须放在一起看。<strong>人员端</strong>：据《金融时报》报道，OpenAI 计划 2026 年底前将员工从 4500 人增至 <strong>8000 人</strong>，接近翻倍，日均新增约 12 人，重点招聘产品开发、工程、研究和销售。同时正在旧金山扩建超 100 万平方英尺的办公空间。<strong>资金端</strong>：软银已于 2 月 27 日签署确定性协议，通过 Vision Fund 2 向 OpenAI 追加投资 <strong>300 亿美元</strong>。此前软银已在去年 12 月 投入 410 亿美元获得 11% 股权。此外，OpenAI 还在通过收购（Astral、Promptfoo、Neptune 等）和与 TPG、Brookfield 等 PE 机构的合资谈判来扩张版图。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>OpenAI 的扩招方向透露了战略焦虑：大幅增加销售和产品岗位，说明纯技术领先已不够，它需要在企业客户市场与 Anthropic、Google 短兵相接。而孙正义合计超过 700 亿美元的 all-in，在历史上只有他自己 2000 年对阿里巴巴的那笔投资可以相比。将 OpenAI"超级应用"战略、人员翻倍、软银 300 亿三件事串联起来：这家公司正在从"AI 研究实验室"全速转型为"AI 平台公司"——就像当年 Google 从搜索引擎转型为广告平台那个关键时刻。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：《金融时报》/ 软银 / Benzinga</span>
+                    <span>平台：FT、SoftBank官网、Benzinga、IT之家、腾讯新闻</span>
+                    <span><a href="https://group.softbank/en/news/press/20260227" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank top3">3</span>
+                    <span class="tag tag-breakthrough">BREAKTHROUGH</span>
+                    <span class="tag tag-research">研究</span>
+                </div>
+                <h3>HyperAgents 论文：AI 不仅学会了"干活"，还学会了"改进自己干活的方法"</h3>
+                <div class="summary">
+                    arXiv 新论文《Hyperagents: Recursive Metacognitive Self-Improvement》（作者包括 Jeff Clune、Sam Devlin 等）提出了一种全新的 AI 自改进范式：<strong>将任务代理和元代理整合到单一可编辑 Python 程序中</strong>，让 AI 不仅能优化执行任务的方式，还能<strong>递归地改进产生改进的机制</strong>——真正的"元认知自我修改"。实验结果：编程 pass@1 从 0.14 提升至 0.34，论文评审准确率从 0 提升至 0.71（超越静态基线），还发现了优于人类设计的机器人奖励函数。最关键的是：在一个领域优化的元代理可以<strong>零样本迁移到全新领域</strong>并产生改进。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>这篇论文实质上实现了 AI 领域长期追求的"圣杯"之一——递归自改进。传统的自改进系统（如 DGM）改进的是"做什么"，HyperAgents 改进的是"怎么改进"。这意味着系统的进化速度可以加速——不是线性改进，而是改进速度本身在加快。当这种能力与 AI Agent 浪潮结合时，想象空间巨大：一个能自主改进自身代码、策略和工具使用方式的 Agent。当然，论文也坦承这带来了严峻的安全挑战——一个能改写自己评估逻辑的 AI 系统，如何确保它的改进方向是人类想要的？</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：Jenny Zhang, Jeff Clune, Sam Devlin 等</span>
+                    <span>平台：arXiv、Emergent Mind、ICLR 2026 Workshop</span>
+                    <span><a href="https://arxiv.org/pdf/2603.19461" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>产业动态与组织变革</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">4</span>
+                    <span class="tag tag-signal">SIGNAL</span>
+                    <span class="tag tag-industry">产业结构</span>
+                </div>
+                <h3>英伟达成为 AI 产业"最强银行家"：从卖铲子到发贷款</h3>
+                <div class="summary">
+                    《华尔街日报》重磅分析：英伟达正在从芯片供应商转型为 AI 行业最具影响力的<strong>金融支持者</strong>。通过向初创企业投入数十亿美元、为无力购买其芯片的客户提供融资支持，黄仁勋构建了一个"卖芯片+投资+融资"三位一体的商业闭环。这解释了为什么黄仁勋在 Morgan Stanley 大会上表示对 OpenAI（300 亿）和 Anthropic（100 亿）的投资"可能是最后一笔"——不是因为不看好，而是这些公司即将 IPO，英伟达需要转向更早期的赌注。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>英伟达的角色已经远超"芯片公司"。当它同时是供应商、投资方和融资方时，它对 AI 行业的控制力是前所未有的——你买它的芯片，用它投资你的钱，甚至用它提供的贷款来买它的芯片。这种"全产业链锁定"模式在科技史上只有 IBM 大型机时代可以类比。黄仁勋明确说"最后一笔"投给 OpenAI 和 Anthropic，暗示他认为下一波价值创造在更早期、更垂直的 AI 公司。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：The Wall Street Journal</span>
+                    <span>平台：WSJ、Techmeme</span>
+                    <span><a href="https://www.wsj.com/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">5</span>
+                    <span class="tag tag-industry">产业动态</span>
+                </div>
+                <h3>微软"挖走"艾伦 AI 研究所核心团队：Ali Farhadi 离任 CEO 后率队投奔</h3>
+                <div class="summary">
+                    据 GeekWire 报道，微软从保罗·艾伦创立的非营利 AI 研究机构 <strong>AI2（Allen Institute for AI）</strong>挖走了一批核心 AI 研究人员，其中包括已于 3 月 12 日辞职的前 CEO <strong>Ali Farhadi</strong>。Farhadi 曾在苹果担任机器学习主管，是计算机视觉领域的顶级学者。这是微软在 Anthropic 竞争加剧、OpenAI 逐步独立背景下的又一次人才储备行动。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>微软从非营利研究机构"批量挖人"，反映了 AI 人才争夺的白热化——不是挖个别明星，而是整建制迁移研究团队。更深层的信号是：随着 OpenAI 向独立实体转型（IPO 在即），微软需要建立自己的"后 OpenAI"研究能力。Ali Farhadi 横跨学术（UW 教授）、科技巨头（苹果）和非营利研究（AI2），这类"全光谱"人才是最稀缺的。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：GeekWire / AI2</span>
+                    <span>平台：GeekWire、Techmeme</span>
+                    <span><a href="https://www.geekwire.com/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">6</span>
+                    <span class="tag tag-product">产品动态</span>
+                </div>
+                <h3>阿里达摩院今日举办"2026 玄铁 RISC-V 生态大会"：国产 AI 芯片的另一条路</h3>
+                <div class="summary">
+                    阿里达摩院主办的<strong>2026 玄铁 RISC-V 生态大会</strong>今日（3/24）在上海世博桐森酒店召开，官宣有"重磅发布"环节。玄铁是阿里旗下平头哥自研的 RISC-V 处理器系列，定位于 AI 端侧推理和 IoT 场景。在全球芯片制裁背景下，RISC-V 开源指令集架构被视为中国绕过 x86/ARM 授权限制的关键路径。Gartner 近期预测：到 2030 年，中国 80% 的本地 AI 基础设施将采用本土研发的 AI 芯片。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>如果说华为昇腾走的是"高端替代"路线，那玄铁 RISC-V 走的是"生态重建"路线——不是在别人的架构上追赶，而是在开源架构上建立自己的生态系统。Gartner 的 80% 预测看似大胆，但结合华为昇腾 950 预热、阿里平头哥自研 GPU 亮相、3D 芯片架构突破等一系列事件，国产 AI 芯片的多路径并进态势已经非常清晰。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：阿里达摩院 / 平头哥</span>
+                    <span>平台：腾讯新闻、IT之家</span>
+                    <span><a href="https://news.qq.com/rain/a/20260323A03QOA00" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="section-divider"><span>前沿研究与安全治理</span></div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">7</span>
+                    <span class="tag tag-research">研究</span>
+                    <span class="tag tag-newface">新面孔</span>
+                </div>
+                <h3>Meta AI 发布 HyperAgents 框架论文引发热议 · ICLR 2026 首设递归自改进 Workshop</h3>
+                <div class="summary">
+                    HyperAgents 论文的影响力正在快速扩散。<strong>ICLR 2026 首次设立"递归自改进 AI"专题 Workshop</strong>，标志着这一方向从"思想实验"进入"学术主流"。Workshop 汇聚了全模态模型、多模态 Agent、机器人和科学发现等多个方向的研究者。论文作者之一 <strong>Jeff Clune</strong>（进化计算领域先驱）的参与，使得这项工作获得了从进化算法视角对 AI 自改进的独特理论支撑。这是 AI 安全研究者最担忧、也最期待的方向之一。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>当顶级学术会议为"递归自改进"单独开设 Workshop 时，说明学术界已经认为这不再是科幻——而是需要严肃对待的现实。值得注意的是，这个 Workshop 同时关注能力提升和安全保障，反映了学术界"一边加速一边踩刹车"的务实态度。Jeff Clune 从进化计算角度切入 AI 自改进，可能催生出完全不同于主流深度学习路径的 AI 进化范式。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：ICLR 2026 / Jeff Clune（新面孔）</span>
+                    <span>平台：ICLR、OpenReview、arXiv</span>
+                    <span><a href="https://recursive-workshop.github.io/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">8</span>
+                    <span class="tag tag-safety">安全治理</span>
+                </div>
+                <h3>美国国务院成立"新兴威胁局"：AI 武器化正式被列为国家级安全议题</h3>
+                <div class="summary">
+                    据 ABC News 报道，美国国务院启动了<strong>"新兴威胁局"（Bureau of Emerging Threats）</strong>，明确将<strong>对手的 AI 武器化</strong>与网络攻击列为同等优先级的国家安全威胁。这是美国政府首次在国务院层面设立专门应对 AI 安全威胁的机构，与此前 Pentagon-Anthropic 对峙事件和联邦 AI 框架三读形成政策闭环。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>从 Pentagon 认定 Anthropic 有"供应链风险"，到联邦 AI 框架立法，再到国务院成立专门机构——美国 AI 安全治理体系正在以惊人速度建制化。这不仅影响美国国内 AI 公司的合规成本，更会通过外交渠道影响全球 AI 治理议程。对中国 AI 企业出海来说，这是一个需要密切关注的政策信号。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：ABC News / 美国国务院</span>
+                    <span>平台：ABC News、Techmeme</span>
+                    <span><a href="https://abcnews.go.com/" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="card-header">
+                    <span class="rank">9</span>
+                    <span class="tag tag-industry">行业动态</span>
+                    <span class="tag tag-newface">新面孔</span>
+                </div>
+                <h3>诺奖得主今日亮相北京"北纬诺贝巅峰对话" · 中关村论坛 AI 主题日明日开幕</h3>
+                <div class="summary">
+                    <strong>今日</strong>：2025 年诺贝尔经济学奖得主<strong>彼得·豪伊特</strong>教授出席北京"北纬诺贝巅峰对话"，围绕"创新驱动经济增长"主题发言，与中关村科学家和创业家对谈 AI 与经济增长的关系。<strong>明日起</strong>：中关村论坛<strong>人工智能主题日</strong>系列活动正式开幕（3/25-29），被称为"全球 AI 领域'最强大脑'集结海淀"。两场高规格活动背靠背举办，北京正在打造 3 月底的"中国 AI 周"——与月初旧金山 GTC 形成中美 AI 盛会的南北呼应。
+                </div>
+                <div class="why-important">
+                    <div class="why-title">为什么这件事重要</div>
+                    <p>诺奖得主讨论"AI 与经济增长"比讨论"AI 技术突破"更值得关注——因为 AI 的终极价值不在于模型有多强，而在于它能多大程度地改变经济增长模式。豪伊特的内生增长理论核心观点是"创新驱动增长是可持续的"，这恰好为当前 AI 投资热潮提供了经济学理论支撑（或质疑）。中关村论坛 AI 主题日则是中国在 GTC 之后释放产业信号的主场——明天起值得重点关注。</p>
+                </div>
+                <div class="meta">
+                    <span>发布者：北纬诺贝巅峰对话 / 中关村论坛（新面孔）</span>
+                    <span>平台：CITMT、新京报、新华网</span>
+                    <span><a href="https://www.citmt.cn/news/202603/122089.html" target="_blank">查看来源 →</a></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <p><strong>AI 日报</strong> — 每日追踪全球 AI 领域重要动态</p>
+            <p style="margin-top: 6px;">数据来源：央视网、WSJ、FT、Benzinga、GeekWire、ABC News、arXiv、Emergent Mind、腾讯新闻、IT之家、新京报、新华网 等</p>
+            <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报首页</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

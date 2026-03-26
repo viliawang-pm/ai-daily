@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #15 — 2026年3月26日 星期四</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8fafc;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+
+        /* ========== Header ========== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header .issue-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .date {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .header .summary {
+            font-size: 0.95em;
+            opacity: 0.85;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .header .meta-bar {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .header .meta-item {
+            font-size: 0.88em;
+            opacity: 0.8;
+        }
+
+        .header .meta-item strong {
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        /* ========== Container ========== */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ========== Back Link ========== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 32px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* ========== News Cards ========== */
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .news-card.signal {
+            border-left-color: #f6ad55;
+        }
+
+        .news-card.breakthrough {
+            border-left-color: #fc8181;
+        }
+
+        .news-card.new-face {
+            border-left-color: #68d391;
+        }
+
+        .news-card .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .news-card .card-number {
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .news-card .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.72em;
+            font-weight: 600;
+        }
+
+        .tag-signal {
+            background: #fffaf0;
+            color: #c05621;
+            border: 1px solid #feebc8;
+        }
+
+        .tag-breakthrough {
+            background: #fff5f5;
+            color: #c53030;
+            border: 1px solid #fed7d7;
+        }
+
+        .tag-platform {
+            background: #f0f4ff;
+            color: #4c51bf;
+            border: 1px solid #e0e7ff;
+        }
+
+        .tag-new-face {
+            background: #f0fff4;
+            color: #276749;
+            border: 1px solid #c6f6d5;
+        }
+
+        .news-card h3 {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .news-card .card-content {
+            font-size: 0.92em;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .news-card .why-important {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+        }
+
+        .news-card .why-important .label {
+            font-size: 0.78em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .news-card .why-important .text {
+            font-size: 0.88em;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .news-card .card-source {
+            font-size: 0.8em;
+            color: #a0aec0;
+        }
+
+        .news-card .card-source a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .news-card .card-source a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: #a0aec0;
+            font-size: 0.85em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 640px) {
+            .header {
+                padding: 36px 16px 28px;
+            }
+
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .container {
+                padding: 24px 16px 60px;
+            }
+
+            .news-card {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .news-card h3 {
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="issue-badge">第 15 期</div>
+            <h1>AI 日报</h1>
+            <div class="date">2026年3月26日 星期四</div>
+            <div class="summary">
+                OpenAI 关闭 Sora 视频生成业务 · Arm 35年来首发自研芯片 AGI CPU · 黄仁勋 AGI 宣言引发全球辩论 · 中关村论坛 AI 主题日重磅预告 · AI 创投占比创 20 年新高
+            </div>
+            <div class="meta-bar">
+                <span class="meta-item">覆盖 <strong>12+</strong> 平台</span>
+                <span class="meta-item">精选 <strong>10</strong> 条资讯</span>
+                <span class="meta-item"><strong>2</strong> 位新面孔</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">&larr; 返回日报列表</a>
+
+        <!-- ==================== 1 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">The Neuron / 多平台</span>
+                    </div>
+                    <h3>OpenAI 关闭 Sora——上线仅 6 个月，迪士尼 10 亿美元合作受影响</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                据 The Neuron 3月25日报道，OpenAI 正式关闭旗下 AI 视频生成产品 Sora。这款产品自 2025 年 9 月正式上线至今不足 6 个月。此前迪士尼曾与 Sora 达成约 10 亿美元的合作协议。OpenAI 将视频生成能力整合进 ChatGPT 核心产品线，不再以独立产品运营 Sora。这与 Altman 此前承认"多产品分散策略失败"一脉相承——公司正加速向"超级应用"战略收缩。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">Sora 曾是 AI 视频生成的标杆产品。它的关闭不是因为技术失败，而是 OpenAI 战略层面的取舍——在"超级应用"路线下，独立产品被整合为核心应用的功能模块。这意味着 AI 产品战争正在从"百花齐放"进入"超级入口争夺"阶段，独立 AI 视频工具（Runway、Pika 等）的窗口期在缩短。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.theneuron.ai/ai-news-digests/around-the-horn-digest-everything-that-happened-in-ai-on-wednesday-march-25-2026-/" target="_blank">The Neuron</a>
+                · 发布者：The Neuron 编辑团队
+            </div>
+        </div>
+
+        <!-- ==================== 2 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">CNBC / TechCrunch / The Register / WinBuzzer</span>
+                    </div>
+                    <h3>Arm 35 年来首发自研芯片 AGI CPU——136 核，Meta 和 OpenAI 为首批客户</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                英国芯片设计巨头 Arm 宣布发布公司成立 35 年以来的首颗自研芯片——Arm AGI CPU。这是一颗 136 核服务器处理器，专为 AI 数据中心推理场景设计。Meta 成为首个客户，将于今年晚些时候在其数据中心部署；OpenAI 也已签约成为发布客户。Arm 此前一直以 IP 授权模式运营，从未自己生产芯片。这标志着全球半导体行业的一次结构性转变。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">Arm 是全球移动芯片生态的核心——几乎所有智能手机芯片都基于 Arm 架构。如今它亲自下场造芯片，直接进入 AI 数据中心市场与英伟达、AMD、英特尔竞争。这改变了芯片行业"设计者不造芯片"的基本假设，也为 AI 推理算力带来了新的价格和架构竞争维度。Meta 和 OpenAI 同时签约，说明顶级 AI 公司正在积极寻求算力供应多元化。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.cnbc.com/2026/03/24/arm-launches-its-own-cpu-with-meta-as-first-customer.html" target="_blank">CNBC</a>、<a href="https://techcrunch.com/2026/03/24/arm-is-releasing-its-first-in-house-chip-in-its-35-year-history/" target="_blank">TechCrunch</a>、<a href="https://www.theregister.com/2026/03/24/arm_agi_cpu/" target="_blank">The Register</a>、<a href="https://winbuzzer.com/2026/03/25/arm-unveils-first-in-house-ai-chip-meta-openai-xcxwbn/" target="_blank">WinBuzzer</a>
+                · 发布者：Arm 官方
+            </div>
+        </div>
+
+        <!-- ==================== 3 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">Mashable / Awesome Agents / MSN / 多媒体</span>
+                    </div>
+                    <h3>黄仁勋 AGI 宣言持续发酵——全球学界、产界大辩论正式展开</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                英伟达 CEO 黄仁勋 3 月 23 日在 Lex Fridman 播客中宣称"我认为我们已经实现了 AGI"，三天后这一言论的冲击波仍在扩大。Mashable 指出黄仁勋的"AGI 定义"非常狭窄——他将 AGI 定义为"AI 能自主创建一家十亿美元公司"，而非传统意义上的通用智能。Awesome Agents 深度分析认为，当一家 4 万亿美元市值公司的 CEO 做出这种判断，无论定义如何，都会实质性影响算力采购决策和资本市场预期。OfficeChai 指出科技高管已从"预测 AGI 何时到来"悄然转向"宣称 AGI 已经到来"。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">黄仁勋不是学者做学术判断，他是全球最大 AI 芯片供应商的 CEO。他说"AGI 已到来"的潜台词是：算力需求不会放缓。这句话可能影响数千亿美元的基础设施投资决策。辩论的核心不是"AGI 是否真的到了"，而是"AGI 叙事如何重塑算力军备竞赛的资本逻辑"。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://mashable.com/article/nvidia-jensen-huang-agi-lex-fridman-podcast" target="_blank">Mashable</a>、<a href="https://awesomeagents.ai/news/jensen-huang-agi-arrived/" target="_blank">Awesome Agents</a>、<a href="https://www.msn.com/en-us/money/other/nvidia-ceo-jensen-huang-says-we-have-achieved-agi/ar-AA1ZjkyJ" target="_blank">MSN</a>
+                · 发布者：多方媒体与评论
+            </div>
+        </div>
+
+        <!-- ==================== 4 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">新华网 / 腾讯新闻 / ITBEAR / 财联社</span>
+                    </div>
+                    <h3>中关村论坛 AI 主题日：FlagOS2.0、通用智能人"通通"3.0、开源联盟将明日发布</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                2026 中关村论坛年会进入第二天，AI 主题日新闻发布会公布重磅议程。核心活动将于 3 月 27 日集中举办三大板块：（1）核心论坛发布众智 FlagOS2.0 开源系统，揭牌北京市人工智能协会和中关村人工智能开源联盟，启动京港澳 AI 开源通道；（2）中关村学院发布全球首个通用智能人"通通"3.0；（3）前沿大赛总决赛和多场专题论坛。新华网称 AI 主题日"致力于打造我国人工智能领域规格最高、规模最大、影响力最强的标杆平台"。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">FlagOS2.0 是中国 AI 开源生态的旗舰项目，北京市人工智能协会的成立标志着国家层面的产业组织升级。"京港澳 AI 开源通道"是跨区域 AI 协同的新尝试。通用智能人"通通"3.0 的发布可能代表中国在具身智能/通用智能方向的最新成果。明日（3/27）是本届论坛最核心的一天，值得重点关注。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.xinhuanet.com/tech/20260326/c94e0c98cb0b4580b1ff7921c5833fa5/c.html" target="_blank">新华网</a>、<a href="https://news.qq.com/rain/a/20260325A06QEX00" target="_blank">腾讯新闻</a>、<a href="https://www.itbear.com.cn/html/2026-03/1234117.html" target="_blank">ITBEAR</a>、<a href="https://www.163.com/dy/article/KOSIUV3205198CJN.html" target="_blank">财联社/网易</a>
+                · 发布者：中关村论坛组委会
+            </div>
+        </div>
+
+        <!-- ==================== 5 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">TechCrunch / AI Business Review</span>
+                    </div>
+                    <h3>AI 创投占风投总额 41% 创 20 年新高——资本正从传统软件大规模迁移</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                TechCrunch 援引 Carta 数据报道，2026 年 AI 初创公司吸纳了 1280 亿美元风投总额中的 41%，这是过去 20 年来任何单一行业占比的最高纪录。AI Business Review 的分析指出，资金正在从传统 SaaS 和消费互联网大规模转向 AI 赛道，投资人普遍认为"非 AI 软件公司正在变成 AI 公司的原材料"。同时，虽然整体 AI 投资热度高涨，但投资人更加重视"真正的技术护城河"和"资本效率"，"烧钱堆规模"的模式正在被抛弃。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">41% 的占比意味着每投出去的 10 块钱里有 4 块流向 AI。这不是泡沫信号——与 2000 年互联网泡沫不同，当前 AI 公司普遍有真实收入。但这也意味着非 AI 初创公司的融资环境正在急剧恶化。"AI 或者死"正在从口号变成资本市场的现实。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://techcrunch.com/2026/03/20/ai-startups-are-eating-the-venture-industry-and-the-returns-so-far-are-good/" target="_blank">TechCrunch</a>、<a href="https://www.aibusinessreview.org/2026/03/21/ai-startups-41-percent-venture-capital-2026/" target="_blank">AI Business Review</a>
+                · 发布者：Carta 数据 / 编辑分析
+            </div>
+        </div>
+
+        <!-- ==================== 6 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">CNBC / Fortune</span>
+                    </div>
+                    <h3>OpenAI 风险因素清单曝光——对微软依赖、马斯克诉讼、xAI 竞争列为三大风险</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                CNBC 获取的 OpenAI 内部风险评估文件显示，公司将三大因素列为核心风险：（1）对微软的深度依赖——Azure 是 ChatGPT 的唯一基础设施供应商；（2）马斯克/xAI 的持续诉讼和竞争——xAI 在完成 200 亿美元 E 轮后拥有充足弹药；（3）额外 100 亿美元融资的不确定性——在已完成 1100 亿美元融资后，银行合作伙伴正在为追加融资进行谈判。Altman 已辞去 Helion（核聚变公司）董事会席位以减少利益冲突。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">当一家估值 8400 亿美元的公司主动公开其最大风险，这通常意味着 IPO 准备工作在加速。更深层的信号是：OpenAI 正在从"技术公司"向"上市公司"转型，治理结构和信息披露的压力正在改变它的行为模式。Altman 辞去 Helion 董事是典型的 IPO 合规动作。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.cnbc.com/2026/03/23/openai-risk-factors-microsoft-reliance-elon-musk-and-xai-lawsuits.html" target="_blank">CNBC</a>
+                · 发布者：CNBC 调查团队
+            </div>
+        </div>
+
+        <!-- ==================== 7 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">Anthropic / Android Headlines / Ramp / a16z</span>
+                    </div>
+                    <h3>Anthropic 企业市场攻势持续——新客选择率 3:1 超 OpenAI，70% 新签企业级客户</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                Android Headlines 综合 Ramp 和 a16z 数据分析指出，Anthropic 在 2026 年企业市场的攻势已取得结构性优势：首次购买 AI 服务的企业选择 Anthropic 的比率是选择 OpenAI 的 3 倍，70% 的新签企业级客户选择了 Claude 而非 ChatGPT Enterprise。这一趋势在金融、法律、医疗等对安全性要求高的行业尤为明显。Claude 的 App Store 下载量早在 3 月初已超越 ChatGPT。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">消费市场的用户数是虚荣指标，企业市场的付费选择才是真金白银的投票。Anthropic 在企业端的 3:1 领先意味着"安全优先"的品牌定位正在转化为商业壁垒。如果这个趋势持续，2026 年底 Anthropic 的 ARR 可能超过 OpenAI 的企业业务收入。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.androidheadlines.com/2026/03/anthropic-vs-openai-businesses-market-share-2026-analysis.html" target="_blank">Android Headlines</a>、Ramp 数据、a16z 研究报告
+                · 发布者：多方数据综合
+            </div>
+        </div>
+
+        <!-- ==================== 8 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">planet.news / ChatGPT 数据</span>
+                    </div>
+                    <h3>ChatGPT 周活跃用户突破 9 亿——但增长引擎从"用户数"转向"商业化"</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                planet.news 报道 ChatGPT 周活跃用户已突破 9 亿，但分析师更关注的是 OpenAI 的变现路径。购物功能（Agentic Commerce Protocol）上线后日均交易额快速增长，Library（资料库）功能增强了用户粘性，但同时 Sora 的关闭表明公司正在"做减法"——砍掉非核心产品，集中资源在 ChatGPT 这一超级入口上做深商业化。这与 Meta 当年从多产品线收缩到 Facebook+Instagram 的逻辑相似。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">9 亿周活是一个里程碑，但更重要的信号是 OpenAI 从"用户增长优先"转向"变现效率优先"。对于即将 IPO 的公司，这是必经之路。ChatGPT 正在从"AI 聊天机器人"进化为"AI 操作系统"——搜索、购物、编程、文件管理都在同一个入口完成。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://planet.news/article/ai-technology-march-2026-developments" target="_blank">planet.news</a>
+                · 发布者：planet.news 分析团队
+            </div>
+        </div>
+
+        <!-- ==================== 9 ==================== -->
+        <div class="news-card new-face">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-new-face">新面孔</span>
+                        <span class="tag tag-platform">sergeytereshkin.com</span>
+                    </div>
+                    <h3>3月26日全球创投日报：AI + Legal Tech 成新热点，资金从模型层下沉到垂直应用层</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                独立创投分析师 Sergey Tereshkin 发布了 3 月 26 日的全球创投日报，指出当天最突出的趋势是 AI 与法律科技（Legal Tech）的融合加速，多家 AI 法律初创完成融资。同时他观察到一个结构性转变：风投资金正在从"基础模型层"（已被巨头垄断）向"垂直应用层"和"基础设施层"迁移，2026 年 Q1 的垂直 AI 应用融资同比增长超过 200%。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">当资金从模型层转向应用层，意味着 AI 产业正在进入"应用爆发期"。基础模型的竞争格局已基本形成（OpenAI/Anthropic/Google/DeepSeek），下一阶段的增长来自千行百业的垂直落地。Legal Tech 只是冰山一角。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://sergeytereshkin.com/publications/startup-and-venture-investment-news-march-26-2026-ai-legal-tech-and-new-trends" target="_blank">Sergey Tereshkin</a>
+                · 发布者：Sergey Tereshkin（独立创投分析师）
+            </div>
+        </div>
+
+        <!-- ==================== 10 ==================== -->
+        <div class="news-card new-face">
+            <div class="card-header">
+                <span class="card-number">10</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-new-face">新面孔</span>
+                        <span class="tag tag-platform">Dataconomy / The AI Insider</span>
+                    </div>
+                    <h3>Arm AGI CPU 深度解读：从 IP 授权到造芯片，半导体行业的"Arm 冲击波"</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                Dataconomy 和 The AI Insider 分别发表深度分析，认为 Arm 进入自研芯片市场是半导体行业过去十年最大的结构性变化之一。Arm 架构已在移动端占据统治地位（全球 99% 智能手机），如今进入数据中心市场，直接威胁英伟达在 AI 推理芯片的定价权。The AI Insider 指出，这也解释了为何英伟达在 GTC 2026 上如此强调"全栈平台"战略——提前构建软件生态壁垒应对 Arm 等新进入者的硬件挑战。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">Arm 造芯片不仅是一家公司的战略转型，更是整个 AI 算力供应链的重组信号。如果 Arm 的 AI 推理芯片在性价比上超越英伟达 GPU，可能改变"推理算力=英伟达"的行业默认。这对正在疯狂采购算力的 AI 公司们是好消息——更多供应商意味着更低的价格。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://dataconomy.com/2026/03/25/arm-releases-first-in-house-chip-in-35-years-targeting-ai-data-centers/" target="_blank">Dataconomy</a>、<a href="https://theaiinsider.tech/2026/03/25/arm-enters-ai-chip-market-with-launch-of-arm-agi-cpu-in-strategic-shift/" target="_blank">The AI Insider</a>
+                · 发布者：行业分析师
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #15 — 2026年3月26日 星期四</p>
+        <p style="margin-top: 6px;">数据来源：The Neuron、CNBC、TechCrunch、The Register、Mashable、Awesome Agents、新华网、腾讯新闻、planet.news、Dataconomy 等</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+
+</html>

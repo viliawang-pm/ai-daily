@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #16 — 2026年3月27日 星期五</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8fafc;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+
+        /* ========== Header ========== */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header .issue-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .header .date {
+            font-size: 1.1em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .header .summary {
+            font-size: 0.95em;
+            opacity: 0.85;
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .header .meta-bar {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .header .meta-item {
+            font-size: 0.88em;
+            opacity: 0.8;
+        }
+
+        .header .meta-item strong {
+            opacity: 1;
+            font-weight: 700;
+        }
+
+        /* ========== Container ========== */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ========== Back Link ========== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 32px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        /* ========== News Cards ========== */
+        .news-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+
+        .news-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .news-card.signal {
+            border-left-color: #f6ad55;
+        }
+
+        .news-card.breakthrough {
+            border-left-color: #fc8181;
+        }
+
+        .news-card.new-face {
+            border-left-color: #68d391;
+        }
+
+        .news-card .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .news-card .card-number {
+            background: #667eea;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .news-card .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.72em;
+            font-weight: 600;
+        }
+
+        .tag-signal {
+            background: #fffaf0;
+            color: #c05621;
+            border: 1px solid #feebc8;
+        }
+
+        .tag-breakthrough {
+            background: #fff5f5;
+            color: #c53030;
+            border: 1px solid #fed7d7;
+        }
+
+        .tag-platform {
+            background: #f0f4ff;
+            color: #4c51bf;
+            border: 1px solid #e0e7ff;
+        }
+
+        .tag-new-face {
+            background: #f0fff4;
+            color: #276749;
+            border: 1px solid #c6f6d5;
+        }
+
+        .news-card h3 {
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #1a202c;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .news-card .card-content {
+            font-size: 0.92em;
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .news-card .why-important {
+            background: #f7fafc;
+            border-radius: 10px;
+            padding: 12px 16px;
+            margin-bottom: 12px;
+        }
+
+        .news-card .why-important .label {
+            font-size: 0.78em;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 4px;
+        }
+
+        .news-card .why-important .text {
+            font-size: 0.88em;
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .news-card .card-source {
+            font-size: 0.8em;
+            color: #a0aec0;
+        }
+
+        .news-card .card-source a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .news-card .card-source a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: #a0aec0;
+            font-size: 0.85em;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 640px) {
+            .header {
+                padding: 36px 16px 28px;
+            }
+
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .container {
+                padding: 24px 16px 60px;
+            }
+
+            .news-card {
+                padding: 20px;
+                border-radius: 12px;
+            }
+
+            .news-card h3 {
+                font-size: 1.05em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="issue-badge">第 16 期</div>
+            <h1>AI 日报</h1>
+            <div class="date">2026年3月27日 星期五</div>
+            <div class="summary">
+                Nature 刊发 AI 端到端自动化科研论文 · 博鳌论坛定调"2026 智能体 AI 元年" · Google Gemini 3.1 Flash Live 发布 · 新华社深度解读 OpenAI"断舍离" · 中关村论坛 AI 主题日核心论坛
+            </div>
+            <div class="meta-bar">
+                <span class="meta-item">覆盖 <strong>12+</strong> 平台</span>
+                <span class="meta-item">精选 <strong>10</strong> 条资讯</span>
+                <span class="meta-item"><strong>2</strong> 位新面孔</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">&larr; 返回日报列表</a>
+
+        <!-- ==================== 1 ==================== -->
+        <div class="news-card breakthrough">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-breakthrough">BREAKTHROUGH</span>
+                        <span class="tag tag-platform">Nature / 多平台</span>
+                    </div>
+                    <h3>Nature 正刊刊发"AI 端到端自动化科研"论文——AI 系统已能独立产出通过同行评审的研究论文</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                Nature 3月26日发表重磅论文《Towards end-to-end automation of AI research》，研究展示了一个 AI 系统能够以极少的人工参与完成从假说提出、实验设计、代码编写、结果分析到论文撰写的完整科研流程，且产出的论文已通过顶级机器学习会议 Workshop 的第一轮同行评审。这标志着 AI 科研自动化从概念验证进入实质性突破阶段。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">这篇论文的意义在于它证明了 AI 不只是"辅助"科研，而是能够端到端"驱动"科研。此前 OpenAI 的 Pachocki 宣称"2028年全自主科研"被认为是激进预测——而现在 Nature 正刊已经验证了第一步。如果这条路线成功，科研的"人力瓶颈"将被打破，AI 论文产出速度可能呈指数增长。这与 Karpathy 此前"人类已成 AI 研究瓶颈"的判断完全一致。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.nature.com/articles/s41586-026-10265-5" target="_blank">Nature</a>
+                · 发布者：Nature 编辑部
+            </div>
+        </div>
+
+        <!-- ==================== 2 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">央视财经 / 光明网 / 腾讯新闻 / 澎湃</span>
+                    </div>
+                    <h3>博鳌论坛 AI 多场分论坛定调——张亚勤宣布"2026 年为智能体 AI 元年"，人机协作重塑未来</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                博鳌亚洲论坛 2026 年年会密集举行多场 AI 分论坛：（1）"走进AI时代：把握机遇 创造未来"分论坛全面讨论 AI 产业机遇与挑战；（2）"AI+健康的未来：应用与治理"探讨医疗 AI 应用边界；（3）"人形机器人的进阶与飞跃"——机器人作为辅助主持人亮相论坛现场。中国工程院院士、清华大学智能产业研究院院长张亚勤在论坛上正式宣布"2026 年为智能体 AI 元年"，认为人机协作将全面重塑产业格局。新华网评价"今年博鳌最直观的感受就是'AI味'十足"。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">博鳌论坛是亚洲最高规格的经济论坛，张亚勤的"智能体 AI 元年"定调具有产业信号意义——这不是学术判断，而是反映了中国产业界对 AI Agent 进入主流应用阶段的共识。博鳌旗舰报告同步指出"全球 AI 发展重心正从欧美向亚洲转移，中国已成全球 AI 重要一极"，这一结论与 OpenRouter 数据（中国 Token 调用量连续超越美国）相互印证。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://finance.cctv.com/2026/03/27/ARTIewZ2wijWzH5MzFWIx5dO260327.shtml" target="_blank">央视财经</a>、<a href="http://www1.xinhuanet.com/politics/20260326/0b3199b7e5734326a3bbec3529b3d018/c.html" target="_blank">新华网</a>、<a href="https://news.qq.com/rain/a/20260326A045FY00" target="_blank">腾讯新闻</a>、<a href="https://www.thepaper.cn/newsDetail_forward_32819207" target="_blank">澎湃新闻</a>
+                · 发布者：博鳌亚洲论坛组委会
+            </div>
+        </div>
+
+        <!-- ==================== 3 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">The Neuron / Google Blog</span>
+                    </div>
+                    <h3>Google 发布 Gemini 3.1 Flash Live——本周最大 AI 产品发布，实时多模态能力大幅升级</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                据 The Neuron 报道，Google 本周发布了 Gemini 3.1 Flash Live，被称为"本周 AI 最大事件"（had the biggest day in AI this week, and it wasn't even close）。Flash Live 是 Google 迄今为止最高质量的实时多模态 AI 模型，支持低延迟的语音对话、实时视觉理解和跨模态推理。这是继 Gemini 3.1 Pro 和 Flash-Lite 之后，Google 在推理效率和实时交互两个维度同时发力的关键产品。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">Flash Live 的发布表明 Google 的 AI 战略已经从"模型能力竞赛"转向"实时交互体验竞赛"。当 OpenAI 在整合 Sora、收缩产品线时，Google 在疯狂扩张 Gemini 的产品矩阵——从 Flash-Lite（极致成本）到 Flash Live（极致体验），覆盖全场景。The Neuron 编辑团队用"it wasn't even close"来形容 Google 的领先，这在此前偏向 OpenAI 叙事的媒体中非常罕见。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.theneuron.ai/ai-news-digests/around-the-horn-digest-everything-that-happened-in-ai-on-friday-march-27-2026/" target="_blank">The Neuron</a>
+                · 发布者：Google / The Neuron 编辑团队
+            </div>
+        </div>
+
+        <!-- ==================== 4 ==================== -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">新华社 / 华尔街见闻</span>
+                    </div>
+                    <h3>新华社硅谷手记深度解读：OpenAI 关停 Sora 是"断舍离"，背后是 AI 竞赛的新赛点</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                新华社驻旧金山记者吴晓凌发出深度报道《硅谷手记丨关停Sora，OpenAI的"断舍离"与AI新赛点》，从三个维度解读 OpenAI 关停 Sora 的深层逻辑：（1）AI 视频生成的商业模式尚未验证，迪士尼 10 亿美元合作更多是战略投资而非真实收入；（2）OpenAI 正将资源集中到 ChatGPT"超级应用"和 AI Agent 两条主线；（3）这标志着 AI 产品战争进入"减法阶段"——谁能更快砍掉非核心业务，谁就能在资源有限的竞赛中胜出。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">新华社的深度解读提供了中国视角下对硅谷 AI 竞赛格局的高质量分析。"断舍离"不是 OpenAI 的失败，而是 AI 行业进入"聚焦期"的信号——当烧钱速度指数增长，多线作战变得不可持续。这个逻辑对中国 AI 公司同样适用。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.news.cn/tech/20260327/d79d9ef6c5e64caa960e55defcd6eac8/c.html" target="_blank">新华社</a>、<a href="https://wallstreetcn.com/articles/3768308" target="_blank">华尔街见闻</a>
+                · 发布者：新华社驻旧金山记者 吴晓凌
+            </div>
+        </div>
+
+        <!-- ==================== 5 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">新华网 / 中关村论坛官网</span>
+                    </div>
+                    <h3>中关村论坛 AI 主题日核心论坛举行——FlagOS2.0 发布、北京市 AI 协会揭牌、京港澳开源通道启动</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                2026 中关村论坛年会 3 月 27 日进入 AI 主题日核心论坛日。三大重点板块集中发布：（1）众智 FlagOS2.0 开源系统正式发布——这是中国 AI 开源生态的旗舰平台，覆盖从模型训练到部署的全链路；（2）北京市人工智能协会正式揭牌，中关村人工智能开源联盟成立；（3）京港澳 AI 开源通道启动，推动跨区域 AI 技术协同。新华网评价 AI 主题日"致力于打造我国人工智能领域规格最高、规模最大、影响力最强的标杆平台，全面展现我国 AI 硬核实力"。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">FlagOS2.0 是中国对标 Hugging Face 生态的核心平台，北京市 AI 协会的成立意味着国家层面的产业组织正在加速建设。京港澳开源通道尤其值得关注——它可能成为中国 AI 技术出海的"合规通道"，在中美科技脱钩的背景下，港澳作为桥梁节点的战略价值在提升。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.xinhuanet.com/tech/20260326/c94e0c98cb0b4580b1ff7921c5833fa5/c.html" target="_blank">新华网</a>、<a href="https://www.zgcforum.com.cn/" target="_blank">中关村论坛官网</a>
+                · 发布者：中关村论坛组委会
+            </div>
+        </div>
+
+        <!-- ==================== 6 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">博鳌报告 / 澎湃 / 北京商报</span>
+                    </div>
+                    <h3>博鳌旗舰报告：全球 AI 发展重心从欧美向亚洲转移，中国已成全球 AI 重要一极</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                博鳌亚洲论坛发布《亚洲经济前景及一体化进程2026年度报告》，指出全球人工智能发展重心正在从欧美向亚洲转移。报告数据显示：中国在 AI 论文发表数量、专利申请、模型 API 调用量（OpenRouter 数据中国连续数周超越美国）三个维度均已进入全球第一梯队。报告特别提及中国 AI 大模型周调用量 4.69 万亿 Token 连续霸榜的现象，认为这反映了"技术迭代→成本下降→应用爆发"的正向飞轮已经形成。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">博鳌旗舰报告代表了亚洲经济体的集体判断。"重心转移"不是中国的自我评价，而是国际经济论坛基于数据的结论。这一判断可能影响全球 AI 投资流向——如果国际资本开始认真对待"亚洲 AI 崛起"的叙事，中国 AI 公司的国际融资环境可能改善。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://www.thepaper.cn/newsDetail_forward_32819207" target="_blank">澎湃新闻</a>、<a href="https://k.sina.cn/article_7857201856_1d45362c001903jlfo.html" target="_blank">北京商报/新浪</a>
+                · 发布者：博鳌亚洲论坛秘书处
+            </div>
+        </div>
+
+        <!-- ==================== 7 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">blockchain.news / arXiv</span>
+                    </div>
+                    <h3>arXiv 3月 AI 论文井喷——单月 3399 篇，Prompt Engineering 重回研究热点</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                arXiv cs.AI 板块 3 月论文数量达 3399 篇，创历史新高。blockchain.news 分析指出，Prompt Engineering（提示工程）作为研究主题正在经历"文艺复兴"——此前被认为是"临时技巧"的提示工程正在被系统化、理论化，多篇论文探索了如何通过精心设计的提示显著提升大语言模型在特定任务上的表现。这与"模型越大越好"的叙事形成有趣的张力——部分研究表明，优秀的提示工程可以让小模型达到大模型的效果。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">3399 篇/月的论文产出量本身就是一个信号——AI 研究的"军备竞赛"不仅在工业界，学术界同样在加速。Prompt Engineering 的回归说明行业正在从"追求更大的模型"向"追求更高效的使用"转变，这对降低 AI 应用门槛至关重要。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://arxiv.org/list/cs.AI/current" target="_blank">arXiv</a>、<a href="https://blockchain.news/ainews/latest-analysis-2026-arxiv-paper-reveals-new-ai-breakthrough-and-benchmarks" target="_blank">blockchain.news</a>
+                · 发布者：arXiv / 研究社区
+            </div>
+        </div>
+
+        <!-- ==================== 8 ==================== -->
+        <div class="news-card">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-platform">百度开发者 / 多媒体</span>
+                    </div>
+                    <h3>百度开发者中心发布"2026年3月全球AI技术动态全景解析"——24项关键事件，三大维度</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                百度开发者中心发布了一份全面的 3 月 AI 月度回顾报告，覆盖 24 项关键事件，分三大维度解析：（1）基础架构创新：Kimi Attention Residuals、Muon 优化器、Vera Rubin 平台等底层突破；（2）行业应用深化：ChatGPT 购物、AI Agent 平台化、医疗 AI 等垂直应用爆发；（3）安全伦理挑战：Meta AI Agent 失控事件、OpenClaw 安全危机、Anthropic-Pentagon 对峙等治理难题。报告认为 2026 年 3 月是 AI 行业"拐点月"——技术突破、商业化和监管三条线同时加速。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">月度回顾类报告的价值在于提供"鸟瞰视角"。当我们每天追踪单条新闻时，容易忽视结构性趋势。百度这份报告将 3 月定义为"拐点月"的判断值得记住——如果未来回顾 2026 年 AI 发展史，3 月可能是多条关键技术路线验证的起点。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://developer.baidu.com/article/detail.html?id=6270722" target="_blank">百度开发者中心</a>
+                · 发布者：百度开发者中心编辑部
+            </div>
+        </div>
+
+        <!-- ==================== 9 ==================== -->
+        <div class="news-card new-face">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-new-face">新面孔</span>
+                        <span class="tag tag-platform">AI Reporter / 多平台</span>
+                    </div>
+                    <h3>加拿大 Alberta 省吸引超 1000 亿美元 AI 数据中心投资——北美 AI 算力版图扩张</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                AI Reporter 报道，加拿大阿尔伯塔省的 AI 数据中心建设计划已吸引超过 1000 亿美元投资承诺，成为跨境市场焦点。该省凭借充足的能源供应（天然气+可再生能源）、寒冷气候（天然散热优势）和相对宽松的监管环境，正在成为北美 AI 基础设施建设的新热点。这与美国本土的 Terafab（德克萨斯）形成了跨国竞争格局。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">AI 算力竞赛正在重塑全球地理经济版图。加拿大 Alberta 的崛起说明 AI 数据中心的选址逻辑已经从"靠近用户"转向"靠近能源+冷却"——这与比特币矿场的选址逻辑惊人相似。1000 亿美元级别的投资承诺也意味着 AI 基础设施正在成为国家间竞争的战略资产。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://aireporter.news/3-developments-were-watching-today-march-27-2026/" target="_blank">AI Reporter</a>
+                · 发布者：AI Reporter 编辑团队
+            </div>
+        </div>
+
+        <!-- ==================== 10 ==================== -->
+        <div class="news-card new-face">
+            <div class="card-header">
+                <span class="card-number">10</span>
+                <div>
+                    <div class="card-tags">
+                        <span class="tag tag-new-face">新面孔</span>
+                        <span class="tag tag-platform">光明网 / 中国日报</span>
+                    </div>
+                    <h3>博鳌论坛人形机器人分论坛：机器人担任辅助主持人，数字人 ViviDora 作为嘉宾参与讨论</h3>
+                </div>
+            </div>
+            <div class="card-content">
+                博鳌亚洲论坛"人形机器人的进阶与飞跃"分论坛上演了一幕具有象征意义的场景——一台人形机器人作为辅助主持人亮相现场，数字人 ViviDora 则直接作为嘉宾参与分论坛讨论。新华网评价"今年博鳌最直观的感受就是'AI味'十足"——会场内机器人"记者"向嘉宾提问，会场外"熊猫船长"机器人巡逻。这不再是技术展示，而是 AI 正在融入最高规格经济论坛的日常运作。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要？</div>
+                <div class="text">当人形机器人和数字人出现在博鳌论坛这种级别的场合时，这不是"噱头"——它反映了主办方对技术成熟度的判断。机器人辅助主持、AI 记者提问，这些场景一年前还在 CES 展台上，现在已经进入了国际政经论坛的议程。人机协作从实验室走向真实场景的速度，正在超出大多数人的预期。</div>
+            </div>
+            <div class="card-source">
+                来源：<a href="https://difang.gmw.cn/2026-03/27/content_38675342.htm" target="_blank">光明网</a>、<a href="https://cn.chinadaily.com.cn/a/202603/26/WS69c4e535a310942cc49a5027.html" target="_blank">中国日报</a>
+                · 发布者：博鳌亚洲论坛
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 — 每日追踪全球 AI 领域重要动态</p>
+        <p style="margin-top: 8px;">
+            <a href="https://viliawang-pm.github.io/ai-daily/">返回日报列表</a>
+        </p>
+    </div>
+</body>
+
+</html>

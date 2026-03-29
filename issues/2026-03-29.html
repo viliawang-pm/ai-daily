@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 日报 #18 — 2026年3月29日</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+    background: #f8fafc;
+    color: #1a202c;
+    line-height: 1.7;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+}
+
+.header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.header h1 { font-size: 2.4em; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+.header .date { font-size: 1.1em; opacity: 0.9; margin-bottom: 8px; }
+.header .summary { font-size: 0.95em; opacity: 0.82; line-height: 1.6; }
+.header .back-link { display: inline-block; margin-top: 16px; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88em; border: 1px solid rgba(255,255,255,0.3); padding: 6px 18px; border-radius: 20px; transition: all 0.2s; }
+.header .back-link:hover { background: rgba(255,255,255,0.15); color: white; }
+
+/* Stats Bar */
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+.stats-bar .stat { text-align: center; }
+.stats-bar .stat-num { font-size: 1.6em; font-weight: 700; display: block; }
+.stats-bar .stat-label { font-size: 0.78em; opacity: 0.75; }
+
+/* Container */
+.container { max-width: 840px; margin: 0 auto; padding: 40px 20px 80px; }
+
+/* News Card */
+.news-card {
+    background: white;
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    border-left: 4px solid #e2e8f0;
+    transition: all 0.2s;
+}
+.news-card:hover {
+    box-shadow: 0 6px 24px rgba(102,126,234,0.12);
+    transform: translateY(-2px);
+}
+.news-card.breakthrough { border-left-color: #e53e3e; }
+.news-card.signal { border-left-color: #667eea; }
+.news-card.new-face { border-left-color: #38b2ac; }
+
+.news-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.news-card .card-number {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.82em;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.news-card .card-tag {
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.72em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.tag-breakthrough { background: #fff5f5; color: #e53e3e; border: 1px solid #fed7d7; }
+.tag-signal { background: #ebf4ff; color: #4c6ef5; border: 1px solid #c3dafe; }
+.tag-new-face { background: #e6fffa; color: #319795; border: 1px solid #b2f5ea; }
+.tag-trend { background: #fefcbf; color: #975a16; border: 1px solid #fefcbf; }
+
+.news-card .card-source {
+    font-size: 0.75em;
+    color: #a0aec0;
+    margin-left: auto;
+}
+
+.news-card h3 {
+    font-size: 1.15em;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.news-card .card-body {
+    color: #4a5568;
+    font-size: 0.92em;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+.news-card .card-why {
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.85em;
+    color: #2d3748;
+    line-height: 1.7;
+    border-left: 3px solid #667eea;
+}
+
+.news-card .card-why strong { color: #667eea; }
+
+.news-card .card-links {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.news-card .card-links a {
+    color: #667eea;
+    font-size: 0.8em;
+    text-decoration: none;
+    padding: 3px 10px;
+    background: #f0f4ff;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+.news-card .card-links a:hover { background: #e0e7ff; }
+
+.news-card .card-engagement {
+    margin-top: 10px;
+    font-size: 0.78em;
+    color: #a0aec0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 40px 24px;
+    color: #a0aec0;
+    font-size: 0.82em;
+    border-top: 1px solid #e2e8f0;
+    margin-top: 40px;
+}
+.footer a { color: #667eea; text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 640px) {
+    .header { padding: 32px 16px; }
+    .header h1 { font-size: 1.6em; }
+    .container { padding: 24px 14px 60px; }
+    .news-card { padding: 20px 16px; }
+    .news-card h3 { font-size: 1.05em; }
+    .stats-bar { gap: 20px; }
+    .stats-bar .stat-num { font-size: 1.3em; }
+    .news-card .card-source { margin-left: 0; width: 100%; margin-top: 4px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-content">
+        <h1>AI 日报 #18</h1>
+        <div class="date">2026年3月29日 · 星期日</div>
+        <div class="summary">Anthropic 内部 3000 份文档泄露，Claude Mythos 提前曝光 · OpenAI Codex 从编码工具进化为工作流平台 · 腾讯云首发 Agent 产品全景图 · 中关村论坛闭幕日：业界预测具身智能规模化应用元年</div>
+        <div class="stats-bar">
+            <div class="stat"><span class="stat-num">9</span><span class="stat-label">今日资讯</span></div>
+            <div class="stat"><span class="stat-num">14+</span><span class="stat-label">覆盖平台</span></div>
+            <div class="stat"><span class="stat-num">2</span><span class="stat-label">新面孔</span></div>
+        </div>
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- 1. Anthropic Claude Mythos -->
+    <div class="news-card signal">
+        <div class="card-header">
+            <span class="card-number">1</span>
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <span class="card-source">Fortune · WinBuzzer · Mashable · The Neuron · Blockonomi</span>
+        </div>
+        <h3>Anthropic CMS 配置错误泄露 3000 份内部文档——Claude Mythos 模型提前曝光，IPO 锁定 10 月</h3>
+        <div class="card-body">
+            上周五，安全研究人员发现 Anthropic 一个未受保护的数据存储中包含近 3000 份未发布的内部文档。泄露内容揭示了多个关键信息：<strong>Claude Mythos</strong>（内部代号 Capybara/水豚）正在测试中，Anthropic 官方确认其代表"AI 推理能力的阶梯式跃升"（step change）；新模型将位于 Opus 之上，成为新的顶级层级；同时曝光了 Anthropic <strong>IPO 计划锁定 2026 年 10 月</strong>；泄露博文还包含对该模型"可加速网络战争"的内部安全警告。Anthropic 称此次事件系"人为错误导致的 CMS 配置失误"，已在 Fortune 联系后关闭公开搜索权限。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>这不仅是一次安全事故——它提前揭开了 Anthropic 下一代模型的面纱。Claude Mythos 定位在 Opus 之上，意味着 Anthropic 正在构建前所未有的推理能力层级。更重要的是，IPO 时间表曝光让市场首次看到 Anthropic 的资本化路径，与 OpenAI Q4 IPO 计划形成正面对撞。一家以"安全"为核心品牌的 AI 公司却出了安全事故——这个讽刺本身就是信号。
+        </div>
+        <div class="card-links">
+            <a href="https://fortune.com/2026/03/26/anthropic-leaked-unreleased-model-exclusive-event-security-issues-cybersecurity-unsecured-data-store/" target="_blank">Fortune 独家报道</a>
+            <a href="https://fortune.com/2026/03/26/anthropic-says-testing-mythos-powerful-new-ai-model-after-data-leak-reveals-its-existence-step-change-in-capabilities/" target="_blank">Fortune：Anthropic 确认 Mythos</a>
+            <a href="https://winbuzzer.com/2026/03/27/anthropic-confirms-leaked-mythos-model-step-change-reasoning-xcxwbn/" target="_blank">WinBuzzer</a>
+            <a href="https://mashable.com/article/claude-mythos-ai-model-anthropic-leak" target="_blank">Mashable</a>
+            <a href="https://blockonomi.com/anthropics-claude-mythos-ai-model-exposed-in-major-data-breach/" target="_blank">Blockonomi</a>
+        </div>
+    </div>
+
+    <!-- 2. OpenAI Codex Plugins -->
+    <div class="news-card signal">
+        <div class="card-header">
+            <span class="card-number">2</span>
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <span class="card-source">ZDNET · Ars Technica · unwire.pro · releasebot.io</span>
+        </div>
+        <h3>OpenAI Codex 推出 Plugins 系统——从编码工具正式进化为工作流自动化平台，直追 Claude Code</h3>
+        <div class="card-body">
+            3 月 27 日，OpenAI 为 Codex 推出了 <strong>Plugins（外挂程式）系统</strong>，可直接连接 Slack、Figma、Notion、Gmail 等日常办公工具。这标志着 Codex 从"AI 编程助手"正式扩展为<strong>通用工作流自动化平台</strong>。同时发布的还有多 Agent 工作流优化、图像处理改进、app-server TUI 能力（含 prompt 回忆、shell 命令、文件操作）。Ars Technica 评价称此举"缩小了与 Claude Code 的差距"，ZDNET 则认为 Codex 正在直接挑战 Claude Code 在开发者群体中的领先地位。Codex 目前周活跃用户已超过百万。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>Codex Plugins 的本质不是功能更新——而是<strong>平台化转型宣言</strong>。当 AI 编程工具开始集成 Slack 和 Figma 时，它就不再是"写代码的工具"，而是"替你工作的 Agent"。这是 OpenAI 对"超级应用"战略的又一次落子：ChatGPT 做消费端入口，Codex 做生产力入口。与 Anthropic 的 Claude Code 正面竞争进入白热化。
+        </div>
+        <div class="card-links">
+            <a href="https://www.zdnet.com/article/openai-codex-plugins-workflow-automation-upgrade/" target="_blank">ZDNET</a>
+            <a href="https://arstechnica.com/ai/2026/03/openai-brings-plugins-to-codex-closing-some-of-the-gap-with-claude-code/" target="_blank">Ars Technica</a>
+            <a href="https://unwire.pro/2026/03/27/openai-codex-plugins-slack-notion-integration/ai/" target="_blank">unwire.pro</a>
+        </div>
+    </div>
+
+    <!-- 3. Tencent Cloud Agent -->
+    <div class="news-card signal">
+        <div class="card-header">
+            <span class="card-number">3</span>
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <span class="card-source">腾讯新闻 · 36氪 · 央广网 · 经济观察网 · 南方+</span>
+        </div>
+        <h3>腾讯云首发 Agent 产品全景图——MaaS 升级为 TokenHub，打造面向 Agent 时代的全栈 AI 引擎</h3>
+        <div class="card-body">
+            3 月 27 日，2026 腾讯云城市峰会首站落地上海。在 ToB 业务实现全年规模化盈利后，腾讯云公布了 2026 年 AI 演进路线图：<strong>首次发布涵盖基础设施、模型、生态到应用的 Agent 产品全景图</strong>；将 MaaS 平台升级为 <strong>TokenHub</strong>；推出<strong>企业级 Agent Infra 治理方案</strong>；全面开源混元大模型生态。腾讯云已在长三角地区服务超过 11 万家客户，此次发布意味着腾讯正式从"卖算力和模型"转向"卖 Agent 工程能力"。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>当中国头部云厂商开始发布"Agent 产品全景图"时，这不是产品升级——而是<strong>产业共识的明确信号</strong>。腾讯将 MaaS 升级为 TokenHub 的命名变化，本身就揭示了行业从"模型即服务"走向"Token 即经济单元"的范式转移。在博鳌论坛刚把 2026 年定调为"智能体 AI 元年"之后，腾讯率先亮出了完整的 Agent 工程方案，这是从概念到落地的关键一步。
+        </div>
+        <div class="card-links">
+            <a href="https://news.qq.com/rain/a/20260327A05WT400" target="_blank">腾讯新闻</a>
+            <a href="https://m.36kr.com/newsflashes/3740603253571843" target="_blank">36氪</a>
+            <a href="https://tech.cnr.cn/techgd/20260327/t20260327_527564472.shtml" target="_blank">央广网</a>
+            <a href="https://www.eeo.com.cn/2026/0327/819394.shtml" target="_blank">经济观察网</a>
+        </div>
+    </div>
+
+    <!-- 4. 中关村论坛闭幕 -->
+    <div class="news-card">
+        <div class="card-header">
+            <span class="card-number">4</span>
+            <span class="card-tag tag-trend">趋势</span>
+            <span class="card-source">人民网 · MSN · 中关村论坛官网 · 新华网</span>
+        </div>
+        <h3>中关村论坛闭幕日收官——业内共识：2026 年将成为具身智能规模化应用元年</h3>
+        <div class="card-body">
+            3 月 29 日，为期五天的 <strong>2026 中关村论坛年会</strong>迎来闭幕日。本届论坛设置了 60 场平行论坛（21 场首次举办），"人工智能主题日"贯穿全程。在 AI 开源前沿论坛上，全球 AI 专家共商世界模型演进、物理智能前沿。人民网今日发布的总结性报道指出：<strong>业内普遍预测 2026 年将成为具身智能规模化应用元年</strong>。五天内完成的核心成果包括：FlagOS2.0 开源发布、通用智能人"通通"3.0、"通脑"引擎、国产 AI 算力"超级底座"（23 家单位共建）、北京市 AI 协会揭牌、京港澳开源通道启动等。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>中关村论坛从一个"学术研讨会"进化为了国家级 AI 产业协调平台。"具身智能规模化应用元年"这个判断之所以值得重视，是因为它不是单一公司的宣传——而是来自横跨学界、产业、政策的多方共识。23 家单位共建"超级底座"更意味着中国 AI 基础设施正从"各自为战"走向"协同作战"。
+        </div>
+        <div class="card-links">
+            <a href="https://bj.people.com.cn/n2/2026/0329/c14540-41537108.html" target="_blank">人民网</a>
+            <a href="https://www3.xinhuanet.com/tech/20260326/c94e0c98cb0b4580b1ff7921c5833fa5/c.html" target="_blank">新华网</a>
+            <a href="https://aiday.innohall.cn/2026/" target="_blank">AI主题日官网</a>
+        </div>
+    </div>
+
+    <!-- 5. Suno v5.5 -->
+    <div class="news-card">
+        <div class="card-header">
+            <span class="card-number">5</span>
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <span class="card-source">The Verge · Digital Music News · AIToolly · AI工具集</span>
+        </div>
+        <h3>Suno v5.5 发布——AI 音乐从"一键生成"进入"精细化制作"时代：声音克隆、自定义模型、个性化推荐三箭齐发</h3>
+        <div class="card-body">
+            AI 音乐生成平台 Suno 发布 <strong>v5.5 版本</strong>，The Verge 评价其为"迄今最大的更新之一"。三大核心功能：<strong>Voices</strong>——付费用户可上传自己的歌声进行克隆，在 AI 生成的曲目中使用自己的声音；<strong>Custom Models</strong>——用户可训练专属音乐风格模型；<strong>My Taste</strong>——基于用户偏好的个性化推荐系统。Suno 称 v5.5 是"我们有史以来最具表现力的模型"。这标志着 AI 音乐从"生成即完成"范式向<strong>"创作者主导的精细化制作"</strong>范式转变。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>Suno v5.5 的意义不在于音质提升——而在于它重新定义了 AI 与创作者的关系。当 AI 开始支持"用你自己的声音""训练你自己的风格模型"时，创作者从"被 AI 替代"变成了"用 AI 放大自我"。这是 AIGC 从"通用生成"走向"个性化表达"的标志性节点。
+        </div>
+        <div class="card-links">
+            <a href="https://www.theverge.com/entertainment/903056/suno-ai-music-v5-5-model" target="_blank">The Verge</a>
+            <a href="https://www.digitalmusicnews.com/2026/03/26/suno-launches-version-5-5/" target="_blank">Digital Music News</a>
+            <a href="https://ai-bot.cn/suno-v5-5/" target="_blank">AI工具集</a>
+        </div>
+    </div>
+
+    <!-- 6. 具身智能人才创业潮 -->
+    <div class="news-card new-face">
+        <div class="card-header">
+            <span class="card-number">6</span>
+            <span class="card-tag tag-new-face">新面孔</span>
+            <span class="card-source">新浪财经 · 知乎 · 腾讯新闻 · ITBEAR · 36氪</span>
+        </div>
+        <h3>具身智能人才"出走潮"——华为"1号员工"周顺波离职创业消费级机器人，天才少年诺因登顶具身榜单</h3>
+        <div class="card-body">
+            本周具身智能赛道人才动向密集：<strong>华为云物理智能创新 Lab 负责人、首席技术专家周顺波</strong>已于 3 月初正式离职创业，方向为消费级机器人。作为华为具身智能领域的"1 号员工"，周顺波在五年任期内完成了从 0 到 1 的团队搭建，主导构建了华为首个大规模具身智能技术体系（CloudRobo 产品原型）。同期，<strong>另一位华为天才少年从诺亚方舟实验室离职创立"诺因"</strong>，其家用机器人模型已登顶具身榜单。阿里云具身智能团队原负责人也已离职。36 氪报告显示，2025 年具身智能融资超 305 起、380 亿元。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>当一个赛道开始出现"核心人才密集出走创业"时，这不是坏消息——而是<strong>技术成熟度达到商业化临界点的最强信号</strong>。华为和阿里的具身智能核心人才不约而同选择在 2026 年 Q1 创业，与中关村论坛"具身智能规模化元年"的判断形成完美互证。家庭场景赛道正在被这批顶级人才重新定义。
+        </div>
+        <div class="card-links">
+            <a href="https://finance.sina.com.cn/stock/t/2026-03-23/doc-inhrxzzx4223779.shtml" target="_blank">新浪财经：周顺波离职</a>
+            <a href="https://news.qq.com/rain/a/20260324A046FM00" target="_blank">腾讯新闻：天才少年诺因</a>
+            <a href="https://m.36kr.com/p/3735341158121733" target="_blank">36氪：具身智能产业报告</a>
+        </div>
+    </div>
+
+    <!-- 7. Q1 2026 AI Funding -->
+    <div class="news-card">
+        <div class="card-header">
+            <span class="card-number">7</span>
+            <span class="card-tag tag-trend">趋势</span>
+            <span class="card-source">AI-Spy · PitchBook · Forge · Gartner</span>
+        </div>
+        <h3>Q1 2026 AI 融资约 500 亿美元——资本高度集中化，超级轮次重塑竞争格局</h3>
+        <div class="card-body">
+            随着 3 月即将结束，Q1 2026 AI 融资全景逐渐清晰。AI-Spy 数据显示：Q1 AI 相关私募融资估计在 <strong>470-530 亿美元</strong>之间。头 45 天内就出现 3 笔超 10 亿美元的 mega-round，14 家公司融资超 1 亿美元。PitchBook 分析称消费级 AI 赛道出现"megadeal 集中化"趋势。Gartner 预测 2026 年全球 AI 支出将达 <strong>2.52 万亿美元</strong>，同比增长 44%。Forge 报告指出，OpenAI（1100 亿）、Anthropic、xAI（200 亿）是 Q1 最大的融资方。资本正在从"广撒网"转向"押注赢家"。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>"500 亿美元一个季度"这个数字本身不是新闻——真正的信号是<strong>资本集中度的急剧攀升</strong>。当头部三家公司吃掉了大部分融资份额时，AI 行业正在从"百花齐放"快速过渡到"寡头格局"。对中小 AI 创业公司而言，窗口期正在关闭。
+        </div>
+        <div class="card-links">
+            <a href="https://www.ai-spy.net/the-ai-funding-map-where-50-billion-went-in-q1-2026/" target="_blank">AI-Spy：Q1 融资地图</a>
+            <a href="https://pitchbook.com/news/reports/q1-2026-pitchbook-analyst-note-vc-investment-in-consumer-ai" target="_blank">PitchBook 报告</a>
+            <a href="https://forgeglobal.com/insights/startup-trends-top-funding-rounds-q1-2026/" target="_blank">Forge：Q1 融资排名</a>
+        </div>
+    </div>
+
+    <!-- 8. 3月AI模型回顾 -->
+    <div class="news-card">
+        <div class="card-header">
+            <span class="card-number">8</span>
+            <span class="card-tag tag-trend">趋势</span>
+            <span class="card-source">arXiv · agntwork · Kersai · 百度开发者中心</span>
+        </div>
+        <h3>3 月 AI 模型大战完结：arXiv 3399 篇论文创新高，12+ 模型密集发布，"模型通缩"加速</h3>
+        <div class="card-body">
+            2026 年 3 月已注定载入 AI 史册。arXiv cs.AI 分类 <strong>3 月共收录 3399 篇论文</strong>，创历史新纪录。模型层面：GPT-5.4（含 mini/nano）、Gemini 3.1（含 Flash/Flash-Lite/Pro）、Claude 4.6 Opus、MiMo-V2-Pro（万亿参数）、DeepSeek V4（仍待 4 月正式发布）、Midjourney V8 等 12+ 重量级模型密集发布或更新。agntwork 评价称"4 周内 9 个突破性模型"。百度开发者中心将 3 月称为"拐点月"——24 项关键事件横跨基础架构创新、行业应用深化、安全伦理挑战三大维度。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>3 月的信息密度已经超出了正常的"迭代节奏"——这不是渐进式更新，而是<strong>多条技术路线同时抵达临界点</strong>的集中爆发。当每周都有新的顶级模型发布时，"模型通缩"不是未来预测——它已经发生了。对应用层创业者而言，这意味着底层能力的获取成本正在以超出预期的速度下降。
+        </div>
+        <div class="card-links">
+            <a href="https://arxiv.org/list/cs.AI/current" target="_blank">arXiv 3月论文</a>
+            <a href="https://agntwork.com/9-breakthrough-ai-models-in-4-weeks-march-2026-roundup/" target="_blank">agntwork：9 大突破模型</a>
+            <a href="https://developer.baidu.com/article/detail.html?id=6270722" target="_blank">百度：3月全景解析</a>
+        </div>
+    </div>
+
+    <!-- 9. DeepSeek V4 -->
+    <div class="news-card new-face">
+        <div class="card-header">
+            <span class="card-number">9</span>
+            <span class="card-tag tag-new-face">新面孔</span>
+            <span class="card-source">The Verge · Suno 官方 · 各 AI 工具追踪站</span>
+        </div>
+        <h3>AI 周末速览——DeepSeek V4 仍锁定 4 月 / 3月"模型通缩月"收官 / AI 音乐+Agent+编码三线并进</h3>
+        <div class="card-body">
+            周末速览几则值得持续关注的动态：① <strong>DeepSeek V4 仍预计 4 月正式发布</strong>，万亿参数+百万 Token 上下文+长期记忆（LTM）突破，Hunter Alpha 灰度测试持续中，evolink.ai 3 月 23 日更新仍未给出精确日期。② <strong>AI 编程工具三国杀升级</strong>：OpenAI Codex（Plugins）vs Anthropic Claude Code（Auto Mode）vs Google Jules——竞争焦点已从"写代码"转向"自主执行工作流"。③ <strong>AI 音乐赛道骤然升温</strong>：Suno v5.5 之后，AI 音乐从"玩具"走向"专业工具"。④ <strong>3 月最后一天的行业情绪</strong>：The Neuron 周末摘要的头条就是 Anthropic 泄露事件，侧面印证了信息安全在 AI 竞争中的权重正在陡增。
+        </div>
+        <div class="card-why">
+            <strong>为什么重要：</strong>3 月作为 2026 年 Q1 的收官月，三条主线已经非常清晰——<strong>模型军备竞赛进入超高密度期</strong>（每周都有重量级发布）、<strong>Agent 从概念走向工程化落地</strong>（腾讯/OpenAI/Anthropic 同步布局）、<strong>安全与合规成为竞争新维度</strong>（Anthropic 泄露、Meta Agent Sev-1、OpenClaw 安全危机）。4 月关注 DeepSeek V4 正式发布和 Anthropic Claude Mythos 进展。
+        </div>
+        <div class="card-links">
+            <a href="https://evolink.ai/zh/blog/deepseek-v4-release-window-prep" target="_blank">evolink：DeepSeek V4 追踪</a>
+            <a href="https://www.theneuron.ai/ai-news-digests/-around-the-horn-digest-everything-that-happened-in-ai-this-weekend-march-28-29-2026/" target="_blank">The Neuron 周末摘要</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 #18 · 2026年3月29日 · 星期日</p>
+    <p style="margin-top:6px;">数据来源：Fortune · Mashable · The Verge · ZDNET · Ars Technica · WinBuzzer · Blockonomi · 人民网 · 新华网 · 36氪 · 央广网 · 腾讯新闻 · 经济观察网 等</p>
+    <p style="margin-top:8px;"><a href="https://viliawang-pm.github.io/ai-daily/">返回日报列表</a></p>
+</div>
+
+</body>
+</html>

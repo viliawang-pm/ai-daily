@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI日报 2026年3月30日 — DeepSeek大宕机 / 苹果Siri开放第三方AI / 中关村论坛21项成果 / 具身智能首标</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    background: #f8fafc; color: #1a202c; line-height: 1.7;
+}
+/* Header */
+.header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white; padding: 48px 24px 40px; text-align: center;
+    position: relative; overflow: hidden;
+}
+.header::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(102,126,234,0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(236,72,153,0.1) 0%, transparent 50%);
+}
+.header-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.header .back-link { display: inline-block; margin-bottom: 20px; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88em; transition: color 0.2s; }
+.header .back-link:hover { color: white; }
+.header .date-badge {
+    display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 20px; border-radius: 24px; font-size: 0.92em; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.5px;
+}
+.header h1 { font-size: 1.8em; font-weight: 800; line-height: 1.35; margin-bottom: 14px; letter-spacing: -0.5px; }
+.header .subtitle { font-size: 1em; opacity: 0.82; line-height: 1.6; max-width: 640px; margin: 0 auto 20px; }
+.header .meta-row { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; font-size: 0.85em; opacity: 0.72; }
+/* Tags */
+.tag-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 18px; }
+.tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 0.75em; font-weight: 600; }
+.tag-signal { background: rgba(251,191,36,0.2); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+.tag-breakthrough { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.3); }
+.tag-new { background: rgba(52,211,153,0.2); color: #34d399; border: 1px solid rgba(52,211,153,0.3); }
+.tag-trend { background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+/* Container */
+.container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+/* News Card */
+.news-card {
+    background: white; border-radius: 14px; padding: 28px; margin-bottom: 20px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+    transition: border-color 0.2s;
+}
+.news-card:hover { border-color: #667eea; }
+.news-card .card-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+.news-card .num {
+    flex-shrink: 0; width: 32px; height: 32px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 0.85em; color: white;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+.news-card .num.top { background: linear-gradient(135deg, #ef4444, #ec4899); }
+.news-card h2 { font-size: 1.15em; font-weight: 700; line-height: 1.45; flex: 1; }
+.news-card h2 .label {
+    display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 0.72em;
+    font-weight: 700; margin-right: 6px; vertical-align: middle; position: relative; top: -1px;
+}
+.label-signal { background: #fef3c7; color: #d97706; }
+.label-new { background: #d1fae5; color: #059669; }
+.label-trend { background: #ede9fe; color: #7c3aed; }
+.news-card .why {
+    background: #f8fafc; border-left: 3px solid #667eea; padding: 12px 16px;
+    border-radius: 0 8px 8px 0; margin-bottom: 14px; font-size: 0.92em; color: #475569; line-height: 1.7;
+}
+.news-card .detail { font-size: 0.9em; color: #64748b; line-height: 1.75; margin-bottom: 12px; }
+.news-card .source-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.news-card .source-row a {
+    display: inline-block; padding: 3px 10px; background: #f1f5f9; color: #667eea;
+    border-radius: 6px; font-size: 0.78em; text-decoration: none; font-weight: 500;
+    transition: background 0.2s;
+}
+.news-card .source-row a:hover { background: #e0e7ff; }
+/* Footer */
+.footer {
+    text-align: center; padding: 40px 20px; color: #94a3b8; font-size: 0.82em;
+    border-top: 1px solid #e2e8f0; margin-top: 20px;
+}
+.footer a { color: #667eea; text-decoration: none; }
+/* Responsive */
+@media (max-width: 640px) {
+    .header { padding: 36px 16px 32px; }
+    .header h1 { font-size: 1.35em; }
+    .container { padding: 20px 14px 40px; }
+    .news-card { padding: 20px 16px; }
+    .news-card h2 { font-size: 1.05em; }
+    .header .meta-row { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-inner">
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">&larr; 返回日报列表</a>
+        <div class="date-badge">2026年3月30日 · 星期一 · 第19期</div>
+        <h1>DeepSeek大宕机12小时 / 苹果Siri向全部AI开放 / 中关村论坛21项重大成果 / 具身智能首份行业标准</h1>
+        <div class="subtitle">3月最后一个工作日，DeepSeek史诗级宕机暴露AI基础设施短板，苹果Siri平台化重塑AI分发格局，中关村论坛收官成果丰硕，具身智能进入标准化时代</div>
+        <div class="meta-row">
+            <span>10 条精选资讯</span>
+            <span>16+ 信息源</span>
+            <span>2 位新面孔</span>
+        </div>
+        <div class="tag-row">
+            <span class="tag tag-signal">DeepSeek宕机</span>
+            <span class="tag tag-signal">苹果Siri开放</span>
+            <span class="tag tag-signal">Anthropic IPO</span>
+            <span class="tag tag-trend">具身智能标准</span>
+            <span class="tag tag-trend">3月总结</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+<!-- 1 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num top">1</div>
+        <h2><span class="label label-signal">SIGNAL</span>DeepSeek大宕机超12小时——1.2亿用户被迫"断奶"，AI基础设施脆弱性暴露</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>这不只是一次技术故障，而是AI行业"水电煤"级基础设施的一次压力测试失败。当一个拥有1.2亿用户的AI平台连续12小时不可用，整个生态——从个人用户到企业API——都被迫中断，暴露出头部AI服务商的单点故障风险远超行业预期。更值得关注的是：宕机前后用户发现模型能力悄然提升，这是否意味着一次"静默升级"引发的系统崩溃？
+    </div>
+    <div class="detail">
+        3月29日22时起，DeepSeek网页端和App全面瘫痪，频繁弹出"服务器繁忙"提示，用户无法登录、对话中断、内容丢失。3月30日凌晨00:20团队确认问题并于01:24实施修复，但未果，直到上午10时前后服务才逐步恢复，累计中断超12小时，创下DeepSeek单次服务中断最长纪录。IT之家报道：宕机前多位用户反馈模型能力"大幅提升"，SVG绘图等任务表现明显强于一周前，疑似V4版本灰度测试引发的连锁反应。澎湃新闻、什么值得买、快科技、游民星空等多家媒体跟进报道，#DeepSeek崩了#话题冲上热搜。
+    </div>
+    <div class="source-row">
+        <a href="https://www.thepaper.cn/newsDetail_forward_32860748" target="_blank">澎湃新闻</a>
+        <a href="https://www.ithome.com/0/934/017.htm" target="_blank">IT之家</a>
+        <a href="https://news.mydrivers.com/1/1112/1112433.htm" target="_blank">快科技</a>
+        <a href="https://news.qq.com/rain/a/20260330A02HPR00" target="_blank">腾讯新闻</a>
+        <a href="https://www.gamersky.com/news/202603/2114431.shtml" target="_blank">游民星空</a>
+    </div>
+</div>
+
+<!-- 2 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num top">2</div>
+        <h2><span class="label label-signal">SIGNAL</span>苹果iOS 27将Siri变成AI平台——ChatGPT独占终结，Claude/Gemini/Grok全部可接入</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>这是AI分发格局的结构性变化。苹果不再押注单一AI伙伴，而是把Siri变成一个"AI应用商店"。对OpenAI来说，失去iPhone独占意味着最大的消费者入口变成了多方竞技场；对Anthropic、Google、xAI来说，这是进入10亿+设备的通道。苹果的策略很清楚：不自己做最强模型，而是做AI的"管道"——谁强用谁，平台永远赢。
+    </div>
+    <div class="detail">
+        彭博社Mark Gurman爆料：iOS 27将允许用户安装ChatGPT以外的第三方AI聊天机器人，并在Siri中直接运行。据路透社确认，Claude、Gemini、Copilot、Grok等均可通过App Store专区接入Siri的Extensions系统。这意味着苹果正式结束与OpenAI的Siri独占合作关系，转向开放平台模式。MacRumors、TechRepublic、Macworld等多家媒体分析称，此举将在WWDC 2026（6月8日）正式公布，iOS 27开发者预览版同步释放API。Apple Intelligence的定位从"自有AI"转向"AI聚合层"。
+    </div>
+    <div class="source-row">
+        <a href="https://www.macrumors.com/2026/03/26/apple-ios-27-siri-chatbot-integration/" target="_blank">MacRumors</a>
+        <a href="https://www.ithome.com/0/933/903.htm" target="_blank">IT之家</a>
+        <a href="https://www.macworld.com/article/3100123/report-ios-27-to-let-siri-work-with-any-third-party-chatbot.html" target="_blank">Macworld</a>
+        <a href="https://www.techrepublic.com/article/news-apple-siri-ai-extensions-ios-27/" target="_blank">TechRepublic</a>
+        <a href="https://apple.gadgethacks.com/news/ios-27-siri-third-party-ai-assistants-explained-apples-strategy/" target="_blank">GadgetHacks</a>
+    </div>
+</div>
+
+<!-- 3 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num top">3</div>
+        <h2><span class="label label-signal">SIGNAL</span>中关村论坛闭幕发布21项重大科技成果——高能同步辐射光源、"玉衡"芯片、通智大脑</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>21项成果横跨基础科学、AI芯片、通用智能三大领域，标志着中国从"AI应用大国"向"AI基础科学强国"的跃迁。"玉衡"是全球首款亚埃米级光谱成像芯片，直接服务于下一代材料科学和半导体研发；"通智大脑"则是通用智能人"通通"系列的底层架构。这些成果的含金量在于：它们不是追赶性的，而是原创性的。
+    </div>
+    <div class="detail">
+        3月29日，为期五天的2026中关村论坛年会正式闭幕，重大成果专场发布会发布了4大类21项前沿科技成果。亮点包括：高能同步辐射光源建成试运行（此前仅法国ESRF和日本SPring-8有同级设施）、全球首款亚埃米级光谱成像芯片"玉衡"、"通智大脑"通用智能架构。央视新闻联播重点报道。五天共举办115场活动，来自100多个国家和地区的嘉宾参会，技术交易成果丰硕。光明网评论称这是"中国科技创新与产业创新深度融合"的标志性事件。
+    </div>
+    <div class="source-row">
+        <a href="https://news.cctv.com/2026/03/29/ARTIDot1VFIP6s82J99CynSA260329.shtml" target="_blank">央视网</a>
+        <a href="http://www.ce.cn/xwzx/gnsz/gdxw/202603/t20260330_2865966.shtml" target="_blank">中国经济网</a>
+        <a href="https://news.gmw.cn/2026-03/30/content_38677509.htm" target="_blank">光明网</a>
+        <a href="https://news.bjd.com.cn/2026/03/30/11659348.shtml" target="_blank">北京日报</a>
+        <a href="https://news.ifeng.com/c/8rtaajNF2qB" target="_blank">凤凰网</a>
+    </div>
+</div>
+
+<!-- 4 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">4</div>
+        <h2><span class="label label-signal">SIGNAL</span>工信部发布具身智能首份行业标准——6月1日起实施，机器人产业进入"有规可循"时代</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>标准是产业规模化的前提。在"2026年是具身智能规模化应用元年"的行业共识下，工信部抢先出台基准测试方法标准，意味着具身智能从"概念验证"进入"可量产、可评估、可交付"阶段。没有标准，客户不敢买；有了标准，市场才能真正打开。
+    </div>
+    <div class="detail">
+        人民网报道，工信部近日批准发布《YD/T 6770—2026 人工智能 关键基础技术 具身智能基准测试方法》，这是具身智能领域首份行业标准，将于2026年6月1日正式实施。该标准定义了具身智能系统的测试框架、指标体系和评估方法，覆盖感知、规划、操控、交互四大核心能力维度。此标准的出台与中关村论坛闭幕日"2026年为具身智能规模化应用元年"的业内共识形成呼应，为宇树科技、达闼、银河通用等国产具身智能企业提供了统一的"考试大纲"。
+    </div>
+    <div class="source-row">
+        <a href="https://kpzg.people.com.cn/n1/2026/0330/c404214-40691157.html" target="_blank">人民网</a>
+    </div>
+</div>
+
+<!-- 5 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">5</div>
+        <h2><span class="label label-signal">SIGNAL</span>Anthropic确认最快10月IPO——募资超600亿美元，估值3800亿，与OpenAI抢跑上市</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>AI行业正进入"IPO竞速"阶段。Anthropic如果先于OpenAI上市，将抢占AI安全叙事的定价权——投资者第一次买到的"AI安全概念股"是Anthropic，而不是OpenAI。3800亿估值意味着Anthropic已是全球前20大公司市值级别。加上此前泄露的Claude Mythos模型，Anthropic正在"产品力+资本力"双线出击。
+    </div>
+    <div class="detail">
+        据澎湃新闻、华尔街见闻、36氪等多家媒体综合报道，Anthropic正在与华尔街投行密集讨论IPO计划，最快10月在美国上市，预计募资超600亿美元（约4100亿人民币），有望成为继SpaceX之后全球第二大IPO。公司当前估值已达3800亿美元（G轮融资锚定）。36氪深度分析称，Anthropic的策略是"先上市抢定价权"——其企业市场新客签约率已是OpenAI的3倍，Claude日活突破1100万，营收增速惊人。与此同时，上周泄露的Claude Mythos模型（代号Capybara）也为IPO讲故事提供了"下一代产品"预期。
+    </div>
+    <div class="source-row">
+        <a href="https://www.thepaper.cn/newsDetail_forward_32842291" target="_blank">澎湃新闻</a>
+        <a href="https://wallstreetcn.com/articles/3768554" target="_blank">华尔街见闻</a>
+        <a href="https://www.36kr.com/p/3740899535844096" target="_blank">36氪</a>
+    </div>
+</div>
+
+<!-- 6 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">6</div>
+        <h2>DeepSeek宕机后"能力跃升"——V4灰度测试实锤？SVG绘图、推理质量均有明显提升</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>如果宕机确实是由V4灰度测试引发的，这意味着DeepSeek V4的正式发布可能比预期更近（此前预计4月）。更关键的是，"静默升级导致崩溃"暴露了当前AI服务商在灰度发布方面的工程成熟度不足——模型能力提升了，但基础设施没跟上。
+    </div>
+    <div class="detail">
+        IT之家详细报道：宕机前（3月29日下午起），大量用户在社交媒体上分享DeepSeek网页版能力"突变"的截图。经典的SVG绘图测试（鹈鹕骑自行车）显示构图和色彩都明显强于一周前，数学推理和代码生成质量也有肉眼可见的提升。结合此前OpenRouter上Hunter Alpha/Healer Alpha的万亿参数匿名测试、百度百科已建立"DeepSeek-V4"词条（标注"计划于2026年发布"），以及deepseekv4.app爆料的"4月正式发布+LTM长期记忆突破"，种种迹象表明V4已进入最后冲刺阶段。
+    </div>
+    <div class="source-row">
+        <a href="https://www.ithome.com/0/934/017.htm" target="_blank">IT之家</a>
+        <a href="https://deepseekv4.app/news/2026-03-15-deepseek-v4-release-date-april-ltm-breakthrough" target="_blank">DeepSeek V4 App</a>
+        <a href="https://baike.baidu.com/item/DeepSeek-V4/65717031" target="_blank">百度百科</a>
+    </div>
+</div>
+
+<!-- 7 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">7</div>
+        <h2><span class="label label-trend">TREND</span>3月AI月度总结——"改变AI永远的一个月"，12+模型、500亿融资、多重历史性事件</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>回顾整个3月，这是AI产业有史以来信息密度最高的单月。如果你只记住一句话："3月是AI从技术竞赛转向产业竞赛的分水岭"——模型不再是唯一叙事，基础设施、安全合规、平台化、商业化全面开花。
+    </div>
+    <div class="detail">
+        Digital Applied将3月2026年称为"The Month That Changed AI Forever"。核心数据：GPT-5.4、DeepSeek V4、Claude 4.6、MiMo-V2-Pro等12+旗舰模型密集发布；Q1 AI融资约500亿美元，其中3月占比最高；GTC 2026（黄仁勋万亿蓝图+Vera Rubin平台）、Terafab启动（250亿美元）、中关村论坛（21项成果）、博鳌论坛AI议题收官等四大峰会密集举办；Anthropic起诉国防部→泄露Mythos→确认IPO形成完整叙事弧线；OpenAI关闭Sora、推出Codex Plugins、超级应用战略等多次重大调整。arXiv 3月AI论文3399篇创历史新高。
+    </div>
+    <div class="source-row">
+        <a href="https://www.digitalapplied.com/blog/march-2026-ai-roundup-month-that-changed-everything" target="_blank">Digital Applied</a>
+        <a href="https://www.humai.blog/ai-news-trends-march-2026-complete-monthly-digest/" target="_blank">HuMAI Blog</a>
+        <a href="https://theaitrack.com/ai-news-march-2026-in-depth-and-concise/" target="_blank">The AI Track</a>
+    </div>
+</div>
+
+<!-- 8 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">8</div>
+        <h2>The Neuron周末复盘——"物理世界正在追赶AI"，Mythos泄露之外的另一条叙事线</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>The Neuron的观察角度很独到：当所有人盯着Mythos泄露时，真正的结构性变化是"AI正在从数字世界溢出到物理世界"——具身智能标准、Terafab芯片工厂、中关村论坛的硬科技成果，都在说同一件事。
+    </div>
+    <div class="detail">
+        AI资讯头部媒体The Neuron发布3月28-29日周末复盘："While the Mythos leak dominated headlines, the rest of the weekend surfaced a different kind of story: the physical world is catching up to AI."该文梳理了周末关键事件：Anthropic CMS泄露持续发酵、中关村论坛通用智能人"通通"3.0和"通智大脑"发布、具身智能标准出台、AI音乐Suno v5.5进入精细化制作时代。The Neuron认为，3月的主线已从"谁的模型更强"转向"谁能把AI带到物理世界"。
+    </div>
+    <div class="source-row">
+        <a href="https://www.theneuron.ai/ai-news-digests/-around-the-horn-digest-everything-that-happened-in-ai-this-weekend-march-28-29-2026/" target="_blank">The Neuron</a>
+    </div>
+</div>
+
+<!-- 9 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">9</div>
+        <h2><span class="label label-new">新面孔</span>CSDN深度：3月AI行业"IPO集中爆发"——Anthropic、OpenAI、月之暗面、SpaceX四家竞速</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>IPO不仅是融资事件，更是行业成熟度的信号。当头部AI公司从"无限烧钱"转向"公开市场定价"，意味着投资者开始要求可验证的商业模式，而非纯粹的技术叙事。四家同时启动上市进程，2026年Q4可能成为科技IPO最密集的季度。
+    </div>
+    <div class="detail">
+        CSDN博主ld326整理的"2026年3月28-29日全球AI前沿动态"获得关注。文章归纳出3月底最显著的产业信号：AI行业进入"IPO集中爆发期"——Anthropic确认最快10月上市（估值3800亿）、OpenAI锁定Q4 IPO（估值8400亿）、SpaceX预计夏季IPO（募资750亿）、月之暗面（Moonshot AI）被曝正在接洽投行探讨港股或美股上市可能。文章同时指出模型能力进入"密度跃升"阶段：Claude Mythos、GLM-5.1、Gemini 3.1 Flash Live三款新模型在同一周曝光或发布。
+    </div>
+    <div class="source-row">
+        <a href="https://blog.csdn.net/ld326/article/details/159589862" target="_blank">CSDN</a>
+    </div>
+</div>
+
+<!-- 10 -->
+<div class="news-card">
+    <div class="card-header">
+        <div class="num">10</div>
+        <h2><span class="label label-new">新面孔</span>什么值得买深度评论——"AI下半场，稳定比聪明更重要"，DeepSeek宕机敲响基础设施警钟</h2>
+    </div>
+    <div class="why">
+        <strong>为什么重要：</strong>消费者视角的分析往往比行业内部更能反映真实痛点。当非技术用户开始讨论"AI的可靠性"而非"AI的聪明程度"，说明AI已经从"尝鲜"进入"依赖"阶段——用户的期待从"能用"变成了"好用且永远能用"。
+    </div>
+    <div class="detail">
+        什么值得买（SMZDM）发表深度评论文章"DeepSeek大崩溃敲响警钟：AI下半场，稳定比'聪明'更重要"。文章指出：DeepSeek此次超12小时的宕机，导致大量学生、职场人士的学习和工作流程被迫中断，部分用户甚至面临未保存对话内容丢失的问题。文章引用用户反馈称"已经完全依赖DeepSeek做日常工作，断了就像停电一样"。作者认为，AI行业正进入"下半场"——模型能力已经足够强，接下来的竞争焦点是稳定性、可靠性和容灾能力。文章建议用户建立"多模型备份"策略，不把鸡蛋放在一个篮子里。
+    </div>
+    <div class="source-row">
+        <a href="https://post.smzdm.com/p/a82757x6/" target="_blank">什么值得买</a>
+    </div>
+</div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 · 第19期 · 2026年3月30日</p>
+    <p style="margin-top: 6px;">数据来源：澎湃新闻、IT之家、央视网、人民网、MacRumors、The Neuron、36氪、华尔街见闻、Digital Applied 等</p>
+    <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">返回日报列表</a></p>
+</div>
+
+</body>
+</html>

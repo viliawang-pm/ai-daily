@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #20 — 2026年3月31日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .header h1 { font-size: 2.4em; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+        .header .date { font-size: 1.15em; opacity: 0.9; font-weight: 500; margin-bottom: 6px; }
+        .header .subtitle { font-size: 1em; opacity: 0.8; font-weight: 400; line-height: 1.6; }
+        .header .back-link { display: inline-block; margin-top: 18px; color: rgba(255,255,255,0.85); font-size: 0.88em; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); padding: 6px 18px; border-radius: 20px; transition: all 0.2s; }
+        .header .back-link:hover { background: rgba(255,255,255,0.15); color: white; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+
+        .summary-bar {
+            display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
+            margin-bottom: 36px; padding: 20px; background: white; border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .summary-bar .tag {
+            padding: 6px 16px; border-radius: 20px; font-size: 0.82em; font-weight: 600;
+            border: 1.5px solid #e0e7ff; color: #667eea; background: #f0f4ff;
+        }
+
+        .news-card {
+            background: white; border-radius: 16px; padding: 28px; margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 4px 20px rgba(102,126,234,0.1); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.trend { border-left-color: #ed8936; }
+        .news-card.newface { border-left-color: #48bb78; }
+
+        .news-card .card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+        .news-card .num { font-size: 1.6em; font-weight: 800; color: #cbd5e0; line-height: 1; min-width: 32px; }
+        .news-card.signal .num { color: #667eea; }
+        .news-card.trend .num { color: #ed8936; }
+        .news-card.newface .num { color: #48bb78; }
+
+        .news-card .card-title-area { flex: 1; }
+        .news-card h3 { font-size: 1.15em; font-weight: 700; line-height: 1.5; color: #1a202c; }
+
+        .badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 700; margin-right: 6px; vertical-align: middle; letter-spacing: 0.5px; }
+        .badge-signal { background: #ebf4ff; color: #3182ce; }
+        .badge-trend { background: #fefcbf; color: #b7791f; }
+        .badge-newface { background: #f0fff4; color: #276749; }
+
+        .news-card .content { color: #4a5568; font-size: 0.92em; line-height: 1.85; margin-bottom: 12px; }
+        .news-card .why { background: #f7fafc; padding: 12px 16px; border-radius: 10px; margin-bottom: 12px; }
+        .news-card .why-title { font-size: 0.82em; font-weight: 700; color: #667eea; margin-bottom: 4px; }
+        .news-card .why-text { font-size: 0.88em; color: #4a5568; line-height: 1.7; }
+
+        .news-card .meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.8em; color: #a0aec0; }
+        .news-card .meta a { color: #667eea; text-decoration: none; }
+        .news-card .meta a:hover { text-decoration: underline; }
+
+        .section-divider {
+            text-align: center; margin: 36px 0 28px; position: relative;
+        }
+        .section-divider::before {
+            content: ''; position: absolute; top: 50%; left: 0; right: 0;
+            height: 1px; background: #e2e8f0;
+        }
+        .section-divider span {
+            position: relative; background: #f8f9fa; padding: 0 20px;
+            font-size: 0.88em; font-weight: 600; color: #718096;
+        }
+
+        .footer { text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+
+        @media (max-width: 640px) {
+            .header { padding: 36px 16px 28px; }
+            .header h1 { font-size: 1.8em; }
+            .container { padding: 20px 14px 48px; }
+            .news-card { padding: 20px 16px; }
+            .news-card .card-header { gap: 8px; }
+            .news-card .num { font-size: 1.3em; min-width: 26px; }
+            .news-card h3 { font-size: 1.05em; }
+            .summary-bar { padding: 14px; gap: 8px; }
+            .summary-bar .tag { padding: 4px 10px; font-size: 0.75em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>AI 日报 #20</h1>
+            <div class="date">2026年3月31日 · 星期二</div>
+            <div class="subtitle">3月收官特别版 — K2.5印钞一个月、AI三巨头IPO竞赛、中国日均140万亿Token</div>
+            <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="summary-bar">
+            <span class="tag">月之暗面ARR破亿</span>
+            <span class="tag">AI三巨头IPO</span>
+            <span class="tag">中国140万亿Token</span>
+            <span class="tag">DeepSeek V4倒计时</span>
+            <span class="tag">3月收官总结</span>
+        </div>
+
+        <!-- 1 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="num">01</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-signal">SIGNAL</span> 月之暗面 ARR 突破 1 亿美金——Kimi K2.5 发布仅一个月，"思考型模型"变现能力实锤</h3>
+                </div>
+            </div>
+            <div class="content">
+                据界面新闻独家报道，月之暗面在 Kimi K2.5 模型发布仅一个月后，年度经常性收入（ARR）突破 1 亿美元。K2.5 上线后 API 供应 TPM（每分钟Token数）被企业客户抢购一空，部分客户甚至预付千万美元锁定算力。与此同时，彭博社 3/26 曝出月之暗面正评估赴港 IPO，已与中金、高盛展开初步承销洽谈，估值冲击 180 亿美元——三个月前仅 45 亿。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">这是中国 AI 创业公司首次实现"单个模型发布即引爆商业化"的里程碑。ARR 1 亿美元意味着月之暗面已跻身全球 AI 商业化第一梯队（对比 MiniMax 用了两年多才达到同等水平）。更关键的是，这验证了"思考型模型"（Thinking Model）在企业端的高变现能力——企业愿意为推理质量付高价。如果 IPO 成功，这将是港股第三只大模型股。</div>
+            </div>
+            <div class="meta">
+                <span>来源：界面新闻、36氪、经济观察网、彭博社、IT之家</span>
+                <a href="https://m.36kr.com/p/3745160078868737" target="_blank">36氪报道</a>
+                <a href="https://www.ithome.com/0/932/954.htm" target="_blank">IT之家IPO</a>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="num">02</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-signal">SIGNAL</span> AI 三巨头 IPO 竞赛白热化——OpenAI 瞄准万亿、Anthropic 5000亿+、xAI 也在赛道上</h3>
+                </div>
+            </div>
+            <div class="content">
+                tech.news.am 3月底深度报道：Sam Altman、Dario Amodei、Elon Musk 三人正同时筹备各自 AI 公司的 IPO。OpenAI 目标估值 1 万亿美元（Q4 2026），Anthropic 确认最快 10 月上市、估值超 5000 亿美元，xAI 在完成 200 亿 E 轮后也进入上市准备轨道。Techi.com 3/30 更新显示 OpenAI 年营收已达 250 亿美元，但年亏损仍在 50 亿级别。三家合计估值超 2 万亿美元，这将是科技史上最密集的 AI IPO 窗口。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">2026 下半年可能同时出现三家万亿级 AI 公司上市，这不仅改变资本市场格局，更意味着 AI 行业从"烧钱实验"进入"资本市场检验"阶段。投资者将第一次用公开市场的标尺来衡量 AI 公司的真实价值——收入增速、单位经济模型、护城河宽度。这场 IPO 竞赛的结果，将决定未来十年 AI 行业的资本分配格局。</div>
+            </div>
+            <div class="meta">
+                <span>来源：tech.news.am、Techi.com、CNBC、ai-stack.ai、ainvest</span>
+                <a href="https://tech.news.am/eng/news/6951/why-altman-amodei-and-musk-are-at-odds-the-battle-for-the-trillion-dollar-ai-market.html" target="_blank">原文</a>
+                <a href="https://www.techi.com/openai-ipo/" target="_blank">OpenAI IPO详情</a>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="num">03</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-signal">SIGNAL</span> 3月收官：中国日均 Token 调用量突破 140 万亿——同比增长 1000 倍，连续三周超美</h3>
+                </div>
+            </div>
+            <div class="content">
+                新华网 3/26 深度报道：中国发展高层论坛 2026 年会数据显示，2026 年 3 月中国日均 Token 调用量突破 140 万亿，相比 2024 年初的 1000 亿增长超 1000 倍。OpenRouter 平台数据显示，截至 3/22 当周，全球 AI 大模型总调用量 20.4 万亿 Token，中国模型周调用量 7.359 万亿，连续三周超越美国。全球 Top 10 中，中国模型占据 6 席。科技日报评价"技术迭代→成本下降→应用爆发"飞轮正在加速转动。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">1000 倍增长不是线性进步，是范式转换。这个数据说明中国 AI 已经从"模型竞赛"进入"应用爆发"阶段——不是少数开发者在用，而是整个产业在用。Token 调用量超美的意义不在于"排名"，而在于它揭示了一个结构性变化：当模型成本下降到足够低（DeepSeek、Qwen 等开源模型功不可没），应用端的需求会呈指数级释放。</div>
+            </div>
+            <div class="meta">
+                <span>来源：新华网、科技日报、央广网、联合早报、CNTechPost</span>
+                <a href="https://www.xinhuanet.com/tech/20260326/8026bd54df3f489a8c79d4438cac96b3/c.html" target="_blank">新华网报道</a>
+                <a href="https://cntechpost.com/2026/03/24/china-daily-ai-token-usage-140-trillion/" target="_blank">英文报道</a>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>产业结构性变化</span></div>
+
+        <!-- 4 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="num">04</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-signal">SIGNAL</span> DeepSeek V4 进入 4 月发布倒计时——万亿参数 + Engram 记忆 + mHC 架构，市场屏息以待</h3>
+                </div>
+            </div>
+            <div class="content">
+                Kili Technology 3/27 发布 DeepSeek V4 架构深度解析：确认采用 Manifold-constrained Hyper-connections (mHC) 全新架构、DeepSeek Sparse Attention 机制、以及开创性的 Engram 条件记忆系统。Atlas Cloud 3/26 更新：V4 万亿参数级、百万 Token 上下文窗口、SWE-bench 81% 得分。发布窗口锁定 4 月，多次推迟后进入最终准备阶段。DeepSeek 3/29 史诗级宕机 12 小时后"能力跃升"的社区反馈进一步加强了 V4 灰度测试的猜测。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">DeepSeek V4 是 2026 上半年最受期待的模型发布之一。Engram 记忆系统如果如描述般工作——让模型拥有跨对话的"长期记忆"——将开创一个新的模型范式。更关键的是，DeepSeek 的开源策略意味着 V4 的技术突破将直接惠及整个开源生态，而不是锁在 API 后面。明天进入 4 月，倒计时正式开始。</div>
+            </div>
+            <div class="meta">
+                <span>来源：Kili Technology、Atlas Cloud、DeepSeek V4 Network、nxcode.io、macaron.im</span>
+                <a href="https://kili-technology.com/blog/data-story-deepseek-v4" target="_blank">架构深度解析</a>
+                <a href="https://www.atlascloud.ai/blog/ai-updates/what-is-deepseek-v4" target="_blank">Atlas Cloud</a>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="num">05</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-trend">TREND</span> "百虾大战"全面爆发——腾讯搭脚手架，7 款国产 AI 龙虾实测，智能体 AI 从极客玩具变为大众工具</h3>
+                </div>
+            </div>
+            <div class="content">
+                IT时报 3/30 发表深度报道《"百虾大战"打响，腾讯给"龙虾"搭了一个脚手架》，腾讯云城市峰会和全球开发者先锋大会上"龙虾"成为绝对主角。知乎 3/26 出现"7 款国产 AI 龙虾实测"对比评测（OpenClaw 原版、WorkBuddy、Claude HUD、Deer-Flow 等）。新华网 3/24 发表深度《从"动口"到"动手"，全民"养虾"热背后的 AI 产业新变局》。腾讯云此前已发布 Agent 产品全景图，将 MaaS 升级为 TokenHub。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">当一个技术产品的对比评测从"专业媒体"扩展到"知乎用户自发评测"时，说明它已经跨越了从极客到大众的鸿沟。AI Agent（智能体）在中国市场的普及速度远超预期——从 3 月初 OpenClaw 排队安装，到月底已经有 7 款成熟产品可供选择。这正在重演 2024 年初大模型 App 百花齐放的场景，但这次是在"Agent"层面。</div>
+            </div>
+            <div class="meta">
+                <span>来源：IT时报、腾讯新闻、知乎、新华网、CSDN</span>
+                <a href="https://news.qq.com/rain/a/20260330A0603O00" target="_blank">IT时报</a>
+                <a href="https://zhuanlan.zhihu.com/p/2020543220266836034" target="_blank">7款龙虾对比</a>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="num">06</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-trend">TREND</span> AI Critique 3月终评：基础设施需求从"训练"转向"服务"，Agentic 工作流重塑算力经济</h3>
+                </div>
+            </div>
+            <div class="content">
+                AI Critique 在 3/31 当天发布的 3 月总评文章指出：整个 3 月，头部基础设施公告反复强调一个核心转变——为数亿用户提供模型服务、支撑 Agentic 工作流正在重塑算力需求形态。推理计算需求已超过训练计算需求。GPT-5.2 Thinking 将在 6 月 5 日退役，Anthropic 也在准备 beta 产品退役。行业正在从"模型竞赛"转向"推理效率竞赛"。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">训练一个大模型是一次性成本（虽然巨大），但推理服务是持续成本——当 ChatGPT 有 9 亿周活用户、当智能体需要 24/7 运行时，推理算力需求将远超训练。这个转变意味着算力产业的利润重心正在发生根本性迁移：从卖 GPU 给训练集群，到卖推理优化方案给服务商。英伟达的 LPU、Groq 3、以及各种推理加速芯片的机会窗口正在打开。</div>
+            </div>
+            <div class="meta">
+                <span>来源：AI Critique</span>
+                <a href="https://www.aicritique.org/us/2026/03/31/ai-development-in-march-2026/" target="_blank">原文</a>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="num">07</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-trend">TREND</span> Serious Insights 3月更新：能力、基础设施、部署——三大差距定义 AI 现状</h3>
+                </div>
+            </div>
+            <div class="content">
+                Serious Insights 3/30 发布《State of AI 2026 March Update》，标题直指要害："The Capabilities, Infrastructure, and Deployment Gaps"（能力差距、基础设施差距、部署差距）。报告指出：AI 模型能力已远超大多数企业的部署能力，形成了一个危险的"能力-部署剪刀差"。基础设施层面，能源和算力经济学、主权 AI 和生态碎片化是最核心的瓶颈。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">这份报告抓住了当前 AI 行业最核心的矛盾——不是模型不够强，而是企业不知道怎么用、用不起来。当 GPT-5.4 已能通过同行评审写论文，但 85% 的企业还在用 AI 做邮件摘要时，问题出在部署侧而非模型侧。这也解释了为什么"龙虾"类 Agent 工具会如此火爆——它们本质上是在缩小"能力-部署差距"。</div>
+            </div>
+            <div class="meta">
+                <span>来源：Serious Insights</span>
+                <a href="https://www.seriousinsights.net/state-of-ai-2026-march-update/" target="_blank">原文</a>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>3月收官与前瞻</span></div>
+
+        <!-- 8 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="num">08</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-trend">TREND</span> 腾讯云万字深度：AI 彻底变天——从"龙虾"刷屏到中国模型登顶，3月改写 AI 格局</h3>
+                </div>
+            </div>
+            <div class="content">
+                腾讯云开发者社区 3/30 发布长文《2026 年 3 月，AI 彻底变天》，系统梳理了 3 月的核心叙事：①中国大模型周调用量突破 7.359 万亿 Token，连续三周超美；②智能体 AI 从"执行工具"升级为"数字伙伴"，能自主拆解任务、调用工具并持续优化；③国产 AI 实现"集群式崛起"，在多个赛道同时突破。文章判断：AI 行业已从"模型参数竞赛"进入"应用生态竞赛"的新阶段。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">当行业头部玩家（腾讯云）站出来说"AI 彻底变天"时，这不是营销话术，而是产业信号。"集群式崛起"这个判断尤其值得关注——中国 AI 不再是一两家公司单打独斗（2024 年的"六小虎"叙事），而是从模型、Agent、应用、基础设施全链条同时爆发。3 月是这个转变的分水岭。</div>
+            </div>
+            <div class="meta">
+                <span>来源：腾讯云开发者社区</span>
+                <a href="https://cloud.tencent.com/developer/article/2648260" target="_blank">原文</a>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="news-card newface">
+            <div class="card-header">
+                <span class="num">09</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-newface">新面孔</span> Digital Applied 3月总结："改变 AI 永远的一个月"——法律战、模型发布、Agentic 突破、政策转向同时发生</h3>
+                </div>
+            </div>
+            <div class="content">
+                Digital Applied 3/26 发布的 3 月总结文章标题直接用了"The Month That Changed AI Forever"（改变 AI 永远的一个月）。文章梳理了 3 月的四条主线：①法律战（Anthropic vs Pentagon、Musk vs OpenAI 庭审）；②模型大战（12+ 旗舰模型发布，GPT-5.4/DeepSeek V4/Claude 4.6/MiMo-V2-Pro/Qwen 3.5 同台）；③Agentic AI 突破（从 OpenClaw 刷屏到 Codex Plugins 到 Agent 平台化）；④政策转向（芯片出口管制撤回、AI 治理框架密集出台）。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">当多个独立观察者不约而同用"历史性"来描述同一个月份时，这个判断就不是夸大其词。3 月确实是 AI 从"研发驱动"转向"多维度同时爆发"的转折月——技术、商业、政策、法律四条线同时在动，而不是只有模型发布一条线。4 月的看点是这些线索如何交织产生新格局。</div>
+            </div>
+            <div class="meta">
+                <span>来源：Digital Applied</span>
+                <a href="https://www.digitalapplied.com/blog/march-2026-ai-roundup-month-that-changed-everything" target="_blank">原文</a>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="news-card newface">
+            <div class="card-header">
+                <span class="num">10</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-newface">新面孔</span> Gartner：2026 年全球 AI 支出将达 2.52 万亿美元——同比增长 44%，AI 已成全球最大技术投资品类</h3>
+                </div>
+            </div>
+            <div class="content">
+                Gartner 1/15 发布的预测数据在 3 月底被反复引用：2026 年全球 AI 支出预计达 2.52 万亿美元，同比增长 44%。J.P. Morgan 2026 Outlook 同样将 AI 列为年度最大投资主题。Q1 实际数据显示 AI 融资约 500 亿美元，头部三家（OpenAI、xAI、Anthropic）吃掉绝大部分份额。Barclays Q1 全球展望报告直接以"As Goes AI"为题。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">2.52 万亿美元意味着 AI 支出已经超过了全球半导体产业的总产值。44% 的增速在如此大的基数上仍然维持，说明这不是泡沫式增长，而是实实在在的产业资本投入。但头部集中度极高——三家公司吃掉大部分融资——这种"赢者通吃"的资本格局是否可持续，将是 Q2 的核心悬念之一。</div>
+            </div>
+            <div class="meta">
+                <span>来源：Gartner、J.P. Morgan、Barclays</span>
+                <a href="https://www.gartner.com/en/newsroom/press-releases/2026-1-15-gartner-says-worldwide-ai-spending-will-total-2-point-5-trillion-dollars-in-2026" target="_blank">Gartner报告</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #20 · 2026年3月31日 · 3月收官特别版</p>
+        <p style="margin-top: 6px;">数据来源：界面新闻、36氪、新华网、腾讯云、AI Critique、Serious Insights、Digital Applied、Gartner、tech.news.am、Techi.com 等</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">返回日报列表</a></p>
+    </div>
+</body>
+</html>

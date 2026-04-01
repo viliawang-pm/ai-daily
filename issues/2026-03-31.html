@@ -114,24 +114,47 @@
         <div class="header-content">
             <h1>AI 日报 #20</h1>
             <div class="date">2026年3月31日 · 星期二</div>
-            <div class="subtitle">3月收官特别版 — K2.5印钞一个月、AI三巨头IPO竞赛、中国日均140万亿Token</div>
+            <div class="subtitle">3月收官特别版 — Claude Code 51万行源码泄露、K2.5印钞一个月、AI三巨头IPO竞赛、中国日均140万亿Token</div>
             <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
         </div>
     </div>
 
     <div class="container">
         <div class="summary-bar">
+            <span class="tag">Claude Code源码泄露</span>
             <span class="tag">月之暗面ARR破亿</span>
             <span class="tag">AI三巨头IPO</span>
             <span class="tag">中国140万亿Token</span>
             <span class="tag">DeepSeek V4倒计时</span>
-            <span class="tag">3月收官总结</span>
         </div>
 
         <!-- 1 -->
         <div class="news-card signal">
             <div class="card-header">
                 <span class="num">01</span>
+                <div class="card-title-area">
+                    <h3><span class="badge badge-signal">SIGNAL</span> Anthropic 史诗级翻车：Claude Code 51.2 万行源码因打包失误全网泄露，一周内第二次安全事故</h3>
+                </div>
+            </div>
+            <div class="content">
+                3月31日，区块链安全研究员 Chaofan Shou 在 X 上爆料：Anthropic 在向 npm 发布 @anthropic-ai/claude-code 包时，忘记删除一个 57MB 的 source map 调试文件（cli.js.map），导致约 1,900 个 TypeScript 源文件、51.2 万行代码被完整暴露。泄露内容包括：~40 个内置工具模块、~50 个斜杠命令、多 Agent 编排系统（内部代号"swarm"）、IDE 桥接层（JWT 认证）、持久化记忆系统、以及多项未发布功能。原帖浏览量迅速突破 780 万，GitHub 镜像仓库（instructkr/claude-code）数小时内 Star 破 2000、Fork 数千。Anthropic 紧急删除了 source map 文件，但早期版本已被永久存档。Fortune 指出这是 Anthropic 一周内第二次安全事故——上周刚因第三方 CMS 配置错误泄露近 3000 份内部文件。
+            </div>
+            <div class="why">
+                <div class="why-title">为什么这件事重要？</div>
+                <div class="why-text">这不只是一次"忘删文件"的低级失误。首先，泄露的源码揭示了 Claude Code 的真实架构——多 Agent 编排、权限门控工具系统、React + Ink 终端 UI、Bun 运行时——这些是当前最前沿的 AI Agent 工程实践，全球开发者正在逐行研读。其次，Anthropic 正处于冲刺 5000 亿美元估值 IPO 的关键窗口期，一周两次安全事故严重损伤其"安全可信"的品牌叙事。第三，这事实上构成了一次"被迫开源"，竞争对手（OpenAI Codex、Cursor、Windsurf 等）可以直接学习其 Agent 架构——对整个 AI 编程工具生态格局可能产生深远影响。</div>
+            </div>
+            <div class="meta">
+                <span>来源：CNBC、Fortune、The Register、Cybernews、WinBuzzer、dev.to、新浪科技、搜狐、东方财富、第一财经</span>
+                <a href="https://www.cnbc.com/2026/03/31/anthropic-leak-claude-code-internal-source.html" target="_blank">CNBC</a>
+                <a href="https://fortune.com/2026/03/31/anthropic-source-code-claude-code-data-leak-second-security-lapse-days-after-accidentally-revealing-mythos/" target="_blank">Fortune</a>
+                <a href="https://dev.to/gabrielanhaia/claude-codes-entire-source-code-was-just-leaked-via-npm-source-maps-heres-whats-inside-cjo" target="_blank">技术分析</a>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="num">02</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-signal">SIGNAL</span> 月之暗面 ARR 突破 1 亿美金——Kimi K2.5 发布仅一个月，"思考型模型"变现能力实锤</h3>
                 </div>
@@ -150,10 +173,10 @@
             </div>
         </div>
 
-        <!-- 2 -->
+        <!-- 3 -->
         <div class="news-card signal">
             <div class="card-header">
-                <span class="num">02</span>
+                <span class="num">03</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-signal">SIGNAL</span> AI 三巨头 IPO 竞赛白热化——OpenAI 瞄准万亿、Anthropic 5000亿+、xAI 也在赛道上</h3>
                 </div>
@@ -172,10 +195,10 @@
             </div>
         </div>
 
-        <!-- 3 -->
+        <!-- 4 -->
         <div class="news-card signal">
             <div class="card-header">
-                <span class="num">03</span>
+                <span class="num">04</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-signal">SIGNAL</span> 3月收官：中国日均 Token 调用量突破 140 万亿——同比增长 1000 倍，连续三周超美</h3>
                 </div>
@@ -196,10 +219,10 @@
 
         <div class="section-divider"><span>产业结构性变化</span></div>
 
-        <!-- 4 -->
+        <!-- 5 -->
         <div class="news-card signal">
             <div class="card-header">
-                <span class="num">04</span>
+                <span class="num">05</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-signal">SIGNAL</span> DeepSeek V4 进入 4 月发布倒计时——万亿参数 + Engram 记忆 + mHC 架构，市场屏息以待</h3>
                 </div>
@@ -218,10 +241,10 @@
             </div>
         </div>
 
-        <!-- 5 -->
+        <!-- 6 -->
         <div class="news-card trend">
             <div class="card-header">
-                <span class="num">05</span>
+                <span class="num">06</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-trend">TREND</span> "百虾大战"全面爆发——腾讯搭脚手架，7 款国产 AI 龙虾实测，智能体 AI 从极客玩具变为大众工具</h3>
                 </div>
@@ -240,10 +263,10 @@
             </div>
         </div>
 
-        <!-- 6 -->
+        <!-- 7 -->
         <div class="news-card trend">
             <div class="card-header">
-                <span class="num">06</span>
+                <span class="num">07</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-trend">TREND</span> AI Critique 3月终评：基础设施需求从"训练"转向"服务"，Agentic 工作流重塑算力经济</h3>
                 </div>
@@ -261,10 +284,10 @@
             </div>
         </div>
 
-        <!-- 7 -->
+        <!-- 8 -->
         <div class="news-card trend">
             <div class="card-header">
-                <span class="num">07</span>
+                <span class="num">08</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-trend">TREND</span> Serious Insights 3月更新：能力、基础设施、部署——三大差距定义 AI 现状</h3>
                 </div>
@@ -284,10 +307,10 @@
 
         <div class="section-divider"><span>3月收官与前瞻</span></div>
 
-        <!-- 8 -->
+        <!-- 9 -->
         <div class="news-card trend">
             <div class="card-header">
-                <span class="num">08</span>
+                <span class="num">09</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-trend">TREND</span> 腾讯云万字深度：AI 彻底变天——从"龙虾"刷屏到中国模型登顶，3月改写 AI 格局</h3>
                 </div>
@@ -305,10 +328,10 @@
             </div>
         </div>
 
-        <!-- 9 -->
+        <!-- 10 -->
         <div class="news-card newface">
             <div class="card-header">
-                <span class="num">09</span>
+                <span class="num">10</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-newface">新面孔</span> Digital Applied 3月总结："改变 AI 永远的一个月"——法律战、模型发布、Agentic 突破、政策转向同时发生</h3>
                 </div>
@@ -326,10 +349,10 @@
             </div>
         </div>
 
-        <!-- 10 -->
+        <!-- 11 -->
         <div class="news-card newface">
             <div class="card-header">
-                <span class="num">10</span>
+                <span class="num">11</span>
                 <div class="card-title-area">
                     <h3><span class="badge badge-newface">新面孔</span> Gartner：2026 年全球 AI 支出将达 2.52 万亿美元——同比增长 44%，AI 已成全球最大技术投资品类</h3>
                 </div>
@@ -351,7 +374,7 @@
 
     <div class="footer">
         <p>AI 日报 #20 · 2026年3月31日 · 3月收官特别版</p>
-        <p style="margin-top: 6px;">数据来源：界面新闻、36氪、新华网、腾讯云、AI Critique、Serious Insights、Digital Applied、Gartner、tech.news.am、Techi.com 等</p>
+        <p style="margin-top: 6px;">数据来源：CNBC、Fortune、The Register、Cybernews、界面新闻、36氪、新华网、腾讯云、AI Critique、Serious Insights、Digital Applied、Gartner、tech.news.am 等</p>
         <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">返回日报列表</a></p>
     </div>
 </body>

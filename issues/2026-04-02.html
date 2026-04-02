@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #21 — 2026年4月2日（星期四）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .header h1 { font-size: 2.6em; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+        .header .date { font-size: 1.15em; opacity: 0.9; margin-bottom: 6px; }
+        .header .subtitle { font-size: 1em; opacity: 0.78; line-height: 1.6; }
+        .back-link {
+            position: absolute; top: 16px; left: 20px; z-index: 2;
+            color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9em;
+            display: flex; align-items: center; gap: 4px; transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 1; color: white; }
+
+        /* Stats bar */
+        .stats-bar {
+            display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+            padding: 18px 24px; background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; color: #667eea; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; color: #718096; }
+
+        /* Container */
+        .container { max-width: 840px; margin: 0 auto; padding: 36px 20px 60px; }
+
+        /* News card */
+        .news-card {
+            background: white; border-radius: 14px; padding: 28px 26px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 6px 24px rgba(102,126,234,0.12); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.breakthrough { border-left-color: #e53e3e; }
+        .news-card.trend { border-left-color: #38a169; }
+        .news-card.newface { border-left-color: #ed8936; }
+
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .card-number {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: #667eea; color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.82em; font-weight: 700; flex-shrink: 0;
+        }
+        .card-tag {
+            padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #ebf4ff; color: #4c51bf; }
+        .tag-breakthrough { background: #fff5f5; color: #c53030; }
+        .tag-trend { background: #f0fff4; color: #276749; }
+        .tag-newface { background: #fffaf0; color: #c05621; }
+
+        .card-title { font-size: 1.2em; font-weight: 700; line-height: 1.4; margin-bottom: 10px; color: #1a202c; }
+        .card-summary { font-size: 0.93em; color: #4a5568; line-height: 1.8; margin-bottom: 14px; }
+        .card-why { background: #f7fafc; border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; }
+        .card-why .why-label { font-size: 0.78em; font-weight: 700; color: #667eea; margin-bottom: 4px; }
+        .card-why .why-text { font-size: 0.88em; color: #4a5568; line-height: 1.7; }
+        .card-meta { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.8em; color: #a0aec0; }
+        .card-meta a { color: #667eea; text-decoration: none; }
+        .card-meta a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer { text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header { padding: 36px 16px 28px; }
+            .header h1 { font-size: 1.8em; }
+            .container { padding: 20px 12px 40px; }
+            .news-card { padding: 20px 16px; }
+            .stats-bar { gap: 20px; padding: 14px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">&larr; 返回日报列表</a>
+        <div class="header-content">
+            <h1>AI 日报 #21</h1>
+            <div class="date">2026年4月2日 · 星期四</div>
+            <div class="subtitle">Q1创投2970亿美元炸裂收官 · Claude Code泄露引发供应链安全风暴 · OpenAI估值8520亿 · AI漫剧新规落地</div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat">
+            <span class="stat-num">10</span>
+            <span class="stat-label">重要资讯</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">18+</span>
+            <span class="stat-label">覆盖平台</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">2</span>
+            <span class="stat-label">新面孔</span>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- 1 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <div class="card-number">1</div>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">Q1 2026全球创投2970亿美元，AI独占81%——四家公司拿走64%</div>
+            <div class="card-summary">
+                Crunchbase/TechCrunch联合发布Q1 2026全球风投数据：总融资2970亿美元，同比暴增150%（上季1180亿），是有史以来最高的单季度纪录。AI初创公司捕获81%（约2400亿美元），仅OpenAI（1220亿）、Anthropic、xAI、Waymo四家就吸走了总额的64%（约1900亿美元）。TechCrunch称"这不是泡沫，这是产业重构——资本正在押注算力基础设施成为新石油"。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">一个季度的AI融资额超过2024年全年（约650亿），资本极度集中化——排名前四家公司拿走近2/3。这意味着AI赛道已事实上形成了"超级巨头+长尾"的二元结构，中小AI公司的融资窗口正在急速收窄。81%的占比也说明，全球风投已经不是"加码AI"，而是"几乎只投AI"。</div>
+            </div>
+            <div class="card-meta">
+                <span>Crunchbase · TechCrunch · Techmeme · PrismNews</span>
+                <a href="https://news.crunchbase.com/venture/record-breaking-funding-ai-global-q1-2026/" target="_blank">Crunchbase原文</a>
+                <a href="https://techcrunch.com/2026/04/01/startup-funding-shatters-all-records-in-q1/" target="_blank">TechCrunch原文</a>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <div class="card-number">2</div>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">Claude Code泄露引爆供应链安全风暴——Zscaler发现攻击者利用泄露代码传播Vidar恶意软件</div>
+            <div class="card-summary">
+                3月31日Anthropic员工误将Claude Code的npm包携带未混淆的.map文件发布，导致51.2万行TypeScript源码（1900个文件）完整暴露。事件持续发酵至4月1-2日：Fortune、CNBC、LA Times、TechRadar等主流科技媒体集中报道；Zscaler ThreatLabz安全团队发现，攻击者已利用"Claude Code泄露"为诱饵，伪造下载链接传播Vidar信息窃取器和GhostSocks代理恶意软件；PYMNTS披露Claude Code年化收入已超25亿美元，泄露打击的是Anthropic最具商业价值的产品。Anthropic在一周内接连出现两次安全事故（先泄露Mythos内部文档，再泄露Claude Code源码），Fortune称这一连串事故正动摇市场对其安全能力的信心，而这恰恰是Anthropic的核心品牌叙事。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">三重打击：（1）泄露的源码暴露了反蒸馏机制（包括假输出检测、"Canary tokens"水印系统），竞争对手获得了价值数十亿美元的架构蓝图；（2）供应链安全风暴——攻击者仅用24小时就将泄露事件武器化为恶意软件传播渠道，这证明AI工具链的npm/pip生态已成为攻击面；（3）Anthropic一周两次安全事故+即将IPO，时间窗口极为糟糕。</div>
+            </div>
+            <div class="card-meta">
+                <span>Zscaler · Fortune · CNBC · TechRadar · LA Times · PYMNTS · dev.to · Cybernews</span>
+                <a href="https://www.zscaler.com/blogs/security-research/anthropic-claude-code-leak" target="_blank">Zscaler分析</a>
+                <a href="https://fortune.com/2026/03/31/anthropic-source-code-claude-code-data-leak-second-security-lapse-days-after-accidentally-revealing-mythos/" target="_blank">Fortune报道</a>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <div class="card-number">3</div>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">OpenAI融资1220亿美元正式关账，估值8520亿——亚马逊豪赌500亿，附AGI对赌条款</div>
+            <div class="card-summary">
+                3月31日OpenAI官宣融资关账：总额1220亿美元（从此前公布的1100亿追加至1220亿），估值8520亿美元。CNBC、新华社、Tech Xplore、LiveMint等全球媒体集中报道。核心看点：亚马逊出资500亿美元，但Let's Data Science独家披露，其中350亿美元附带对赌条款——需要OpenAI在2028年前完成IPO或实现AGI才能完全兑现；微软、NVIDIA、软银也是主要投资方；OpenAI预计今年企业收入占比将提升至50%，IPO仍锁定Q4 2026。新华社将此事描述为"有史以来最大规模科技融资"。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">8520亿估值意味着OpenAI已是全球第7大"公司"（按市值算超过台积电），但它还没上市、还没盈利。亚马逊的AGI对赌条款说明，即使是最大的投资者也在给"AI泡沫"买保险——钱给了，但得看到结果。这笔融资也意味着OpenAI未来12个月的烧钱速度将达到每月100亿美元级别。</div>
+            </div>
+            <div class="card-meta">
+                <span>CNBC · 新华社 · Tech Xplore · LiveMint · Blockonomi · Let's Data Science</span>
+                <a href="https://www.cnbc.com/2026/03/31/openai-funding-round-ipo.html" target="_blank">CNBC原文</a>
+                <a href="https://www.news.cn/20260401/65e9b216571b4306944b5b4229fd8d31/c.html" target="_blank">新华社报道</a>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <div class="card-number">4</div>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">Google发布3月AI回顾+Gemini API推出Flex/Priority双层推理定价——从增长模式转向变现模式</div>
+            <div class="card-summary">
+                Google Blog发布3月AI回顾长文，总结了Search Live扩展、Personal Intelligence向7.5亿免费用户开放、Gemini 3.1生态完善等进展。更值得关注的是，4月1日Gemini API更新日志显示新增"Flex"和"Priority"两个推理层级——Flex提供低成本批量推理（延迟换价格），Priority提供低延迟高优先级推理。agentdeals.dev分析称Google正在为Gemini API设立"计费账户消费上限"。HuMAI Blog发布4月月报称：AI平台正在从"增长模式"全面转向"变现模式"，Google的推理分层定价是标志性事件。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">AI推理定价的"分层化"正在成为行业共识——不同延迟需求对应不同价格，这本质上是把推理资源当做"云计算的新实例类型"来卖。Google的动作印证了一个产业拐点：模型竞赛的下半场不是"谁更强"，而是"谁的推理更便宜更灵活"。Flex层的出现将直接冲击Groq等纯推理优化公司的定价空间。</div>
+            </div>
+            <div class="card-meta">
+                <span>Google Blog · Google AI changelog · HuMAI Blog · agentdeals.dev</span>
+                <a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-march-2026/" target="_blank">Google回顾原文</a>
+                <a href="https://ai.google.dev/gemini-api/docs/changelog" target="_blank">Gemini API更新日志</a>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <div class="card-number">5</div>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">广电总局AI漫剧新规4月1日正式生效——168亿市场"持证上岗"时代到来</div>
+            <div class="card-summary">
+                4月1日，国家广电总局AI漫剧/微短剧备案新规正式落地执行。核心规定：所有未经备案的AIGC类、漫画类动画微短剧全网强制下架；新作必须"先备案后上线"；分层审核机制启动（S级/A级/B级分类管理）；内容红线包括暴力、色情、价值观导向等6类禁区；未成年人保护条款单列。澎湃新闻分析称，2025年AI漫剧市场规模达168亿元，日均上线量470部，但4月1日后"合规成为生存底线"，预计30-50%的中小创作者将被清洗出局。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">这是中国对AIGC内容产业的第一个强制性"持证上岗"监管案例，信号意义远超AI漫剧本身。如果备案制在这个168亿市场跑通，极有可能扩展到AI短视频、AI直播、AI虚拟人等更大的AIGC应用场景。同时也意味着"AI生成内容无需审核"的灰色时代正式结束。</div>
+            </div>
+            <div class="card-meta">
+                <span>澎湃新闻 · 腾讯新闻 · 知乎 · 中华网 · 百度百家号</span>
+                <a href="https://www.thepaper.cn/newsDetail_forward_32869681" target="_blank">澎湃新闻原文</a>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <div class="card-number">6</div>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">3月AI总结密集发布——"改变AI永远的一个月"后，4月关键词是"变现"</div>
+            <div class="card-summary">
+                多家媒体在4月1-2日集中发布3月回顾/4月前瞻：Digital Strategy AI发布"3月AI圆桌"总结（GPT-5.4、GTC 2026、EU AI Act三条主线）；HuMAI Blog发布4月月报预判"从增长转向变现"；Digital Applied称3月是"改变AI永远的一个月"；腾讯云万字深度报道总结中国AI"集群式崛起"。核心共识：3月密集发布期结束，4月进入"消化-变现-监管"三重叠加期。DeepSeek V4仍锁定4月发布，是本月最大技术悬念。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">当多家独立机构同时给出"变现"关键词时，说明行业正在发生真正的范式转移——从"发模型-跑分-融资"循环转向"推理定价-企业客户-收入增长"循环。4月的看点不再是谁发了新模型，而是谁先跑通从训练到推理到收入的完整闭环。</div>
+            </div>
+            <div class="card-meta">
+                <span>Digital Strategy AI · HuMAI Blog · Digital Applied · 腾讯云开发者</span>
+                <a href="https://digitalstrategy-ai.com/2026/04/02/ai-news-roundup-march2026/" target="_blank">Digital Strategy AI</a>
+                <a href="https://www.humai.blog/ai-news-trends-april-2026-complete-monthly-digest/" target="_blank">HuMAI 4月月报</a>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="news-card signal">
+            <div class="card-header">
+                <div class="card-number">7</div>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">半导体涨价潮4月1日生效——英飞凌、德州仪器、安森美集体提价，AI算力成本压力传导</div>
+            <div class="card-summary">
+                东方财富发布4月A股事件日历，首条即为：4月1日英飞凌、德州仪器、安森美半导体等产品涨价正式生效。核心方向为模拟芯片和功率半导体，相关标的包括斯达半导、士兰微、圣邦股份、兆易创新等。新浪前瞻分析称，4月科技产业事件密集——半导体涨价+DeepSeek V4发布+商业航天节点，AI算力"卖铲人"赛道可能迎来爆发。德勤此前发布《2026全球半导体趋势报告》预测全年销售额9750亿美元创新高，但警告"高利润、低销量"的结构性风险。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">半导体涨价是AI算力成本的上游传导信号。当模拟芯片和功率半导体集体涨价时，数据中心电源管理成本上升，最终会传导到推理价格。这解释了为什么Google和OpenAI都在推"分层定价"——不是因为竞争，而是因为底层成本结构在变。</div>
+            </div>
+            <div class="card-meta">
+                <span>东方财富 · 新浪新闻 · 德勤 · 半导体行业观察</span>
+                <a href="https://caifuhao.eastmoney.com/news/20260401082137331817080" target="_blank">东方财富事件日历</a>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="news-card trend">
+            <div class="card-header">
+                <div class="card-number">8</div>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">百度一周AI热点复盘——中标2.9亿智算项目，AI技术落地与生态整合加速</div>
+            <div class="card-summary">
+                经济观察网发布百度近一周（3/25-4/1）AI热点总结：AI技术落地与生态整合为核心主线。百度中标2.9亿元智算项目，文心一言持续迭代，百度智能云在算力基础设施方面加码。这标志着国内AI巨头从"模型竞赛"转向"项目落地"——用政企订单而非融资来验证AI价值。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">2.9亿元单笔智算项目订单反映了中国AI产业的另一面：不是所有玩家都在追融资和IPO，"政企大单"才是多数国内AI公司的真正收入来源。百度的路径（模型+云+算力一体化中标）可能是中国AI公司最可持续的变现模式。</div>
+            </div>
+            <div class="card-meta">
+                <span>经济观察网</span>
+                <a href="https://www.eeo.com.cn/2026/0401/824202.shtml" target="_blank">原文链接</a>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="news-card newface">
+            <div class="card-header">
+                <div class="card-number">9</div>
+                <span class="card-tag tag-newface">新面孔</span>
+            </div>
+            <div class="card-title">北行软件库：4月1日国内外AI事件一览——AI手机研发+百亿大模型+数学猜想证明突破</div>
+            <div class="card-summary">
+                新兴AI资讯站"北行软件库"发布4月1日AI事件一览，涵盖：国内AI手机研发新进展、百亿级参数大模型发布、数学猜想的AI辅助证明突破、国外巨额融资关账等。虽然单条事件已在主流媒体有所报道，但该站以"技术+商业双重盛宴"的框架做了信息密度极高的整合，在非传统AI媒体中获得了可观的传播量。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">AI资讯聚合赛道持续涌现新面孔。值得注意的是"数学猜想AI辅助证明"——如果属实，这是继Nature AI端到端科研论文之后，AI在纯数学领域的又一次能力边界拓展，值得后续跟踪。</div>
+            </div>
+            <div class="card-meta">
+                <span>北行软件库</span>
+                <a href="https://www.beihangsoft.cn/article/1280.html" target="_blank">原文链接</a>
+            </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="news-card newface">
+            <div class="card-header">
+                <div class="card-number">10</div>
+                <span class="card-tag tag-newface">新面孔</span>
+            </div>
+            <div class="card-title">dev.to技术社区深度拆解Claude Code泄露架构——"反蒸馏暗水印"和"假输出陷阱"引发开发者热议</div>
+            <div class="card-summary">
+                dev.to社区一篇拆解Claude Code泄露源码的技术文章获得大量互动。文章揭示了Anthropic在Claude Code中内置的多层防御机制：（1）anti-distillation（反蒸馏）层，通过在输出中嵌入"Canary tokens"来追踪模型蒸馏行为；（2）假输出检测系统，当检测到可能的蒸馏请求时主动输出误导性结果；（3）完整的系统提示词也被一并泄露。作者戏称这是"2026年最好的PR事件还是最大的安全事故"，引发社区激烈讨论。
+            </div>
+            <div class="card-why">
+                <div class="why-label">为什么这件事重要</div>
+                <div class="why-text">这是目前公开信息中最详细的"商业AI工具防蒸馏机制"拆解。反蒸馏+假输出+水印追踪的三层防御架构，揭示了AI公司最核心的商业秘密之一：如何防止自己的模型被克隆。这些机制现在已经完全公开，意味着整个行业的防蒸馏策略都需要重新设计。</div>
+            </div>
+            <div class="card-meta">
+                <span>dev.to · fonzi.ai · lowcode.agency</span>
+                <a href="https://dev.to/apilover/what-the-claude-code-source-leak-reveals-about-ai-coding-tool-architecture-160f" target="_blank">dev.to原文</a>
+                <a href="https://dev.to/varshithvhegde/the-great-claude-code-leak-of-2026-accident-incompetence-or-the-best-pr-stunt-in-ai-history-3igm" target="_blank">"最佳PR事件"讨论</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #21 · 2026年4月2日</p>
+        <p style="margin-top: 6px;">
+            数据来源：Crunchbase · TechCrunch · CNBC · Fortune · Zscaler · Google Blog · 新华社 · 澎湃新闻 · 经济观察网 · 东方财富 · HuMAI Blog · dev.to 等
+        </p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">返回日报列表</a></p>
+    </div>
+</body>
+</html>

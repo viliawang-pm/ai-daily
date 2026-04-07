@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #27 — 2026年4月8日 星期三</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+        .back-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0; padding: 12px 24px;
+        }
+        .back-nav a {
+            color: #667eea; text-decoration: none; font-size: 0.9em; font-weight: 600;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 100px 24px 56px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .hero .issue-badge {
+            display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 16px;
+            border-radius: 20px; font-size: 0.85em; margin-bottom: 16px; font-weight: 600;
+        }
+        .hero h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
+        .hero .date { font-size: 1.05em; opacity: 0.85; margin-bottom: 20px; }
+        .hero .summary { font-size: 0.95em; opacity: 0.8; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+        .stats-bar {
+            display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; opacity: 0.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .news-item {
+            background: white; border-radius: 14px; padding: 28px;
+            margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0; transition: all 0.2s;
+        }
+        .news-item:hover { box-shadow: 0 4px 20px rgba(102,126,234,0.12); }
+        .news-item.signal { border-left-color: #667eea; }
+        .news-item.trend { border-left-color: #48bb78; }
+        .news-item.breakthrough { border-left-color: #ed8936; }
+        .news-item.new-face { border-left-color: #ed64a6; }
+        .news-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+        .news-num {
+            background: linear-gradient(135deg, #667eea, #764ba2); color: white;
+            width: 32px; height: 32px; border-radius: 50%; display: flex;
+            align-items: center; justify-content: center; font-weight: 700;
+            font-size: 0.85em; flex-shrink: 0; margin-top: 2px;
+        }
+        .news-title-area { flex: 1; }
+        .news-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        .tag {
+            padding: 2px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #ebf4ff; color: #667eea; }
+        .tag-trend { background: #f0fff4; color: #38a169; }
+        .tag-breakthrough { background: #fffaf0; color: #dd6b20; }
+        .tag-new-face { background: #fff5f7; color: #d53f8c; }
+        .tag-platform { background: #f7fafc; color: #718096; border: 1px solid #e2e8f0; }
+        .news-title { font-size: 1.15em; font-weight: 700; color: #1a202c; line-height: 1.5; }
+        .news-body { color: #4a5568; font-size: 0.92em; line-height: 1.8; margin-top: 12px; }
+        .news-body strong { color: #2d3748; }
+        .why-important {
+            background: #f7fafc; border-radius: 8px; padding: 14px 16px;
+            margin-top: 14px; border: 1px solid #edf2f7;
+        }
+        .why-important .label {
+            font-size: 0.78em; font-weight: 700; color: #667eea;
+            margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .why-important p { font-size: 0.88em; color: #4a5568; line-height: 1.7; }
+        .source-link {
+            display: inline-flex; align-items: center; gap: 4px; margin-top: 12px;
+            color: #667eea; font-size: 0.82em; text-decoration: none; font-weight: 600;
+        }
+        .source-link:hover { text-decoration: underline; }
+        .section-divider {
+            text-align: center; padding: 32px 0; color: #a0aec0; font-size: 0.85em;
+        }
+        .section-divider .line {
+            width: 60px; height: 2px; background: #e2e8f0; margin: 0 auto 12px;
+        }
+        .footer {
+            text-align: center; padding: 40px 24px; color: #a0aec0; font-size: 0.82em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .hero { padding: 80px 16px 40px; }
+            .hero h1 { font-size: 1.5em; }
+            .container { padding: 24px 14px 60px; }
+            .news-item { padding: 20px 16px; }
+            .news-title { font-size: 1.05em; }
+            .stats-bar { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="back-nav">
+        <a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a>
+    </div>
+
+    <div class="hero">
+        <div class="hero-content">
+            <div class="issue-badge">第 27 期</div>
+            <h1>GPT-6"土豆"全面曝光 + 三巨头联手反蒸馏 + 智元AI发布周开幕</h1>
+            <div class="date">2026年4月8日 星期三</div>
+            <div class="summary">
+                OpenAI下一代旗舰GPT-6代号"Spud"遭全面曝光——4月14日发布，性能暴涨40%；同一天，OpenAI/Anthropic/Google宣布联手反制中国AI蒸馏；OpenAI发布13页AI经济政策蓝图提出"机器人税"；雷军马云罕见同框押注具身智能。
+            </div>
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-num">10</span>
+                    <span class="stat-label">资讯条数</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">16+</span>
+                    <span class="stat-label">覆盖平台</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">2</span>
+                    <span class="stat-label">新面孔</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- 1 -->
+        <div class="news-item signal">
+            <div class="news-header">
+                <div class="news-num">1</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">36氪</span>
+                        <span class="tag tag-platform">CSDN</span>
+                        <span class="tag tag-platform">ToolMesh</span>
+                    </div>
+                    <div class="news-title">GPT-6 代号"Spud/土豆"全面曝光——4月14日发布，性能暴涨40%，200万Token上下文</div>
+                </div>
+            </div>
+            <div class="news-body">
+                OpenAI 下一代旗舰模型 GPT-6 近日遭全面泄露。据多方信源交叉确认：<strong>内部代号"Spud（土豆）"</strong>，预计 <strong>4月14日正式发布</strong>。关键参数——性能较 GPT-5.4 提升 <strong>40%</strong>，上下文窗口达到 <strong>200万 Token</strong>（GPT-5.4 为100万），原生支持文本/音频/图像/视频全模态输入输出。定价据称为输入 $2.5/MTok、输出 $12/MTok。GPT-6 在 3月24日于 Stargate 超级集群完成预训练，将整合 ChatGPT、Codex、Atlas 浏览器于一体的"超级应用"中发布。Greg Brockman 此前在 Big Technology Podcast 上亲口形容 Spud 为"第一个真正会思考的模型"。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>GPT-6 是 OpenAI 在 IPO 前的最后一张技术王牌。200万 Token 上下文和40%性能提升如果属实，意味着 OpenAI 在 Anthropic Claude Mythos 发布前抢到了"最强模型"叙事的主动权。更关键的是——4月14日距 DeepSeek V4 正式发布仅一步之遥，接下来一周将是2026年迄今模型竞赛最密集的时间窗口。</p>
+            </div>
+            <a href="https://www.36kr.com/p/3754726863012361" target="_blank" class="source-link">→ 36氪深度报道</a>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-item signal">
+            <div class="news-header">
+                <div class="news-num">2</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">WSJ</span>
+                        <span class="tag tag-platform">CNBC</span>
+                        <span class="tag tag-platform">Gadgets360</span>
+                    </div>
+                    <div class="news-title">OpenAI+Anthropic+Google 三巨头联手反蒸馏——通过 Frontier Model Forum 共享情报针对中国对手</div>
+                </div>
+            </div>
+            <div class="news-body">
+                4月7日，<strong>OpenAI、Anthropic 和 Google 宣布通过 Frontier Model Forum 联合反制中国 AI 公司的"对抗性蒸馏"行为</strong>。三家公司将共享模型被非授权复制的攻击情报，共同开发检测技术，并建立 <strong>"AI Frontier Fund"</strong> 资助相关安全研究。据 WSJ 报道，三巨头已发现中国竞争对手通过系统性的 API 调用、多轮对话采集等手段提取其闭源模型的核心能力，并用于训练自有模型。这是美国AI行业首次组成正式联盟应对蒸馏威胁。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>三家原本激烈竞争的公司联手，本身就是一个产业结构性变化的信号。这意味着"反蒸馏"已从技术议题上升为产业政策议题。对中国AI公司的影响是实质性的——如果API层面的检测和限制技术成熟，DeepSeek、月之暗面等依赖海外模型做能力对齐的公司可能面临新的技术获取障碍。</p>
+            </div>
+            <a href="https://www.businesstoday.in/technology/story/openai-anthropic-google-team-up-to-stop-chinese-ai-distillation-threat-524367-2026-04-07" target="_blank" class="source-link">→ Business Today 报道</a>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-item signal">
+            <div class="news-header">
+                <div class="news-num">3</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">Unite.AI</span>
+                        <span class="tag tag-platform">Fortune</span>
+                        <span class="tag tag-platform">creati.ai</span>
+                    </div>
+                    <div class="news-title">OpenAI 发布13页 AI 经济政策蓝图——提出"机器人税"、公共财富基金、四天工作制</div>
+                </div>
+            </div>
+            <div class="news-body">
+                OpenAI 发布了一份名为 <strong>"Industrial Policy for the Intelligence Age"（智能时代的产业政策）</strong> 的13页政策白皮书，提出一套完整的经济改革方案：<strong>① 对自动化劳动征收"机器人税"</strong>；② 建立由 AI 公司出资的 <strong>国家公共财富基金</strong>；③ 推动 <strong>32小时/四天工作制</strong> 试点；④ 当失业率触发特定阈值时，<strong>自动启动社会安全网</strong>。Sam Altman 告诉 Axios 这是"起点而非处方"。同日 Fortune 报道，Altman 与著名风投人 Vinod Khosla 达成共识——呼吁 <strong>消除年收入10万美元以下人群的所得税</strong>。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>这是 OpenAI 首次以白皮书形式系统性地介入经济政策讨论。一家估值 8520 亿美元的 AI 公司主动提出"给自己加税"，背后是 IPO 前的政治姿态——向监管层传递"我们是负责任的"信号。但更深的信息是：OpenAI 内部判断 AI 对就业的冲击已近在咫尺，已到了需要公开讨论缓冲机制的阶段。</p>
+            </div>
+            <a href="https://www.unite.ai/openai-proposes-robot-taxes-public-wealth-fund-and-four-day-work-week/" target="_blank" class="source-link">→ Unite.AI 报道</a>
+        </div>
+
+        <!-- 4 -->
+        <div class="news-item signal">
+            <div class="news-header">
+                <div class="news-num">4</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">雷锋网</span>
+                        <span class="tag tag-platform">每日经济新闻</span>
+                        <span class="tag tag-platform">新浪财经</span>
+                    </div>
+                    <div class="news-title">千寻智能30天融资30亿——雷军马云罕见"同框"，具身智能赛道资本加速到极致</div>
+                </div>
+            </div>
+            <div class="news-body">
+                4月7日，杭州具身智能公司 <strong>千寻智能</strong> 宣布完成新一轮 <strong>10亿元融资</strong>，由雷军旗下 <strong>顺为资本</strong>、马云旗下 <strong>云锋基金</strong> 联合领投，达晨财智、银河源汇、图灵基金等跟投。加上2月完成的20亿A轮，千寻智能在 <strong>30天内累计融资超30亿元</strong>。公司定位"机器人通用大脑构建者"，核心技术路线是以"多样性数据"驱动 Scaling——自研大规模仿真数据引擎，预计2026年数据量破百万小时。雷军和马云在同一家公司的投资人名单中同时出现，极为罕见。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>雷军和马云的"同框"是一个资本信号——两位中国科技界最有影响力的投资人同时下注同一家初创公司，说明具身智能赛道的共识度已经非常高。千寻智能"数据驱动Scaling"的路线与 Tesla 的 end-to-end 路线、AGIBOT 的开源数据路线形成三足鼎立，中国具身智能正在从"追随者"变成"多路线并行探索者"。</p>
+            </div>
+            <a href="https://www.leiphone.com/category/ai/ipevOwCEqpoqypW9.html" target="_blank" class="source-link">→ 雷锋网独家报道</a>
+        </div>
+
+        <!-- 5 -->
+        <div class="news-item signal">
+            <div class="news-header">
+                <div class="news-num">5</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-signal">SIGNAL</span>
+                        <span class="tag tag-platform">IT之家</span>
+                        <span class="tag tag-platform">Humanoids Daily</span>
+                        <span class="tag tag-platform">财经网</span>
+                    </div>
+                    <div class="news-title">智元 AGIBOT AI 发布周开幕——首日开源 AGIBOT WORLD 2026 全域具身智能数据集</div>
+                </div>
+            </div>
+            <div class="news-body">
+                4月7日，智元机器人（AGIBOT）正式开启为期一周的 <strong>"智元AI发布周"（AGIBOT AI Week）</strong>，将从4月7日持续到4月14日，每个工作日发布一项物理AI核心突破。首日重磅发布——<strong>开源 AGIBOT WORLD 2026 数据集</strong>，这是全球首个覆盖具身智能全链路研究的开源数据集，基于100%真实环境采集（商业空间、家庭场景等），支持五大研究方向。数据集已上线 Hugging Face，并同步发布 ICRA 2026 Challenge。Humanoids Daily 评论称："AGIBOT 正在用开源数据解决具身智能最大的瓶颈——真实世界训练数据匮乏。"
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>具身智能最大的瓶颈不是算法而是数据。AGIBOT WORLD 2026 的开源释放了一个清晰信号：中国具身智能公司正在从"闭门造车"转向"开源共建"，与 Hugging Face 的全球社区对接。一周内还将有基座模型、仿真平台等后续发布，这是中国机器人行业首次组织"Apple式发布周"，标志着产业化节奏全面提速。</p>
+            </div>
+            <a href="https://www.humanoidsdaily.com/news/the-data-bottleneck-why-agibot-is-open-sourcing-its-real-world-training-library" target="_blank" class="source-link">→ Humanoids Daily 深度分析</a>
+        </div>
+
+        <div class="section-divider">
+            <div class="line"></div>
+            产业动态 · 关键人物判断
+        </div>
+
+        <!-- 6 -->
+        <div class="news-item trend">
+            <div class="news-header">
+                <div class="news-num">6</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-trend">TREND</span>
+                        <span class="tag tag-platform">Fortune</span>
+                        <span class="tag tag-platform">Axios</span>
+                    </div>
+                    <div class="news-title">Altman 与 Khosla 联手呼吁"AI 时代税制革命"——消除10万美元以下收入所得税</div>
+                </div>
+            </div>
+            <div class="news-body">
+                Fortune 独家报道，Sam Altman 与硅谷传奇风投人 <strong>Vinod Khosla</strong> 达成公开共识：<strong>AI 带来的生产力爆炸应该让中低收入者直接受益，最直接的方式就是免除年收入10万美元以下人群的联邦所得税</strong>。Khosla 此前提出该方案时尚无主流科技公司公开响应，而 OpenAI 政策蓝图的发布让这一提案获得了"全球最有价值AI公司"的背书。两人的核心论点：当AI可以完成越来越多的工作时，对人类劳动收入征税将变得越来越不合理。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>税制是社会契约的核心。当世界上最大的AI公司CEO和最有影响力的风投人同时呼吁重构税基，这不再是科幻讨论——而是政策博弈的开端。如果AI真的像他们预测的那样改变劳动力市场，税制改革将是不可避免的，而最早参与制定游戏规则的玩家将拥有最大话语权。</p>
+            </div>
+            <a href="https://fortune.com/2026/04/07/sam-altman-vinod-khosla-openai-tax-code-american-income-tax-100k/" target="_blank" class="source-link">→ Fortune 报道</a>
+        </div>
+
+        <!-- 7 -->
+        <div class="news-item trend">
+            <div class="news-header">
+                <div class="news-num">7</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-trend">TREND</span>
+                        <span class="tag tag-platform">TechWire Asia</span>
+                        <span class="tag tag-platform">TechCentral</span>
+                        <span class="tag tag-platform">Computing.net</span>
+                    </div>
+                    <div class="news-title">DeepSeek V4 "弃英伟达转华为"持续发酵——国际媒体密集跟进，全球 AI 算力版图加速重构</div>
+                </div>
+            </div>
+            <div class="news-body">
+                上周确认的 DeepSeek V4 运行于华为昇腾950的消息持续在国际媒体发酵。<strong>TechWire Asia、TechCentral、Computing.net</strong> 等多家国际科技媒体本周密集发布深度分析，核心论点一致：<strong>中国顶级AI模型完全脱离英伟达生态不再是实验性的，而是产业级的</strong>。报道指出，阿里巴巴、字节跳动、腾讯已提前囤积华为芯片订单。CSDN 一篇深度技术文章分析了 CUDA 到 CANN 的框架迁移实战——这是全球首例万亿参数模型在非英伟达平台完成的生产级部署。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>从国际媒体的跟进力度看，DeepSeek V4 ×华为已经不是一条"中国内部新闻"，而是一个全球算力格局的分水岭事件。如果中国头部AI公司集体向华为芯片迁移成功，英伟达在全球推理市场的定价权将被实质性削弱——这是黄仁勋最不愿看到的剧本。</p>
+            </div>
+            <a href="https://techwireasia.com/2026/04/deepseek-v4-points-to-growing-use-of-huawei-chips-in-ai-models/" target="_blank" class="source-link">→ TechWire Asia 分析</a>
+        </div>
+
+        <!-- 8 -->
+        <div class="news-item trend">
+            <div class="news-header">
+                <div class="news-num">8</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-trend">TREND</span>
+                        <span class="tag tag-platform">36氪</span>
+                        <span class="tag tag-platform">澎湃新闻</span>
+                    </div>
+                    <div class="news-title">2026年AI五大趋势定调——规模化部署、代理式AI、数据重塑、治理框架、人才转型</div>
+                </div>
+            </div>
+            <div class="news-body">
+                36氪翻译并深度解读了多份国际权威机构的 <strong>2026年AI趋势报告</strong>，提炼出五大共识趋势：<strong>① AI从实验转向规模化企业部署</strong>（企业AI支出同比增长超60%）；<strong>② Agentic AI成为核心范式</strong>（从"对话式AI"到"行动式AI"）；<strong>③ 数据成为新的护城河</strong>（质量重于数量）；<strong>④ AI治理从自律走向监管</strong>（EU AI Act全面生效）；<strong>⑤ 人才市场大洗牌</strong>（AI素养从"加分项"变"必选项"）。澎湃新闻同日发文指出，中国AI产业已进入"三足鼎立"新格局——<strong>推理能力、智能体、场景闭环</strong>成为新的竞争维度。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>当多家机构、多个国家的分析师同时指向同一组趋势时，这些趋势就不再是"预测"而是"正在发生的事实"。对AI从业者的实操启示：2026年下半年的竞争力将取决于——你能否在具体场景中跑通一个Agent闭环，而不是你用的是哪个模型。</p>
+            </div>
+            <a href="https://www.36kr.com/p/3728058030013572" target="_blank" class="source-link">→ 36氪深度分析</a>
+        </div>
+
+        <div class="section-divider">
+            <div class="line"></div>
+            新面孔 · 值得关注
+        </div>
+
+        <!-- 9 -->
+        <div class="news-item new-face">
+            <div class="news-header">
+                <div class="news-num">9</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-new-face">新面孔</span>
+                        <span class="tag tag-platform">国际在线</span>
+                        <span class="tag tag-platform">成都画报</span>
+                        <span class="tag tag-platform">前瞻产业研究院</span>
+                    </div>
+                    <div class="news-title">成都 AI 产业加速崛起——核心规模 1500亿，具身智能 2027年目标 500亿，西南首个智算AI实验室落地</div>
+                </div>
+            </div>
+            <div class="news-body">
+                多家媒体集中报道成都AI产业数据：<strong>2025年全市人工智能核心产业规模突破1500亿元，同比增长超39%</strong>；汇聚AI企业超1200家；算力规模位居全国前列。3月31日，<strong>西南首个智算底座AI生态实验室</strong>落地成华经开区，助力"AI+机器人"产业生态。前瞻产业研究院发布深度报告，指出成都具身智能产业已构建起系统化政策体系——<strong>2027年产业规模突破500亿</strong>的目标正在以五大行动、23项措施推进。
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>AI产业的地理分布正在从"北上深"三极向更多城市扩散。成都以1500亿规模和39%增速展现了"第二梯队"城市的实力。西南地区的算力基础设施建设和具身智能政策体系的完整度，对全国AI产业均衡发展有示范意义。</p>
+            </div>
+            <a href="https://sc.cri.cn/n/20260407/a868ce9c-da7f-4b14-b6c1-588ea30e8d89.html" target="_blank" class="source-link">→ 国际在线报道</a>
+        </div>
+
+        <!-- 10 -->
+        <div class="news-item new-face">
+            <div class="news-header">
+                <div class="news-num">10</div>
+                <div class="news-title-area">
+                    <div class="news-tags">
+                        <span class="tag tag-new-face">新面孔</span>
+                        <span class="tag tag-platform">aitoolbox.hk</span>
+                        <span class="tag tag-platform">ToolMesh</span>
+                        <span class="tag tag-platform">雪球</span>
+                    </div>
+                    <div class="news-title">4月第二周前瞻：GPT-6（4/14）+ 智元发布周（4/7-14）+ DeepSeek V4 正式版在即——史上最密集模型周</div>
+                </div>
+            </div>
+            <div class="news-body">
+                多个AI资讯平台汇总了4月第二周（4/7-4/14）的事件密度，惊呼这将是 <strong>"2026年迄今最密集的AI发布周"</strong>：<strong>① GPT-6 "Spud" 定档4月14日</strong>；② 智元AGIBOT AI Week 每日发布物理AI突破（4/7-14）；③ <strong>DeepSeek V4 正式版随时可能发布</strong>（灰度测试已完成）；④ OpenAI 春季发布会预告（4月下旬）；⑤ Anthropic Claude Mythos 发布窗口（4月）。雪球投资者讨论热度飙升，ToolMesh 评论：<strong>"上周是48小时5模型核爆，这周是一整周的持续引爆。"</strong>
+            </div>
+            <div class="why-important">
+                <div class="label">为什么这件事重要</div>
+                <p>这种密度不是偶然的——各家都在抢"注意力窗口"。GPT-6和智元发布周选择了同一个截止日（4/14），DeepSeek V4 随时可能"突袭"。对从业者来说，这一周产出的信息增量可能超过整个3月。建议每天跟踪，不要错过拐点事件。</p>
+            </div>
+            <a href="https://www.toolmesh.ai/news/gpt6-spud-mid-april-openclaw-anthropic-blockade" target="_blank" class="source-link">→ ToolMesh 汇总分析</a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #27 — 2026年4月8日</p>
+        <p style="margin-top: 6px;">数据来源：36氪、雷锋网、Fortune、WSJ、CNBC、Unite.AI、TechWire Asia、IT之家、Humanoids Daily、澎湃新闻、新浪财经、CSDN、每日经济新闻、creati.ai 等</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

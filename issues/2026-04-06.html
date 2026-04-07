@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #25 — 2026年4月6日（星期一）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa; color: #1a202c; line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 48px 24px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .header h1 { font-size: 2.6em; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+        .header .date { font-size: 1.15em; opacity: 0.9; margin-bottom: 6px; }
+        .header .subtitle { font-size: 1em; opacity: 0.78; line-height: 1.6; }
+        .back-link {
+            position: absolute; top: 16px; left: 20px; z-index: 2;
+            color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9em;
+            display: flex; align-items: center; gap: 4px; transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 1; color: white; }
+        .stats-bar {
+            display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+            padding: 18px 24px; background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; color: #667eea; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; color: #718096; }
+        .container { max-width: 840px; margin: 0 auto; padding: 36px 20px 60px; }
+        .news-card {
+            background: white; border-radius: 14px; padding: 28px 26px;
+            margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0; transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 6px 24px rgba(102,126,234,0.12); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.breakthrough { border-left-color: #e53e3e; }
+        .news-card.trend { border-left-color: #38a169; }
+        .news-card.newface { border-left-color: #ed8936; }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .card-number {
+            width: 28px; height: 28px; border-radius: 50%; background: #667eea; color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.82em; font-weight: 700; flex-shrink: 0;
+        }
+        .card-tag { padding: 2px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 700; letter-spacing: 0.5px; }
+        .tag-signal { background: #ebf4ff; color: #3182ce; }
+        .tag-breakthrough { background: #fff5f5; color: #e53e3e; }
+        .tag-trend { background: #f0fff4; color: #38a169; }
+        .tag-newface { background: #fffaf0; color: #dd6b20; }
+        .card-title { font-size: 1.2em; font-weight: 700; color: #1a202c; margin-bottom: 8px; line-height: 1.5; }
+        .card-why {
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px;
+            margin-bottom: 10px; font-size: 0.9em; color: #4a5568; line-height: 1.7;
+        }
+        .card-why strong { color: #2d3748; }
+        .card-source { font-size: 0.78em; color: #a0aec0; }
+        .card-source a { color: #667eea; text-decoration: none; }
+        .card-source a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 32px 24px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .header { padding: 36px 16px 28px; }
+            .stats-bar { gap: 18px; padding: 14px 16px; }
+            .container { padding: 24px 14px 40px; }
+            .news-card { padding: 20px 18px; }
+            .card-title { font-size: 1.05em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+        <div class="header-content">
+            <h1>AI 日报 #25</h1>
+            <div class="date">2026年4月6日 · 星期一</div>
+            <div class="subtitle">DeepSeek V4弃用英伟达转投华为 · Qwen3.6登顶中国最强 · OpenAI春季发布会预告 · AI格局深度复盘</div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">今日资讯</span></div>
+        <div class="stat"><span class="stat-num">14+</span><span class="stat-label">覆盖平台</span></div>
+        <div class="stat"><span class="stat-num">2</span><span class="stat-label">新面孔</span></div>
+    </div>
+
+    <div class="container">
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">DeepSeek V4抛弃英伟达——全面转投华为昇腾950，底层从CUDA迁移至CANN框架</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>新浪AI热点独家报道：DeepSeek V4确认运行在华为昇腾950芯片上，底层代码从英伟达CUDA迁移到华为CANN框架。这是中国顶级AI模型首次在旗舰产品上完全脱离英伟达生态。地缘意义远超技术意义——如果V4的性能兑现（SWE-bench 83.7%），将证明中国AI可以在国产算力上做出世界级模型。定价$0.30/MTok，远低于国际竞品。
+            </div>
+            <div class="card-source">来源：新浪AI热点、FindSkill.ai · <a href="https://findskill.ai/blog/deepseek-v4-release-date-specs/" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">阿里Qwen3.6-Plus登顶Code Arena全球第二——中国AI编程能力首次站到世界前三</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>量子位深度报道：Qwen3.6-Plus在LMArena Code Arena的全球盲测排名中位列第二，超越OpenAI、Google和xAI的编程模型。更关键的是其Agent编程能力——不只是写代码，而是能独立完成"理解需求→分解任务→编写→测试→交付"全链条。阿里选择仅通过云平台提供（非开源），标志着中国AI企业开始从"开源追赶"转向"闭源变现"。
+            </div>
+            <div class="card-source">来源：量子位、中新网、AIProductHub</div>
+        </div>
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">OpenAI预告4月下旬春季发布会——GPT-5.5 Spud预训练完成，IPO前最后一搏</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>知乎报道OpenAI官方预告4月下旬将举行春季发布会，GPT-5.5（代号"Spud"）预训练已完成。结合上周的高管离职潮和竞品围攻，这将是OpenAI在Q4 IPO前的关键产品发布——需要证明其技术领先不是在缩小而是在扩大。
+            </div>
+            <div class="card-source">来源：知乎、VPSSos、SegmentFault</div>
+        </div>
+
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">Llama 4全球开发者反响分化——性能赞叹与部署痛点并存</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>腾讯云开发者深度分析Llama 4上线后的社区反馈：Scout的10M上下文窗口是开源模型之最，但200GB+模型体积让大量个人开发者望而却步。知名AI研究员Nathan Lambert评论"头部模型差距已进入小数点时代"——暗示模型能力正在趋同，生态和体验将成为新战场。
+            </div>
+            <div class="card-source">来源：腾讯云开发者 · <a href="https://cloud.tencent.com/developer/article/2650289" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">HuMAI 4月全景月报——AI行业从"增长模式"全面转向"变现模式"</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>HuMAI Blog发布4月AI行业全景月报，核心判断：行业正在经历从"烧钱抢地盘"到"精细化变现"的关键转折。Anthropic限流OpenClaw、Google推出Flex/Priority双层定价、OpenAI退役旧模型推高端——所有信号都指向同一方向：免费午餐结束了。
+            </div>
+            <div class="card-source">来源：HuMAI Blog · <a href="https://www.humai.blog/ai-news-trends-april-2026-complete-monthly-digest/" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">SegmentFault深度：OpenAI vs Anthropic vs Google 2026竞争格局——三巨头各有软肋</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>SegmentFault发布万字级竞争格局分析：OpenAI强在品牌和分发（ChatGPT周活9亿），但核心团队流失和IPO压力是隐患；Anthropic强在技术深度和安全叙事，但连续安全事故打脸；Google强在基础设施和用户基数（7.5亿Gemini用户），但产品化始终慢半拍。4月是这一格局重塑的关键月。
+            </div>
+            <div class="card-source">来源：SegmentFault · <a href="https://segmentfault.com/a/1190000047691901" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">4月科技产业事件前瞻——半导体涨价潮+AI算力紧缺+Terafab推进三线并行</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>新浪新闻发布4月科技产业事件前瞻，重点关注：半导体涨价潮持续（英飞凌、德州仪器4月1日生效）、AI推理算力供需紧张加剧、Tesla Terafab芯片工厂推进。这些基础设施层面的变化将决定下半年AI的成本曲线和竞争格局。
+            </div>
+            <div class="card-source">来源：新浪新闻</div>
+        </div>
+
+        <div class="news-card newface">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <span class="card-tag tag-newface">新面孔</span>
+            </div>
+            <div class="card-title">博客园AI资讯速递——端侧AI与多模态融合加速，百度文心4.0上线</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>博客园连续发布高质量AI日报，4月5-6日重点关注端侧AI和多模态融合趋势。百度文心大模型4.0企业版上线，与阿里Qwen3.6-Plus形成国内双雄对决。
+            </div>
+            <div class="card-source">来源：博客园 · <a href="https://www.cnblogs.com/yumingwen/p/19826978" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card newface">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <span class="card-tag tag-newface">新面孔</span>
+            </div>
+            <div class="card-title">Read About AI：4月7日周度分析——"不是单一突破，而是压力收敛"</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>Read About AI的周度分析提出独特视角：本周最重要的不是某个模型发布，而是"竞争压力的收敛"——当多个巨头同时面临变现压力、安全危机和IPO倒计时，整个行业的行为模式将发生结构性变化。这个判断值得跟踪验证。
+            </div>
+            <div class="card-source">来源：Read About AI · <a href="https://www.readaboutai.com/april-7-2026/" target="_blank">原文链接</a></div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #25 · 2026年4月6日</p>
+        <p style="margin-top:6px">数据来源：新浪AI热点、量子位、腾讯云开发者、SegmentFault、HuMAI Blog、知乎、博客园、Read About AI 等</p>
+        <p style="margin-top:8px"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

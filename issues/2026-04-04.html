@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #23 — 2026年4月4日（星期六）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f5f7fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 48px 24px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .header h1 { font-size: 2.6em; font-weight: 800; letter-spacing: -1px; margin-bottom: 8px; }
+        .header .date { font-size: 1.15em; opacity: 0.9; margin-bottom: 6px; }
+        .header .subtitle { font-size: 1em; opacity: 0.78; line-height: 1.6; }
+        .back-link {
+            position: absolute; top: 16px; left: 20px; z-index: 2;
+            color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.9em;
+            display: flex; align-items: center; gap: 4px; transition: opacity 0.2s;
+        }
+        .back-link:hover { opacity: 1; color: white; }
+        .stats-bar {
+            display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+            padding: 18px 24px; background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; color: #667eea; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; color: #718096; }
+        .container { max-width: 840px; margin: 0 auto; padding: 36px 20px 60px; }
+        .news-card {
+            background: white; border-radius: 14px; padding: 28px 26px;
+            margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0; transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 6px 24px rgba(102,126,234,0.12); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.breakthrough { border-left-color: #e53e3e; }
+        .news-card.trend { border-left-color: #38a169; }
+        .news-card.newface { border-left-color: #ed8936; }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .card-number {
+            width: 28px; height: 28px; border-radius: 50%;
+            background: #667eea; color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.82em; font-weight: 700; flex-shrink: 0;
+        }
+        .card-tag { padding: 2px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 700; letter-spacing: 0.5px; }
+        .tag-signal { background: #ebf4ff; color: #3182ce; }
+        .tag-breakthrough { background: #fff5f5; color: #e53e3e; }
+        .tag-trend { background: #f0fff4; color: #38a169; }
+        .tag-newface { background: #fffaf0; color: #dd6b20; }
+        .card-title { font-size: 1.2em; font-weight: 700; color: #1a202c; margin-bottom: 8px; line-height: 1.5; }
+        .card-why {
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px;
+            margin-bottom: 10px; font-size: 0.9em; color: #4a5568; line-height: 1.7;
+        }
+        .card-why strong { color: #2d3748; }
+        .card-source { font-size: 0.78em; color: #a0aec0; }
+        .card-source a { color: #667eea; text-decoration: none; }
+        .card-source a:hover { text-decoration: underline; }
+        .footer { text-align: center; padding: 32px 24px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8em; }
+            .header { padding: 36px 16px 28px; }
+            .stats-bar { gap: 18px; padding: 14px 16px; }
+            .stats-bar .stat-num { font-size: 1.3em; }
+            .container { padding: 24px 14px 40px; }
+            .news-card { padding: 20px 18px; }
+            .card-title { font-size: 1.05em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+        <div class="header-content">
+            <h1>AI 日报 #23</h1>
+            <div class="date">2026年4月4日 · 星期六</div>
+            <div class="subtitle">Anthropic封杀OpenClaw第三方调用 · DeepSeek V4灰度测试曝光 · AI Agent 4小时攻破FreeBSD</div>
+        </div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat"><span class="stat-num">9</span><span class="stat-label">今日资讯</span></div>
+        <div class="stat"><span class="stat-num">14+</span><span class="stat-label">覆盖平台</span></div>
+        <div class="stat"><span class="stat-num">2</span><span class="stat-label">新面孔</span></div>
+    </div>
+
+    <div class="container">
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">1</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">Anthropic宣布封杀OpenClaw第三方调用——Claude订阅不再覆盖OpenClaw等工具的API消耗</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>The Verge报道，Anthropic将从今日起阻止OpenClaw等第三方AI Agent工具消耗Claude订阅额度。这是Anthropic首次对"搭便车"式的第三方调用说不。对OpenClaw的3000万+用户而言，意味着使用Claude的成本将大幅上升。更深层看，这是AI平台从"增长优先"转向"变现优先"的信号——当订阅制无法覆盖API消耗时，限流就是必然。
+            </div>
+            <div class="card-source">来源：The Verge、新浪AI热点、AI Toolbox HK</div>
+        </div>
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">2</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">DeepSeek V4灰度测试启动——SWE-bench达83.7%，有望成为开源最强编程模型</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>多个信源证实DeepSeek V4已进入灰度测试阶段。在SWE-bench编程基准上达到83.7%的惊人成绩，如果正式发布数据属实，将超越目前所有开源模型。V4采用约1万亿参数MoE架构，运行在华为昇腾950芯片上——这意味着中国AI首次在顶级模型上实现国产算力自主。
+            </div>
+            <div class="card-source">来源：AI Toolbox HK、FindSkill.ai、新浪AI热点</div>
+        </div>
+
+        <div class="news-card breakthrough">
+            <div class="card-header">
+                <span class="card-number">3</span>
+                <span class="card-tag tag-breakthrough">BREAKTHROUGH</span>
+            </div>
+            <div class="card-title">Claude AI Agent 4小时自主攻破FreeBSD内核——CVE-2026-4747远程代码执行漏洞</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>WinBuzzer和多家安全媒体报道：一个基于Claude的AI Agent在零人类干预下，仅用4小时计算就独立发现并编写了FreeBSD内核的远程代码执行漏洞利用代码（CVE-2026-4747），可直接获取root权限。FreeBSD是全球最安全的操作系统之一。这是AI安全攻防能力的分水岭时刻——AI不仅能找漏洞，还能自主编写完整的攻击链。
+            </div>
+            <div class="card-source">来源：WinBuzzer、The Hacker News、PromptZone · <a href="https://winbuzzer.com/2026/04/01/claude-ai-freebsd-remote-kernel-exploit-root-shell-xcxwbn/" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card signal">
+            <div class="card-header">
+                <span class="card-number">4</span>
+                <span class="card-tag tag-signal">SIGNAL</span>
+            </div>
+            <div class="card-title">OpenAI高管层地震——IPO前数位高级领导人离职，内部压力加剧</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>The Neuron和AGI Daily报道，OpenAI在IPO冲刺阶段遭遇高管集体离职潮。竞争加剧和内部战略分歧被认为是主因。对于一家计划今年Q4上市、估值瞄准万亿的公司而言，核心团队的不稳定将直接影响投资者信心。
+            </div>
+            <div class="card-source">来源：The Neuron、AGI Daily、af.net</div>
+        </div>
+
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="card-number">5</span>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">Mercor AI训练数据泄露事件——AI招聘平台的安全隐患浮出水面</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>AI Toolbox HK将Mercor训练数据泄露列为4月4日三大重磅事件之一。Mercor是使用AI进行人才匹配和招聘的独角兽公司，其训练数据包含大量求职者个人信息。这与此前"300万AI聊天记录泄露"事件（4月2日曝光）形成共振，AI公司的数据安全问题正在成为行业系统性风险。
+            </div>
+            <div class="card-source">来源：AI Toolbox HK</div>
+        </div>
+
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="card-number">6</span>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">Llama 4开源权重上线Hugging Face——68%好评，但200GB体积成痛点</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>Meta正式将Llama 4 Scout（109B）和Maverick（17B×128E MoE）模型权重开放下载。开发者社区反响热烈但分化：68%好评来自性能跃升和原生多模态能力，32%差评集中在200GB+下载体积和本地部署门槛过高。Llama 4 Behemoth（2万亿参数）仍在训练中。
+            </div>
+            <div class="card-source">来源：Hugging Face、知乎、腾讯云开发者</div>
+        </div>
+
+        <div class="news-card trend">
+            <div class="card-header">
+                <span class="card-number">7</span>
+                <span class="card-tag tag-trend">TREND</span>
+            </div>
+            <div class="card-title">本周AI安全周刊——Claude Code泄露+FreeBSD攻击+Mercor数据泄露，"安全债"集中爆发</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>Champaign Magazine的"AI by AI Weekly Top 5"将整周定调为"安全危机周"：Anthropic源码泄露、AI自主编写内核攻击、AI公司数据泄露三箭齐发。这不是偶然——当AI能力跨过安全攻防的临界点，行业的安全基础设施严重滞后的问题就会集中暴露。
+            </div>
+            <div class="card-source">来源：Champaign Magazine · <a href="https://champaignmagazine.com/2026/04/05/ai-by-ai-weekly-top-5-march-30-april-5-2026/" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card newface">
+            <div class="card-header">
+                <span class="card-number">8</span>
+                <span class="card-tag tag-newface">新面孔</span>
+            </div>
+            <div class="card-title">澎湃AI晚新闻——游戏沪十条1700亿产业加码，AI+游戏跨界提速</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>澎湃新闻AI晚报关注上海发布"游戏沪十条"，1700亿游戏产业全面拥抱AI。游戏是AI落地最快的消费场景之一——从NPC对话到场景生成，AI正在重塑游戏开发全链条。
+            </div>
+            <div class="card-source">来源：澎湃新闻 · <a href="https://www.thepaper.cn/newsDetail_forward_32904502" target="_blank">原文链接</a></div>
+        </div>
+
+        <div class="news-card newface">
+            <div class="card-header">
+                <span class="card-number">9</span>
+                <span class="card-tag tag-newface">新面孔</span>
+            </div>
+            <div class="card-title">Q2 2026 AI模型前瞻——DeepSeek V4/GPT-5.5 Spud/Grok 5三大旗舰蓄势待发</div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>Digital Applied发布Q2 2026 AI模型预测：DeepSeek V4（~1T参数，4月）、GPT-5.5 Spud（预训练完成，时间待定）、Grok 5（2026年中）三款旗舰模型将在未来数月内集中发布。Q2的模型竞争烈度可能超过Q1。
+            </div>
+            <div class="card-source">来源：Digital Applied · <a href="https://www.digitalapplied.com/blog/deepseek-v4-gpt-5-5-grok-5-ai-models-q2-2026" target="_blank">原文链接</a></div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #23 · 2026年4月4日</p>
+        <p style="margin-top:6px">数据来源：The Verge、WinBuzzer、The Neuron、AGI Daily、澎湃新闻、新浪AI热点、腾讯云开发者、Champaign Magazine、Digital Applied 等</p>
+        <p style="margin-top:8px"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

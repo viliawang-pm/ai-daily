@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #28 — 2026年4月9日 星期四</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+        .back-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0; padding: 12px 24px;
+        }
+        .back-nav a {
+            color: #667eea; text-decoration: none; font-size: 0.9em; font-weight: 600;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 100px 24px 56px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .hero .issue-badge {
+            display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 16px;
+            border-radius: 20px; font-size: 0.85em; margin-bottom: 16px; font-weight: 600;
+        }
+        .hero h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
+        .hero .date { font-size: 1.05em; opacity: 0.85; margin-bottom: 20px; }
+        .hero .summary { font-size: 0.95em; opacity: 0.8; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+        .stats-bar {
+            display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; opacity: 0.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .news-item {
+            background: white; border-radius: 14px; padding: 28px;
+            margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid #667eea; transition: transform 0.2s;
+        }
+        .news-item:hover { transform: translateX(4px); }
+        .news-item.breakthrough { border-left-color: #e53e3e; }
+        .news-item.signal { border-left-color: #dd6b20; }
+        .news-item.trend { border-left-color: #38a169; }
+        .news-item.newface { border-left-color: #805ad5; }
+        .news-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%; background: #667eea;
+            color: white; font-size: 0.82em; font-weight: 700; margin-right: 10px; flex-shrink: 0;
+        }
+        .news-item.breakthrough .news-num { background: #e53e3e; }
+        .news-item.signal .news-num { background: #dd6b20; }
+        .news-item.trend .news-num { background: #38a169; }
+        .news-item.newface .news-num { background: #805ad5; }
+        .news-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
+        .news-title { font-size: 1.15em; font-weight: 700; color: #1a202c; line-height: 1.4; }
+        .news-tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; margin-left: 8px; white-space: nowrap; vertical-align: middle;
+        }
+        .tag-signal { background: #fef3cd; color: #856404; }
+        .tag-trend { background: #d4edda; color: #155724; }
+        .tag-newface { background: #e8daef; color: #6c3483; }
+        .tag-breakthrough { background: #f8d7da; color: #721c24; }
+        .news-body { color: #4a5568; font-size: 0.92em; line-height: 1.8; margin-bottom: 14px; }
+        .news-why {
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px;
+            font-size: 0.85em; color: #2d3748; line-height: 1.7; margin-bottom: 12px;
+        }
+        .news-why strong { color: #667eea; }
+        .news-meta {
+            display: flex; gap: 16px; font-size: 0.78em; color: #a0aec0; flex-wrap: wrap;
+        }
+        .news-meta a { color: #667eea; text-decoration: none; }
+        .news-meta a:hover { text-decoration: underline; }
+        .section-label {
+            font-size: 0.88em; font-weight: 700; color: #667eea; margin-bottom: 16px;
+            margin-top: 36px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .footer {
+            text-align: center; padding: 40px 24px; color: #a0aec0; font-size: 0.82em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .hero { padding: 80px 16px 40px; }
+            .hero h1 { font-size: 1.5em; }
+            .container { padding: 24px 12px 60px; }
+            .news-item { padding: 20px 16px; }
+            .news-title { font-size: 1.05em; }
+            .stats-bar { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="back-nav">
+    <a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a>
+</div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="issue-badge">第 28 期</div>
+        <h1>Anthropic Mythos×50家联盟震撼登场 + 阿里AI组织架构大重组 + DeepSeek专家模式上线</h1>
+        <div class="date">2026年4月9日 星期四</div>
+        <div class="summary">
+            Anthropic发布Claude Mythos Preview并联合苹果/微软/谷歌等50家巨头组建"Glasswing计划"专注网络安全；
+            阿里成立集团技术委员会，通义实验室升级为事业部，李飞飞任阿里云CTO；
+            DeepSeek上线"专家模式"，V4正式版呼之欲出；
+            GPT-6 "土豆"发布倒计时5天。
+        </div>
+        <div class="stats-bar">
+            <div class="stat"><span class="stat-num">10</span><span class="stat-label">资讯条目</span></div>
+            <div class="stat"><span class="stat-num">18+</span><span class="stat-label">信息源</span></div>
+            <div class="stat"><span class="stat-num">2</span><span class="stat-label">新面孔</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section-label">🔥 产业结构性变化</div>
+
+    <!-- 1 -->
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">1</span>
+            <div>
+                <span class="news-title">Anthropic发布Claude Mythos Preview + "Glasswing计划"——50家巨头联盟锁定AI网络安全</span>
+                <span class="news-tag tag-signal">SIGNAL</span>
+            </div>
+        </div>
+        <div class="news-body">
+            4月7日，Anthropic正式发布Claude Mythos Preview——其有史以来最强大的AI模型，定位在Opus之上。但Anthropic没有将其公开发售，而是做了一件前所未有的事：联合苹果、微软、谷歌、亚马逊、CrowdStrike等50+家企业组建"Project Glasswing"联盟，专门用Mythos来发现和修补关键基础设施中的零日漏洞。CNBC、CNN、Wired同步报道。Anthropic CEO Dario Amodei明确表示：Mythos太强了，不能放到公开市场——它在安全测试中发现了"数千个"此前未知的关键系统bug。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>这是AI行业首次出现"模型太强不敢卖"的先例。Anthropic用一种前所未有的方式定义了前沿模型的商业化路径——不是卖给消费者，而是卖给企业联盟做防御。这改变了"谁在赢"的竞争逻辑：最强模型的价值不在于用户量，而在于谁能组建最大的安全联盟。同时，50家巨头同时站台，等于替Anthropic完成了估值验证——10月IPO的底牌更硬了。
+        </div>
+        <div class="news-meta">
+            <span>📡 Anthropic / Wired / CNBC / CNN / Fortune / AI Magazine</span>
+            <span><a href="https://www.wired.com/story/anthropic-mythos-preview-project-glasswing/" target="_blank">Wired报道 →</a></span>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">2</span>
+            <div>
+                <span class="news-title">阿里AI组织架构大重组——成立集团技术委员会，通义升级事业部，李飞飞任阿里云CTO</span>
+                <span class="news-tag tag-signal">SIGNAL</span>
+            </div>
+        </div>
+        <div class="news-body">
+            4月8日，阿里巴巴集团CEO吴泳铭发布内部信，宣布三大AI组织架构调整：(1) 在集团层面新设技术委员会，吴泳铭亲任组长，负责AI战略顶层设计和跨业务协同；(2) 通义实验室从实验室升级为通义大模型事业部，由周靖人负责，独立经营、直接汇报；(3) 李飞飞出任阿里云CTO，吴泽明专注集团CTO工作。澎湃、36氪、每经、IT之家、凤凰科技等密集报道。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>继上月宣布"五年千亿美元AI投入"后，阿里用组织架构调整把战略落地：技术委员会意味着AI不再是某个BU的事，而是全集团一号工程；通义从实验室变事业部，意味着独立P&L、独立KPI，必须证明商业化能力；李飞飞任阿里云CTO，意味着AI和云计算的深度绑定加速。这是中国互联网巨头中最激进的AI组织变革——没有之一。
+        </div>
+        <div class="news-meta">
+            <span>📡 澎湃新闻 / 36氪 / 每日经济新闻 / IT之家 / 凤凰科技</span>
+            <span><a href="https://www.thepaper.cn/newsDetail_forward_32925988" target="_blank">澎湃报道 →</a></span>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">3</span>
+            <div>
+                <span class="news-title">DeepSeek上线"专家模式"——V4正式版发布前的最后预热</span>
+                <span class="news-tag tag-signal">SIGNAL</span>
+            </div>
+        </div>
+        <div class="news-body">
+            4月8日，DeepSeek网页端低调更新，正式推出"专家模式"与"快速模式"双模式切换。专家模式专注复杂推理、多步分析和深度代码生成，快速模式则优化响应速度。这是DeepSeek走红以来首次在产品端引入模式分层设计。多位AI从业者判断，这是V4正式版发布前的产品侧预热：模式分层=底层模型能力已经就绪，正在做用户体验层面的最后打磨。港媒unwire.pro同日发布V4详细规格报道：完全运行于华为芯片，定价$0.30/MTok，约GPT百分之一。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>DeepSeek的产品动作是其发布节奏的晴雨表。模式分层上线意味着V4的推理能力已经达到可以区分"快速"和"深度"两种场景的水平——这正是万亿参数模型才有的奢侈。叠加"华为芯片+成本仅GPT百分之一"，V4正式发布将是中国AI模型在技术实力和成本效率上的双重里程碑。
+        </div>
+        <div class="news-meta">
+            <span>📡 腾讯新闻 / 知乎 / CNBLOGS / 太平洋科技 / unwire.pro / 新浪</span>
+            <span><a href="https://unwire.pro/2026/04/08/deepseek-v4-ai-cost-efficiency-2026/news/" target="_blank">unwire.pro规格解析 →</a></span>
+        </div>
+    </div>
+
+    <div class="section-label">📌 关键人物与公司动态</div>
+
+    <!-- 4 -->
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">4</span>
+            <div>
+                <span class="news-title">GPT-6 "Spud/土豆"倒计时5天——4月14日发布预期不变，OpenAI全力冲刺</span>
+                <span class="news-tag tag-signal">SIGNAL</span>
+            </div>
+        </div>
+        <div class="news-body">
+            据多方消息源确认，OpenAI下一代旗舰模型GPT-6（内部代号"Spud/土豆"）3月24日已在德州Stargate超级集群完成预训练，4月14日发布预期不变。核心规格：性能较GPT-5.4提升约40%、200万Token上下文窗口、原生全模态（文本+音频+图像+视频）。idlen.io最新报道显示，发布窗口在4月14日-5月5日之间，取决于安全评估和RLHF对齐进度。腾讯新闻、搜狐科技等国内媒体密集跟进解读"AGI最后一公里"。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>如果4月14日如期发布，GPT-6将与智元AI发布周闭幕日撞期——下周成为AI史上最密集的发布周之一：GPT-6 + DeepSeek V4随时可能 + 智元AGIBOT收官。200万Token上下文+全模态是对"超级应用"战略的技术补完——让ChatGPT真正能处理长文档、长视频、长对话。
+        </div>
+        <div class="news-meta">
+            <span>📡 腾讯新闻 / 搜狐 / idlen.io / CometAPI / aicode.cc</span>
+            <span><a href="https://www.idlen.io/news/openai-spud-gpt6-release-april-14-may-5-super-app-ambient-computing" target="_blank">idlen.io详细解析 →</a></span>
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">5</span>
+            <div>
+                <span class="news-title">智元AI发布周Day 3——每日解锁一项具身智能核心技术突破</span>
+                <span class="news-tag tag-signal">SIGNAL</span>
+            </div>
+        </div>
+        <div class="news-body">
+            智元AGIBOT AI Week（4/7-14）持续推进中，今天进入Day 3。Day 1已开源AGIBOT WORLD 2026全域具身智能数据集（B站播放量1.3万+），覆盖真实世界数据采集。联合创始人彭志辉宣称"2026年通用具身机器人将加速进入商业化落地阶段"。发布周期间每个工作日都会解锁一项"王炸"技术突破，预计涵盖基座模型、仿真平台、量产进展等。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>智元是中国具身智能赛道的头部玩家，此前获得千寻智能30天30亿融资。AGIBOT WORLD开源数据集的意义在于——具身智能最大的瓶颈不是算法而是数据。如果这个数据集质量过关，它可能成为具身智能领域的"ImageNet时刻"。接下来几天的基座模型和仿真平台发布才是真正的技术硬货。
+        </div>
+        <div class="news-meta">
+            <span>📡 36氪 / 财联社 / IT之家 / B站 / 凤凰科技</span>
+            <span><a href="https://www.bilibili.com/video/BV1SvDYBNEnk/" target="_blank">B站Day 1发布视频 →</a></span>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">6</span>
+            <div>
+                <span class="news-title">开源AI全景图：Gemma 4 vs Qwen 3.6 vs Llama 4——三大开源生态同台竞技</span>
+                <span class="news-tag tag-trend">TREND</span>
+            </div>
+        </div>
+        <div class="news-body">
+            whatllm.org和Digital Applied同步发布4月开源AI全景图分析。核心格局：Anthropic选择Mythos不开源、锁在50家企业防火墙后；与此同时，开源阵营空前繁荣——Google Gemma 4（Apache 2.0）、阿里Qwen 3.6-Plus（Code Arena全球第二）、Meta Llama 4 Scout&Maverick、智谱GLM-5、Mistral Small 4同台竞技。whatllm.org评论："Anthropic不会发布最好的模型，开源会。"
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>这是AI行业路线分化的标志性时刻。Anthropic代表的"最强模型不公开"路线 vs 开源阵营的"数量+可及性"路线，正在形成两个平行宇宙。对开发者而言，这意味着开源模型能力已经足够好，"用不用闭源"变成了商业选择而非技术约束。这会深刻改变AI应用层的成本结构。
+        </div>
+        <div class="news-meta">
+            <span>📡 whatllm.org / Digital Applied / BuildFastWithAI / llm-stats.com</span>
+            <span><a href="https://whatllm.org/blog/new-ai-models-april-2026" target="_blank">whatllm完整分析 →</a></span>
+        </div>
+    </div>
+
+    <div class="section-label">💰 资本与融资</div>
+
+    <!-- 7 -->
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">7</span>
+            <div>
+                <span class="news-title">地瓜机器人完成1.5亿美元B2轮——一个月两轮融资，B轮累计2.7亿美元</span>
+                <span class="news-tag tag-signal">SIGNAL</span>
+            </div>
+        </div>
+        <div class="news-body">
+            4月8日，地平线旗下地瓜机器人宣布完成1.5亿美元（约10亿人民币）B2轮融资，B轮累计融资额达2.7亿美元，总融资超3.7亿美元，刷新国内机器人基础设施领域融资纪录。投资方包括Prosperity7风投基金（沙特阿美旗下）、远景科技集团等战略投资者，以及慕华科创、云锋基金、华控基金等财务投资者。公司定位"具身智能基础设施"，主攻"一脑多形"通用机器人大脑方案。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>一个月内两轮融资（B1+B2累计2.7亿美元），说明具身智能赛道的资本热度不是"虚火"——机构在抢筹。Prosperity7（沙特主权基金关联方）参与，意味着中东资本对中国具身智能产业链的战略下注正在扩大。地瓜机器人的"一脑多形"定位，本质是做具身智能的"操作系统层"——和上游芯片（地平线）、下游整机形成垂直整合。
+        </div>
+        <div class="news-meta">
+            <span>📡 36氪 / 每日经济新闻 / IT之家 / 雷锋网 / 上证报 / 投中网</span>
+            <span><a href="https://www.nbd.com.cn/articles/2026-04-08/4330374.html" target="_blank">每经详细报道 →</a></span>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">8</span>
+            <div>
+                <span class="news-title">Q1全球AI创投2210亿美元——PYMNTS确认AI融资"没有放缓迹象"</span>
+                <span class="news-tag tag-trend">TREND</span>
+            </div>
+        </div>
+        <div class="news-body">
+            PYMNTS最新数据显示，2026年Q1全球AI创业公司融资总额达到2210亿美元，超级大单（Mega-deals）主导，但资金也在各阶段创业公司之间流动。结合此前Crunchbase统计的Q1整体创投2970亿美元（AI占81%），AI依然是全球风投的绝对中心。HuMAI Blog同步发布4月月度摘要，指出行业正从"增长模式"转向"变现策略"。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>Q1数据的最终确认让市场看到了一个清晰的信号：AI投资不仅没有减速，反而在加速集中化。2210亿中超级大单占比极高（OpenAI/Anthropic/xAI三家就超过1500亿），但"资金跨阶段流动"意味着早期公司也在受益。对从业者来说，这个数字的含义是——至少2026年上半年，AI赛道的钱还是过剩的。
+        </div>
+        <div class="news-meta">
+            <span>📡 PYMNTS / HuMAI Blog / Crunchbase</span>
+            <span><a href="https://www.pymnts.com/artificial-intelligence-2/2026/ai-startups-raised-221-billion-in-q1-as-venture-funding-shows-no-slowdown/" target="_blank">PYMNTS报告 →</a></span>
+        </div>
+    </div>
+
+    <div class="section-label">👁 行业观察</div>
+
+    <!-- 9 -->
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">9</span>
+            <div>
+                <span class="news-title">4月AI前瞻双雄对决——Mythos"安全盾牌"路线 vs GPT-6"全能超级应用"路线</span>
+                <span class="news-tag tag-trend">TREND</span>
+            </div>
+        </div>
+        <div class="news-body">
+            多位分析师在本周同步发布"4月AI前瞻"深度分析。核心判断：Anthropic和OpenAI正在走向两条截然不同的道路。Anthropic的Mythos走"克制+安全+企业联盟"路线，把最强模型变成网络安全武器；OpenAI的GPT-6 Spud走"全能+消费者+超级应用"路线，追求200万上下文、全模态、一体化平台。renovateqr.com、applyingai.com、Henry Lee等多个独立分析师同步解读这一路线分化。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>这不是"谁的模型更强"的比赛，而是两种截然不同的AI商业化哲学之争。Anthropic押注"AI作为关键基础设施守护者"——IPO前最好的估值故事就是"国家级安全伙伴"。OpenAI押注"AI作为消费者超级应用"——9亿周活+购物+编程+生活助手。这两条路线谁赢，将决定AI行业未来十年的主流商业模式。
+        </div>
+        <div class="news-meta">
+            <span>📡 renovateqr / applyingai / Henry Lee / HuMAI Blog</span>
+            <span><a href="https://henry-lee-genai-fullstack.hatenablog.com/entry/2026/04/08/084625" target="_blank">Henry Lee深度分析 →</a></span>
+        </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="news-item newface">
+        <div class="news-header">
+            <span class="news-num">10</span>
+            <div>
+                <span class="news-title">下周前瞻："史上最密集AI发布周"——GPT-6(4/14) + DeepSeek V4(随时) + 智元收官(4/14) + 阿里新架构首秀</span>
+                <span class="news-tag tag-newface">新面孔</span>
+            </div>
+        </div>
+        <div class="news-body">
+            雪球用户"AI前瞻"发布的4月行业全景扫描获得异常高互动——文章梳理了本周至下周的关键事件时间线：4/9-11智元发布周Day3-5（核心技术密集释放）、4/14 GPT-6 Spud发布窗口开启、DeepSeek V4随时可能正式上线（专家模式已为V4铺路）、阿里新组织架构下首个重大AI产品发布。MSN同步推出"4月AI行业全景扫描"长文，覆盖巨头融资、模型迭代、智能体趋势三大主线。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>当"前瞻"类内容能获得高互动，说明市场在为即将到来的密集发布做认知准备。下周GPT-6 + DeepSeek V4 + 智元收官三条线交汇，信息密度可能创2026年单周新高。提前了解这些时间节点，才能在信息洪流中保持判断力。
+        </div>
+        <div class="news-meta">
+            <span>📡 雪球 / MSN / 知乎 / Exploding Topics / AI今日热榜</span>
+            <span><a href="https://xueqiu.com/4092447343/383054216" target="_blank">雪球全景分析 →</a></span>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 #28 — 2026年4月9日</p>
+    <p style="margin-top:6px;">信息源：Wired、CNBC、CNN、Fortune、AI Magazine、澎湃新闻、36氪、每日经济新闻、IT之家、腾讯新闻、知乎、PYMNTS、HuMAI Blog 等 18+ 平台</p>
+    <p style="margin-top:8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+</div>
+
+</body>
+</html>

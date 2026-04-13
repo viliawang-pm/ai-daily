@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #29 — 2026年4月10日 星期五</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+        .back-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e2e8f0; padding: 12px 24px;
+        }
+        .back-nav a {
+            color: #667eea; text-decoration: none; font-size: 0.9em; font-weight: 600;
+        }
+        .back-nav a:hover { text-decoration: underline; }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 100px 24px 56px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 50%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .hero .issue-badge {
+            display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 16px;
+            border-radius: 20px; font-size: 0.85em; margin-bottom: 16px; font-weight: 600;
+        }
+        .hero h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
+        .hero .date { font-size: 1.05em; opacity: 0.85; margin-bottom: 20px; }
+        .hero .summary { font-size: 0.95em; opacity: 0.8; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+        .stats-bar {
+            display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap;
+        }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; opacity: 0.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .news-item {
+            background: white; border-radius: 14px; padding: 28px;
+            margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-left: 4px solid #667eea; transition: transform 0.2s;
+        }
+        .news-item:hover { transform: translateX(4px); }
+        .news-item.breakthrough { border-left-color: #e53e3e; }
+        .news-item.signal { border-left-color: #dd6b20; }
+        .news-item.trend { border-left-color: #38a169; }
+        .news-item.newface { border-left-color: #805ad5; }
+        .news-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%; background: #667eea;
+            color: white; font-size: 0.82em; font-weight: 700; margin-right: 10px; flex-shrink: 0;
+        }
+        .news-item.breakthrough .news-num { background: #e53e3e; }
+        .news-item.signal .news-num { background: #dd6b20; }
+        .news-item.trend .news-num { background: #38a169; }
+        .news-item.newface .news-num { background: #805ad5; }
+        .news-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
+        .news-title { font-size: 1.15em; font-weight: 700; color: #1a202c; line-height: 1.4; }
+        .news-tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; margin-left: 8px; white-space: nowrap; vertical-align: middle;
+        }
+        .tag-signal { background: #fef3cd; color: #856404; }
+        .tag-trend { background: #d4edda; color: #155724; }
+        .tag-newface { background: #e8daef; color: #6c3483; }
+        .tag-breakthrough { background: #f8d7da; color: #721c24; }
+        .news-body { color: #4a5568; font-size: 0.92em; line-height: 1.8; margin-bottom: 14px; }
+        .news-why {
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px;
+            font-size: 0.85em; color: #2d3748; line-height: 1.7; margin-bottom: 12px;
+        }
+        .news-why strong { color: #667eea; }
+        .news-meta {
+            display: flex; gap: 16px; font-size: 0.78em; color: #a0aec0; flex-wrap: wrap;
+        }
+        .news-meta a { color: #667eea; text-decoration: none; }
+        .news-meta a:hover { text-decoration: underline; }
+        .section-label {
+            font-size: 0.88em; font-weight: 700; color: #667eea; margin-bottom: 16px;
+            margin-top: 36px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .footer {
+            text-align: center; padding: 40px 24px; color: #a0aec0; font-size: 0.82em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .hero { padding: 80px 16px 40px; }
+            .hero h1 { font-size: 1.5em; }
+            .container { padding: 24px 12px 60px; }
+            .news-item { padding: 20px 16px; }
+            .news-title { font-size: 1.05em; }
+            .stats-bar { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="back-nav">
+    <a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a>
+</div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="issue-badge">第 29 期</div>
+        <h1>奥特曼住宅遭燃烧弹袭击 + Mythos引爆美联储紧急会议 + 五部门AI拟人化新规 + DeepSeek V4官宣4月下旬</h1>
+        <div class="date">2026年4月10日 星期五</div>
+        <div class="summary">
+            AI争议首次滑向物理暴力——20岁男子凌晨3:45向奥特曼住宅投掷燃烧弹；Claude Mythos网络安全能力引发美国财长和美联储主席紧急召集华尔街CEO；五部门联合发布AI拟人化管理办法；梁文锋内部透露DeepSeek V4定档4月下旬。
+        </div>
+        <div class="stats-bar">
+            <div class="stat"><span class="stat-num">10</span><span class="stat-label">资讯条目</span></div>
+            <div class="stat"><span class="stat-num">18+</span><span class="stat-label">信息来源</span></div>
+            <div class="stat"><span class="stat-num">1</span><span class="stat-label">新面孔</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section-label">🔥 重大事件</div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">1</span>
+            <div><span class="news-title">奥特曼住宅凌晨遭燃烧弹袭击——AI争议首次滑向物理暴力</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            当地时间4月10日凌晨3:45，一名20岁男子向OpenAI CEO Sam Altman位于旧金山的住宅投掷莫洛托夫鸡尾酒（自制燃烧弹），装置点燃了房屋外门，随后该嫌疑人前往OpenAI总部扬言纵火。旧金山警方迅速逮捕嫌疑人。Altman本人发推确认安全并发布了烧焦大门的照片。事件发生的背景是OpenAI与五角大楼合作引发持续争议。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>这是AI行业争议首次从网络/法律层面升级为物理暴力行为。当AI公司的CEO需要考虑人身安全时，整个行业的舆论环境和安全治理已经进入新阶段。这件事将加速AI企业高管安保升级，也可能改变AI公司在公共政策辩论中的姿态。
+        </div>
+        <div class="news-meta">
+            <span>📰 CNBC / AP / CNN / LA Times / Wired / Gizmodo</span>
+            <a href="https://www.cnbc.com/2026/04/10/sam-altman-house-hit-with-molotov-cocktail-openai-office-threatened.html" target="_blank">CNBC报道 →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">2</span>
+            <div><span class="news-title">Claude Mythos引爆华尔街——美财长+美联储主席紧急召集银行CEO讨论AI网络安全威胁</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            据彭博社报道，美国财长贝森特与美联储主席鲍威尔本周紧急召集花旗、高盛、美国银行等系统重要性银行CEO赴华盛顿开会，专题讨论Anthropic最新模型Claude Mythos的网络安全威胁。Mythos漏洞利用成功率从前代模型的近零跃升至72.4%，能以数十美元成本发现潜伏数十年的高危漏洞。美股网络安全板块千亿市值蒸发。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>这是史上第一次一个AI模型的发布直接触发金融监管层的紧急响应。当美联储主席亲自出面讨论一个AI模型的安全影响时，意味着AI的能力边界已经触及金融系统的核心安全。这将重新定义AI模型发布前的安全评估标准。
+        </div>
+        <div class="news-meta">
+            <span>📰 彭博社 / 华尔街见闻 / 36氪 / TradingKey / 虎嗅</span>
+            <a href="https://wallstreetcn.com/articles/3769638" target="_blank">华尔街见闻 →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">3</span>
+            <div><span class="news-title">五部门联合发布《AI拟人化互动服务管理暂行办法》——7月15日起施行</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            国家网信办、发改委、工信部、公安部、市场监管总局五部门联合公布《人工智能拟人化互动服务管理暂行办法》，自2026年7月15日起施行。办法明确要求：AI拟人化服务须显著标识AI身份，不得冒充真人；AI情感陪伴服务需设置使用时长提醒和未成年人保护机制；涉及医疗、法律等专业领域需明确告知用户AI局限性。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>这是全球首部专门针对"AI拟人化"的国家级法规。当AI伴侣、AI客服、AI主播越来越难以与真人区分时，谁来保护用户的知情权和心理健康？这部法规的出台将直接影响Character.ai、星野、筑梦岛等AI社交产品在中国市场的合规成本和产品设计。
+        </div>
+        <div class="news-meta">
+            <span>📰 国家网信办 / 新华网 / CCTV / 人民日报</span>
+            <a href="https://www.cac.gov.cn/2026-04/10/c_1777558395023172.htm" target="_blank">官方全文 →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">4</span>
+            <div><span class="news-title">梁文锋内部透露：DeepSeek V4定档4月下旬正式发布</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            据"创新笔记"等多个信源，DeepSeek创始人梁文锋近期在内部沟通中确认，DeepSeek V4将于4月下旬正式发布。这是DeepSeek首次给出明确时间窗口。V4为万亿参数模型，首次实现与华为昇腾等国产芯片的深度适配，支持百万级Token上下文和Engram长期记忆系统。此前V4已通过"专家模式"进行灰度测试。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>从"4月某个时候"到"4月下旬"——这是DeepSeek首次给出窗口级时间承诺。更关键的是"华为昇腾深度适配"的确认：如果中国最强AI模型可以完全脱离英伟达生态运行，这对全球AI算力格局的冲击将远超模型本身的技术突破。
+        </div>
+        <div class="news-meta">
+            <span>📰 TechNode / 证券时报 / CoinLive / 腾讯新闻</span>
+            <a href="https://cn.technode.com/post/2026-04-10/deepseek-v4-launch-late-april/" target="_blank">TechNode →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">5</span>
+            <div><span class="news-title">OpenAI正式官宣GPT-6定档4月14日——代号"Spud"，性能暴涨40%</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            OpenAI官方确认，代号"Spud（土豆）"的GPT-6将于2026年4月14日全球同步发布。该模型采用5-6万亿参数MoE架构（代号Symphony），支持200万Token上下文窗口、原生多模态处理，性能较GPT-5.4提升约40%。预训练已于3月17日在Stargate超级集群完成。定价$2.5/MTok输入、$12/MTok输出。OpenAI产品组织同时更名为"AGI Deployment"。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>GPT-6是OpenAI在Anthropic Mythos和DeepSeek V4双重夹击下的正面回应。组织更名为"AGI Deployment"暗示OpenAI已将GPT-6定位为"通往AGI的关键一步"，而非又一次版本迭代。4天后的发布将是2026年AI行业的分水岭时刻。
+        </div>
+        <div class="news-meta">
+            <span>📰 澎湃新闻 / 知乎 / 腾讯云 / Elser AI / 新浪 / CSDN</span>
+            <a href="https://m.thepaper.cn/newsDetail_forward_32923894" target="_blank">澎湃深度 →</a>
+        </div>
+    </div>
+
+    <div class="section-label">📊 产业动态</div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">6</span>
+            <div><span class="news-title">Anthropic以4亿美元收购Coefficient Bio——AI巨头首次布局生命科学</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            Anthropic宣布以约4亿美元股票收购隐形生物技术AI初创公司Coefficient Bio，加速AI在药物发现和生命科学领域的布局。这是Anthropic成立以来最大的一笔收购，也是主流AI实验室首次通过并购大举进入生物技术领域。Coefficient Bio专注于用AI加速蛋白质工程和药物研发。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>当AI模型公司开始收购生物科技公司时，"AI+生物"不再是论文里的展望，而是真金白银的战略赌注。Anthropic在IPO前夕做出这个决定，意味着它正在向投资人讲述一个远超"聊天机器人"的故事——AI将成为生命科学的基础设施。
+        </div>
+        <div class="news-meta">
+            <span>📰 TechCrunch / FierceBiotech / AI Business Review / 腾讯云</span>
+            <a href="https://techcrunch.com/2026/04/03/anthropic-buys-biotech-startup-coefficient-bio-in-400m-deal-reports/" target="_blank">TechCrunch →</a>
+        </div>
+    </div>
+
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">7</span>
+            <div><span class="news-title">腾讯发布59页《AI趋势研究白皮书2026Q1》——核心判断：AI Agent完成"成人礼"</span><span class="news-tag tag-trend">TREND</span></div>
+        </div>
+        <div class="news-body">
+            腾讯科技《AI未来指北》栏目正式发布《AI趋势研究白皮书2026Q1》，提出25个趋势判断。核心结论：2026年Q1，AI Agent从"更聪明的对话框"完成向"真正能干活的工具"的关键跃升。白皮书详细拆解了Agent从工具调用、多步推理到自主任务执行的技术演进路径。这是腾讯首个季度制AI趋势追踪项目。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>腾讯作为中国最大的互联网公司之一，用59页篇幅给出的判断是——Agent不是泡沫，它真的在Q1完成了从玩具到工具的跨越。对从业者而言，这份白皮书是理解"Agent到底到了什么阶段"的最系统参考。
+        </div>
+        <div class="news-meta">
+            <span>📰 腾讯新闻 / 网易 / 凤凰网 / 搜狐</span>
+            <a href="https://news.qq.com/rain/a/20260409A089VS00" target="_blank">腾讯新闻 →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">8</span>
+            <div><span class="news-title">阿里认领屠榜神秘模型"欢乐马"——ATH事业群郑波团队打造</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            近日在各大基准测试中横扫榜单的神秘模型"欢乐马"被阿里正式认领，由阿里ATH事业群郑波团队打造。该模型此前以匿名身份在多个Arena和Benchmark上展现出惊人实力，引发社区广泛猜测。这是阿里在组织架构大重组后的首个重磅技术展示。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>"先匿名屠榜、再官方认领"已经成为中国AI公司的经典发布策略（DeepSeek V4也是如此）。欢乐马的实力证明阿里ATH重组后的研发效率确实在提升，这个团队的后续产出值得跟踪。
+        </div>
+        <div class="news-meta">
+            <span>📰 搜狐 / 每日经济新闻</span>
+            <a href="https://www.sohu.com/a/1008037089_602994" target="_blank">详细报道 →</a>
+        </div>
+    </div>
+
+    <div class="section-label">📡 行业信号</div>
+
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">9</span>
+            <div><span class="news-title">4月上旬AI模型大爆发——12款新模型、3起重大融资，日均一个重磅</span><span class="news-tag tag-trend">TREND</span></div>
+        </div>
+        <div class="news-body">
+            知乎、雪球、CSDN等平台同步发布4月AI圈盘点：仅4月上旬就有12款新大模型发布、3起行业级融资事件落地。从GPT-6定档到Mythos震撼登场，从Meta Muse Spark到DeepSeek V4官宣，从Gemma 4开源到GLM-5V发布——AI行业正在经历2026年最密集的模型发布周。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>"一天一个大新闻"不再是夸张——4月上旬的发布密度已经超过了3月初的"模型核爆周"。当所有玩家同时加速时，真正的问题不是"谁的模型更强"，而是"市场能消化多快"。
+        </div>
+        <div class="news-meta">
+            <span>📰 知乎 / 雪球 / CSDN / 网易</span>
+            <a href="https://zhuanlan.zhihu.com/p/2025390002230555538" target="_blank">知乎盘点 →</a>
+        </div>
+    </div>
+
+    <div class="news-item newface">
+        <div class="news-header">
+            <span class="news-num">10</span>
+            <div><span class="news-title">新浪AI小时报：国产AI日均Token调用量持续爆发增长</span><span class="news-tag tag-newface">新面孔</span></div>
+        </div>
+        <div class="news-body">
+            新浪AI热点小时报汇总4月10日五大热点：火山引擎公布豆包大模型日均Token调用量3月已突破120万亿（三个月翻倍）；国产AI日均调用量持续保持全球领先；多家平台同日发布AI产品更新。新浪AI小时报作为新兴AI资讯聚合产品，以高频、精准的热点捕捉获得关注。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>120万亿日均Token的数字再次确认了中国AI应用侧的爆发速度。三个月翻倍的增长曲线，意味着推理算力需求仍在加速，而非放缓。
+        </div>
+        <div class="news-meta">
+            <span>📰 新浪</span>
+            <a href="https://k.sina.com.cn/article_7857201856_1d45362c0019045rus.html" target="_blank">新浪AI小时报 →</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 #29 · 2026年4月10日</p>
+    <p style="margin-top: 8px;">数据来源：CNBC、AP、CNN、Wired、彭博社、华尔街见闻、国家网信办、TechCrunch、腾讯新闻、新华网 等 18+ 平台</p>
+    <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+</div>
+
+</body>
+</html>

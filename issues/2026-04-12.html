@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #31 — 2026年4月12日 星期日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+        .back-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; padding: 12px 24px; }
+        .back-nav a { color: #667eea; text-decoration: none; font-size: 0.9em; font-weight: 600; }
+        .back-nav a:hover { text-decoration: underline; }
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 100px 24px 56px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 50%, rgba(255,255,255,0.08) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(255,255,255,0.05) 0%, transparent 50%); }
+        .hero-content { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+        .hero .issue-badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 16px; border-radius: 20px; font-size: 0.85em; margin-bottom: 16px; font-weight: 600; }
+        .hero h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 12px; line-height: 1.3; }
+        .hero .date { font-size: 1.05em; opacity: 0.85; margin-bottom: 20px; }
+        .hero .summary { font-size: 0.95em; opacity: 0.8; line-height: 1.7; max-width: 600px; margin: 0 auto; }
+        .stats-bar { display: flex; justify-content: center; gap: 32px; margin-top: 28px; flex-wrap: wrap; }
+        .stats-bar .stat { text-align: center; }
+        .stats-bar .stat-num { font-size: 1.6em; font-weight: 700; display: block; }
+        .stats-bar .stat-label { font-size: 0.78em; opacity: 0.7; }
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px 80px; }
+        .news-item { background: white; border-radius: 14px; padding: 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 4px solid #667eea; transition: transform 0.2s; }
+        .news-item:hover { transform: translateX(4px); }
+        .news-item.breakthrough { border-left-color: #e53e3e; }
+        .news-item.signal { border-left-color: #dd6b20; }
+        .news-item.trend { border-left-color: #38a169; }
+        .news-item.newface { border-left-color: #805ad5; }
+        .news-num { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: #667eea; color: white; font-size: 0.82em; font-weight: 700; margin-right: 10px; flex-shrink: 0; }
+        .news-item.breakthrough .news-num { background: #e53e3e; }
+        .news-item.signal .news-num { background: #dd6b20; }
+        .news-item.trend .news-num { background: #38a169; }
+        .news-item.newface .news-num { background: #805ad5; }
+        .news-header { display: flex; align-items: flex-start; margin-bottom: 12px; }
+        .news-title { font-size: 1.15em; font-weight: 700; color: #1a202c; line-height: 1.4; }
+        .news-tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 0.72em; font-weight: 700; margin-left: 8px; white-space: nowrap; vertical-align: middle; }
+        .tag-signal { background: #fef3cd; color: #856404; }
+        .tag-trend { background: #d4edda; color: #155724; }
+        .tag-newface { background: #e8daef; color: #6c3483; }
+        .tag-breakthrough { background: #f8d7da; color: #721c24; }
+        .news-body { color: #4a5568; font-size: 0.92em; line-height: 1.8; margin-bottom: 14px; }
+        .news-why { background: #f7fafc; border-radius: 8px; padding: 12px 16px; font-size: 0.85em; color: #2d3748; line-height: 1.7; margin-bottom: 12px; }
+        .news-why strong { color: #667eea; }
+        .news-meta { display: flex; gap: 16px; font-size: 0.78em; color: #a0aec0; flex-wrap: wrap; }
+        .news-meta a { color: #667eea; text-decoration: none; }
+        .news-meta a:hover { text-decoration: underline; }
+        .section-label { font-size: 0.88em; font-weight: 700; color: #667eea; margin-bottom: 16px; margin-top: 36px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; letter-spacing: 1px; }
+        .footer { text-align: center; padding: 40px 24px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .hero { padding: 80px 16px 40px; }
+            .hero h1 { font-size: 1.5em; }
+            .container { padding: 24px 12px 60px; }
+            .news-item { padding: 20px 16px; }
+            .news-title { font-size: 1.05em; }
+            .stats-bar { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="back-nav">
+    <a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a>
+</div>
+
+<div class="hero">
+    <div class="hero-content">
+        <div class="issue-badge">第 31 期</div>
+        <h1>GPT-6发布倒计时T-2 + Mythos风暴扩散至英国央行 + Gemma 4手机端运行突破</h1>
+        <div class="date">2026年4月12日 星期日</div>
+        <div class="summary">
+            GPT-6发布前最后一个周末——全球开发者社区和资本市场都在等待周一的到来；Mythos安全风暴从美国扩散至英国，英格兰银行和金融行为监管局启动紧急磋商；谷歌Gemma 4实现手机端运行，本地AI迎来实质性突破。
+        </div>
+        <div class="stats-bar">
+            <div class="stat"><span class="stat-num">8</span><span class="stat-label">资讯条目</span></div>
+            <div class="stat"><span class="stat-num">14+</span><span class="stat-label">信息来源</span></div>
+            <div class="stat"><span class="stat-num">2</span><span class="stat-label">新面孔</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section-label">🔥 重大事件</div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">1</span>
+            <div><span class="news-title">Mythos安全风暴跨越大西洋——英格兰银行紧急磋商AI网络安全系统性风险</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            据英国《金融时报》4月12日报道，英国金融监管机构——包括英格兰银行、金融行为监管局（FCA）及财政部——正与国家网络安全中心展开紧急磋商，讨论Anthropic Claude Mythos模型对英国金融系统的潜在威胁。这是继美国财长+美联储主席紧急召集华尔街CEO之后，Mythos风暴扩散到的第二个主要经济体。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>从美国到英国——Mythos风暴正在以"金融监管多米诺"的方式全球扩散。当一个AI模型的发布需要两个G7国家的央行同时紧急响应时，我们见证的是AI治理从"事后监管"向"事前预防"的历史性转变。这将催生全新的AI模型发布前安全审查制度。
+        </div>
+        <div class="news-meta">
+            <span>📰 英国金融时报 / 电子工程专辑 / 凤凰网</span>
+            <a href="https://www.eet-china.com/news/202604131722.html" target="_blank">电子工程专辑 →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">2</span>
+            <div><span class="news-title">Mythos参数10万亿传闻——"能让Anthropic不敢公开发布"的模型到底有多强</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            腾讯新闻发布深度报道：小道消息称Mythos参数量高达10万亿（100 trillion），远超GPT-6的5-6万亿参数。该模型能以碾压级漏洞挖掘能力"撕碎人类安全防线"，引发美股网络安全板块千亿市值蒸发。Anthropic选择将其限制在Project Glasswing的约40家合作企业内部使用，不公开发售，这一决策本身就是对模型能力的最强背书。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>"强到不敢公开发布"——这句话本身就改变了AI模型发布的游戏规则。如果Anthropic的判断是正确的（公开发布会造成系统性风险），那么"模型能力的上限"将不再由技术决定，而由社会承受力决定。这是AI安全讨论从理论走向实践的标志性时刻。
+        </div>
+        <div class="news-meta">
+            <span>📰 腾讯新闻 / 新浪 / 多课网 / gaovi.com</span>
+            <a href="https://news.qq.com/rain/a/20260412A01VEX00" target="_blank">腾讯新闻 →</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <div class="news-header">
+            <span class="news-num">3</span>
+            <div><span class="news-title">GPT-6发布T-2倒计时——全球资本市场和开发者社区同步进入"待机状态"</span><span class="news-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <div class="news-body">
+            距GPT-6发布还有2天。B站、知乎、多课网等平台发布"4月12日AI日报"，GPT-6倒计时成为绝对头条。多个信源汇总GPT-6发布信息：5-6万亿参数MoE架构、200万Token上下文、Symphony全模态引擎、性能较GPT-5.4提升40%、训练成本约20亿美元。这将是2026年AI行业的年度事件。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>20亿美元训练成本、200万Token上下文、40%性能跃升——这些数字的组合意味着GPT-6不是渐进式升级而是代际跃迁。但真正的悬念是：在Mythos安全风暴和DeepSeek V4双重压力下，GPT-6能否重新确立OpenAI在前沿AI的领导地位？
+        </div>
+        <div class="news-meta">
+            <span>📰 B站 / 知乎 / 多课网 / gaovi.com / CSDN</span>
+            <a href="https://www.bilibili.com/video/BV1NVDDB5EAC/" target="_blank">B站日报 →</a>
+        </div>
+    </div>
+
+    <div class="section-label">📊 技术突破</div>
+
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">4</span>
+            <div><span class="news-title">谷歌Gemma 4实现手机端运行——本地AI从概念走向实用</span><span class="news-tag tag-trend">TREND</span></div>
+        </div>
+        <div class="news-body">
+            DayaAI发布专题分析"本地AI突破与伦理挑战"：谷歌Gemma 4成为首个真正可以在手机端运行的高性能开源模型，无需云端即可执行复杂任务。这标志着"本地AI"从技术概念真正走向日常可用。同时，多模态视觉理解和AI伦理挑战的并行发展引发社区广泛讨论。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>当高性能AI可以在手机上本地运行时，它改变的不仅是延迟和隐私——它改变的是AI的分发模式。不再需要API Key、不再需要服务器、不再需要付费订阅。"人人可用的AI"从口号变成了技术现实。
+        </div>
+        <div class="news-meta">
+            <span>📰 DayaAI / CSDN</span>
+            <a href="https://dayaai.com/news/digest/2026-04-12" target="_blank">DayaAI →</a>
+        </div>
+    </div>
+
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">5</span>
+            <div><span class="news-title">2026年4月全景解析：GPT-6领衔、国产模型"逆袭硅谷"</span><span class="news-tag tag-trend">TREND</span></div>
+        </div>
+        <div class="news-body">
+            CSDN发布3000+阅读的深度长文《2026年4月AI大模型全景解析》，系统梳理4月模型格局：GPT-6完成预训练待发、Gemma 4成开源效率王者（单卡即可运行）、DeepSeek V4万亿参数国产芯片适配、Claude Mythos不公开发售引发安全争议。文章判断：4月将是2026年AI行业最关键的月份。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>"国产模型逆袭硅谷"——这个叙事从年初的希望变成了4月的现实。当DeepSeek V4可以完全运行在华为芯片上，当Qwen 3.6登顶全球调用榜，中国AI不再是"追赶者"的角色。这个格局变化将深刻影响全球算力供应链和AI产业政策。
+        </div>
+        <div class="news-meta">
+            <span>📰 CSDN</span>
+            <a href="https://blog.csdn.net/lyy_kao/article/details/160027453" target="_blank">CSDN深度 →</a>
+        </div>
+    </div>
+
+    <div class="section-label">📡 行业信号</div>
+
+    <div class="news-item trend">
+        <div class="news-header">
+            <span class="news-num">6</span>
+            <div><span class="news-title">AI Central：4月AI版图全景——从模型竞赛到安全危机的多线交织</span><span class="news-tag tag-trend">TREND</span></div>
+        </div>
+        <div class="news-body">
+            Substack独立AI研究者发布《The AI Landscape: April 2026》，以时间线形式梳理4月多线并行的事件图谱。关键观察：Anthropic服务在3-4月经历6次宕机（其中3月晚期与用户激增相关）、4月4日Anthropic限流OpenClaw后Claude流量激增、Mythos的安全发现进一步分化了行业对"AI能力上限"的共识。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>从宕机频率到限流策略——这些看似运营细节的数据背后，是Anthropic在"增长"和"安全"之间的艰难平衡。当最强模型不敢公开发布、服务频繁宕机、却在网络安全上展现碾压级能力——Anthropic的故事比任何一家AI公司都更复杂、更矛盾。
+        </div>
+        <div class="news-meta">
+            <span>📰 AI Central (Substack)</span>
+            <a href="https://aicentral.substack.com/p/the-ai-landscape-april-2026" target="_blank">AI Central →</a>
+        </div>
+    </div>
+
+    <div class="news-item newface">
+        <div class="news-header">
+            <span class="news-num">7</span>
+            <div><span class="news-title">FireCat深度：Mythos重写攻击成本经济学——"AI安全的范式转移"</span><span class="news-tag tag-newface">新面孔</span></div>
+        </div>
+        <div class="news-body">
+            新兴安全分析媒体FireCat发布深度分析《Mythos风暴：AI模型如何改写攻击成本并引发全球金融警报》，提出核心判断：Mythos将网络攻击的经济门槛从"国家级预算"降低到"个人信用卡水平"。文章量化分析了漏洞发现成本从百万美元降至数十美元对全球网络安全产业的冲击路径。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>"攻击成本的民主化"是Mythos带来的真正革命性变化。当任何人都可以用AI以极低成本发现高危漏洞时，现有网络安全产业（预计2026年全球5000亿美元市场）的商业模式将面临根本性重构。
+        </div>
+        <div class="news-meta">
+            <span>📰 FireCat</span>
+            <a href="https://www.firecat-web.com/daily-news/5338" target="_blank">FireCat →</a>
+        </div>
+    </div>
+
+    <div class="news-item newface">
+        <div class="news-header">
+            <span class="news-num">8</span>
+            <div><span class="news-title">多课网AI日报：GPT-6+Mythos+DeepSeek V4——"前所未有的AI竞赛周末"</span><span class="news-tag tag-newface">新面孔</span></div>
+        </div>
+        <div class="news-body">
+            新兴AI资讯平台"多课网"发布《AI日报·2026年4月12日》，编辑视角称这是"前所未有的AI竞赛周末"：GPT-6发布前不足48小时、Mythos震撼登场、DeepSeek V4万亿参数细节曝光——三条主线同时推进。多课网以清晰的结构化日报形式在AI资讯聚合赛道获得关注。
+        </div>
+        <div class="news-why">
+            <strong>为什么重要：</strong>AI日报赛道本身的竞争也在加剧——从B站到多课网，越来越多的垂直媒体在用不同形式满足从业者对高频AI资讯的需求。这个赛道的繁荣本身就是AI行业信息密度爆炸的证据。
+        </div>
+        <div class="news-meta">
+            <span>📰 多课网</span>
+            <a href="https://duoke360.com/post/46146" target="_blank">多课网 →</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 #31 · 2026年4月12日</p>
+    <p style="margin-top: 8px;">数据来源：金融时报、电子工程专辑、腾讯新闻、B站、CSDN、DayaAI、AI Central、FireCat 等 14+ 平台</p>
+    <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+</div>
+
+</body>
+</html>

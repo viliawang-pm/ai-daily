@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #42 — 2026年4月23日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f0f2f5;
+            color: #1a202c;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .date { font-size: 1.1em; opacity: 0.9; }
+        .header .back-link { 
+            display: inline-block; margin-top: 16px; color: rgba(255,255,255,0.85); 
+            text-decoration: none; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 18px; border-radius: 20px; transition: all 0.2s;
+        }
+        .header .back-link:hover { background: rgba(255,255,255,0.15); color: white; }
+        .container { max-width: 820px; margin: 0 auto; padding: 32px 20px 64px; }
+        .summary-box {
+            background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .summary-box h2 { font-size: 1.2em; color: #667eea; margin-bottom: 12px; }
+        .summary-box p { color: #4a5568; font-size: 0.95em; line-height: 1.8; }
+        .news-card {
+            background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        .news-card:hover { transform: translateX(4px); }
+        .news-card.signal { border-left-color: #e53e3e; }
+        .news-card.trend { border-left-color: #d69e2e; }
+        .news-card.new-face { border-left-color: #38a169; }
+        .news-tag {
+            display: inline-block; font-size: 0.75em; font-weight: 700; padding: 3px 10px;
+            border-radius: 4px; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #fff5f5; color: #e53e3e; }
+        .tag-trend { background: #fffff0; color: #d69e2e; }
+        .tag-new-face { background: #f0fff4; color: #38a169; }
+        .news-card h3 { font-size: 1.15em; font-weight: 700; margin-bottom: 10px; line-height: 1.5; color: #1a202c; }
+        .news-card .why { 
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px; margin: 12px 0;
+            font-size: 0.9em; color: #4a5568; line-height: 1.7;
+        }
+        .news-card .why strong { color: #667eea; }
+        .news-card .meta {
+            display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;
+            font-size: 0.82em; color: #a0aec0;
+        }
+        .news-card .meta a { color: #667eea; text-decoration: none; }
+        .news-card .meta a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 0.9em; font-weight: 700; color: #a0aec0; letter-spacing: 2px;
+            text-transform: uppercase; margin: 36px 0 16px; padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer {
+            text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.85em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.6em; }
+            .news-card { padding: 20px 16px; }
+            .container { padding: 20px 12px 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 日报 #42</h1>
+        <div class="date">2026年4月23日 · 星期四</div>
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+    </div>
+    <div class="container">
+
+        <div class="summary-box">
+            <h2>今日概览</h2>
+            <p>马斯克出手——SpaceX以600亿美元获得Cursor收购权，AI编程赛道从创业游戏升级为巨头牌桌。国务院首次在正式文件中将大模型/智能体列入采购支持清单，政策信号从"鼓励探索"切换为"真金白银"。MIT Technology Review发布首个AI专项年度清单，Agent编排再次被列为第一趋势。Sora关停倒计时3天，视频生成赛道"新BAT"格局初现。</p>
+        </div>
+
+        <div class="section-title">产业结构性变化</div>
+
+        <!-- 1 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>SpaceX 600亿美元获Cursor收购权——AI编程进入巨头牌桌时代</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>SpaceX宣布获得以600亿美元收购Cursor的期权——不收购则支付100亿美元合作费，这是企业史上最昂贵的"分手费"之一。3个月前Cursor融资20亿美元时估值500亿，如今已是600亿。更深的信号是：马斯克正在SpaceX 6月IPO前补齐AI编程短板，而Cursor从Kimi K2.5底座争议到被SpaceX看中，半年内走完了从"套壳争议"到"史上最贵AI编程公司"的全过程。AI编程从创业者游戏，正式成为马斯克-Altman-Anthropic三方角力的新战场。
+            </div>
+            <div class="meta">
+                <span>📰 CNBC、澎湃新闻、财新、IT之家、FT中文网</span>
+                <span>🔗 <a href="https://www.cnbc.com/2026/04/21/spacex-says-it-can-buy-cursor-later-this-year-for-60-billion-or-pay-10-billion-for-our-work-together.html" target="_blank">CNBC原文</a></span>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>国务院首次将大模型/智能体列入采购支持清单——从"鼓励探索"到"真金白银"</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>国务院印发《关于推进服务业扩能提质的意见》（国发〔2026〕7号），明确提出"深入实施'人工智能+'行动，加快智能编程工具研发使用，支持采购大模型、智能体服务"。这是国务院层面首次在正式文件中将"大模型"和"智能体"列入采购支持清单。此前政策表述多为"鼓励""支持研发"，本次直接说"支持采购"，意味着政府和国企采购大模型/智能体有了正式政策依据。A股AI板块22日闻风而动。
+            </div>
+            <div class="meta">
+                <span>📰 新华网、财新、每日经济新闻、同花顺</span>
+                <span>🔗 <a href="https://www1.xinhuanet.com/politics/20260421/3f7ff7029a064f388f25e1a4d2767d70/c.html" target="_blank">新华网原文</a></span>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>MIT Technology Review首发AI专项年度清单——Agent编排连续两次位列第一趋势</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>4月21日EmTech AI大会上，MIT Technology Review首次发布"10 Things That Matter in AI Right Now"——这是其创刊125年来首个纯AI专项年度清单（此前AI只是年度突破技术的子集）。Agent编排再次被列为第一趋势，与此前MIT TR年度AI榜单结论一致。Deloitte同日发布的独立报告也将Agent编排视为2026年AI核心主题。当最权威的技术媒体和最大的咨询公司同时押注同一方向，这不再是预测，而是共识。
+            </div>
+            <div class="meta">
+                <span>📰 MIT Technology Review、Deloitte Insights、AI Productivity</span>
+                <span>🔗 <a href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank">MIT TR原文</a></span>
+            </div>
+        </div>
+
+        <div class="section-title">关键事件跟踪</div>
+
+        <!-- 4 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>Sora退场倒计时3天——"新BAT"格局初现，视频生成赛道中国三强争霸</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>Sora 4/26正式关停进入最后倒计时。36氪/钛媒体长篇深度报道"Sora退场，新BAT狂飙"：字节Seedance 2.0一个月内连发三个版本、快手可灵AI单季收入3.4亿元（年化3亿美元+）、阿里HappyHorse-1.0空降第三方盲测榜首并登顶。三家分别代表"速度派""变现派""突袭派"，中国视频生成赛道已形成事实上的新三强格局。Sora核心负责人Peebles 4/18离职，OpenAI彻底退出视频生成消费市场。
+            </div>
+            <div class="meta">
+                <span>📰 36氪、钛媒体、新华网、TechCrunch</span>
+                <span>🔗 <a href="https://www.36kr.com/p/3774815626933001" target="_blank">36氪深度</a></span>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>Kimi K2.6开源48小时——开发者实测13小时不间断编码4000行，社区反馈密集涌入</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>月之暗面4/20发布并开源Kimi K2.6后，过去48小时开发者社区进入密集实测期。财新独家报道称K2.6是"月之暗面迄今最强代码模型"，可不间断编码13小时、编写/修改超过4000行代码，内部评测成绩提升约20%，推理效率比LM系列提升3倍。IT之家、太平洋电脑网、AIHub等多家媒体确认其在SWE-bench等权威测试中表现领先。开源模型能在长程编码上追平甚至超越闭源前沿，这对整个AI编程生态的竞争格局产生结构性冲击。
+            </div>
+            <div class="meta">
+                <span>📰 财新、IT之家、太平洋电脑网、AIHub、21经济</span>
+                <span>🔗 <a href="https://www.caixin.com/2026-04-21/102436250.html" target="_blank">财新独家</a></span>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>4月AI模型大战收官复盘——"史上最密集发布月"全景图</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>Kersai和知乎万字深度同步发布4月全景复盘。4月创下AI历史上单月模型发布密度新纪录：GPT-6（4/14）、Opus 4.7（4/17）、Kimi K2.6开源（4/20）、Qwen3.6-Max-Preview（4/20），加上月初的Gemma 4、GLM-5.1、Llama 4——三条路线分化清晰：OpenAI"超级应用"、Anthropic"安全+编程"、中国军团"开源+性价比"。知乎复盘文章指出，4月的核心叙事不是"谁赢了"，而是"三条路线都跑通了"——AI行业从单一赛道进入多路径共存时代。
+            </div>
+            <div class="meta">
+                <span>📰 知乎、Kersai、CSDN、雪球</span>
+                <span>🔗 <a href="https://kersai.com/ai-breakthroughs-april-2026-models-funding-shifts/" target="_blank">Kersai全景分析</a></span>
+            </div>
+        </div>
+
+        <div class="section-title">行业动态</div>
+
+        <!-- 7 -->
+        <div class="news-card new-face">
+            <span class="news-tag tag-new-face">新面孔</span>
+            <h3>软盟资讯"冰与火"日报——AI产业一日之内的四重奏</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>软盟资讯4/22日报用"冰与火"概括当日AI世界：国务院力挺大模型采购（政策火）、SpaceX 600亿收购Cursor（资本火）、AI诊断4月起全国837家三甲医院纳入医保（民生火），同时佛罗里达AI监管法案推进（政策冰）。这份来自非传统AI媒体的日报之所以值得关注，是因为它反映了AI资讯消费正在从"科技圈内部事"扩散到更广泛的财经/产业读者群——AI新闻的受众结构正在发生变化。
+            </div>
+            <div class="meta">
+                <span>📰 软盟资讯、AIToolly、AITNT</span>
+                <span>🔗 <a href="https://news.softunis.com/ai" target="_blank">软盟资讯</a></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #42 · 2026年4月23日 · 共 7 条资讯</p>
+        <p style="margin-top: 8px;">
+            <a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a>
+        </p>
+        <p style="margin-top: 12px; font-size: 0.8em; color: #cbd5e0;">
+            数据来源：CNBC、MIT Technology Review、新华网、财新、36氪、钛媒体、IT之家、澎湃新闻、FT中文网、Kersai、知乎、软盟资讯、AIToolly、AITNT 等 15+ 平台
+        </p>
+    </div>
+</body>
+</html>

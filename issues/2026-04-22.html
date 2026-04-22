@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #41 — 2026年4月22日（星期三）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: #f8f9fa; color: #1a202c; line-height: 1.7;
+        }
+        .back-link {
+            display: inline-block; padding: 12px 24px; color: #667eea;
+            text-decoration: none; font-weight: 600; font-size: 0.9em;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 60px 24px 48px; text-align: center;
+        }
+        .hero h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .hero .date { font-size: 1.1em; opacity: 0.9; margin-bottom: 16px; }
+        .hero .summary { font-size: 1em; opacity: 0.85; max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+        .news-card {
+            background: white; border-radius: 14px; padding: 28px; margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 4px 20px rgba(102,126,234,0.12); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.trend { border-left-color: #48bb78; }
+        .news-card.newface { border-left-color: #ed8936; }
+        .tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #ebf4ff; color: #4c6ef5; }
+        .tag-trend { background: #f0fff4; color: #38a169; }
+        .tag-newface { background: #fffaf0; color: #dd6b20; }
+        .news-card h2 { font-size: 1.15em; font-weight: 700; margin-bottom: 10px; line-height: 1.5; }
+        .news-card .body { font-size: 0.92em; color: #4a5568; margin-bottom: 12px; line-height: 1.8; }
+        .news-card .why { font-size: 0.88em; color: #667eea; font-weight: 600; margin-bottom: 10px; }
+        .meta-row { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.78em; color: #a0aec0; }
+        .meta-row a { color: #667eea; text-decoration: none; }
+        .meta-row a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 0.88em; font-weight: 700; color: #718096;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin: 36px 0 18px; padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer {
+            text-align: center; padding: 40px 24px; color: #a0aec0; font-size: 0.82em;
+            border-top: 1px solid #e2e8f0; margin-top: 40px;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.6em; }
+            .hero { padding: 40px 16px 32px; }
+            .container { padding: 20px 14px 40px; }
+            .news-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">&larr; 返回日报列表</a>
+
+<div class="hero">
+    <h1>AI 日报 #41</h1>
+    <div class="date">2026年4月22日 · 星期三</div>
+    <div class="summary">
+        Sora关停倒计时4天——OpenAI史上最大"断舍离"即将落幕，AI视频赛道重新洗牌；北京车展后天开幕，吉利中国首台原生Robotaxi将亮相，2026被定义为L3商业化元年；Vercel安全事件持续发酵，Trend Micro深度分析OAuth供应链攻击路径，AI SaaS安全治理成为新刚需；4月模型大战进入收官阶段，"Agentic Coding"成为所有玩家的共同赌注。
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section-title">🔺 产业结构性变化</div>
+
+    <div class="news-card signal">
+        <span class="tag tag-signal">SIGNAL</span>
+        <h2>Sora关停倒计时4天——4月26日正式终止，AI视频生成赛道从"巨头游戏"回归"创业赛道"</h2>
+        <div class="body">
+            OpenAI Sora将于4月26日正式关停所有服务。回顾时间线：2024年2月首次惊艳发布→2025年12月独立App上线→2026年3月25日宣布关停→4月26日终止。从惊艳到陨落仅6个月。算力成本日均100万美元、迪士尼10亿美元合作告吹、GPT-6主线优先级更高——三重压力下的战略收缩。新华社、36氪、澎湃均做了深度复盘，一致判断：这不是AI视频的终结，而是消费级AI视频泡沫的破裂。Runway、Pika、Suno等独立厂商将迎来窗口期。
+        </div>
+        <div class="why">⚡ 为什么重要：Sora的关停证明了一件事——即使是OpenAI，也无法同时在多个前沿赛道上烧钱。这是AI行业从"无限扩张"到"聚焦盈利"转型的最清晰信号。对创业者的启示：巨头退出的赛道，往往是创业公司的最佳入场时机。</div>
+        <div class="meta-row">
+            <span>📰 新华社 / 36氪 / 澎湃新闻 / aiproducthub / ai-insight.org</span>
+            <span>|</span>
+            <a href="https://aiproducthub.cn/newsflash/openai-sora-shutdown-april-26-high-cost/" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card signal">
+        <span class="tag tag-signal">SIGNAL</span>
+        <h2>吉利将在北京车展发布中国首台原生Robotaxi原型车——L3商业化元年正式启幕</h2>
+        <div class="body">
+            4月24日（后天），第十九届北京国际车展正式开幕。吉利宣布将以半包馆形式亮相，最大看点：中国首台"原生Robotaxi"原型车——不是在现有车型上改装传感器，而是从底盘开始就为全自动驾驶设计。车展主题"领时代·智未来"，双馆联动38万㎡创历史纪录。36氪此前分析，2026年是"自动驾驶从秀场突围到商业化决定性拐点"之年：AI大模型上车、L3规模化落地、国产芯片突围、Robotaxi出海同时推进。
+        </div>
+        <div class="why">⚡ 为什么重要："原生Robotaxi"的关键词是"原生"——这意味着中国车企不再把自动驾驶当作传统汽车的"附加功能"，而是从第一行设计代码开始就以AI为核心。这是汽车行业"AI原生"范式转换的标志性事件。</div>
+        <div class="meta-row">
+            <span>📰 aiproducthub / 36氪 / 第一电动 / 凤凰汽车</span>
+            <span>|</span>
+            <a href="https://aiproducthub.cn/newsflash/geely-first-native-robotaxi-beijing-auto-show/" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="section-title">📊 行业趋势与关键信号</div>
+
+    <div class="news-card trend">
+        <span class="tag tag-trend">TREND</span>
+        <h2>Vercel安全事件Day 3——Trend Micro深度拆解OAuth供应链攻击链，AI SaaS治理成新刚需</h2>
+        <div class="body">
+            Vercel安全事件进入第三天，Trend Micro发布了迄今为止最详细的攻击路径分析：Context.ai员工被钓鱼→攻击者利用已有OAuth授权访问Vercel员工Google Workspace→横向移动进入Vercel内部系统→窃取环境变量和客户数据。OX Security指出被盗数据已在BreachForums出售。Cloud Security Alliance将其定性为"AI SaaS供应链攻击首例重大案例"，建议所有企业审计其AI工具的OAuth权限范围。
+        </div>
+        <div class="why">⚡ 为什么重要：每家公司都在接入各种AI SaaS工具来提效，但每个OAuth授权都是一个潜在攻击面。Vercel事件将推动"AI工具安全治理"从"nice to have"变成"must have"，可能催生一个新的安全细分市场。</div>
+        <div class="meta-row">
+            <span>📰 Trend Micro / OX Security / Strobes / devops-daily</span>
+            <span>|</span>
+            <a href="https://www.trendmicro.com/en_us/research/26/d/vercel-breach-oauth-supply-chain.html" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card trend">
+        <span class="tag tag-trend">TREND</span>
+        <h2>知乎万字深度：2026年4月AI大模型战争全景——万亿参数、混合思考、国产突围</h2>
+        <div class="body">
+            知乎深度长文梳理4月大模型格局：一个月内超过10个主流大模型集中发布，从OpenAI GPT-6、Anthropic Opus 4.7、Google Gemini 3.1到DeepSeek V4、Kimi K2.6、Qwen3.6-Max。但作者指出"仔细看，大多数是同质化竞争"——真正的分化不在参数量，而在商业模式：OpenAI的"超级应用"、Anthropic的"安全溢价"、月之暗面的"开源生态"、阿里的"云API入口"。哪种路线能跑通，4月的数据正在给出答案。
+        </div>
+        <div class="why">⚡ 为什么重要：当一个月有12+模型发布时，普通读者需要的不是"又有新模型了"，而是"这些模型背后的路线分化意味着什么"。这篇分析恰好回答了这个问题。</div>
+        <div class="meta-row">
+            <span>📰 知乎</span>
+            <span>|</span>
+            <a href="https://zhuanlan.zhihu.com/p/2029888482148124575" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card trend">
+        <span class="tag tag-trend">TREND</span>
+        <h2>雷达未来大会：AI从"视力"进化到"脑力"——物理世界AI部署加速</h2>
+        <div class="body">
+            央视网报道，第六届雷达未来大会4月18-20日在青岛举行。记者观察到一个关键变化：过去雷达技术比的是"看得远、看得清"（视力），今年各家展台反复提到的关键词是"思考"——AI大模型正在让雷达系统从"感知"进化到"认知"。这是AI从数字世界向物理世界迁移的又一个具体案例：当传感器拥有了"大脑"，整个感知-决策链条都在被重构。
+        </div>
+        <div class="why">⚡ 为什么重要：雷达是军事和工业的核心传感器。当AI从"帮雷达看得更清"进化到"帮雷达思考"，意味着物理世界的AI化正在从消费级（Robotaxi）渗透到工业/防务级。</div>
+        <div class="meta-row">
+            <span>📰 央视网</span>
+            <span>|</span>
+            <a href="https://news.cctv.com/2026/04/21/ARTIRQwXvjoRleu6JBGD849J260421.shtml" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="section-title">🔎 值得关注</div>
+
+    <div class="news-card newface">
+        <span class="tag tag-newface">新面孔</span>
+        <h2>aiproducthub 4月22日资讯盘点：北京车展+AI招聘放量+Kimi K2.6商业化</h2>
+        <div class="body">
+            多个AI资讯聚合平台同步更新4/22资讯：财新报道AI招聘放量但校招生面临"经验悖论"——企业要求"AI项目经验"但毕业生如何积累？aiproducthub.cn整理当日科技/互联网/AI行业动态汇总。搜狐"未来商业早参"将月之暗面Kimi K2.6和自变量机器人列为当日两大焦点。中文AI媒体生态在4月加速成熟。
+        </div>
+        <div class="why">⚡ 为什么重要：AI招聘的"经验悖论"是一个值得跟踪的社会信号——当所有企业都要"AI经验"而毕业生无从积累时，教育体系和人才市场的结构性矛盾正在浮出水面。</div>
+        <div class="meta-row">
+            <span>📰 财新 / aiproducthub / 搜狐</span>
+            <span>|</span>
+            <a href="https://www.caixin.com/2026-04-22/102436592.html" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    AI 日报 #41 · 2026年4月22日 · 数据来源：央视网、知乎、Trend Micro、36氪、财新、aiproducthub 等<br>
+    由 AI 辅助整理，人工审核把关 · <a href="https://viliawang-pm.github.io/ai-daily/" style="color:#667eea;">查看往期日报</a>
+</div>
+
+</body>
+</html>

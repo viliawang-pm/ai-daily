@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #39 — 2026年4月20日（星期一）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif;
+            background: #f8f9fa; color: #1a202c; line-height: 1.7;
+        }
+        .back-link {
+            display: inline-block; padding: 12px 24px; color: #667eea;
+            text-decoration: none; font-weight: 600; font-size: 0.9em;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 60px 24px 48px; text-align: center;
+        }
+        .hero h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .hero .date { font-size: 1.1em; opacity: 0.9; margin-bottom: 16px; }
+        .hero .summary { font-size: 1em; opacity: 0.85; max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+        .news-card {
+            background: white; border-radius: 14px; padding: 28px; margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 4px 20px rgba(102,126,234,0.12); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.trend { border-left-color: #48bb78; }
+        .news-card.newface { border-left-color: #ed8936; }
+        .tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #ebf4ff; color: #4c6ef5; }
+        .tag-trend { background: #f0fff4; color: #38a169; }
+        .tag-newface { background: #fffaf0; color: #dd6b20; }
+        .news-card h2 { font-size: 1.15em; font-weight: 700; margin-bottom: 10px; line-height: 1.5; }
+        .news-card .body { font-size: 0.92em; color: #4a5568; margin-bottom: 12px; line-height: 1.8; }
+        .news-card .why { font-size: 0.88em; color: #667eea; font-weight: 600; margin-bottom: 10px; }
+        .meta-row { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.78em; color: #a0aec0; }
+        .meta-row a { color: #667eea; text-decoration: none; }
+        .meta-row a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 0.88em; font-weight: 700; color: #718096;
+            text-transform: uppercase; letter-spacing: 1px;
+            margin: 36px 0 18px; padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer {
+            text-align: center; padding: 40px 24px; color: #a0aec0; font-size: 0.82em;
+            border-top: 1px solid #e2e8f0; margin-top: 40px;
+        }
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.6em; }
+            .hero { padding: 40px 16px 32px; }
+            .container { padding: 20px 14px 40px; }
+            .news-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">&larr; 返回日报列表</a>
+
+<div class="hero">
+    <h1>AI 日报 #39</h1>
+    <div class="date">2026年4月20日 · 星期一</div>
+    <div class="summary">
+        月之暗面发布并开源Kimi K2.6——万亿参数、12小时不间断编码、300子Agent协同，开源模型首次在多项核心benchmark上击败GPT-5.4和Claude Opus 4.6；阿里同日亮出Qwen3.6-Max-Preview旗舰，国产模型"两翼齐飞"正面对标闭源前沿；Vercel遭AI工具供应链攻击，OAuth漏洞从Context.ai一路打穿到客户数据库——AI SaaS作为企业攻击面的理论风险变成了现实。
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="section-title">🔺 产业结构性变化</div>
+
+    <div class="news-card signal">
+        <span class="tag tag-signal">SIGNAL</span>
+        <h2>月之暗面发布并开源Kimi K2.6——万亿参数开源模型首次在核心benchmark上击败GPT-5.4和Claude Opus 4.6</h2>
+        <div class="body">
+            4月20日晚间，月之暗面正式发布并开源Kimi K2.6。这是一个万亿参数MoE模型，256K上下文窗口，支持原生多模态（图片+视频）。最具突破性的能力：持续编码长达13小时、单次编写/修改超4000行代码、支持最多300个子Agent协同工作（4000步协调步骤）。在内部Kimi Code Bench上较K2.5提升约20%，在SWE-bench、HumanEval等多个基准上超越GPT-5.4和Claude Opus 4.6。SiliconANGLE和MarktechPost均做了深度报道。开源采用开放权重（open weights）模式。
+        </div>
+        <div class="why">⚡ 为什么重要：这是中国开源模型首次在顶级编码benchmark上全面击败美国闭源前沿模型。Cursor用K2.5做底座时还是"悄悄用"，K2.6直接在阳光下证明了自己。300子Agent集群的设计意味着月之暗面在"Agentic AI"赛道上已经不是跟随者。</div>
+        <div class="meta-row">
+            <span>📰 腾讯新闻 / SiliconANGLE / MarktechPost / blockchain.news</span>
+            <span>|</span>
+            <a href="https://news.qq.com/rain/a/20260421A04Y2M00" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card signal">
+        <span class="tag tag-signal">SIGNAL</span>
+        <h2>阿里Qwen3.6-Max-Preview旗舰上线——智能体编程、世界知识、指令遵循三维全面超越Plus版</h2>
+        <div class="body">
+            同日（4/20），阿里通义千问团队发布Qwen3.6-Max-Preview，定位为新一代千问旗舰的早期预览版。相比此前发布的Qwen3.6-Plus，在三个维度实现显著提升：智能体编程（agentic coding）、世界知识储备、指令遵循严格度。SWE-bench Pro表现突出，目前已在Qwen Studio开放交互对话，即将通过阿里云百炼API提供调用。ic.work分析认为，阿里真正想拿下的不是"跑分第一"，而是开发者API生态的入口。
+        </div>
+        <div class="why">⚡ 为什么重要：Kimi K2.6开源+Qwen3.6-Max闭源，国产模型同一天从两个方向对标美国闭源前沿。更值得注意的是，两家不约而同聚焦"agentic coding"——这不是巧合，是对下一个杀手级应用场景的共识判断。</div>
+        <div class="meta-row">
+            <span>📰 知乎 / IT之家 / 系统极客 / ai-bot.cn / ic.work</span>
+            <span>|</span>
+            <a href="https://www.ithome.com/0/941/214.htm" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card signal">
+        <span class="tag tag-signal">SIGNAL</span>
+        <h2>Vercel确认遭AI工具供应链攻击——Context.ai OAuth漏洞打穿内部系统，客户数据被盗</h2>
+        <div class="body">
+            4月19日披露、4月20日多家安全机构密集分析：Vercel确认一起严重安全事件。攻击链路：Context.ai（一个AI可观测性SaaS）员工账户被入侵→攻击者通过已授权的OAuth应用劫持了一名Vercel员工的Google Workspace账户→进入Vercel内部系统→窃取客户数据。TechCrunch、Trend Micro、OX Security、Cloud Security Alliance均发布了详细分析。被盗数据已在BreachForums（ShinyHunters）上出售。Vercel建议所有客户立即轮换环境变量。
+        </div>
+        <div class="why">⚡ 为什么重要：这是"AI SaaS作为企业攻击面"从理论变为现实的标志性事件。Cloud Security Alliance将其定性为"AI SaaS as Enterprise Attack Vector"的首个重大案例。当企业为了提升效率接入各种AI工具时，每个OAuth授权都可能成为攻击入口。</div>
+        <div class="meta-row">
+            <span>📰 TechCrunch / Trend Micro / OX Security / CSA Labs</span>
+            <span>|</span>
+            <a href="https://techcrunch.com/2026/04/20/app-host-vercel-confirms-security-incident-says-customer-data-was-stolen-via-breach-at-context-ai/" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="section-title">📊 行业趋势与关键信号</div>
+
+    <div class="news-card signal">
+        <span class="tag tag-signal">SIGNAL</span>
+        <h2>自变量机器人完成近20亿元B轮融资——集齐美团、阿里、字节、小米四大互联网巨头</h2>
+        <div class="body">
+            36氪《智能涌现》独家披露，自变量机器人（X Square）已于3月底至4月初完成近20亿元B轮融资，由小米战投和红杉中国联合领投。此前，美团（A轮）、阿里（A+轮）、字节（A++轮）已分别领投。至此，自变量成为国内唯一一家同时获得四大互联网巨头投资的具身智能企业。公司已与58到家合作推出机器人保洁服务，5月25日将入驻首批真实用户家庭。
+        </div>
+        <div class="why">⚡ 为什么重要：四大互联网巨头"同框投注"一家机器人公司，在中国创投史上极为罕见。这不只是看好一家公司，而是四家巨头对"具身智能进家庭"这条路径的共识确认。机器人保洁"入户试验"标志着商业化从工厂进入民用场景。</div>
+        <div class="meta-row">
+            <span>📰 36氪 / IT之家 / 财新 / 搜狐 / 每经</span>
+            <span>|</span>
+            <a href="https://eu.36kr.com/zh/p/3774502008963841" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card trend">
+        <span class="tag tag-trend">TREND</span>
+        <h2>4月模型大战进入"Agentic Coding"决胜阶段——开源vs闭源路线正面碰撞</h2>
+        <div class="body">
+            知乎万字深度分析指出，2026年4月已成为AI历史上模型发布最密集的月份，超过10个主流大模型集中发布。但真正值得关注的不是参数竞赛，而是路线分化：月之暗面（开源万亿参数+Agent集群）vs Anthropic（闭源安全优先+Claude Code）vs OpenAI（超级应用+Codex平台化）。三条路线的交汇点只有一个——"Agentic Coding"，即让AI Agent自主完成复杂编程任务。AI Flash Report确认Anthropic ARR已达$300亿，Claude Code是核心增长引擎。
+        </div>
+        <div class="why">⚡ 为什么重要：当三条截然不同的技术路线都指向同一个应用场景时，说明这个场景就是当前AI最大的商业化机会。编程工具市场正在被彻底重构。</div>
+        <div class="meta-row">
+            <span>📰 知乎 / AI Flash Report / aitoolsrecap / 51CTO</span>
+            <span>|</span>
+            <a href="https://zhuanlan.zhihu.com/p/2029888482148124575" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="news-card trend">
+        <span class="tag tag-trend">TREND</span>
+        <h2>北京车展倒计时4天——2026年被定义为L3自动驾驶商业化元年</h2>
+        <div class="body">
+            第十九届北京国际车展将于4月24日启幕，主题"领时代·智未来"，首次实现顺义馆与首都国际会展中心双馆联动（38万㎡）。36氪前瞻分析称2026年是自动驾驶从"秀场突围"到"商业化决定性拐点"的一年：AI大模型上车、L3规模化落地、国产芯片突围、自动驾驶巴士出海。吉利宣布将在车展上发布中国首台原生Robotaxi原型车。
+        </div>
+        <div class="why">⚡ 为什么重要：当AI大模型和自动驾驶在北京车展上交汇，标志着AI从"数字世界"向"物理世界"的迁移进入新阶段。吉利原生Robotaxi是值得跟踪的信号。</div>
+        <div class="meta-row">
+            <span>📰 36氪 / 第一电动 / 凤凰汽车 / MSN</span>
+            <span>|</span>
+            <a href="https://www.36kr.com/p/3768944509186569" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+    <div class="section-title">🔎 值得关注</div>
+
+    <div class="news-card newface">
+        <span class="tag tag-newface">新面孔</span>
+        <h2>AI产品月报：4月密集发布超越历史纪录——视频生成、全双工语音、Agent编码三线齐飞</h2>
+        <div class="body">
+            aiproducthub.cn整理4月AI产品发布汇总：阿里云"欢乐马"120秒长视频、字节豆包全双工语音、华为盘古Pro全模态、通义千问Qwen3.6系列、Kimi K2.6开源……一周内密集发布的产品覆盖视频生成、语音交互、Agent编码三大赛道。中国AI产品正从"模型竞赛"转向"产品竞赛"。
+        </div>
+        <div class="why">⚡ 为什么重要：当产品发布的密度超过模型发布，说明行业重心正在从"能做什么"转向"能用什么"——这是商业化的信号。</div>
+        <div class="meta-row">
+            <span>📰 aiproducthub.cn / 搜狐</span>
+            <span>|</span>
+            <a href="https://aiproducthub.cn/wpnote/2026-april-ai-products-explosion/" target="_blank">查看详情</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    AI 日报 #39 · 2026年4月20日 · 数据来源：X/Twitter、Reddit、Hacker News、LinkedIn、TechCrunch、36氪、知乎 等<br>
+    由 AI 辅助整理，人工审核把关 · <a href="https://viliawang-pm.github.io/ai-daily/" style="color:#667eea;">查看往期日报</a>
+</div>
+
+</body>
+</html>

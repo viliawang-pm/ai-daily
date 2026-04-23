@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #43 — 2026年4月24日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f0f2f5;
+            color: #1a202c;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .date { font-size: 1.1em; opacity: 0.9; }
+        .header .back-link { 
+            display: inline-block; margin-top: 16px; color: rgba(255,255,255,0.85); 
+            text-decoration: none; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 18px; border-radius: 20px; transition: all 0.2s;
+        }
+        .header .back-link:hover { background: rgba(255,255,255,0.15); color: white; }
+        .container { max-width: 820px; margin: 0 auto; padding: 32px 20px 64px; }
+        .summary-box {
+            background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .summary-box h2 { font-size: 1.2em; color: #667eea; margin-bottom: 12px; }
+        .summary-box p { color: #4a5568; font-size: 0.95em; line-height: 1.8; }
+        .news-card {
+            background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        .news-card:hover { transform: translateX(4px); }
+        .news-card.signal { border-left-color: #e53e3e; }
+        .news-card.breakthrough { border-left-color: #805ad5; }
+        .news-card.trend { border-left-color: #d69e2e; }
+        .news-card.new-face { border-left-color: #38a169; }
+        .news-tag {
+            display: inline-block; font-size: 0.75em; font-weight: 700; padding: 3px 10px;
+            border-radius: 4px; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-breakthrough { background: #faf5ff; color: #805ad5; }
+        .tag-signal { background: #fff5f5; color: #e53e3e; }
+        .tag-trend { background: #fffff0; color: #d69e2e; }
+        .tag-new-face { background: #f0fff4; color: #38a169; }
+        .news-card h3 { font-size: 1.15em; font-weight: 700; margin-bottom: 10px; line-height: 1.5; color: #1a202c; }
+        .news-card .why { 
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px; margin: 12px 0;
+            font-size: 0.9em; color: #4a5568; line-height: 1.7;
+        }
+        .news-card .why strong { color: #667eea; }
+        .news-card .meta {
+            display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;
+            font-size: 0.82em; color: #a0aec0;
+        }
+        .news-card .meta a { color: #667eea; text-decoration: none; }
+        .news-card .meta a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 0.9em; font-weight: 700; color: #a0aec0; letter-spacing: 2px;
+            text-transform: uppercase; margin: 36px 0 16px; padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer {
+            text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.85em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.6em; }
+            .news-card { padding: 20px 16px; }
+            .container { padding: 20px 12px 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 日报 #43</h1>
+        <div class="date">2026年4月24日 · 星期五</div>
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+    </div>
+    <div class="container">
+
+        <div class="summary-box">
+            <h2>今日概览</h2>
+            <p>Sony AI的乒乓球机器人"Ace"登上Nature封面——首次在竞技体育中击败精英人类选手，物理AI从实验室走向真实对抗。北京车展今日开幕，38万平米全球最大规模，L3自动驾驶和AI上车成为绝对主线，吉利首发中国首台原生Robotaxi。腾讯和阿里正洽谈投资DeepSeek，估值超200亿美元，这是这家一直拒绝外部资本的公司首次打开融资大门。4个月大、20人、没有产品的Recursive Superintelligence拿到GV和英伟达5亿美元——"自改进AI"赛道的资本狂热达到新高度。</p>
+        </div>
+
+        <div class="section-title">底层技术突破</div>
+
+        <!-- 1 -->
+        <div class="news-card breakthrough">
+            <span class="news-tag tag-breakthrough">BREAKTHROUGH</span>
+            <h3>Sony AI"Ace"登Nature封面——首个在竞技体育中击败精英人类的自主机器人</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>Sony AI的自主乒乓球机器人Ace发表在Nature正刊封面上。它结合事件相机视觉和强化学习，在标准场地和正式规则下击败了精英级人类选手。此前AI在围棋（AlphaGo）和电子竞技（OpenAI Five/AlphaStar）中已经超越人类，但那些都是"数字世界"——感知延迟可忽略、物理干扰为零。乒乓球不同：球速可达150km/h，机器人必须在毫秒级内感知→决策→物理执行，且面对的是真实物理环境中的不确定性。这是物理AI（Physical AI）从工厂搬运、仓库拣选等"结构化任务"突破到"非结构化实时对抗"的里程碑。用Fortune的话说："没有办法手工编程让机器人打乒乓球，它必须从经验中学习。"
+            </div>
+            <div class="meta">
+                <span>📰 Nature / Fortune / New Scientist / Robohub / 科技新报</span>
+                <span>📅 4/23 发表</span>
+                <a href="https://www.nature.com/articles/s41586-026-10338-5" target="_blank">Nature原文 →</a>
+            </div>
+        </div>
+
+        <div class="section-title">产业结构性变化</div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>北京车展今日开幕——38万㎡全球最大车展，AI上车成绝对主线</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>第十九届北京国际车展今天开幕（4/24-5/3），主题"领时代·智未来"，首次双馆联动38万平方米，超2000家企业参展，181台全球首发车，212场发布会——规模全球第一。核心看点不是电动化（那已经是上一届的主题），而是AI：L3级自动驾驶被业界认定2026年规模化商用，AI大模型上车全面爆发，智能驾驶从高端选配下沉为大众标配。吉利首发中国首台L4级原生Robotaxi原型车，融合WAM世界动作模型；华为几乎成了"半个主场"。澎湃新闻称"车企围攻光明顶"——自动驾驶技术的华山论剑正式开始。这是AI从数字世界向物理世界渗透的最大商业化战场之一。
+            </div>
+            <div class="meta">
+                <span>📰 腾讯新闻 / 每日经济新闻 / 澎湃新闻 / 快科技 / 北京市政府</span>
+                <span>📅 4/24 开幕</span>
+                <a href="https://www.beijing.gov.cn/ywdt/gqrd/202604/t20260422_4603309.html" target="_blank">北京市政府 →</a>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>腾讯阿里洽谈投资DeepSeek，估值超200亿美元——"拒绝资本"的DeepSeek首次打开融资大门</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>据The Information报道（4/22），腾讯和阿里正洽谈投资DeepSeek，估值已从此前传闻的100亿美元翻倍至超过200亿美元。DeepSeek长期由母公司幻方量化输血，多次拒绝外部资本，这次首轮外部融资是一个结构性转变信号。两个层面值得关注：一是DeepSeek V4即将发布（全华为昇腾芯片），首轮融资很可能是为V4后的大规模商业化铺路；二是腾讯和阿里同时出手，意味着中国AI格局可能从"巨头各做各的模型"转向"巨头+独立实验室深度绑定"——类似微软-OpenAI、亚马逊-Anthropic的中国版本。IT之家、澎湃新闻均在数小时内密集跟进。
+            </div>
+            <div class="meta">
+                <span>📰 The Information / IT之家 / 澎湃新闻 / ZAKER / ZOL</span>
+                <span>📅 4/22 爆料</span>
+                <a href="https://www.ithome.com/0/942/329.htm" target="_blank">IT之家 →</a>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>Recursive Superintelligence 获5亿美元融资——4个月大、20人、零产品、40亿估值</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>由前Salesforce首席科学家Richard Socher联合DeepMind和OpenAI前研究员创立的Recursive Superintelligence，成立仅4个月、团队20人、没有任何产品，就从GV（前Google Ventures）和英伟达手中拿到至少5亿美元，估值40亿美元。HuMAI Blog的标题精准概括了这件事的荒诞与深意："一个4个月大的实验室刚拿了5亿美元做自改进AI——它没有产品。"这不是简单的资本泡沫故事。Recursive的方向是"递归自改进"（recursive self-improvement）——让AI自动改进自己的研究能力。这正是OpenAI首席科学家Pachocki描绘的"北极星"方向（9月AI研究实习生、2028全自主科研）。GV和英伟达的赌注说明：顶级资本认为这条路线足够真实，值得在没有产品的阶段就重仓。
+            </div>
+            <div class="meta">
+                <span>📰 HuMAI Blog / Tech Funding News / MLQ.ai / AI Market Watch</span>
+                <span>📅 4/20-21 报道</span>
+                <a href="https://www.humai.blog/a-four-month-old-lab-just-raised-500m-to-build-self-improving-ai-it-has-no-product/" target="_blank">HuMAI深度 →</a>
+            </div>
+        </div>
+
+        <div class="section-title">关键人物与信号</div>
+
+        <!-- 5 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>SpaceX-Cursor 600亿美元收购权持续发酵——AI编程赛道被彻底重新定价</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>4/21 CNBC首报SpaceX获得600亿美元收购Cursor期权后，行业反响在过去48小时持续升温。每日经济新闻、OnlyThinking等中文媒体深度分析指出：这不只是一笔收购，而是AI编程工具赛道的"定价锚"被彻底重置。三个月前Cursor融资20亿时估值500亿，如今600亿——短短三个月增值100亿美元。更深的信号是马斯克正在SpaceX 6月IPO前补齐AI编程能力。AIToolly指出，Cursor从底座模型争议（Kimi K2.5）到被SpaceX看中，半年走完了从"套壳质疑"到"史上最贵AI编程公司"的全过程。对整个赛道的连锁反应是：Windsurf、Bolt等竞品的估值预期将被上调，AI编程从创业者游戏正式升级为巨头战场。
+            </div>
+            <div class="meta">
+                <span>📰 CNBC / 每日经济新闻 / OnlyThinking / AIToolly / AI Daily Post</span>
+                <span>📅 4/21-23 持续报道</span>
+                <a href="https://thetechmarketer.com/spacex-cursor-deal-60-billion-ai-coding/" target="_blank">深度分析 →</a>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>OpenAI发布ChatGPT Images 2.0——周产量10亿张，图像生成进入工业量产时代</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>4/21 OpenAI升级图像模型，发布ChatGPT Images 2.0，通过ChatGPT及Codex向所有用户推送。关键数据是"周产量10亿张"——这意味着图像生成已经从"偶尔用用的创意工具"变成了真正的大规模基础设施。每日经济新闻报道中特别指出新模型在指令遵循、文字渲染和风格一致性上有显著提升。这是OpenAI在关停Sora（视频生成）后，将资源集中到图像生成赛道的又一个信号。Sora日均烧100万美元算力成本，而图像生成的成本效率高出几个数量级。OpenAI正在用产品组合告诉市场：不是所有AI生成都值得做，要做就做规模经济。
+            </div>
+            <div class="meta">
+                <span>📰 每日经济新闻 / OpenAI</span>
+                <span>📅 4/21 发布</span>
+                <a href="https://www.nbd.com.cn/articles/2026-04-22/4351021.html" target="_blank">每经报道 →</a>
+            </div>
+        </div>
+
+        <div class="section-title">行业动态</div>
+
+        <!-- 7 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>Sora T-2倒计时——后天正式关停，视频生成赛道格局定型</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>距4/26 Sora正式关停还有两天。回顾过去一个月的报道脉络：3/24 OpenAI宣布关停→3/25 Sora团队发帖告别→36氪/钛媒体密集分析"新BAT"格局（字节Seedance/快手可灵/阿里HappyHorse）→Bill Peebles离职→日均100万美元算力成本曝光→4/26最终关闭。Sora从2024年初惊艳亮相到2026年4月退场，生命周期不到两年半，年烧约3.65亿美元算力费却只创收几百万美元。这是AI行业"技术炫技≠商业价值"的最经典案例。关停后，视频生成赛道的格局几乎确定：中国三强（Seedance/可灵/HappyHorse）+ Runway/Pika的小众市场。
+            </div>
+            <div class="meta">
+                <span>📰 36氪 / 钛媒体 / 搜狐 / 科学网 / 知乎</span>
+                <span>📅 4/26 关停</span>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="news-card new-face">
+            <span class="news-tag tag-new-face">新面孔</span>
+            <h3>Vercel安全事件持续发酵——Context.ai OAuth供应链攻击被定性为"AI SaaS首个重大案例"</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>Qualysec在4/23发布深度分析报告，详细还原了Vercel遭Context.ai OAuth应用供应链攻击的完整攻击链。此前Trend Micro已做过Day3分析，现在Qualysec的报告补充了关键细节：攻击者通过伪造的Context.ai OAuth应用获取了Vercel内部系统权限，窃取了部分客户数据。CSA（云安全联盟）已将此定性为"AI SaaS供应链攻击的首个重大案例"。对开发者的直接影响是：所有使用Vercel的项目都应立即轮换secrets和API密钥。更深层的启示是：当AI工具链（MCP、OAuth、API网关）变得越来越复杂时，每一个新的集成点都是潜在的攻击面。
+            </div>
+            <div class="meta">
+                <span>📰 Qualysec / Trend Micro / CSA</span>
+                <span>📅 4/23 深度报告</span>
+                <a href="https://qualysec.com/vercel-data-breach-2026-context-ai-oauth/" target="_blank">Qualysec报告 →</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <p>AI 日报 · 每日追踪全球 AI 领域重要动态</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

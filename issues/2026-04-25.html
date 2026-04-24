@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #44 — 2026年4月25日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f0f2f5;
+            color: #1a202c;
+            line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .date { font-size: 1.1em; opacity: 0.9; }
+        .header .back-link { 
+            display: inline-block; margin-top: 16px; color: rgba(255,255,255,0.85); 
+            text-decoration: none; font-size: 0.95em; border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 18px; border-radius: 20px; transition: all 0.2s;
+        }
+        .header .back-link:hover { background: rgba(255,255,255,0.15); color: white; }
+        .container { max-width: 820px; margin: 0 auto; padding: 32px 20px 64px; }
+        .summary-box {
+            background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .summary-box h2 { font-size: 1.2em; color: #667eea; margin-bottom: 12px; }
+        .summary-box p { color: #4a5568; font-size: 0.95em; line-height: 1.8; }
+        .news-card {
+            background: white; border-radius: 16px; padding: 28px 24px; margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #667eea;
+            transition: transform 0.2s;
+        }
+        .news-card:hover { transform: translateX(4px); }
+        .news-card.signal { border-left-color: #e53e3e; }
+        .news-card.breakthrough { border-left-color: #805ad5; }
+        .news-card.trend { border-left-color: #d69e2e; }
+        .news-card.new-face { border-left-color: #38a169; }
+        .news-tag {
+            display: inline-block; font-size: 0.75em; font-weight: 700; padding: 3px 10px;
+            border-radius: 4px; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-breakthrough { background: #faf5ff; color: #805ad5; }
+        .tag-signal { background: #fff5f5; color: #e53e3e; }
+        .tag-trend { background: #fffff0; color: #d69e2e; }
+        .tag-new-face { background: #f0fff4; color: #38a169; }
+        .news-card h3 { font-size: 1.15em; font-weight: 700; margin-bottom: 10px; line-height: 1.5; color: #1a202c; }
+        .news-card .why { 
+            background: #f7fafc; border-radius: 8px; padding: 12px 16px; margin: 12px 0;
+            font-size: 0.9em; color: #4a5568; line-height: 1.7;
+        }
+        .news-card .why strong { color: #667eea; }
+        .news-card .meta {
+            display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px;
+            font-size: 0.82em; color: #a0aec0;
+        }
+        .news-card .meta a { color: #667eea; text-decoration: none; }
+        .news-card .meta a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 0.9em; font-weight: 700; color: #a0aec0; letter-spacing: 2px;
+            text-transform: uppercase; margin: 36px 0 16px; padding-bottom: 8px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer {
+            text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.85em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.6em; }
+            .news-card { padding: 20px 16px; }
+            .container { padding: 20px 12px 48px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 日报 #44</h1>
+        <div class="date">2026年4月25日 · 星期六</div>
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+    </div>
+    <div class="container">
+
+        <div class="summary-box">
+            <h2>今日概览</h2>
+            <p>昨天是2026年AI行业信息密度最高的单日之一。GPT-5.5和DeepSeek V4在同一天发布——代号"土豆"的Spud终于出炉，而DeepSeek首次以1.6万亿参数开源旗舰直面OpenAI闭源王座，中美AI的正面对决从未如此清晰。Google Cloud Next大会同日收官，第八代TPU首次训推分离，Gemini Enterprise Agent Platform宣告云计算从"卖算力"转向"卖Agent"。英特尔Q1财报全面超预期，盘后暴涨20%，AI数据中心业务成增长引擎——CPU巨头终于搭上了AI列车。Verkor.io用AI Agent在12小时内从219字提示词设计出完整RISC-V CPU，传统半导体18-36个月的研发周期被压缩到半天。Sora明天正式关停。</p>
+        </div>
+
+        <div class="section-title">产业结构性变化</div>
+
+        <!-- 1 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>GPT-5.5正式发布——代号Spud终于出炉，OpenAI从"卖Token"转向"卖结果"</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>北京时间4月24日凌晨，OpenAI发布GPT-5.5及GPT-5.5 Pro——这是自GPT-4.5以来首次完整重训的基座模型，代号Spud（"土豆"），从3月24日完成预训练到正式发布刚好一个月。核心数据：Terminal-Bench 2.0拿到82.7%（当前最优），SWE-Bench Pro 58.6%，100万Token上下文，API价格$5/$30（比5.4翻倍）。但真正的变化不是跑分——36氪的标题抓住了本质："从今天起，OpenAI不卖Token了。"GPT-5.5被定位为"面向真实工作的全新智能层级"，核心能力是Agent：自主规划、调用工具、检查结果、在模糊条件下坚持完成任务。波兰数学家用Codex中的GPT-5.5，11分钟凭一条提示词构建了代数几何可视化应用。OpenAI的叙事逻辑很清楚：GPT-6（预计秋季）才是参数竞赛的终极答案，GPT-5.5是"Agent原生大脑"——让模型先学会干活，再变得更大。
+            </div>
+            <div class="meta">
+                <span>📰 36氪 / 界面新闻 / 腾讯新闻 / IT之家 / 知乎 / CSDN / 百度百科</span>
+                <span>📅 4/24 发布</span>
+                <a href="https://www.36kr.com/p/3780018156311810" target="_blank">36氪深度 →</a>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>DeepSeek V4预览版正式发布并开源——1.6万亿参数、百万上下文、华为昇腾首发</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>就在GPT-5.5发布的同一天，DeepSeek-V4预览版全球同步上线并开源。双版本策略：V4-Pro（1.6T参数/49B活跃参数MoE）对标闭源旗舰，V4-Flash主打极致性价比（每百万Token 0.2元起）。全系标配100万Token超长上下文——这不是高端选配，而是标配，这是产品层面最大的变化。技术亮点：全新DSA稀疏注意力机制、mHC超连接架构、完全运行在华为昇腾芯片上。在Agentic Coding上达到开源最佳，并针对Claude Code、OpenClaw、CodeBuddy等主流Agent产品进行了专项适配。寒武纪同日宣布Day 0适配完成，国产AI芯片+国产模型的闭环正在形成。每日经济新闻称之为"双王炸"——中美AI旗舰模型同日正面交锋，这是AI历史上的第一次。
+            </div>
+            <div class="meta">
+                <span>📰 每日经济新闻 / 知乎 / CSDN / 腾讯云 / 雪球 / ai-insight.org</span>
+                <span>📅 4/24 发布</span>
+                <a href="https://www.nbd.com.cn/articles/2026-04-24/4357218.html" target="_blank">每经深度 →</a>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>Google Cloud Next 2026收官——第八代TPU首次训推分离，"智能体云"时代开启</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>Google Cloud Next 2026大会（4/22-24，拉斯维加斯）在GPT-5.5和DeepSeek V4发布的同一天收官，三大看点同时落地：一是TPU 8t/8i——谷歌首次将训练和推理芯片拆分为完全不同的架构，TPU 8i专为Agent的"推理→规划→执行"多步工作流设计，这是硬件层面首次为Agentic AI量身定制。二是Gemini Enterprise Agent Platform——摩根大通称其"有效取代Vertex AI"，将企业AI的构建、编排、治理和安全收拢为统一入口。三是7.5亿美元基金——直接补贴McKinsey、Accenture、Deloitte等咨询巨头推AI落地。谷歌的战略信号很明确：从"卖云计算"转向"卖Agent"——第一方模型API调用量已达每分钟数百万次。
+            </div>
+            <div class="meta">
+                <span>📰 腾讯新闻 / 搜狐 / 雪球 / Google Blog / TechPowerUp / TechOrange</span>
+                <span>📅 4/22-24 大会</span>
+                <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/tpus-8t-8i-cloud-next/" target="_blank">Google官方 →</a>
+            </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="news-card signal">
+            <span class="news-tag tag-signal">SIGNAL</span>
+            <h3>英特尔Q1财报全面超预期——AI数据中心业务增22%，盘后暴涨20%创历史新高</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>英特尔Q1营收136亿美元（同比+7.2%），连续六个季度超预期，调整后EPS 0.29美元（预期仅0.01美元），净利润同比暴增156%。盘后股价飙升20%至80美元以上，创互联网泡沫破裂以来最高水平。核心驱动力是数据中心与AI业务——营收51亿美元，同比大增22%。陈立武上任一年的成绩单：Intel 3和Intel 18A良率均好于预期，下一代14A成熟度甚至超过18A同期。财新称其迎来"业绩转折点"。更值得注意的是Q2指引——138-148亿美元，远超市场预期。这意味着英特尔终于搭上了AI列车：当英伟达GPU供不应求时，AI服务器对高端CPU的需求同样在爆发。观察者网标题精准："CPU再次回到舞台中央。"
+            </div>
+            <div class="meta">
+                <span>📰 财新 / 观察者网 / 金融界 / IT之家 / ZOL / 雪球</span>
+                <span>📅 4/24 盘后发布</span>
+                <a href="https://www.caixin.com/2026-04-24/102437629.html" target="_blank">财新独家 →</a>
+            </div>
+        </div>
+
+        <div class="section-title">底层技术突破</div>
+
+        <!-- 5 -->
+        <div class="news-card breakthrough">
+            <span class="news-tag tag-breakthrough">BREAKTHROUGH</span>
+            <h3>Verkor.io AI Agent 12小时设计完整RISC-V CPU——219字提示词取代18个月研发</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>芯片设计初创Verkor.io的自主AI系统Design Conductor，仅凭一份219字的自然语言需求文档，在12小时内自主完成了一款完整RISC-V CPU核（VerCore）的全流程设计——从架构到验证到可流片输出。VerCore主频1.48GHz，CoreMark跑分3261。传统芯片设计公司的同等工作需要18-36个月和数十人团队。知乎深度分析称："200字指令，Agent做完人类18个月的活。"这不是"AI辅助设计"，而是"AI自主设计"——Design Conductor全程无人干预。TechSpot、Adafruit Blog、MSN等海外媒体同日密集报道。如果这条路线成熟，芯片设计行业的成本结构和人力结构将面临根本性重构。这是Agent从"写代码"到"造硬件"的跨越。
+            </div>
+            <div class="meta">
+                <span>📰 知乎 / 快科技 / 凤凰科技 / TechSpot / Adafruit / MSN</span>
+                <span>📅 论文3月发布，4/24中文媒体集中引爆</span>
+                <a href="https://arxiv.org/pdf/2603.08716" target="_blank">arXiv论文 →</a>
+            </div>
+        </div>
+
+        <div class="section-title">关键人物与深度判断</div>
+
+        <!-- 6 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>中美AI"双王炸"深度拆解——四强同台，三条路线分化比以往更清晰</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>GPT-5.5 + DeepSeek V4 + GLM-5.1 + MiniMax M2.7——四款旗舰48小时内齐聚。腾讯云、CSDN、知乎密集产出万字级对比分析。三条路线的分化从未如此清晰：OpenAI走"闭源+超级应用+卖结果"路线（GPT-5.5价格翻倍、强调Agent能力），DeepSeek走"开源+极致性价比+华为芯片"路线（全系标配百万上下文、V4-Flash每百万Token 0.2元），Google走"硬件自研+Agent平台化+企业嵌入"路线（TPU训推分离、Gemini焊进Gmail/Docs/Sheets）。知乎热评的判断值得留意："GPT-5.5和DeepSeek V4同日发布不是巧合——是DeepSeek有意选择在OpenAI发布当天正面交锋，向全球开发者表达'我们不怕比'的信号。"MSN的标题更直接："DeepSeek和GPT的新品，何以让股市沸腾？"
+            </div>
+            <div class="meta">
+                <span>📰 腾讯云 / CSDN / 知乎 / MSN / 新浪</span>
+                <span>📅 4/24 密集分析</span>
+                <a href="https://cloud.tencent.com/developer/article/2660044" target="_blank">腾讯云四强对比 →</a>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>北京车展开幕首日——吉利原生Robotaxi+华为鸿蒙座舱+小米语音大模型，AI上车全面爆发</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>北京车展开幕首日（4/24），AI不再是点缀而是绝对主角。吉利半包馆亮相，首发L4级原生Robotaxi原型车，融合WAM世界动作模型。华为发布鸿蒙座舱HarmonySpace 6，智能助手小艺全面升级，支持"边开车边聊天"——车内AI交互从"指令式"进入"对话式"。小米同日发布全链路语音大模型MiMo-V2.5，TTS可"一句话生成新音色"，ASR开源支持方言和多语混说。特斯拉宣布车载语音接入豆包。36氪的前瞻分析称2026年为"自动驾驶商业化元年"——L3规模化落地、国产芯片突围、订阅制与保险生态成型。这不再是技术秀，而是AI+汽车产业链的全面商业化冲刺。
+            </div>
+            <div class="meta">
+                <span>📰 36氪 / 澎湃新闻 / 腾讯新闻 / IT之家 / 新华网</span>
+                <span>📅 4/24 开幕</span>
+                <a href="https://m.36kr.com/p/3768944509186569" target="_blank">36氪前瞻 →</a>
+            </div>
+        </div>
+
+        <div class="section-title">行业动态与信号</div>
+
+        <!-- 8 -->
+        <div class="news-card trend">
+            <span class="news-tag tag-trend">TREND</span>
+            <h3>Sora明天正式关停——OpenAI视频生成业务25个月从封神到退场</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>OpenAI的Sora将在明天（4/26）正式关停所有服务。从2024年2月首次惊艳亮相到2026年4月26日退场，刚好25个月。日均算力成本100万美元，年烧50亿只赚回200万。核心团队负责人Bill Peebles已在上周离职。新华网、36氪、每日经济新闻的回顾分析已经不是"惋惜"而是"复盘"——Sora的退场代表OpenAI从"什么都做"转向"集中兵力做Agent"的战略收缩。明天之后，AI视频生成赛道正式进入"中国时间"：字节Seedance、快手可灵、阿里HappyHorse三家争锋。值得关注的是：Sora退场后的算力释放，可能正是GPT-5.5和GPT-6训练的关键资源来源。
+            </div>
+            <div class="meta">
+                <span>📰 新华网 / 36氪 / 每日经济新闻 / 华尔街日报</span>
+                <span>📅 4/26 正式关停</span>
+                <a href="https://app.xinhuanet.com/news/article.html?articleId=20260329d14fc86239564b78924729d4b7d7cf44" target="_blank">新华网深度 →</a>
+            </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="news-card new-face">
+            <span class="news-tag tag-new-face">新面孔</span>
+            <h3>寒武纪Day 0适配DeepSeek V4——国产AI芯片+国产模型生态闭环加速</h3>
+            <div class="why">
+                <strong>为什么这件事重要：</strong>DeepSeek V4发布同日，寒武纪在官方微信号宣布，已基于vLLM推理框架完成对DeepSeek-V4-Flash（285B）和V4-Pro（1.6T）的Day 0适配，代码已开源到GitHub。所谓"Day 0适配"意味着：模型发布当天即可在寒武纪芯片上运行，无需等待适配周期。DeepSeek V4本身已运行在华为昇腾芯片上，寒武纪的Day 0跟进意味着中国AI芯片生态正在形成多家竞争、快速响应的格局——不再是"先在英伟达上跑通再慢慢移植"，而是"国产模型发布=国产芯片即时可用"。这个速度在一年前是不可想象的。
+            </div>
+            <div class="meta">
+                <span>📰 寒武纪官方 / 每日经济新闻 / MSN</span>
+                <span>📅 4/24 同日宣布</span>
+                <a href="https://www.msn.cn/zh-cn/news/other/deepseek-v4%E5%92%8Cgpt-55%E5%90%8C%E6%97%A5%E4%B8%8A%E7%BA%BF-%E6%96%B0%E6%AC%BEdeepseek%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BA%AE%E7%82%B9/ar-AA21C3kp" target="_blank">MSN报道 →</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #44 · 2026年4月25日</p>
+        <p style="margin-top: 8px;">数据来源：36氪、每日经济新闻、财新、IT之家、知乎、CSDN、腾讯云、Google Blog、TechSpot、MSN 等 15+ 平台</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

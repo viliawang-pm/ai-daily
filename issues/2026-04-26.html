@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #45 — 2026年4月26日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa; color: #1a202c; line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 48px 24px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .header h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 8px; letter-spacing: -1px; }
+        .header .date { font-size: 1.1em; opacity: 0.9; margin-bottom: 4px; }
+        .header .issue { font-size: 0.9em; opacity: 0.7; }
+        .header .back-link { margin-top: 16px; }
+        .header .back-link a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88em; border: 1px solid rgba(255,255,255,0.3); padding: 6px 16px; border-radius: 20px; transition: all 0.2s; }
+        .header .back-link a:hover { background: rgba(255,255,255,0.15); color: white; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 64px; }
+
+        .summary-box {
+            background: white; border-radius: 16px; padding: 28px; margin-bottom: 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-left: 4px solid #667eea;
+        }
+        .summary-box h2 { font-size: 1.2em; color: #667eea; margin-bottom: 12px; font-weight: 700; }
+        .summary-box p { color: #4a5568; font-size: 0.95em; line-height: 1.8; }
+
+        .news-card {
+            background: white; border-radius: 16px; padding: 28px; margin-bottom: 20px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        .news-card:hover { border-color: #e0e7ff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(102,126,234,0.12); }
+
+        .news-card .card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+        .news-card .card-num {
+            background: linear-gradient(135deg, #667eea, #764ba2); color: white;
+            min-width: 32px; height: 32px; border-radius: 10px; display: flex;
+            align-items: center; justify-content: center; font-weight: 700; font-size: 0.85em; flex-shrink: 0;
+        }
+        .news-card .card-tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; letter-spacing: 0.5px; margin-left: 4px; vertical-align: middle;
+        }
+        .tag-signal { background: #fef3c7; color: #92400e; }
+        .tag-breakthrough { background: #fce7f3; color: #9d174d; }
+        .tag-trend { background: #e0e7ff; color: #3730a3; }
+        .tag-newface { background: #d1fae5; color: #065f46; }
+
+        .news-card h3 { font-size: 1.15em; font-weight: 700; color: #1a202c; line-height: 1.5; margin-bottom: 10px; }
+        .news-card .why { background: #f7fafc; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; }
+        .news-card .why-label { font-size: 0.78em; color: #667eea; font-weight: 700; margin-bottom: 4px; }
+        .news-card .why p { font-size: 0.9em; color: #4a5568; line-height: 1.7; margin: 0; }
+        .news-card .meta { font-size: 0.8em; color: #a0aec0; display: flex; flex-wrap: wrap; gap: 12px; }
+        .news-card .meta a { color: #667eea; text-decoration: none; }
+        .news-card .meta a:hover { text-decoration: underline; }
+
+        .section-divider { text-align: center; padding: 24px 0; color: #cbd5e0; font-size: 0.85em; }
+
+        .footer { text-align: center; padding: 32px 20px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+
+        @media (max-width: 640px) {
+            .header { padding: 32px 16px 28px; }
+            .header h1 { font-size: 1.6em; }
+            .container { padding: 20px 12px 48px; }
+            .news-card { padding: 20px 16px; }
+            .summary-box { padding: 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-content">
+        <div class="issue">第 45 期</div>
+        <h1>AI 日报</h1>
+        <div class="date">2026 年 4 月 26 日 · 星期日</div>
+        <div class="back-link"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="summary-box">
+        <h2>今日概览</h2>
+        <p>
+            今天是 Sora 正式关停日——OpenAI 最轰动的产品之一走完了 25 个月的生命周期。与此同时，GPT-5.5 与 DeepSeek V4 同日发布 48 小时后，全网实测对决密集出炉，四强模型首次同台横评格局清晰。另一边，Vibe Coding 安全债集中爆发——Lovable 成为继 Vercel 之后第二个月内被攻破的 AI 开发平台。视频生成赛道在 Sora 退场后正式进入"中国时间"。
+        </p>
+    </div>
+
+    <!-- 1 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">1</div>
+            <div><span class="card-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <h3>Sora 今日正式关停——从封神到退场只用了 25 个月，视频生成赛道进入"中国时间"</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>今天是 OpenAI 官方确认的 Sora 关停日。这款 2024 年初惊艳全球的 AI 视频生成产品，因日均算力成本高达 100 万美元、商业模型无法打正而最终退场。更深层的意义在于：Sora 的退出不是"AI 视频生成"的终结，而是消费级 AI 视频泡沫的破裂——真正的赢家已经浮出水面。36氪深度分析指出，字节 Seedance、快手可灵（单季收入 3.4 亿元）、阿里 HappyHorse 形成视频生成"新 BAT"格局。Sora 之父 Bill Peebles 已离职，API 将于 9/24 彻底关闭。</p>
+        </div>
+        <div class="meta">
+            <span>OpenAI · 36氪 · 新华网 · TechCrunch · 观察者网</span>
+            <a href="https://aiproducthub.cn/newsflash/openai-sora-shutdown-april-26-high-cost/" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">2</div>
+            <div><span class="card-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <h3>GPT-5.5 vs DeepSeek V4 首波实测对决——"结果出人意料"，四强格局初步定型</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>4/24 两款旗舰同日发布 48 小时后，全网实测密集出炉。凤凰科技/新智元报道"结果出人意料"：GPT-5.5 在创意写作和多模态理解上明显领先，但 DeepSeek V4 Pro 在推理、数学和长文本场景上反超。腾讯云开发者社区发布四强横评（V4-Pro / GPT-5.5 / GLM-5.1 / MiniMax M2.7），给出清晰结论——编程选 GLM-5.1，推理选 DeepSeek V4-Pro，性价比选 MiniMax M2.7，企业级选 GPT-5.5。knightli.com 实测三类高频任务后指出："真正拉开差距的不是首轮输出，而是稳定性、返工率和持续协作体验。"这标志着 2026 年大模型从"跑分竞赛"进入"场景适配"阶段。</p>
+        </div>
+        <div class="meta">
+            <span>凤凰科技 · 腾讯云 · 知乎 · B站 · knightli.com · ai-insight.org</span>
+            <a href="https://tech.ifeng.com/c/8sbYDh2xgeS" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">3</div>
+            <div><span class="card-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <h3>DeepSeek V4 全开源细节落地——1.6T 参数 MoE + 华为昇腾首发 + Codeforces 3206 开源最高</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>DeepSeek V4 发布后的技术细节持续释放。ai-insight.org 深度报告确认：V4-Pro 1.6T MoE / 49B 激活，Flash 版 284B / 13B 激活；API 夜间半价；首次完全脱离 CUDA 运行在华为昇腾上；支持 Anthropic API 格式兼容。ofox.ai 的 Elo 分析显示 V3.2→V4-Pro 提升 88 Elo，相当于排行榜 #3 到 #13 的差距——这是真正的代际跃迁而非微调。Codeforces 3206 创开源模型历史新高。同时腾讯阿里投资洽谈继续推进，估值锁定 200 亿美元。</p>
+        </div>
+        <div class="meta">
+            <span>ai-insight.org · ofox.ai · felloai · techxplore · kamacoder</span>
+            <a href="https://www.ai-insight.org/reports/deepseek-v4-2026" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">4</div>
+            <div><span class="card-tag tag-signal">SIGNAL</span></div>
+        </div>
+        <h3>Lovable 数据泄露——66 亿美元 Vibe Coding 平台 BOLA 漏洞暴露源代码和数据库凭证</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>4/20 安全研究员公开披露：Lovable（估值 66 亿美元的 AI 编程平台）存在经典 BOLA（Broken Object Level Authorization）漏洞，免费账户仅需 5 个 API 调用即可访问任意项目的源代码、数据库凭证、AI 聊天历史和客户数据。所有 2025 年 11 月前创建的项目均受影响，漏洞暴露窗口长达 48 天。Fast Company、OECD AI、Bastion Tech、Cyberpress 密集报道。这是继 Vercel（Context.ai OAuth）之后，一个月内第二起 AI 开发平台重大安全事件——Vibe Coding 的"安全债"正在集中到期。</p>
+        </div>
+        <div class="meta">
+            <span>Fast Company · Lovable · Bastion Tech · OECD AI · breached.company</span>
+            <a href="https://bastion.tech/blog/lovable-april-2026-data-breach/" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">5</div>
+            <div><span class="card-tag tag-trend">TREND</span></div>
+        </div>
+        <h3>4 月 AI 安全连环爆——Foresiet 统计 15 天 6 起安全事件，AI 开发基础设施全面告急</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>Foresiet 在 4/22 发布深度报告，统计自 4/7 起的 15 天内共发生 6 起不同的 AI 相关安全事件，覆盖内部数据暴露、供应链利用、自主恶意软件生成等攻击路径。结合本月 Vercel（OAuth 供应链攻击）、Lovable（BOLA 漏洞）、Vercel 数据被黑市交易（BleepingComputer 确认），以及 OWASP Q1 GenAI 漏洞报告——AI 开发工具链的安全已经不是"将来要解决的问题"，而是"正在被攻击的现实"。对于使用 AI Coding 平台的团队来说，环境变量轮换和第三方 OAuth 审计已成为紧急操作。</p>
+        </div>
+        <div class="meta">
+            <span>Foresiet · OWASP · BleepingComputer · Qualysec · infosecu</span>
+            <a href="https://foresiet.com/blog/ai-security-incidents-attack-paths-april-2026/" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">6</div>
+            <div><span class="card-tag tag-trend">TREND</span></div>
+        </div>
+        <h3>视频生成赛道格局重塑——快手可灵 ARR 超 3 亿美元，字节 Seedance + 阿里 HappyHorse 形成"新 BAT"</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>Sora 今日关停，验证了一个趋势：AI 视频生成的商业化战场已经转移到中国。36氪深度分析"Sora退场，新BAT狂飙"——快手可灵 AI 单季收入 3.4 亿元，年化运行率超 3 亿美元；阿里 HappyHorse-1.0 空降第三方盲测榜单并登顶；字节 Seedance 用户量持续爆发。Sora 日亏 100 万美元的教训说明，AI 视频生成不是技术问题，而是成本结构和商业模式问题——中国团队在推理效率和用户付费转化上的优势正在变成不可逆的领先。</p>
+        </div>
+        <div class="meta">
+            <span>36氪 · 搜狐 · klingapi.com · ai-insight.org</span>
+            <a href="https://www.36kr.com/p/3774815626933001" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">7</div>
+            <div><span class="card-tag tag-trend">TREND</span></div>
+        </div>
+        <h3>4 月模型大战月末总结——"AI 史上最密集发布月"，三条路线全部跑通</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>多家媒体发布 4 月总结：Kersai 称"四月是 AI 史上最具影响力的月份"；aiproducthub 盘点"8 大重磅动态"；腾讯云四强横评确认三条路线全部站稳——OpenAI"超级应用+闭源旗舰"路线（GPT-5.5/GPT-6）、DeepSeek"开源普惠+国产算力"路线（V4 全开源+华为昇腾）、Anthropic"安全优先+编程垂直"路线（Opus 4.7 编程登顶）。从 GPT-6 到 DeepSeek V4 到 Opus 4.7 到 Kimi K2.6 到 GLM-5.1，一个月内五款前沿模型同台——大模型竞争已从"一家独大"不可逆地进入"多极分化"时代。</p>
+        </div>
+        <div class="meta">
+            <span>Kersai · aiproducthub · 腾讯云 · 知乎 · buildfastwithai</span>
+            <a href="https://kersai.com/ai-breakthroughs-april-2026-models-funding-shifts/" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">8</div>
+            <div><span class="card-tag tag-trend">TREND</span></div>
+        </div>
+        <h3>AI 创业融资报告——2026 年已超 1300 亿美元，但"事故比以往任何时候都多"</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>aimojo.io 发布最新 AI 创业融资报告指出一个尖锐矛盾：2026 年 AI 创业融资已超 1300 亿美元，但安全事故、产品失败和烧钱速度也在同步飙升。Sora 日亏 100 万美元退场、Lovable 48 天漏洞暴露、Vercel 数据被黑市交易——这些不是孤例，而是整个行业"快速部署、延迟安全"模式的必然代价。thetechedvocate 的 4 月分析认为，创业生态正经历"从增长至上到可持续发展"的结构性转向。</p>
+        </div>
+        <div class="meta">
+            <span>aimojo.io · thetechedvocate · aiproducthub · 雪球</span>
+            <a href="https://aimojo.io/zh-CN/ai-startup-funding-report/" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="news-card">
+        <div class="card-header">
+            <div class="card-num">9</div>
+            <div><span class="card-tag tag-newface">新面孔</span></div>
+        </div>
+        <h3>Vibe Coding 安全审计成为刚需——threatlandscape.io / bastion.tech / breached.company 密集发布 AI 开发平台安全报告</h3>
+        <div class="why">
+            <div class="why-label">为什么这件事重要？</div>
+            <p>一个新的内容赛道正在形成：专注 AI 开发平台安全审计的垂直媒体和安全研究机构。threatlandscape.io 对 Lovable BOLA 漏洞的技术分析、bastion.tech 的创始人行动指南、breached.company 对攻击链的完整复盘、infosecu（台湾科技新报）从"Vibe Coding 资安事件不断"角度的报道——这些都是过去未曾出现的内容类型。当 AI 编程平台的用户量以千万计，安全审计不再是可选项。信号：AI 安全从"AI 系统本身的安全"延伸到"用 AI 构建系统的安全"，后者的受影响面可能更大。</p>
+        </div>
+        <div class="meta">
+            <span>threatlandscape.io · bastion.tech · breached.company · infosecu.technews.tw</span>
+            <a href="https://threatlandscape.io/blog/lovable-dev-data-breach-bola-vulnerability-vibe-coding" target="_blank">详情 →</a>
+        </div>
+    </div>
+
+    <div class="section-divider">— 以上 9 条 · 质量优先 · 遵循留白原则 —</div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 #45 — 2026年4月26日</p>
+    <p style="margin-top: 4px;">覆盖平台：OpenAI · 36氪 · 新华网 · TechCrunch · 凤凰科技 · 腾讯云 · 知乎 · B站 · Fast Company · Foresiet · OWASP · ai-insight.org · Kersai · aimojo.io 等 15+ 平台</p>
+    <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+</div>
+
+</body>
+</html>

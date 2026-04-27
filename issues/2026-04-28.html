@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #47 — 2026年4月28日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8fafc; color: #1a202c; line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 48px 24px 40px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .header::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%);
+        }
+        .header-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .header h1 { font-size: 2.4em; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .header .date { font-size: 1.15em; opacity: 0.9; font-weight: 500; }
+        .header .issue { font-size: 0.9em; opacity: 0.7; margin-top: 6px; }
+        .back-link {
+            display: inline-block; margin-top: 16px; padding: 8px 20px;
+            background: rgba(255,255,255,0.18); color: white; text-decoration: none;
+            border-radius: 20px; font-size: 0.85em; font-weight: 600;
+            transition: background 0.2s;
+        }
+        .back-link:hover { background: rgba(255,255,255,0.3); }
+        .container { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+        .summary-bar {
+            display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px;
+            padding: 20px 24px; background: white; border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .summary-item { text-align: center; flex: 1; min-width: 100px; }
+        .summary-item .num { font-size: 1.8em; font-weight: 800; color: #667eea; }
+        .summary-item .label { font-size: 0.78em; color: #718096; margin-top: 2px; }
+        .news-card {
+            background: white; border-radius: 14px; padding: 28px;
+            margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0; transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 4px 20px rgba(102,126,234,0.12); }
+        .news-card.breakthrough { border-left-color: #e53e3e; }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.trend { border-left-color: #38a169; }
+        .news-card.newface { border-left-color: #d69e2e; }
+        .card-tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 10px;
+        }
+        .tag-signal { background: #ebf4ff; color: #3182ce; }
+        .tag-trend { background: #f0fff4; color: #276749; }
+        .tag-newface { background: #fffff0; color: #975a16; }
+        .tag-breakthrough { background: #fff5f5; color: #c53030; }
+        .card-title { font-size: 1.2em; font-weight: 700; margin-bottom: 10px; line-height: 1.5; color: #1a202c; }
+        .card-body { font-size: 0.92em; color: #4a5568; line-height: 1.8; margin-bottom: 14px; }
+        .card-body strong { color: #2d3748; }
+        .card-why { font-size: 0.85em; color: #667eea; font-weight: 600; margin-bottom: 12px; padding: 10px 14px; background: #f7faff; border-radius: 8px; }
+        .card-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.78em; color: #a0aec0; }
+        .card-meta a { color: #667eea; text-decoration: none; }
+        .card-meta a:hover { text-decoration: underline; }
+        .section-title { font-size: 1.1em; font-weight: 700; color: #2d3748; margin: 36px 0 18px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+        .footer { text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 640px) {
+            .header { padding: 36px 16px 28px; }
+            .header h1 { font-size: 1.7em; }
+            .container { padding: 24px 14px 60px; }
+            .news-card { padding: 20px 16px; }
+            .summary-bar { gap: 12px; padding: 16px; }
+            .summary-item .num { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>AI 日报</h1>
+            <div class="date">2026年4月28日 · 星期二</div>
+            <div class="issue">第 47 期</div>
+            <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="summary-bar">
+            <div class="summary-item">
+                <div class="num">8</div>
+                <div class="label">今日资讯</div>
+            </div>
+            <div class="summary-item">
+                <div class="num">15+</div>
+                <div class="label">覆盖平台</div>
+            </div>
+            <div class="summary-item">
+                <div class="num">1</div>
+                <div class="label">新面孔</div>
+            </div>
+        </div>
+
+        <!-- ==================== 头部区域 ==================== -->
+
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">1. 央视专题报道国产开源大模型密集迭代——DeepSeek V4实测97万字7秒提炼，全球下载量突破100亿次</div>
+            <div class="card-body">
+                央视新闻4月27日播出深度报道，总台记者实测DeepSeek V4系列：面对<strong>97万字多元素材包</strong>，模型仅用约7秒即精准提炼新闻稿件核心要点，并准确回答跨文本的"涉及约45个细分行业"等复杂问题。同步报道指出，<strong>国产开源大模型全球累计下载量突破100亿次</strong>，本轮迭代覆盖技术降本、工业应用、专项能力、端侧适配四个维度。21经济网跟进分析称，<strong>中国已成为全球AI专利最大拥有国，申请量全球占比60%</strong>，AI企业数量超6200家，2025年核心产业规模达X万亿。财联社报道标题直接用"下载量破100亿次"——这个数字标志着国产开源从"能用"进入"全球主流"。
+            </div>
+            <div class="card-why">📌 为什么重要：央视黄金时段专题报道+21经济数据确认，标志国产开源大模型的叙事从"追赶"切换为"领跑"。100亿次全球下载量+专利占比60%+6200+企业数量，三组数据构成完整的"中国AI基础设施输出"证据链。</div>
+            <div class="card-meta">
+                <span>📡 央视新闻 / 21经济网 / 财联社 / 新浪财经</span>
+                <span><a href="https://news.cctv.com/2026/04/27/ARTIzmXAVqppgIMSZs2mMHjh260427.shtml" target="_blank">央视原文</a></span>
+                <span><a href="https://www.21jingji.com/article/20260427/herald/1cf252c17ffa7b2485c1cbb17abc5696.html" target="_blank">21经济网</a></span>
+            </div>
+        </div>
+
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">2. Meta×AWS签署数十亿美元Graviton5协议——Agentic AI从GPU走向CPU，算力格局第二次裂变</div>
+            <div class="card-body">
+                4月24日，Meta与AWS正式签署<strong>多年期、数十亿美元</strong>合作协议：Meta将在AWS数据中心部署<strong>数千万个Graviton5 ARM CPU核心</strong>，专门支撑Agent AI工作负载。这不是传统的云计算采购，而是一次算力架构选择——<strong>CPU密集型的Agent推理工作负载不再依赖GPU</strong>。GeekWire报道指出，这是AWS Graviton芯片"迄今最大的单一客户协议"。SiliconAngle分析，Graviton5比上一代快25%，ARM ISA的矩阵和向量扩展已针对AI推理深度优化。IT之家4月24日跟进确认部署规模和技术方向。
+            </div>
+            <div class="card-why">📌 为什么重要：这是Agentic AI时代算力架构的信号级事件——当Agent工作负载从"思考"（GPU推理）转向"执行"（调度、编排、API调用），CPU反而成为瓶颈。Meta用数十亿美元投票ARM CPU，意味着"AI算力=GPU"的等式正在被改写。继3月Arm发布AGI CPU后，CPU赛道第二次被AI重新定价。</div>
+            <div class="card-meta">
+                <span>📡 AWS官网 / Meta官方 / GeekWire / SiliconAngle / IT之家</span>
+                <span><a href="https://press.aboutamazon.com/2026/4/meta-signs-agreement-with-aws-to-power-agentic-ai-on-aws-graviton-chips" target="_blank">AWS公告</a></span>
+                <span><a href="https://about.fb.com/news/2026/04/meta-partners-with-aws-on-graviton-chips-to-power-agentic-ai/" target="_blank">Meta公告</a></span>
+            </div>
+        </div>
+
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">3. Visual Capitalist发布2026年AI模型IQ排行榜——Grok-4.20与GPT-5.4 Pro并列145分，头部密度前所未有</div>
+            <div class="card-body">
+                Visual Capitalist联合TrackingAI发布<strong>2026年4月Mensa Norway IQ测试</strong>基准排名：<strong>xAI Grok-4.20 Expert Mode和OpenAI GPT 5.4 Pro (Vision)以145分并列第一</strong>。但更关键的信息是头部的极度密集——多个前沿模型仅差2-3分，分化几乎消失。LinkedIn上Digital CIO账号转发后9小时内获得大量互动，分析师指出这意味着<strong>单纯的"更高分"已无法构成竞争壁垒</strong>，模型竞争正式进入"场景适配"和"成本效率"阶段。
+            </div>
+            <div class="card-why">📌 为什么重要：当所有顶级模型在IQ测试上挤在145±3分的区间内，benchmark竞争实质上已经结束。这验证了过去两周DeepSeek V4"性价比标杆"路线的合理性——同等智能水平下，成本和生态才是决胜因素。模型战争从"能力边界"转向"经济学"。</div>
+            <div class="card-meta">
+                <span>📡 Visual Capitalist / TrackingAI / LinkedIn / Voronoi</span>
+                <span><a href="https://www.visualcapitalist.com/ranked-the-smartest-ai-models-in-2026/" target="_blank">排行榜原文</a></span>
+            </div>
+        </div>
+
+        <!-- ==================== 中部区域 ==================== -->
+
+        <div class="section-title">产业动态与趋势</div>
+
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">4. 斯坦福2026 AI指数报告持续引爆中文圈——世界科学网"12张图表解读"登腾讯新闻首页</div>
+            <div class="card-body">
+                斯坦福HAI《2026年AI指数报告》4月13日发布后持续发酵两周，4月27日<strong>世界科学网发布"12张图表解读2026年AI发展现状和趋势"</strong>，被腾讯新闻等主流平台大量转载。关键数据点：<strong>中美AI模型差距仅2.7%</strong>（斯坦福原文确认）、<strong>全球企业AI投资5817亿美元</strong>、<strong>生成式AI三年普及率达53%超过PC和互联网同期</strong>。虎嗅发布万字中译版，中国科学技术信息研究所上线中英双语版本。报告结论的传播路径——从学术发布→英文媒体→中文万字解读→12张图表降维传播——本身就是一个AI信息扩散的典型案例。
+            </div>
+            <div class="card-why">📌 为什么重要：这份423页报告是全球AI发展的年度权威定标。"中美差距2.7%"的结论正在成为产业界和政策界的共识性引用。从4/13发布到4/27仍在制造传播波次，说明这份报告的影响力在持续放大而非衰减。</div>
+            <div class="card-meta">
+                <span>📡 世界科学网 / 腾讯新闻 / 虎嗅 / 中信所 / 新华网</span>
+                <span><a href="https://worldscience.cn/c/2026-04-27/666648.shtml" target="_blank">12张图表解读</a></span>
+                <span><a href="https://hai.stanford.edu/ai-index/2026-ai-index-report" target="_blank">报告原文</a></span>
+            </div>
+        </div>
+
+        <div class="news-card trend">
+            <span class="card-tag tag-trend">TREND</span>
+            <div class="card-title">5. AI空间智能赛道密集起量——21经济"牌桌改牌局"，腾讯/阿里/字节世界模型集体发力</div>
+            <div class="card-body">
+                21经济网4月23日发表深度分析《牌桌改牌局，AI大模型的战火又烧向空间智能》，指出<strong>2026年AI大模型竞争重心正从语言向空间智能转移</strong>。腾讯、阿里、字节等巨头密集发布世界模型与多模态产品。报道核心判断：<strong>OpenClaw带火的"龙虾热"喧嚣过后，真正在"潜入日常"的是空间智能——从自动驾驶到机器人到AR/VR</strong>。同期，China Daily 4月27日英文报道称中国具身智能"quantum leap"，北京半马中机器人表现是"硬件可靠性、算法稳定性和系统集成性的综合验证"。
+            </div>
+            <div class="card-why">📌 为什么重要：语言模型的benchmark竞争平台期（参见第3条），迫使巨头寻找下一个能力边界。空间智能/世界模型/具身智能正在成为新的竞争主战场——这不是预测，而是腾讯/阿里/字节用产品发布投票的结果。</div>
+            <div class="card-meta">
+                <span>📡 21经济网 / China Daily / 搜狐</span>
+                <span><a href="https://www.21jingji.com/article/20260423/herald/5b597cb5c813d31387d43378574f4407.html" target="_blank">21经济原文</a></span>
+                <span><a href="https://www.chinadaily.com.cn/a/202604/27/WS69ee9eeba310d6866eb459d9.html" target="_blank">China Daily</a></span>
+            </div>
+        </div>
+
+        <div class="news-card trend">
+            <span class="card-tag tag-trend">TREND</span>
+            <div class="card-title">6. B站AI周报+爱合伙创业快讯密集定调——4月"AI史上最密集发布月"叙事完全固化</div>
+            <div class="card-body">
+                B站UP主"盘点一周AI大事"4月26日视频（发布不到24小时）详细梳理：OpenAI上线GPT-5.5+GPT-Image-2双王炸、Kimi发布最强开源K2.6、DeepSeek发布V4、Office三件套全量Copilot智能体。爱合伙"每日AI创业快讯"4月27日版覆盖边缘计算、大模型竞争、工业AI、AI安全四大赛道。<strong>两个维度（消费者内容平台+创业投资社区）同步确认"4月AI史上最密集发布月"已成行业共识</strong>。freeai.help 4月27日发布"技术爆发+政策加码+产业落地三重浪潮"全景报告，称4月"波澜壮阔"。
+            </div>
+            <div class="card-why">📌 为什么重要：当B站UP主、创业社区、独立分析平台同步使用"史上最密集"定义同一个月，说明4月的行业叙事已经从"正在发生"进入"复盘定型"阶段。这个月的密度将成为后续月份的对标基准。</div>
+            <div class="card-meta">
+                <span>📡 B站 / 爱合伙 / freeai.help / aiproducthub</span>
+                <span><a href="https://www.bilibili.com/video/BV1YooeBhEfj/" target="_blank">B站周报</a></span>
+                <span><a href="https://www.aihehuo.com/blog/8839-news-2026-04-27" target="_blank">爱合伙快讯</a></span>
+            </div>
+        </div>
+
+        <div class="news-card trend">
+            <span class="card-tag tag-trend">TREND</span>
+            <div class="card-title">7. 福客AI获阿里战略投资——AI Agent从"通用工具"下沉到"电商客服"，00后创业者入场</div>
+            <div class="card-body">
+                4月24日，电商AI客服方案商<strong>福客AI宣布获得阿里巴巴战略投资</strong>（金额未披露）。福客AI由<strong>00后创业者</strong>领衔（成都智绘阁科技），主打电商场景AI Agent——覆盖客户接待、智能导购、商品管理、交易处理、售后支持全流程。AIBase、DoNews、太平洋科技等多家媒体4月24-27日密集报道。阿里投资逻辑清晰：<strong>不是投模型，而是投"模型在垂直场景的最后一公里"</strong>。
+            </div>
+            <div class="card-why">📌 为什么重要：这笔投资折射出AI投资的路径变化——从"投模型"转向"投场景落地"。00后创业者做电商AI客服拿到阿里战投，说明AI创业的门槛在模型开源潮中快速下降，竞争力不再是"谁有模型"而是"谁懂场景"。</div>
+            <div class="card-meta">
+                <span>📡 AIBase / DoNews / 太平洋科技 / 腾讯新闻</span>
+                <span><a href="https://news.aibase.com/zh/news/27461" target="_blank">AIBase报道</a></span>
+            </div>
+        </div>
+
+        <!-- ==================== 尾部区域 ==================== -->
+
+        <div class="section-title">新面孔</div>
+
+        <div class="news-card newface">
+            <span class="card-tag tag-newface">新面孔</span>
+            <div class="card-title">8. 世界科学网"12张图表"成为新型AI信息降维传播范式——从423页学术报告到"12张图读懂"</div>
+            <div class="card-body">
+                世界科学网（worldscience.cn）4月27日发布的<strong>"12张图表解读2026年AI发展现状和趋势"</strong>文章，成功将斯坦福423页报告浓缩为12张可视化图表+简明解读，迅速被腾讯新闻首页推荐。这种"学术报告→可视化降维→社交平台传播"的模式，正在成为AI资讯领域的新范式——<strong>信息密度越来越高的行业，需要的不是更多翻译，而是更好的"压缩算法"</strong>。此前虎嗅万字中译版面向深度读者，12张图表版面向大众传播，两者形成互补。
+            </div>
+            <div class="card-why">📌 为什么重要：当行业信息量指数增长，"信息压缩能力"本身成为一种稀缺生产力。世界科学网这个案例的成功传播，预示着"AI资讯的AI化"趋势——用更高效的方式把更复杂的信息传递给更多人。</div>
+            <div class="card-meta">
+                <span>📡 世界科学网 / 腾讯新闻</span>
+                <span><a href="https://worldscience.cn/c/2026-04-27/666648.shtml" target="_blank">原文链接</a></span>
+            </div>
+        </div>
+
+        <!-- ==================== 跟踪事项 ==================== -->
+
+        <div class="section-title">本周跟踪</div>
+        <div class="news-card" style="border-left-color: #cbd5e0;">
+            <div class="card-body" style="margin-bottom: 0;">
+                <strong>持续跟踪事项（基于昨日备忘）：</strong>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li><strong>Google 400亿投资Anthropic</strong>：反垄断审查进展和竞争对手反应</li>
+                    <li><strong>DeepSeek V4正式版</strong>（当前仍为预览版）：完整benchmark和稳定性反馈</li>
+                    <li><strong>GPT-5.5 vs DeepSeek V4 vs Opus 4.7</strong>：更多独立头对头评测</li>
+                    <li><strong>HappyHorse API开放</strong>：首批企业用户反馈和与可灵/Seedance对比</li>
+                    <li><strong>Anthropic IPO（10月）</strong>：Google 400亿+ARR $300亿后的最新估值预期</li>
+                    <li><strong>4月完整月度数据</strong>：模型发布数量、融资总额、安全事件统计的收官盘点</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #47 — 2026年4月28日</p>
+        <p style="margin-top: 4px;">数据来源：央视新闻、21经济网、AWS、Meta、Visual Capitalist、斯坦福HAI、B站、爱合伙、世界科学网 等 15+ 平台</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

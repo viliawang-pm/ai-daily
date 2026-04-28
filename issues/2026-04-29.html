@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI日报 #48 — 2026年4月29日</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa;
+            color: #1a202c;
+            line-height: 1.7;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 48px 24px 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .date { font-size: 1.1em; opacity: 0.9; margin-bottom: 16px; }
+        .header .summary { font-size: 0.95em; opacity: 0.85; max-width: 680px; margin: 0 auto; line-height: 1.6; }
+        .back-link { display: inline-block; margin-top: 16px; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88em; border: 1px solid rgba(255,255,255,0.3); padding: 6px 18px; border-radius: 20px; transition: all 0.2s; }
+        .back-link:hover { background: rgba(255,255,255,0.15); color: white; }
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 64px; }
+        .stats-bar { display: flex; justify-content: center; gap: 32px; margin-bottom: 36px; flex-wrap: wrap; }
+        .stat-item { text-align: center; background: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); min-width: 120px; }
+        .stat-item .num { font-size: 1.6em; font-weight: 700; color: #667eea; }
+        .stat-item .label { font-size: 0.78em; color: #718096; margin-top: 2px; }
+        .news-card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid #e2e8f0;
+            transition: all 0.2s;
+        }
+        .news-card:hover { box-shadow: 0 4px 20px rgba(102,126,234,0.12); }
+        .news-card.signal { border-left-color: #667eea; }
+        .news-card.trend { border-left-color: #48bb78; }
+        .news-card.breakthrough { border-left-color: #ed8936; }
+        .news-card.new-face { border-left-color: #ed64a6; }
+        .card-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.72em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #ebf4ff; color: #4c6ef5; }
+        .tag-trend { background: #f0fff4; color: #38a169; }
+        .tag-breakthrough { background: #fffaf0; color: #dd6b20; }
+        .tag-new-face { background: #fff5f7; color: #d53f8c; }
+        .card-title { font-size: 1.2em; font-weight: 700; color: #1a202c; margin-bottom: 10px; line-height: 1.4; }
+        .card-body { font-size: 0.92em; color: #4a5568; line-height: 1.8; }
+        .card-body strong { color: #2d3748; }
+        .card-why { margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0; font-size: 0.85em; color: #718096; }
+        .card-why strong { color: #667eea; }
+        .card-meta { margin-top: 12px; display: flex; gap: 16px; flex-wrap: wrap; font-size: 0.78em; color: #a0aec0; }
+        .card-meta a { color: #667eea; text-decoration: none; }
+        .card-meta a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2d3748;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .footer { text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.82em; }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 32px 16px 28px; }
+            .header h1 { font-size: 1.6em; }
+            .container { padding: 20px 14px 48px; }
+            .news-card { padding: 20px 16px; }
+            .stats-bar { gap: 16px; }
+            .stat-item { padding: 12px 16px; min-width: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI 日报 #48</h1>
+        <div class="date">2026年4月29日 · 星期二</div>
+        <div class="summary">
+            政治局首提"全面实施人工智能+行动" · 英伟达市值$5.26万亿创历史新高 · 小米MiMo-V2.5正式开源+百万亿Token计划 · ICLR 2026里约闭幕创纪录5355篇 · 腾讯开源具身大模型HY-Embodied
+        </div>
+        <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+    </div>
+
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="num">8</div>
+                <div class="label">今日资讯</div>
+            </div>
+            <div class="stat-item">
+                <div class="num">15+</div>
+                <div class="label">覆盖平台</div>
+            </div>
+            <div class="stat-item">
+                <div class="num">1</div>
+                <div class="label">新面孔</div>
+            </div>
+        </div>
+
+        <div class="section-title">🔥 今日重点</div>
+
+        <!-- 1 -->
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">中央政治局首提"全面实施人工智能+行动，发展智能经济新形态"</div>
+            <div class="card-body">
+                4月28日，中共中央政治局召开会议分析当前经济形势。会议明确提出<strong>"全面实施'人工智能+'行动，发展智能经济新形态，完善人工智能治理"</strong>，同步提出加快建设"算力网、新一代通信网"等新型基础设施。这是"人工智能+"首次出现在政治局会议层级的正式表述中——此前仅在政府工作报告和国务院文件中提及。
+                <br><br>
+                配套表述同样值得关注：会议要求"深入整治'内卷式'竞争"——直指当前AI行业烧钱抢份额、模型价格战等现象；同时提出"纵深推进全国统一大市场建设"，为AI跨区域算力调度和数据流通铺路。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>政治局会议是中国经济政策的最高信号源。"全面实施"比此前的"推进""鼓励"措辞更强——意味着AI从产业政策升级为国家级经济战略。对应的政策传导路径：中央定调→国务院出细则→地方抢项目→资本跟进。上一次类似力度的表述是"人工智能+"写入2024年政府工作报告，之后一年内地方AI算力中心建设增速翻倍。
+            </div>
+            <div class="card-meta">
+                <span>📰 财新网、央视新闻、新华社、21经济网、第一财经</span>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">英伟达市值$5.26万亿创历史新高——从"卖芯片"到"定义AI基础设施"的里程碑</div>
+            <div class="card-body">
+                4月28日，英伟达股价收于$216.61创历史新高，市值达<strong>$5.26万亿</strong>，超越此前$5.17万亿纪录。过去一年市值翻倍（+100.5%）。催化因素包括：英特尔Q1财报超预期带动芯片板块整体反弹、AI资本开支预期持续走强、即将到来的Q1财报季前机构提前布局。
+                <br><br>
+                值得注意的是，这是英伟达市值首次稳站$5万亿上方连续多日——4月24日首破$5万亿后，连续三个交易日上涨。Jim Cramer评价："Own it, don't trade it"。S&P 500同日也创下7173.91的历史新高。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>$5万亿不只是数字里程碑。英伟达目前占S&P 500权重超7%，其市值变动直接影响全球被动投资资金流向。更关键的是，数据中心业务占其收入92%——这意味着$5.26万亿的估值几乎完全由AI需求支撑，是市场对"AI军备竞赛不会减速"的最大赌注。
+            </div>
+            <div class="card-meta">
+                <span>📰 CNBC、Motley Fool、Benzinga、Investors.com、Cryptopolitan、新浪财经</span>
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">小米MiMo-V2.5正式开源+启动"Orbit百万亿Token计划"——手机厂商第一次在开源模型赛道放大招</div>
+            <div class="card-body">
+                4月28日凌晨，小米宣布MiMo-V2.5系列全面开源，采用<strong>MIT协议</strong>免授权商用。发布两款模型：
+                <br>• <strong>MiMo-V2.5-Pro</strong>：1020B参数/42B激活MoE，Artificial Analysis综合指数顶段
+                <br>• <strong>MiMo-V2.5</strong>：310B参数/15B激活MoE，轻量级部署方案
+                <br>两款均支持<strong>100万Token上下文窗口</strong>，文本+图像全模态。
+                <br><br>
+                同步启动"Orbit百万亿Token计划"——向全球开发者提供免费算力支持。小米此前宣布未来三年AI投入超600亿元，MiMo-V2.5适配国内几乎所有芯片平台。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>手机厂商做AI模型不稀奇（三星、苹果都在做），但小米选择了完全不同的路径：不是做闭源模型绑定自家硬件，而是开源+免费算力+适配所有芯片。这是"华为模式"（深度绑定）和"小米模式"（开放生态）的路线分化。36氪评价MiMo-V2.5-Pro已具备与DeepSeek-V4 Pro正面对标的能力，如果验证为真，中国开源模型赛道从"双强"变"三国杀"。
+            </div>
+            <div class="card-meta">
+                <span>📰 36氪、太平洋电脑网、新浪科技、MSN、知乎、OSCHINA、ai-insight.org、123AI</span>
+            </div>
+        </div>
+
+        <div class="section-title">📊 行业动态</div>
+
+        <!-- 4 -->
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">ICLR 2026里约闭幕——5355篇论文创纪录，Alec Radford领衔Transformer理论突破获奖</div>
+            <div class="card-body">
+                全球顶级机器学习会议ICLR 2026在巴西里约热内卢闭幕。本届创下多项纪录：
+                <br>• <strong>19,525篇投稿</strong>，录取<strong>5,355篇</strong>（录取率约28%），均为历史最高
+                <br>• <strong>2篇杰出论文奖</strong>（Outstanding Paper），聚焦<strong>Transformer理论和多轮LLM对话</strong>
+                <br>• 1篇荣誉提名（Honorable Mention）
+                <br>• 2篇ICLR 2016"十年影响力奖"（Test of Time Award）
+                <br><br>
+                OpenAI联合创始人<strong>Alec Radford</strong>参与的获奖论文引发关注。Lambda AI贡献12篇论文+2个Workshop，覆盖Agent、对齐、世界模型、多模态效率四大方向。同时，审稿质量危机成为讨论焦点——投稿量暴增对学术审稿体系构成结构性压力。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>ICLR是检验AI研究方向风向标的最佳窗口。5355篇录取论文比去年增长40%+，说明AI研究产出仍在加速而非饱和。Transformer理论获奖意味着学术界开始"回头"系统性理解为什么Transformer有效——这种"理论追赶工程"的阶段通常预示着下一代架构突破。审稿危机则暗示：AI研究的"人力瓶颈"正从训练转向知识生产本身。
+            </div>
+            <div class="card-meta">
+                <span>📰 机器之心、知乎、ai2.work、ICLR Blog、Paper Digest、Lambda AI Blog</span>
+            </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="news-card signal">
+            <span class="card-tag tag-signal">SIGNAL</span>
+            <div class="card-title">腾讯开源HY-Embodied-0.5-X具身大模型——22项测评16项最佳，从"看懂"走向"干活"</div>
+            <div class="card-body">
+                腾讯Robotics X实验室与混元团队联合发布并开源<strong>HY-Embodied-0.5-X</strong>，一款专为机器人具身任务设计的多模态大模型。基于MoT-2B（混合Transformer）架构，主打三个能力层次：<strong>"看懂"（视觉理解）→"想清"（空间推理）→"做到"（动作执行）</strong>。
+                <br><br>
+                在22项主流测评集中取得<strong>16项最佳成绩</strong>，特别是在精细操作、空间推理、动作预测和风险评估等机器人核心任务上大幅领先通用大模型。训练数据集超1亿条具身数据，采用分阶段迭代训练法。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>通用大模型直接给机器人用，最大的问题是"知道但做不到"——空间理解和动作执行存在鸿沟。HY-Embodied-0.5-X是目前少数从底层架构专门为具身任务重新设计的模型。腾讯的策略是开源模型+云端推理，与智元、自变量等机器人本体厂商形成互补——"你做身体，我做大脑"。这比自己造机器人的路径轻得多，也更可能规模化。
+            </div>
+            <div class="card-meta">
+                <span>📰 腾讯云开发者社区、CSDN、太平洋电脑网、AIBase、OSCHINA、GitHub</span>
+            </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="news-card trend">
+            <span class="card-tag tag-trend">TREND</span>
+            <div class="card-title">SpaceX IPO分析师会议本周举行——1.75万亿估值，AI部门年亏64亿但战略全押</div>
+            <div class="card-body">
+                SpaceX计划6月底启动<strong>1.75万亿美元IPO</strong>（目标上调至接近2万亿），本周举行三天闭门分析师会议。关键数据：
+                <br>• 2025财年营收160亿美元，<strong>Starlink是唯一盈利业务</strong>（营收114亿+，同比增50%）
+                <br>• AI部门（含xAI）2025年运营<strong>亏损64亿美元</strong>，占总资本支出的61%
+                <br>• 马斯克预留30%股份给全球散户
+                <br>• 4月22日与Cursor签下600亿美元收购协议/100亿合作金
+                <br><br>
+                SpaceX定位为"轨道AI基础设施"——在太空建数据中心，利用极端冷却和无限太阳能，这是区别于所有地面AI公司的叙事。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>1.75万亿美元估值意味着SpaceX IPO将超越沙特阿美成为人类历史上最大的上市。AI部门年亏64亿却全力加码，这和英伟达"数据中心占收入92%"形成呼应——全球最聪明的钱都在押注AI基础设施。但更值得关注的是，SpaceX将"太空+AI"打包定价的做法，可能迫使华尔街创造全新的估值框架。
+            </div>
+            <div class="card-meta">
+                <span>📰 新浪财经、36氪、腾讯新闻、CSDN、WSJ</span>
+            </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="news-card trend">
+            <span class="card-tag tag-trend">TREND</span>
+            <div class="card-title">4月AI投融资收官——1314笔交易，AI占58%，超级周期无减速迹象</div>
+            <div class="card-body">
+                Infor Capital发布4月AI投融资数据：全球共<strong>1,314笔融资交易</strong>，其中<strong>58%为AI相关</strong>。Series A平均规模持续上升，Series B均值突破$1.05亿。4月全球AI创投<strong>$314亿</strong>创历史新高。
+                <br><br>
+                叠加此前数据：Q1全球VC总额$3,309亿（KPMG数据），AI独占80%（$2,420亿），前四家公司吃掉64%。4月作为"AI史上最密集发布月"——GPT-5.5/DeepSeek V4/Opus 4.7/K2.6/GPT-6等6款前沿模型同月发布——对应的资本热度并未因产品密集而降温，反而加速。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>1314笔交易的密度说明AI融资不再是"少数巨头分大饼"——中间层和垂直应用层的资金也在快速增长。58%的AI占比意味着：如果你是VC，不投AI几乎等于不做投资。这个比例在2024年还只是30%。
+            </div>
+            <div class="card-meta">
+                <span>📰 Infor Capital、KPMG、Crunchbase、TechCrunch</span>
+            </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="news-card new-face">
+            <span class="card-tag tag-new-face">新面孔</span>
+            <div class="card-title">微软Copilot北美大面积服务异常——AI产品"可用性"从加分项变为生死线</div>
+            <div class="card-body">
+                4月28日北美东部时间早7时，<strong>微软Copilot服务突发运行异常</strong>，影响美国与加拿大用户。Web端页面加载迟缓，指令响应延迟超30秒，Windows客户端插件出现功能无响应或闪退。钛媒体Edge AI Daily率先报道。
+                <br><br>
+                这不是Copilot第一次宕机——2026年以来已出现多次服务中断。但时间点敏感：微软Q3财报即将发布，Copilot是Azure AI业务增长的核心叙事支撑。
+            </div>
+            <div class="card-why">
+                <strong>为什么重要：</strong>AI从"玩具"变"基础设施"的标志之一是：宕机开始变成大新闻。就像DeepSeek 3月宕机12小时上了热搜一样，Copilot宕机的传播速度反映出企业用户对AI工具的依赖程度已经到了"不能停"的阶段。这对所有AI产品都是警告——当你从可选项变成必选项，可用性SLA就变成了生死线。
+            </div>
+            <div class="card-meta">
+                <span>📰 钛媒体 Edge AI Daily、DownDetector、WindowsForum</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>AI 日报 #48 · 2026年4月29日</p>
+        <p style="margin-top: 6px;">数据来源：财新网、央视新闻、CNBC、36氪、机器之心、ICLR Blog、Infor Capital、钛媒体 等 15+ 平台</p>
+        <p style="margin-top: 8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+    </div>
+</body>
+</html>

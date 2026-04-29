@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 日报 #49 — 2026年4月30日（星期四）</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f8f9fa; color: #1a202c; line-height: 1.8;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; padding: 48px 24px 40px; text-align: center;
+        }
+        .header h1 { font-size: 2.2em; font-weight: 800; margin-bottom: 8px; }
+        .header .date { font-size: 1.1em; opacity: 0.9; }
+        .header .issue { font-size: 0.9em; opacity: 0.7; margin-top: 4px; }
+        .back-link {
+            display: inline-block; margin: 20px 0 0; padding: 8px 20px;
+            background: rgba(255,255,255,0.15); border-radius: 20px;
+            color: white; text-decoration: none; font-size: 0.85em;
+            transition: background 0.2s;
+        }
+        .back-link:hover { background: rgba(255,255,255,0.25); }
+        .container { max-width: 800px; margin: 0 auto; padding: 32px 20px 60px; }
+        .summary-box {
+            background: white; border-radius: 14px; padding: 24px 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 28px;
+        }
+        .summary-box h2 { font-size: 1.15em; color: #667eea; margin-bottom: 12px; }
+        .summary-box p { font-size: 0.95em; color: #4a5568; }
+        .news-item {
+            background: white; border-radius: 14px; padding: 24px 28px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 20px;
+            border-left: 4px solid #e2e8f0; transition: border-color 0.2s;
+        }
+        .news-item:hover { border-left-color: #667eea; }
+        .news-item.breakthrough { border-left-color: #e53e3e; }
+        .news-item.signal { border-left-color: #dd6b20; }
+        .news-item.trend { border-left-color: #3182ce; }
+        .news-item.new-face { border-left-color: #38a169; }
+        .news-tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 0.72em; font-weight: 700; margin-bottom: 10px; letter-spacing: 0.5px;
+        }
+        .tag-signal { background: #fff5eb; color: #dd6b20; }
+        .tag-trend { background: #ebf4ff; color: #3182ce; }
+        .tag-new-face { background: #f0fff4; color: #38a169; }
+        .tag-breakthrough { background: #fff5f5; color: #e53e3e; }
+        .news-item h3 { font-size: 1.15em; font-weight: 700; margin-bottom: 8px; line-height: 1.5; }
+        .news-item .why { font-size: 0.92em; color: #4a5568; margin-bottom: 10px; }
+        .news-item .meta { font-size: 0.8em; color: #a0aec0; }
+        .news-item .meta a { color: #667eea; text-decoration: none; }
+        .news-item .meta a:hover { text-decoration: underline; }
+        .section-title {
+            font-size: 1.1em; font-weight: 700; color: #2d3748;
+            margin: 32px 0 16px; padding-left: 12px;
+            border-left: 3px solid #667eea;
+        }
+        .footer {
+            text-align: center; padding: 40px 20px; color: #a0aec0; font-size: 0.82em;
+        }
+        .footer a { color: #667eea; text-decoration: none; }
+        @media (max-width: 600px) {
+            .header { padding: 36px 16px 28px; }
+            .header h1 { font-size: 1.6em; }
+            .container { padding: 20px 12px 40px; }
+            .news-item { padding: 18px 16px; }
+            .summary-box { padding: 18px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>AI 日报</h1>
+    <div class="date">2026年4月30日 星期四</div>
+    <div class="issue">第 49 期 · 4月收官特别版</div>
+    <a href="https://viliawang-pm.github.io/ai-daily/" class="back-link">← 返回日报列表</a>
+</div>
+
+<div class="container">
+
+    <div class="summary-box">
+        <h2>今日速览</h2>
+        <p>4月最后一天，两件结构性事件定义了这个"AI史上最密集发布月"的收官基调：发改委首次以外商投资安全审查名义叫停AI收购（Meta×Manus），以及大科技人才出走创业潮加速（CNBC重磅报道Periodic Labs等新锐实验室数月融数亿）。与此同时，SpaceX 1.75万亿IPO叙事成型、商汤开源统一多模态U1、DeepSeek V4-Pro优惠延至5月底。4月以10+前沿模型发布、1314笔AI交易、政治局首提"全面实施AI+行动"收官——从竞赛到落地的转折月。</p>
+    </div>
+
+    <div class="section-title">🔥 头部事件</div>
+
+    <div class="news-item signal">
+        <span class="news-tag tag-signal">SIGNAL</span>
+        <h3>发改委首次叫停AI领域外资收购——Meta被令撤销20亿美元Manus交易</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>这是《外商投资安全审查办法》实施以来首个被公开叫停的AI收购案，释放了极其明确的信号：中国AI技术资产已被纳入"技术主权"红线。Manus虽已迁址新加坡，但创始团队与中国渊源深厚，核心IP源自中国——发改委认定这构成"关键技术控制权转移风险"。审查历时4个月，WSJ报道Meta正准备剥离已传输数据和技术，Benchmark已撤回投资，腾讯/真格等亚洲投资方配合。这不仅终结了一笔交易，更为所有涉及中国AI人才和技术的跨境并购划定了底线。
+        </div>
+        <div class="meta">
+            来源：新浪财经、经济观察网、搜狐、WSJ、同花顺 · 发布时间：2026-04-27/28 · 
+            <a href="https://finance.sina.com.cn/roll/2026-04-29/doc-inhwaxzu7002312.shtml" target="_blank">详情链接</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <span class="news-tag tag-signal">SIGNAL</span>
+        <h3>CNBC重磅：Meta/Google/OpenAI核心研究员集体出走创业，数月融资数亿美元</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>4月28日CNBC报道，大科技公司正在经历前所未有的AI人才流失。Periodic Labs（前OpenAI/DeepMind团队创办，$3亿种子轮）等新锐实验室在成立数月内就获数亿美元融资。xAI更是11名联合创始人+80余工程师已全部出走。投资者押注这些"小而精"的新玩家将在架构创新上实现突破——这预示着AI创新重心正从大厂向独立实验室扩散，2026年下半年可能出现一批全新的AI力量。
+        </div>
+        <div class="meta">
+            来源：CNBC、LinkedIn News、studyopenclaw.cn、Metaintro · 发布时间：2026-04-28 · 
+            <a href="https://www.cnbc.com/2026/04/28/meta-google-big-tech-staff-ai-labs-investors.html" target="_blank">CNBC原文</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <span class="news-tag tag-signal">SIGNAL</span>
+        <h3>36氪深度：SpaceX 1.75万亿IPO前夜——特斯拉20亿收购Cursor嵌入太空AI生态叙事</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>SpaceX S-1招股书4月20日正式披露后，36氪发布深度分析：特斯拉在季报最后一页悄然披露以20亿美元获得Cursor收购权——这笔看似不起眼的交易，实质将AI编程能力绑定进特斯拉-SpaceX-xAI"太空AI生态"叙事。若IPO按1.75万亿估值完成（募资超875亿美元），这将是全球史上最大IPO。马斯克的豪赌不是一家火箭公司上市，而是押注一整条从地面到太空的AI基础设施链条。
+        </div>
+        <div class="meta">
+            来源：36氪、投资界、华尔街见闻、澎湃新闻 · 发布时间：2026-04-28 · 
+            <a href="https://www.36kr.com/p/3784555575778560" target="_blank">36氪原文</a>
+        </div>
+    </div>
+
+    <div class="section-title">📡 产业动态</div>
+
+    <div class="news-item signal">
+        <span class="news-tag tag-signal">SIGNAL</span>
+        <h3>商汤全面开源日日新SenseNova U1——NEO-unify架构统一多模态理解+推理+生成</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>4月28日，商汤发布并开源SenseNova U1系列，基于自研NEO-unify架构，在单一模型上实现多模态理解、推理与生成的原生统一。核心突破在于图表、海报等图文作品中文字乱码/扭曲问题的解决——这是当前所有多模态模型的痛点。开源的是轻量版U1 Lite，对标行业趋势：不再追求参数最大，而是追求"一个架构、多种能力"。国产模型开源路径又多了一条差异化赛道。
+        </div>
+        <div class="meta">
+            来源：雷锋网、腾讯新闻(IT时报/财经涂鸦)、极客公园、中关村在线、百度百科 · 发布时间：2026-04-28/29 · 
+            <a href="https://www.geekpark.net/news/363540" target="_blank">极客公园详情</a>
+        </div>
+    </div>
+
+    <div class="news-item signal">
+        <span class="news-tag tag-signal">SIGNAL</span>
+        <h3>DeepSeek增资+V4-Pro优惠延至5月底——梁文锋持股上升，国产自主可控路径获券商集体看多</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>新浪财经4月28日报道DeepSeek完成增资，梁文锋持股上升。同时V4-Pro模型API 2.5折优惠从原计划的4月底延长至5月31日——这是用极致价格策略锁住开发者生态的信号。多家券商认为V4的发布"不仅是模型能力跃升，更是国产AI自主可控路径的关键验证"，2026年下半年将成为国产大模型的全面爆发期。
+        </div>
+        <div class="meta">
+            来源：新浪财经、36氪(8点1氪)、腾讯云 · 发布时间：2026-04-28/29 · 
+            <a href="https://finance.sina.com.cn/wm/2026-04-28/doc-inhvzshk7349514.shtml" target="_blank">新浪财经报道</a>
+        </div>
+    </div>
+
+    <div class="news-item trend">
+        <span class="news-tag tag-trend">TREND</span>
+        <h3>百度双Agent引擎+废除字母职级——搜索从"找到"走向"做到"，组织架构同步变革</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>百度在创作者大会上发布Master Agent驱动的双Agent引擎，整合MCP协议和第三方生态，将搜索从信息查找升级为任务执行。数据显示百度App主动日活同比增长1.6倍。同时废除T/P/E/Band/M字母职级改为5-12级数字体系。两件事合在一起看：百度正在用AI重构产品形态的同时，也在重构组织形态——这是传统互联网巨头"AI化"最深层的体现。
+        </div>
+        <div class="meta">
+            来源：经济观察网、虎嗅、ITBEAR、百度百科 · 发布时间：2026-04-24/28 · 
+            <a href="https://finance.sina.com.cn/roll/2026-04-29/doc-inhwaxzu7002312.shtml" target="_blank">经济观察网详情</a>
+        </div>
+    </div>
+
+    <div class="section-title">📊 月度收官</div>
+
+    <div class="news-item trend">
+        <span class="news-tag tag-trend">TREND</span>
+        <h3>AI Critique 4月终评：AI竞赛已从benchmark之争转向分发·算力·控制权之争</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>AI Critique 4月29日发布月度终评，核心判断是：4月的最大事件不再是某个模型跑了多少分，而是deal resets（Google 400亿投资Anthropic、SpaceX收购Cursor）、云基础设施重构（Meta×AWS Graviton5）和控制权争夺（发改委叫停Manus、政治局首提AI+行动）。这篇分析精准概括了4月的结构性转变——AI行业正式从"谁模型最强"进入"谁生态最深"的新阶段。
+        </div>
+        <div class="meta">
+            来源：AI Critique · 发布时间：2026-04-29 · 
+            <a href="https://www.aicritique.org/us/2026/04/29/ai-developments-in-april-2026/" target="_blank">原文链接</a>
+        </div>
+    </div>
+
+    <div class="news-item trend">
+        <span class="news-tag tag-trend">TREND</span>
+        <h3>4月收官数字全景——1314笔AI交易、10+前沿模型、政治局定调、6起安全事件</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>综合多方数据：① 投融资：Infor Capital统计4月1314笔VC交易，AI占58%；② 模型：GPT-6/GPT-5.5/DeepSeek V4/Opus 4.7/Kimi K2.6/MiMo-V2.5等10+前沿模型同月发布，创历史纪录；③ 政策：政治局首提"全面实施AI+行动"，五部门AI+教育行动计划；④ 安全：Foresiet统计15天6起安全事件（Vercel/Lovable/Claude Code/MCP等）。4月确实是"AI史上最密集发布月"——而5月将直面落地和消化。
+        </div>
+        <div class="meta">
+            来源：Infor Capital、Foresiet、Kersai、freeai.help、CSDN · 发布时间：2026-04-25-30 · 
+            <a href="https://inforcapital.com/blog/2026-04-25-the-ai-funding-supercycle-1314-deals-in-april-show-where-real-capital-is-going/" target="_blank">融资数据详情</a>
+        </div>
+    </div>
+
+    <div class="section-title">🌱 新面孔</div>
+
+    <div class="news-item new-face">
+        <span class="news-tag tag-new-face">新面孔</span>
+        <h3>GitHub Copilot代码审查6月收费 + Warp终端全面开源——AI开发工具的商业化分岔路</h3>
+        <div class="why">
+            <strong>为什么重要：</strong>saiita.com.cn汇总了4月底两个值得关注的开发工具动态：GitHub Copilot代码审查功能6月起开始消耗Actions分钟数（等于变相收费），这是AI编程工具从免费增长转向变现的标志性信号；与此同时Warp终端宣布全面开源（Rust占比98%），走的是完全相反的开放路线。两种策略并存——微软选择收割，独立开发者选择开放——折射出AI开发者工具市场的路线分化。
+        </div>
+        <div class="meta">
+            来源：saiita.com.cn · 发布时间：2026-04-29 · 
+            <a href="https://www.saiita.com.cn/technology-consulting/2026-april-tech-news-summary.html" target="_blank">汇总详情</a>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>AI 日报 #49 · 2026年4月30日 · 4月收官特别版</p>
+    <p style="margin-top:6px;">数据来源：CNBC、36氪、新浪财经、经济观察网、WSJ、AI Critique、Infor Capital、雷锋网、极客公园 等 15+ 平台</p>
+    <p style="margin-top:8px;"><a href="https://viliawang-pm.github.io/ai-daily/">← 返回日报列表</a></p>
+</div>
+
+</body>
+</html>
